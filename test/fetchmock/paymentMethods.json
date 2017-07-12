@@ -1,0 +1,98 @@
+[
+  {
+    "customer_id": "cus_QwErTyUiOp1234",
+    "deleted": false,
+    "modified": {
+      "$date": 1494424036122
+    },
+    "token": "tok_1AHv9qAEfUyQBQTf2ktNJJvM",
+    "active": true,
+    "user": {
+      "$oid": "59102f7e8d95100013f0f3be"
+    },
+    "name": "Stripe",
+    "created": {
+      "$date": 1494424035118
+    },
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "method": "stripe",
+    "_cls": "PaymentMethod.StripePaymentMethod",
+    "_id": {
+      "$oid": "591319e49675f700135974a4"
+    },
+    "card": {
+      "address_line1": null,
+      "dynamic_last4": null,
+      "object": "card",
+      "id": "card_1AHv9kjsdkjdfsBQTfLvT4jOI5",
+      "funding": "credit",
+      "address_city": null,
+      "metadata": {},
+      "address_country": null,
+      "name": null,
+      "address_zip": null,
+      "tokenization_method": null,
+      "cvc_check": "unchecked",
+      "address_state": null,
+      "fingerprint": "k9XYzy05Ka7WbAqv",
+      "address_line1_check": null,
+      "exp_year": 2017,
+      "exp_month": 12,
+      "brand": "Visa",
+      "last4": "4242",
+      "address_line2": null,
+      "address_zip_check": null,
+      "country": "US"
+    }
+  },
+  {
+    "customer_id": "cus_QwErTyUiOp1234",
+    "deleted": false,
+    "modified": {
+      "$date": 1496916550814
+    },
+    "token": "tok_1AddZgAwfUyQfQufOKfbf3Np",
+    "active": true,
+    "user": {
+      "$oid": "59102f7e8d95100013f0f3be"
+    },
+    "name": "Stripe",
+    "created": {
+      "$date": 1496916549032
+    },
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "method": "stripe",
+    "_cls": "PaymentMethod.StripePaymentMethod",
+    "_id": {
+      "$oid": "59392246528104001366e66a"
+    },
+    "card": {
+      "address_line1": null,
+      "dynamic_last4": null,
+      "object": "card",
+      "id": "card_1AcjkdskjUyQBQTfygYP3wgb",
+      "funding": "credit",
+      "address_city": null,
+      "exp_year": 2017,
+      "address_country": null,
+      "name": null,
+      "address_zip": null,
+      "tokenization_method": null,
+      "exp_month": 12,
+      "address_state": null,
+      "fingerprint": "k9XYzy05Ka7WbAqv",
+      "address_line1_check": null,
+      "metadata": {},
+      "cvc_check": "unchecked",
+      "brand": "Visa",
+      "last4": "4242",
+      "address_line2": null,
+      "address_zip_check": null,
+      "country": "US"
+    }
+  }
+]

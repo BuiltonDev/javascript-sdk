@@ -1,0 +1,24 @@
+{
+  "delivery_automatic_under": {
+    "active": true,
+    "type": "string",
+    "created": {
+      "$date": 1499085034836
+    },
+    "value": "1",
+    "modified": {
+      "$date": 1499085034836
+    }
+  },
+  "delivery_cancel_over": {
+    "active": true,
+    "type": "string",
+    "created": {
+      "$date": 1499085034836
+    },
+    "value": "6000",
+    "modified": {
+      "$date": 1499085034836
+    }
+  }
+}

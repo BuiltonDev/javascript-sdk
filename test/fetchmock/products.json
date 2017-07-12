@@ -1,0 +1,1189 @@
+[
+  {
+    "price": 12,
+    "created": {
+      "$date": 1493197797058
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Another Item",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "3123",
+    "modified": {
+      "$date": 1493197797059
+    },
+    "properties": {},
+    "tags": [
+      "miscellaneous"
+    ],
+    "description": "1321",
+    "vat": 0,
+    "_id": {
+      "$oid": "590063e58fda440013b1c8f8"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 0
+  },
+  {
+    "price": 40,
+    "created": {
+      "$date": 1486740493827
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Bag",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry Cleaning Bag",
+    "modified": {
+      "$date": 1493051024220
+    },
+    "_sub_products": [
+      {
+        "price": 5,
+        "created": {
+          "$date": 1486740602740
+        },
+        "parents": [
+          {
+            "$oid": "589ddc0d1a66ac00138f0234"
+          }
+        ],
+        "path": "/",
+        "company_take": -1,
+        "name": "Jacket",
+        "currency": "GBP",
+        "deleted": false,
+        "business_rules": [],
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "short_description": "Cleaning of Jackets",
+        "modified": {
+          "$date": 1493051024167
+        },
+        "_sub_products": [],
+        "tags": [
+          "category: Outdoor"
+        ],
+        "vat": 0,
+        "_id": {
+          "$oid": "589ddc7a1a66ac00138f0235"
+        },
+        "default_position": [
+          -1,
+          -1
+        ],
+        "main_product": false,
+        "_cls": "Product",
+        "properties": {},
+        "active": true,
+        "max_distance": 0
+      }
+    ],
+    "tags": [],
+    "vat": 0,
+    "_id": {
+      "$oid": "589ddc0d1a66ac00138f0234"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 0
+  },
+  {
+    "price": 6,
+    "created": {
+      "$date": 1487601954854
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Bath Mat",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of bath mat",
+    "modified": {
+      "$date": 1493237778441
+    },
+    "_sub_products": [],
+    "tags": [
+      "Towelling"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab0122870d570013045dbb"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 100
+  },
+  {
+    "price": 29,
+    "created": {
+      "$date": 1487602166927
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Bedspread - double",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of Bedspread - double",
+    "modified": {
+      "$date": 1491395310232
+    },
+    "_sub_products": [],
+    "tags": [
+      "Bedding"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab01f6870d570013045dbe"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 12
+  },
+  {
+    "price": 12.5,
+    "created": {
+      "$date": 1487602503123
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Blazer",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Cleaning of Blazer",
+    "modified": {
+      "$date": 1487693638757
+    },
+    "_sub_products": [],
+    "tags": [
+      "Suits"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab0347870d570013045dc3"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 17
+  },
+  {
+    "price": 1,
+    "created": {
+      "$date": 1485767789373
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Carpet",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of carpet",
+    "modified": {
+      "$date": 1485767789377
+    },
+    "_sub_products": [],
+    "tags": [],
+    "vat": 1,
+    "_id": {
+      "$oid": "588f046d56c56000137cd644"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 100
+  },
+  {
+    "price": 1,
+    "created": {
+      "$date": 1485767845929
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Clothes",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of clothes",
+    "modified": {
+      "$date": 1485953906273
+    },
+    "_sub_products": [
+      {
+        "price": 1,
+        "created": {
+          "$date": 1485767880444
+        },
+        "parents": [
+          {
+            "$oid": "588f04a556c56000137cd645"
+          }
+        ],
+        "path": "/",
+        "company_take": -1,
+        "name": "Shirt",
+        "currency": "NOK",
+        "deleted": false,
+        "business_rules": [],
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "short_description": "Dry cleaning of shirt",
+        "modified": {
+          "$date": 1487603447473
+        },
+        "_sub_products": [],
+        "tags": [
+          "category: Shirts/Tops"
+        ],
+        "vat": 1,
+        "_id": {
+          "$oid": "588f04c856c56000137cd646"
+        },
+        "default_position": [
+          -1,
+          -1
+        ],
+        "main_product": false,
+        "_cls": "Product",
+        "properties": {},
+        "active": true,
+        "max_distance": 12
+      },
+      {
+        "price": 10,
+        "created": {
+          "$date": 1485952791583
+        },
+        "parents": [
+          {
+            "$oid": "588f04a556c56000137cd645"
+          }
+        ],
+        "path": "/",
+        "company_take": -1,
+        "name": "Sock",
+        "currency": "NOK",
+        "deleted": false,
+        "business_rules": [],
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "short_description": "Dry cleaning of sock",
+        "modified": {
+          "$date": 1487603450042
+        },
+        "_sub_products": [],
+        "tags": [
+          "category: Suits"
+        ],
+        "vat": 5,
+        "_id": {
+          "$oid": "5891d7174aadd0001389207b"
+        },
+        "default_position": [
+          -1,
+          -1
+        ],
+        "main_product": false,
+        "_cls": "Product",
+        "properties": {},
+        "active": true,
+        "max_distance": 1000
+      }
+    ],
+    "tags": [],
+    "vat": 1,
+    "_id": {
+      "$oid": "588f04a556c56000137cd645"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 120
+  },
+  {
+    "price": 10,
+    "created": {
+      "$date": 1489667036553
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Delivery fee",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Fixed delivery fee for products",
+    "modified": {
+      "$date": 1494860915920
+    },
+    "_sub_products": [],
+    "tags": [
+      "Delivery"
+    ],
+    "vat": 0,
+    "_id": {
+      "$oid": "58ca83dc36eb4800134fe1ab"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 120
+  },
+  {
+    "price": 23.5,
+    "created": {
+      "$date": 1487602458884
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Dinner Jacket and Trousers",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of Dinner Jacket and Trousers",
+    "modified": {
+      "$date": 1491395318926
+    },
+    "_sub_products": [],
+    "tags": [
+      "Suits"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab031a870d570013045dc2"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 14
+  },
+  {
+    "price": 15,
+    "created": {
+      "$date": 1487602281685
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Dress",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of Dress",
+    "modified": {
+      "$date": 1487693645799
+    },
+    "_sub_products": [],
+    "tags": [
+      "Dress/Skirt"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab0269870d570013045dc0"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 14
+  },
+  {
+    "tags": [
+      "bedding"
+    ],
+    "price": 24,
+    "main_product": true,
+    "created": {
+      "$date": 1493198697549
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Duvet",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "590067698fda440013b1c8fd"
+    },
+    "vat": 1,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493199903614
+    },
+    "properties": {}
+  },
+  {
+    "price": 35,
+    "created": {
+      "$date": 1487602102198
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Duvet - king",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of Duvet - king",
+    "modified": {
+      "$date": 1487693649476
+    },
+    "_sub_products": [],
+    "tags": [
+      "Bedding"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab01b6870d570013045dbd"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 12
+  },
+  {
+    "price": 13,
+    "created": {
+      "$date": 1493037400507
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Item",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "123",
+    "modified": {
+      "$date": 1493037400522
+    },
+    "properties": {},
+    "tags": [
+      "miscellaneous"
+    ],
+    "description": "321",
+    "vat": 0,
+    "_id": {
+      "$oid": "58fdf158d9eb9600134af5f7"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 0
+  },
+  {
+    "tags": [],
+    "price": 12,
+    "main_product": true,
+    "created": {
+      "$date": 1493051030450
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Item",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "58fe2696d9eb9600134af610"
+    },
+    "vat": 3,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493051030454
+    },
+    "properties": {}
+  },
+  {
+    "tags": [
+      "miscellaneous"
+    ],
+    "price": 10,
+    "main_product": true,
+    "created": {
+      "$date": 1493050983211
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Misc item 1",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "58fe2667d9eb9600134af60f"
+    },
+    "vat": 0,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493050983214
+    },
+    "properties": {}
+  },
+  {
+    "price": 10,
+    "created": {
+      "$date": 1487602218028
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Pashmina",
+    "currency": "NOK",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of Pashmina",
+    "modified": {
+      "$date": 1487693664865
+    },
+    "_sub_products": [],
+    "tags": [
+      "Accessories"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab022a870d570013045dbf"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 12
+  },
+  {
+    "price": 23,
+    "created": {
+      "$date": 1487602052536
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Pillow",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Dry cleaning of Pillow",
+    "modified": {
+      "$date": 1487693673707
+    },
+    "_sub_products": [],
+    "tags": [
+      "Bedding"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab0184870d570013045dbc"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 10
+  },
+  {
+    "tags": [
+      "accessories"
+    ],
+    "price": 18,
+    "main_product": true,
+    "created": {
+      "$date": 1493198321235
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Scarf",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "590065f18fda440013b1c8fb"
+    },
+    "vat": 10,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493198321237
+    },
+    "properties": {}
+  },
+  {
+    "price": 9,
+    "created": {
+      "$date": 1487602370726
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Skirt",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Cleaning of Skirt",
+    "modified": {
+      "$date": 1487693683037
+    },
+    "_sub_products": [],
+    "tags": [
+      "Dress/Skirt"
+    ],
+    "vat": 10,
+    "_id": {
+      "$oid": "58ab02c2870d570013045dc1"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 17
+  },
+  {
+    "tags": [
+      "miscellaneous"
+    ],
+    "price": 13,
+    "main_product": true,
+    "created": {
+      "$date": 1493126077275
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Some misc",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "58ff4bbd8fda440013b1c8e9"
+    },
+    "vat": 0,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493126077276
+    },
+    "properties": {}
+  },
+  {
+    "price": 1000,
+    "created": {
+      "$date": 1492896797468
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Some product",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Some Product",
+    "modified": {
+      "$date": 1492896797469
+    },
+    "properties": {},
+    "tags": [
+      "miscellaneous"
+    ],
+    "description": "Every product",
+    "vat": 5,
+    "_id": {
+      "$oid": "58fbcc1d62acf800131f4e39"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 1000
+  },
+  {
+    "tags": [
+      "miscellaneous"
+    ],
+    "price": 10,
+    "main_product": true,
+    "created": {
+      "$date": 1493025531615
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Special",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "58fdc2fbd9eb9600134af5f0"
+    },
+    "vat": 2,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493025531636
+    },
+    "properties": {}
+  },
+  {
+    "price": 100,
+    "created": {
+      "$date": 1493023721633
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Special dress",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "What is special dress?",
+    "modified": {
+      "$date": 1493023721661
+    },
+    "properties": {},
+    "tags": [
+      "miscellaneous"
+    ],
+    "description": "Describe special dress",
+    "vat": 10,
+    "_id": {
+      "$oid": "58fdbbe9d9eb9600134af5ef"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 0
+  },
+  {
+    "price": 100,
+    "created": {
+      "$date": 1493023624644
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Special shirt",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "How do you define special shirt?",
+    "modified": {
+      "$date": 1493023624648
+    },
+    "properties": {},
+    "tags": [
+      "miscellaneous"
+    ],
+    "description": "Describe special shirt",
+    "vat": 23,
+    "_id": {
+      "$oid": "58fdbb88d9eb9600134af5ee"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 0
+  },
+  {
+    "price": 25,
+    "created": {
+      "$date": 1486741080147
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Suit Cleaning",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Cleaning of suits",
+    "modified": {
+      "$date": 1486741080149
+    },
+    "_sub_products": [],
+    "tags": [],
+    "vat": 0,
+    "_id": {
+      "$oid": "589dde581a66ac00138f0236"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "properties": {},
+    "active": true,
+    "max_distance": 0
+  },
+  {
+    "tags": [
+      "suits"
+    ],
+    "price": 100,
+    "main_product": true,
+    "created": {
+      "$date": 1493198521662
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Sweatshirt",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "590066b98fda440013b1c8fc"
+    },
+    "vat": 1000,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493198521663
+    },
+    "properties": {}
+  },
+  {
+    "price": 16,
+    "created": {
+      "$date": 1493197910912
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "T-shirt",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "Marvel",
+    "modified": {
+      "$date": 1493197910913
+    },
+    "properties": {},
+    "tags": [
+      "shirts/tops"
+    ],
+    "description": "DC",
+    "vat": 2,
+    "_id": {
+      "$oid": "590064568fda440013b1c8f9"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 0
+  },
+  {
+    "tags": [
+      "knitwear"
+    ],
+    "price": 12,
+    "main_product": true,
+    "created": {
+      "$date": 1493198108833
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "Tie",
+    "currency": "GBP",
+    "deleted": false,
+    "_sub_products": [],
+    "default_position": [
+      -1,
+      -1
+    ],
+    "_cls": "Product",
+    "business_rules": [],
+    "active": true,
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "_id": {
+      "$oid": "5900651c8fda440013b1c8fa"
+    },
+    "vat": 10,
+    "max_distance": 0,
+    "modified": {
+      "$date": 1493198108834
+    },
+    "properties": {}
+  },
+  {
+    "price": 99,
+    "created": {
+      "$date": 1493297735396
+    },
+    "parents": [],
+    "path": "/",
+    "company_take": -1,
+    "name": "testproduct",
+    "currency": "GBP",
+    "deleted": false,
+    "business_rules": [],
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "short_description": "this is a test product",
+    "modified": {
+      "$date": 1493297735399
+    },
+    "properties": {},
+    "tags": [
+      "miscellaneous"
+    ],
+    "description": "this is a test product",
+    "vat": 0,
+    "_id": {
+      "$oid": "5901ea478ee65000133f1419"
+    },
+    "default_position": [
+      -1,
+      -1
+    ],
+    "main_product": true,
+    "_cls": "Product",
+    "active": true,
+    "_sub_products": [],
+    "max_distance": 0
+  }
+]

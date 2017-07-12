@@ -1,0 +1,38 @@
+{
+  "price": 12,
+  "created": {
+    "$date": 1493197797058
+  },
+  "parents": [],
+  "path": "/",
+  "company_take": -1,
+  "name": "Test Product",
+  "currency": "GBP",
+  "deleted": false,
+  "business_rules": [],
+  "company": {
+    "$oid": "586faf7445ed910006373513"
+  },
+  "short_description": "3123",
+  "modified": {
+    "$date": 1493197797059
+  },
+  "properties": {},
+  "tags": [
+    "category: miscellaneous"
+  ],
+  "description": "1321",
+  "vat": 0,
+  "_id": {
+    "$oid": "590063e58fda440013b1c8f8"
+  },
+  "default_position": [
+    -1,
+    -1
+  ],
+  "main_product": true,
+  "_cls": "Product",
+  "active": true,
+  "_sub_products": [],
+  "max_distance": 0
+}

@@ -1,0 +1,117 @@
+{
+  "user": "591061fd8d95100013f0f3ca",
+  "delivery_time": 1496963100000,
+  "delivery_address": {
+    "street_name":"Johanne Dybwads plass 1",
+    "zip_code":"0161",
+    "city":"Oslo",
+    "country":"Norway",
+    "geo":[
+      59.9143583,
+      10.7342622
+    ],
+    "raw":{
+      "address_components":[
+        {
+          "types":[
+            "street_number"
+          ],
+          "long_name":"1",
+          "short_name":"1"
+        },
+        {
+          "types":[
+            "route"
+          ],
+          "long_name":"Johanne Dybwads plass",
+          "short_name":"Johanne Dybwads plass"
+        },
+        {
+          "types":[
+            "political",
+            "sublocality",
+            "sublocality_level_1"
+          ],
+          "long_name":"Sentrum",
+          "short_name":"Sentrum"
+        },
+        {
+          "types":[
+            "postal_town"
+          ],
+          "long_name":"Oslo",
+          "short_name":"Oslo"
+        },
+        {
+          "types":[
+            "administrative_area_level_2",
+            "political"
+          ],
+          "long_name":"Oslo kommune",
+          "short_name":"Oslo kommune"
+        },
+        {
+          "types":[
+            "administrative_area_level_1",
+            "political"
+          ],
+          "long_name":"Oslo",
+          "short_name":"Oslo"
+        },
+        {
+          "types":[
+            "country",
+            "political"
+          ],
+          "long_name":"Norway",
+          "short_name":"NO"
+        },
+        {
+          "types":[
+            "postal_code"
+          ],
+          "long_name":"0161",
+          "short_name":"0161"
+        }
+      ],
+      "place_id":"ChIJi85T731uQUYRadaFsHVZxU4",
+      "partial_match":true,
+      "types":[
+        "premise"
+      ],
+      "formatted_address":"Johanne Dybwads plass 1, 0161 Oslo, Norway",
+      "geometry":{
+        "bounds":{
+          "southwest":{
+            "lng":10.7334951,
+            "lat":59.91406189999999
+          },
+          "northeast":{
+            "lng":10.7350292,
+            "lat":59.91465470000001
+          }
+        },
+        "location_type":"ROOFTOP",
+        "viewport":{
+          "southwest":{
+            "lng":10.7329131697085,
+            "lat":59.91300931970849
+          },
+          "northeast":{
+            "lng":10.7356111302915,
+            "lat":59.91570728029151
+          }
+        },
+        "location":{
+          "lng":10.7342622,
+          "lat":59.9143583
+        }
+      }
+    },
+    "alias":"",
+    "service":"google",
+    "service_address_id":"ChIJi85T731uQUYRadaFsHVZxU4"
+  },
+  "payment_method": "59108801d206510013a23d05",
+  "currency": "GBP"
+}

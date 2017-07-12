@@ -1,0 +1,46 @@
+{
+  "note": "",
+  "first_name": "John",
+  "national_id": "",
+  "created": {
+    "$date": 1483715342594
+  },
+  "tags": [],
+  "auth0_id": "auth0|QWERTY1bc29b36f623ba82aaf6724fd3b16718",
+  "voucher": {
+    "uuid": "601e76dc-ce1e-4bac-bb25-18213bbe0c14",
+    "initial_quantity": 0,
+    "created": {
+      "$date": 1483715342594
+    },
+    "consumed": 0,
+    "expires": {
+      "$date": 1515251342594
+    }
+  },
+  "deleted": false,
+  "stripe_customer_id": "",
+  "_id": {
+    "$oid": "586fb30ee560270013f4f533"
+  },
+  "roles": [
+    "user"
+  ],
+  "new_customer": true,
+  "billing_address": {
+    "service": "google",
+    "alias": ""
+  },
+  "_cls": "User",
+  "addresses": [],
+  "last_name": "Doe",
+  "company": {
+    "$oid": "586faf7445ed910006373513"
+  },
+  "email": "john.doe@example.com",
+  "bio": "",
+  "modified": {
+    "$date": 1483715342597
+  },
+  "avatar": ""
+}

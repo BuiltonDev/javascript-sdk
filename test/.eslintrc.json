@@ -1,0 +1,13 @@
+{
+    "env": {
+      "mocha": true
+    },
+    "extends": "airbnb-base",
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+        "no-console": "off",
+        "no-underscore-dangle": "off"
+    }
+}

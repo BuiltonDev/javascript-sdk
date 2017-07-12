@@ -1,0 +1,1639 @@
+{
+  "items": [
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1487693664865
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1487602218028
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ab022a870d570013045dbf"
+        },
+        "short_description": "Dry cleaning of Pashmina",
+        "price": 10,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 12,
+        "tags": [
+          "category: Accessories"
+        ],
+        "deleted": false,
+        "name": "Pashmina",
+        "properties": {},
+        "vat": 10,
+        "parents": [],
+        "currency": "NOK",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1493198321237
+        },
+        "tags": [
+          "category: accessories"
+        ],
+        "_cls": "Product",
+        "_id": {
+          "$oid": "590065f18fda440013b1c8fb"
+        },
+        "created": {
+          "$date": 1493198321235
+        },
+        "properties": {},
+        "vat": 10,
+        "max_distance": 0,
+        "business_rules": [],
+        "parents": [],
+        "main_product": true,
+        "deleted": false,
+        "name": "Scarf",
+        "price": 18,
+        "active": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "currency": "GBP",
+        "default_position": [
+          -1,
+          -1
+        ],
+        "path": "/",
+        "_sub_products": []
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1491395310232
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1487602166927
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ab01f6870d570013045dbe"
+        },
+        "short_description": "Dry cleaning of Bedspread - double",
+        "price": 29,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 12,
+        "tags": [
+          "category: Bedding"
+        ],
+        "deleted": false,
+        "name": "Bedspread - double",
+        "properties": {},
+        "vat": 10,
+        "parents": [],
+        "currency": "GBP",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1487693649476
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1487602102198
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ab01b6870d570013045dbd"
+        },
+        "short_description": "Dry cleaning of Duvet - king",
+        "price": 35,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 12,
+        "tags": [
+          "category: Bedding"
+        ],
+        "deleted": false,
+        "name": "Duvet - king",
+        "properties": {},
+        "vat": 10,
+        "parents": [],
+        "currency": "GBP",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1487693673707
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1487602052536
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ab0184870d570013045dbc"
+        },
+        "short_description": "Dry cleaning of Pillow",
+        "price": 23,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 10,
+        "tags": [
+          "category: Bedding"
+        ],
+        "deleted": false,
+        "name": "Pillow",
+        "properties": {},
+        "vat": 10,
+        "parents": [],
+        "currency": "GBP",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1493199903614
+        },
+        "tags": [
+          "category: bedding"
+        ],
+        "_cls": "Product",
+        "_id": {
+          "$oid": "590067698fda440013b1c8fd"
+        },
+        "created": {
+          "$date": 1493198697549
+        },
+        "properties": {},
+        "vat": 1,
+        "max_distance": 0,
+        "business_rules": [],
+        "parents": [],
+        "main_product": true,
+        "deleted": false,
+        "name": "Duvet",
+        "price": 24,
+        "active": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "currency": "GBP",
+        "default_position": [
+          -1,
+          -1
+        ],
+        "path": "/",
+        "_sub_products": []
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1494860915920
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1489667036553
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ca83dc36eb4800134fe1ab"
+        },
+        "short_description": "Fixed delivery fee for products",
+        "price": 10,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 120,
+        "tags": [
+          "category: Delivery"
+        ],
+        "deleted": false,
+        "name": "Delivery fee",
+        "properties": {},
+        "vat": 0,
+        "parents": [],
+        "currency": "GBP",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1487693645799
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1487602281685
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ab0269870d570013045dc0"
+        },
+        "short_description": "Dry cleaning of Dress",
+        "price": 15,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 14,
+        "tags": [
+          "category: Dress/Skirt"
+        ],
+        "deleted": false,
+        "name": "Dress",
+        "properties": {},
+        "vat": 10,
+        "parents": [],
+        "currency": "GBP",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    },
+    {
+      "product": {
+        "company_take": -1,
+        "modified": {
+          "$date": 1487693683037
+        },
+        "_cls": "Product",
+        "created": {
+          "$date": 1487602370726
+        },
+        "business_rules": [],
+        "_id": {
+          "$oid": "58ab02c2870d570013045dc1"
+        },
+        "short_description": "Cleaning of Skirt",
+        "price": 9,
+        "active": true,
+        "default_position": [
+          -1,
+          -1
+        ],
+        "_sub_products": [],
+        "max_distance": 17,
+        "tags": [
+          "category: Dress/Skirt"
+        ],
+        "deleted": false,
+        "name": "Skirt",
+        "properties": {},
+        "vat": 10,
+        "parents": [],
+        "currency": "GBP",
+        "main_product": true,
+        "company": {
+          "$oid": "586faf7445ed910006373513"
+        },
+        "path": "/"
+      },
+      "quantity": 1,
+      "discount": 0
+    }
+  ],
+  "modified": {
+    "$date": 1496049687575
+  },
+  "note": "",
+  "created": {
+    "$date": 1496047140518
+  },
+  "delivery_address": {
+    "street_name":"Johanne Dybwads plass 1",
+    "zip_code":"0161",
+    "city":"Oslo",
+    "country":"Norway",
+    "geo":[
+      59.9143583,
+      10.7342622
+    ],
+    "raw":{
+      "address_components":[
+        {
+          "types":[
+            "street_number"
+          ],
+          "long_name":"1",
+          "short_name":"1"
+        },
+        {
+          "types":[
+            "route"
+          ],
+          "long_name":"Johanne Dybwads plass",
+          "short_name":"Johanne Dybwads plass"
+        },
+        {
+          "types":[
+            "political",
+            "sublocality",
+            "sublocality_level_1"
+          ],
+          "long_name":"Sentrum",
+          "short_name":"Sentrum"
+        },
+        {
+          "types":[
+            "postal_town"
+          ],
+          "long_name":"Oslo",
+          "short_name":"Oslo"
+        },
+        {
+          "types":[
+            "administrative_area_level_2",
+            "political"
+          ],
+          "long_name":"Oslo kommune",
+          "short_name":"Oslo kommune"
+        },
+        {
+          "types":[
+            "administrative_area_level_1",
+            "political"
+          ],
+          "long_name":"Oslo",
+          "short_name":"Oslo"
+        },
+        {
+          "types":[
+            "country",
+            "political"
+          ],
+          "long_name":"Norway",
+          "short_name":"NO"
+        },
+        {
+          "types":[
+            "postal_code"
+          ],
+          "long_name":"0161",
+          "short_name":"0161"
+        }
+      ],
+      "place_id":"ChIJi85T731uQUYRadaFsHVZxU4",
+      "partial_match":true,
+      "types":[
+        "premise"
+      ],
+      "formatted_address":"Johanne Dybwads plass 1, 0161 Oslo, Norway",
+      "geometry":{
+        "bounds":{
+          "southwest":{
+            "lng":10.7334951,
+            "lat":59.91406189999999
+          },
+          "northeast":{
+            "lng":10.7350292,
+            "lat":59.91465470000001
+          }
+        },
+        "location_type":"ROOFTOP",
+        "viewport":{
+          "southwest":{
+            "lng":10.7329131697085,
+            "lat":59.91300931970849
+          },
+          "northeast":{
+            "lng":10.7356111302915,
+            "lat":59.91570728029151
+          }
+        },
+        "location":{
+          "lng":10.7342622,
+          "lat":59.9143583
+        }
+      }
+    },
+    "alias":"",
+    "service":"google",
+    "service_address_id":"ChIJi85T731uQUYRadaFsHVZxU4"
+  },
+  "_id": {
+    "$oid": "592bde24b738ff0013adf5c7"
+  },
+  "top_up_amount": 0,
+  "order_status": "SUCCESS",
+  "stripe_refund_id": "",
+  "delivery_status": "DONE",
+  "deliveries": [
+    {
+      "$oid": "592bde25b738ff0013adf5c9"
+    },
+    {
+      "$oid": "592be3e8b738ff0013adf5ca"
+    },
+    {
+      "$oid": "592be4a9b738ff0013adf5cb"
+    },
+    {
+      "$oid": "592be66eb738ff0013adf5cc"
+    },
+    {
+      "$oid": "592be793b738ff0013adf5cd"
+    }
+  ],
+  "delivery_time": {
+    "$date": 1496047145000
+  },
+  "currency": "GBP",
+  "total_amount": 173,
+  "top_up_vat": 0,
+  "human_id": "Y8RDPJ",
+  "total_quantity": 9,
+  "units": 9,
+  "stripe_charge_id": "",
+  "user": {
+    "bio": "",
+    "modified": {
+      "$date": 1496217557510
+    },
+    "_cls": "User",
+    "stripe_customer_id": "cus_QwErTyUiOp1234",
+    "billing_address": {
+      "service": "google",
+      "alias": ""
+    },
+    "_id": {
+      "$oid": "591061fd8d95100013f0f3ca"
+    },
+    "roles": [
+      "user"
+    ],
+    "new_customer": false,
+    "national_id": "",
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "push_token": "QWERTYUIOP:KJDKJKJDhMu1LbCprmVt_Mmu6-FklKJy3goh-gBJ3CJJDKJSY-dpmJKJDJKDJKQJEh46H20U_4u1cXpmwVsyhWtEDKJJKSKJAASKJvPXyMhmnQaH4lXnZ96IKQeo6gMkzB34u",
+    "avatar": "https://httpbin.org/image",
+    "tags": [],
+    "deleted": false,
+    "created": {
+      "$date": 1494245885408
+    },
+    "mobile_phone_number": "+01987654321",
+    "note": "",
+    "addresses": [{
+      "street_name":"Johanne Dybwads plass 1",
+      "zip_code":"0161",
+      "city":"Oslo",
+      "country":"Norway",
+      "geo":[
+        59.9143583,
+        10.7342622
+      ],
+      "raw":{
+        "address_components":[
+          {
+            "types":[
+              "street_number"
+            ],
+            "long_name":"1",
+            "short_name":"1"
+          },
+          {
+            "types":[
+              "route"
+            ],
+            "long_name":"Johanne Dybwads plass",
+            "short_name":"Johanne Dybwads plass"
+          },
+          {
+            "types":[
+              "political",
+              "sublocality",
+              "sublocality_level_1"
+            ],
+            "long_name":"Sentrum",
+            "short_name":"Sentrum"
+          },
+          {
+            "types":[
+              "postal_town"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "administrative_area_level_2",
+              "political"
+            ],
+            "long_name":"Oslo kommune",
+            "short_name":"Oslo kommune"
+          },
+          {
+            "types":[
+              "administrative_area_level_1",
+              "political"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "country",
+              "political"
+            ],
+            "long_name":"Norway",
+            "short_name":"NO"
+          },
+          {
+            "types":[
+              "postal_code"
+            ],
+            "long_name":"0161",
+            "short_name":"0161"
+          }
+        ],
+        "place_id":"ChIJi85T731uQUYRadaFsHVZxU4",
+        "partial_match":true,
+        "types":[
+          "premise"
+        ],
+        "formatted_address":"Johanne Dybwads plass 1, 0161 Oslo, Norway",
+        "geometry":{
+          "bounds":{
+            "southwest":{
+              "lng":10.7334951,
+              "lat":59.91406189999999
+            },
+            "northeast":{
+              "lng":10.7350292,
+              "lat":59.91465470000001
+            }
+          },
+          "location_type":"ROOFTOP",
+          "viewport":{
+            "southwest":{
+              "lng":10.7329131697085,
+              "lat":59.91300931970849
+            },
+            "northeast":{
+              "lng":10.7356111302915,
+              "lat":59.91570728029151
+            }
+          },
+          "location":{
+            "lng":10.7342622,
+            "lat":59.9143583
+          }
+        }
+      },
+      "alias":"",
+      "service":"google",
+      "service_address_id":"ChIJi85T731uQUYRadaFsHVZxU4"
+    }],
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "auth0_id": "facebook|1234567890",
+    "voucher": {
+      "consumed": 0,
+      "expires": {
+        "$date": 1525781885423
+      },
+      "initial_quantity": 0,
+      "uuid": "178a284c-b5a0-40e4-9f2f-e2f36ecd2934",
+      "created": {
+        "$date": 1494245885422
+      }
+    },
+    "first_name": "John"
+  },
+  "provider": {
+    "bio": "",
+    "modified": {
+      "$date": 1496234145059
+    },
+    "_cls": "User.Provider",
+    "created": {
+      "$date": 1489756875124
+    },
+    "billing_address": {
+      "service": "google",
+      "alias": ""
+    },
+    "_id": {
+      "$oid": "58cbe2cb85811e0013cbfaff"
+    },
+    "max_travel_time": 1,
+    "orders": [
+      {
+        "$oid": "58d90350db08730013943e32"
+      },
+      {
+        "$oid": "58d904afdb08730013943e35"
+      },
+      {
+        "$oid": "58da3832e5c75600139489c7"
+      },
+      {
+        "$oid": "58da3ad93166120013ba4489"
+      },
+      {
+        "$oid": "58da3c8f3166120013ba448d"
+      },
+      {
+        "$oid": "58da8482c5971d0013ffd545"
+      },
+      {
+        "$oid": "58da8522c5971d0013ffd548"
+      },
+      {
+        "$oid": "58da85c2c5971d0013ffd54b"
+      },
+      {
+        "$oid": "58da85ed3d011300131dafee"
+      },
+      {
+        "$oid": "58da86303d011300131daff1"
+      },
+      {
+        "$oid": "58da88663d011300131daff4"
+      },
+      {
+        "$oid": "58da8b743d011300131daff7"
+      },
+      {
+        "$oid": "58da8e523d011300131daffc"
+      },
+      {
+        "$oid": "58da910e3d011300131db000"
+      },
+      {
+        "$oid": "58dab2573d011300131db003"
+      },
+      {
+        "$oid": "58dab8263d011300131db006"
+      },
+      {
+        "$oid": "58db6e8a3d011300131db032"
+      },
+      {
+        "$oid": "58db6ef53d011300131db035"
+      },
+      {
+        "$oid": "58db6f953d011300131db038"
+      },
+      {
+        "$oid": "58db6fed3d011300131db03b"
+      },
+      {
+        "$oid": "58db865d0950ef0013fa9cde"
+      },
+      {
+        "$oid": "58dba3ba0950ef0013fa9ceb"
+      },
+      {
+        "$oid": "58dba4040950ef0013fa9ced"
+      },
+      {
+        "$oid": "58dba4a00950ef0013fa9cf0"
+      },
+      {
+        "$oid": "58dba6660950ef0013fa9cf3"
+      },
+      {
+        "$oid": "58dba7d70950ef0013fa9cf6"
+      },
+      {
+        "$oid": "58dba9d00950ef0013fa9cf9"
+      },
+      {
+        "$oid": "58dbb30f099cf20013657f8f"
+      },
+      {
+        "$oid": "58dbc5d6099cf2001365801c"
+      },
+      {
+        "$oid": "58dbd465099cf20013658028"
+      },
+      {
+        "$oid": "58dbde51099cf2001365802b"
+      },
+      {
+        "$oid": "58dbdec7099cf2001365802e"
+      },
+      {
+        "$oid": "58dbe302099cf20013658031"
+      },
+      {
+        "$oid": "58dbeefb099cf20013658037"
+      },
+      {
+        "$oid": "58dcc4dc099cf2001365804e"
+      },
+      {
+        "$oid": "58dcc90d099cf20013658052"
+      },
+      {
+        "$oid": "58dcc94a099cf20013658055"
+      },
+      {
+        "$oid": "58dcc976099cf20013658058"
+      },
+      {
+        "$oid": "58dcc9b2099cf2001365805e"
+      },
+      {
+        "$oid": "58dcc9b3099cf20013658061"
+      },
+      {
+        "$oid": "58dcca1c099cf20013658064"
+      },
+      {
+        "$oid": "58dcca1f099cf20013658067"
+      },
+      {
+        "$oid": "58dccaea099cf20013658070"
+      },
+      {
+        "$oid": "58dccb41099cf20013658073"
+      },
+      {
+        "$oid": "58dccbaf099cf20013658076"
+      },
+      {
+        "$oid": "58dccc3c099cf2001365807c"
+      },
+      {
+        "$oid": "58dcce16099cf20013658091"
+      },
+      {
+        "$oid": "58dcd997ac1a360013b7afc3"
+      },
+      {
+        "$oid": "58dce95cac1a360013b7afc9"
+      },
+      {
+        "$oid": "58de1e7cc016ff0013dce1e9"
+      },
+      {
+        "$oid": "58e240725c277300138d6576"
+      },
+      {
+        "$oid": "58e24a295c277300138d659c"
+      },
+      {
+        "$oid": "58e24af05c277300138d65a0"
+      },
+      {
+        "$oid": "58e24c3e5c277300138d65a3"
+      },
+      {
+        "$oid": "58e24d135c277300138d65a6"
+      },
+      {
+        "$oid": "58e24d765c277300138d65aa"
+      },
+      {
+        "$oid": "58e24da15c277300138d65ae"
+      },
+      {
+        "$oid": "58e24df35c277300138d65b2"
+      },
+      {
+        "$oid": "58e253be5c277300138d65bb"
+      },
+      {
+        "$oid": "58e253f85c277300138d65be"
+      },
+      {
+        "$oid": "58e2540a5c277300138d65c1"
+      },
+      {
+        "$oid": "58e2541f5c277300138d65c6"
+      },
+      {
+        "$oid": "58e2542f5c277300138d65c9"
+      },
+      {
+        "$oid": "58e254c75c277300138d65ce"
+      },
+      {
+        "$oid": "58e255485c277300138d65d1"
+      },
+      {
+        "$oid": "58e2560b5c277300138d65d4"
+      },
+      {
+        "$oid": "58e2561d5c277300138d65d7"
+      },
+      {
+        "$oid": "58e2562f5c277300138d65da"
+      },
+      {
+        "$oid": "58e256435c277300138d65dd"
+      },
+      {
+        "$oid": "58e2573b5c277300138d65e3"
+      },
+      {
+        "$oid": "58e25e115c277300138d65e6"
+      },
+      {
+        "$oid": "58e25e795c277300138d65e9"
+      },
+      {
+        "$oid": "58e25ef35c277300138d65ec"
+      },
+      {
+        "$oid": "58e25f2e5c277300138d65ef"
+      },
+      {
+        "$oid": "58e2637d5c277300138d65f2"
+      },
+      {
+        "$oid": "58e2638f5c277300138d65f5"
+      },
+      {
+        "$oid": "58e2639e5c277300138d65f8"
+      },
+      {
+        "$oid": "58e26c3a5c277300138d65fb"
+      },
+      {
+        "$oid": "58e26c4a5c277300138d65fe"
+      },
+      {
+        "$oid": "58e26c5f5c277300138d6601"
+      },
+      {
+        "$oid": "58e26c705c277300138d6604"
+      },
+      {
+        "$oid": "58e26c845c277300138d6607"
+      },
+      {
+        "$oid": "58e26cb95c277300138d660a"
+      },
+      {
+        "$oid": "58e26ccc5c277300138d660d"
+      },
+      {
+        "$oid": "58e26cde5c277300138d6610"
+      },
+      {
+        "$oid": "58e26d125c277300138d6613"
+      },
+      {
+        "$oid": "58e26d235c277300138d6616"
+      },
+      {
+        "$oid": "58e3713ba1fa3500134189ba"
+      },
+      {
+        "$oid": "58e37224a1fa3500134189bf"
+      },
+      {
+        "$oid": "58e3a6015aea440013f4b226"
+      },
+      {
+        "$oid": "58e3ad71980cc10013022230"
+      },
+      {
+        "$oid": "58e3c52ce740f200138a84ea"
+      },
+      {
+        "$oid": "58ef7948e56c9500137c8aab"
+      },
+      {
+        "$oid": "58f898047d4077001383cba8"
+      },
+      {
+        "$oid": "58f8986f7d4077001383cbab"
+      },
+      {
+        "$oid": "59008a3ec79ce300136703e8"
+      },
+      {
+        "$oid": "59008fd7c79ce300136703ee"
+      },
+      {
+        "$oid": "590090fcc79ce300136703f4"
+      },
+      {
+        "$oid": "59009283c79ce300136703f7"
+      },
+      {
+        "$oid": "59009397c79ce300136703fa"
+      },
+      {
+        "$oid": "5900943cc79ce30013670400"
+      },
+      {
+        "$oid": "5900945dc79ce30013670403"
+      },
+      {
+        "$oid": "59009663c79ce30013670406"
+      },
+      {
+        "$oid": "59009748c79ce30013670409"
+      },
+      {
+        "$oid": "590097f0c79ce3001367040c"
+      },
+      {
+        "$oid": "59009884c79ce3001367040f"
+      },
+      {
+        "$oid": "59009a0dc79ce30013670412"
+      },
+      {
+        "$oid": "59009a21c79ce30013670415"
+      },
+      {
+        "$oid": "59009b53c79ce30013670418"
+      },
+      {
+        "$oid": "59009b8dc79ce3001367041b"
+      },
+      {
+        "$oid": "59009debc79ce3001367041e"
+      },
+      {
+        "$oid": "59009e02c79ce30013670421"
+      },
+      {
+        "$oid": "5900a17cc79ce30013670424"
+      },
+      {
+        "$oid": "5900a27fc79ce30013670427"
+      },
+      {
+        "$oid": "5900a2e1c79ce3001367042a"
+      },
+      {
+        "$oid": "5900a43fc79ce3001367042d"
+      },
+      {
+        "$oid": "5900a5e2c79ce30013670430"
+      },
+      {
+        "$oid": "5900a6bcc79ce30013670433"
+      },
+      {
+        "$oid": "5900a865c79ce30013670436"
+      },
+      {
+        "$oid": "5900aa62c79ce3001367043c"
+      },
+      {
+        "$oid": "5900aa76c79ce3001367043f"
+      },
+      {
+        "$oid": "5900aae4c79ce30013670442"
+      },
+      {
+        "$oid": "59036ad71ba625001315b2dc"
+      },
+      {
+        "$oid": "59038c001ba625001315b2df"
+      },
+      {
+        "$oid": "590b260273db4100130a0cb0"
+      },
+      {
+        "$oid": "590cb4417ab93700139f0835"
+      },
+      {
+        "$oid": "590cb8fb7ab93700139f0838"
+      },
+      {
+        "$oid": "590ccdec7ab93700139f083b"
+      },
+      {
+        "$oid": "590dc2977ab93700139f083e"
+      },
+      {
+        "$oid": "590dc37e7ab93700139f0841"
+      },
+      {
+        "$oid": "5910347f8d95100013f0f3c1"
+      },
+      {
+        "$oid": "591041568d95100013f0f3c4"
+      },
+      {
+        "$oid": "59104bcc8d95100013f0f3c7"
+      },
+      {
+        "$oid": "59107fe4d206510013a23cfe"
+      },
+      {
+        "$oid": "59116b559a9948001318c1ef"
+      },
+      {
+        "$oid": "5911ae92bd333100137220b3"
+      },
+      {
+        "$oid": "5912d539e03e8b001317dc76"
+      },
+      {
+        "$oid": "5912d598e03e8b001317dc79"
+      },
+      {
+        "$oid": "5912d6f4e03e8b001317dc7c"
+      },
+      {
+        "$oid": "5912d70fe03e8b001317dc7f"
+      },
+      {
+        "$oid": "59131c529675f700135974a5"
+      },
+      {
+        "$oid": "5914520b12e25e00133a647c"
+      },
+      {
+        "$oid": "5915a7c66dfe380013e56246"
+      },
+      {
+        "$oid": "5915a9416dfe380013e56249"
+      },
+      {
+        "$oid": "59199a5ab18e060013668f20"
+      },
+      {
+        "$oid": "5919a137b18e060013668f23"
+      },
+      {
+        "$oid": "5919a176b18e060013668f26"
+      },
+      {
+        "$oid": "5919a3d4b18e060013668f29"
+      },
+      {
+        "$oid": "591eabf02fb9a100139fad32"
+      },
+      {
+        "$oid": "591f2a133515050013a92a28"
+      },
+      {
+        "$oid": "5922f4282e59030013ad3013"
+      },
+      {
+        "$oid": "5922f4512e59030013ad3016"
+      },
+      {
+        "$oid": "59242651640a5b00130dcb8a"
+      },
+      {
+        "$oid": "5924279b640a5b00130dcb8e"
+      },
+      {
+        "$oid": "59242a6335585d0013fe5480"
+      },
+      {
+        "$oid": "59242c8d35585d0013fe5484"
+      },
+      {
+        "$oid": "59242ffc35585d0013fe5488"
+      },
+      {
+        "$oid": "59243b3a35585d0013fe548e"
+      },
+      {
+        "$oid": "59243c9635585d0013fe5492"
+      },
+      {
+        "$oid": "59254aad35585d0013fe54a1"
+      },
+      {
+        "$oid": "592558ca9523520013640b7f"
+      },
+      {
+        "$oid": "592559f39523520013640b83"
+      },
+      {
+        "$oid": "59255ac79523520013640b87"
+      },
+      {
+        "$oid": "59256bc29523520013640b8e"
+      },
+      {
+        "$oid": "592572449523520013640b93"
+      },
+      {
+        "$oid": "59258a809523520013640b96"
+      },
+      {
+        "$oid": "592bdb50b738ff0013adf5c3"
+      },
+      {
+        "$oid": "592bde24b738ff0013adf5c7"
+      }
+    ],
+    "default_address": {
+      "street_name":"Johanne Dybwads plass 1",
+      "zip_code":"0161",
+      "city":"Oslo",
+      "country":"Norway",
+      "geo":[
+        59.9143583,
+        10.7342622
+      ],
+      "raw":{
+        "address_components":[
+          {
+            "types":[
+              "street_number"
+            ],
+            "long_name":"1",
+            "short_name":"1"
+          },
+          {
+            "types":[
+              "route"
+            ],
+            "long_name":"Johanne Dybwads plass",
+            "short_name":"Johanne Dybwads plass"
+          },
+          {
+            "types":[
+              "political",
+              "sublocality",
+              "sublocality_level_1"
+            ],
+            "long_name":"Sentrum",
+            "short_name":"Sentrum"
+          },
+          {
+            "types":[
+              "postal_town"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "administrative_area_level_2",
+              "political"
+            ],
+            "long_name":"Oslo kommune",
+            "short_name":"Oslo kommune"
+          },
+          {
+            "types":[
+              "administrative_area_level_1",
+              "political"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "country",
+              "political"
+            ],
+            "long_name":"Norway",
+            "short_name":"NO"
+          },
+          {
+            "types":[
+              "postal_code"
+            ],
+            "long_name":"0161",
+            "short_name":"0161"
+          }
+        ],
+        "place_id":"ChIJi85T731uQUYRadaFsHVZxU4",
+        "partial_match":true,
+        "types":[
+          "premise"
+        ],
+        "formatted_address":"Johanne Dybwads plass 1, 0161 Oslo, Norway",
+        "geometry":{
+          "bounds":{
+            "southwest":{
+              "lng":10.7334951,
+              "lat":59.91406189999999
+            },
+            "northeast":{
+              "lng":10.7350292,
+              "lat":59.91465470000001
+            }
+          },
+          "location_type":"ROOFTOP",
+          "viewport":{
+            "southwest":{
+              "lng":10.7329131697085,
+              "lat":59.91300931970849
+            },
+            "northeast":{
+              "lng":10.7356111302915,
+              "lat":59.91570728029151
+            }
+          },
+          "location":{
+            "lng":10.7342622,
+            "lat":59.9143583
+          }
+        }
+      },
+      "alias":"",
+      "service":"google",
+      "service_address_id":"ChIJi85T731uQUYRadaFsHVZxU4"
+    },
+    "active": true,
+    "new_customer": true,
+    "products": [],
+    "national_id": "",
+    "roles": [
+      "provider"
+    ],
+    "stripe_customer_id": "",
+    "avatar": "https://httpbin.org/image",
+    "tags": [],
+    "deleted": false,
+    "note": "",
+    "auth0_id": "auth0|QWERTY1bc29b36f623ba82aaf6724fd3b16718",
+    "max_travel_meters": 10000,
+    "country": "NOR",
+    "email": "john.doe@example.com",
+    "addresses": [{
+      "street_name":"Johanne Dybwads plass 1",
+      "zip_code":"0161",
+      "city":"Oslo",
+      "country":"Norway",
+      "geo":[
+        59.9143583,
+        10.7342622
+      ],
+      "raw":{
+        "address_components":[
+          {
+            "types":[
+              "street_number"
+            ],
+            "long_name":"1",
+            "short_name":"1"
+          },
+          {
+            "types":[
+              "route"
+            ],
+            "long_name":"Johanne Dybwads plass",
+            "short_name":"Johanne Dybwads plass"
+          },
+          {
+            "types":[
+              "political",
+              "sublocality",
+              "sublocality_level_1"
+            ],
+            "long_name":"Sentrum",
+            "short_name":"Sentrum"
+          },
+          {
+            "types":[
+              "postal_town"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "administrative_area_level_2",
+              "political"
+            ],
+            "long_name":"Oslo kommune",
+            "short_name":"Oslo kommune"
+          },
+          {
+            "types":[
+              "administrative_area_level_1",
+              "political"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "country",
+              "political"
+            ],
+            "long_name":"Norway",
+            "short_name":"NO"
+          },
+          {
+            "types":[
+              "postal_code"
+            ],
+            "long_name":"0161",
+            "short_name":"0161"
+          }
+        ],
+        "place_id":"ChIJi85T731uQUYRadaFsHVZxU4",
+        "partial_match":true,
+        "types":[
+          "premise"
+        ],
+        "formatted_address":"Johanne Dybwads plass 1, 0161 Oslo, Norway",
+        "geometry":{
+          "bounds":{
+            "southwest":{
+              "lng":10.7334951,
+              "lat":59.91406189999999
+            },
+            "northeast":{
+              "lng":10.7350292,
+              "lat":59.91465470000001
+            }
+          },
+          "location_type":"ROOFTOP",
+          "viewport":{
+            "southwest":{
+              "lng":10.7329131697085,
+              "lat":59.91300931970849
+            },
+            "northeast":{
+              "lng":10.7356111302915,
+              "lat":59.91570728029151
+            }
+          },
+          "location":{
+            "lng":10.7342622,
+            "lat":59.9143583
+          }
+        }
+      },
+      "alias":"",
+      "service":"google",
+      "service_address_id":"ChIJi85T731uQUYRadaFsHVZxU4"
+    },{
+      "street_name":"Johanne Dybwads plass 1",
+      "zip_code":"0161",
+      "city":"Oslo",
+      "country":"Norway",
+      "geo":[
+        59.9143583,
+        10.7342622
+      ],
+      "raw":{
+        "address_components":[
+          {
+            "types":[
+              "street_number"
+            ],
+            "long_name":"1",
+            "short_name":"1"
+          },
+          {
+            "types":[
+              "route"
+            ],
+            "long_name":"Johanne Dybwads plass",
+            "short_name":"Johanne Dybwads plass"
+          },
+          {
+            "types":[
+              "political",
+              "sublocality",
+              "sublocality_level_1"
+            ],
+            "long_name":"Sentrum",
+            "short_name":"Sentrum"
+          },
+          {
+            "types":[
+              "postal_town"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "administrative_area_level_2",
+              "political"
+            ],
+            "long_name":"Oslo kommune",
+            "short_name":"Oslo kommune"
+          },
+          {
+            "types":[
+              "administrative_area_level_1",
+              "political"
+            ],
+            "long_name":"Oslo",
+            "short_name":"Oslo"
+          },
+          {
+            "types":[
+              "country",
+              "political"
+            ],
+            "long_name":"Norway",
+            "short_name":"NO"
+          },
+          {
+            "types":[
+              "postal_code"
+            ],
+            "long_name":"0161",
+            "short_name":"0161"
+          }
+        ],
+        "place_id":"ChIJi85T731uQUYRadaFsHVZxU4",
+        "partial_match":true,
+        "types":[
+          "premise"
+        ],
+        "formatted_address":"Johanne Dybwads plass 1, 0161 Oslo, Norway",
+        "geometry":{
+          "bounds":{
+            "southwest":{
+              "lng":10.7334951,
+              "lat":59.91406189999999
+            },
+            "northeast":{
+              "lng":10.7350292,
+              "lat":59.91465470000001
+            }
+          },
+          "location_type":"ROOFTOP",
+          "viewport":{
+            "southwest":{
+              "lng":10.7329131697085,
+              "lat":59.91300931970849
+            },
+            "northeast":{
+              "lng":10.7356111302915,
+              "lat":59.91570728029151
+            }
+          },
+          "location":{
+            "lng":10.7342622,
+            "lat":59.9143583
+          }
+        }
+      },
+      "alias":"",
+      "service":"google",
+      "service_address_id":"ChIJi85T731uQUYRadaFsHVZxU4"
+    }],
+    "last_name": "Doe",
+    "schedule": {
+      "valid_from": {
+        "$date": 1496234100000
+      },
+      "valid_to": {
+        "$date": 4650788520000
+      },
+      "day_of_week": [
+        {
+          "end_minute": 0,
+          "end_hour": 21,
+          "day_of_week": 0,
+          "start_hour": 10,
+          "start_minute": 0
+        },
+        {
+          "end_minute": 0,
+          "end_hour": 21,
+          "day_of_week": 1,
+          "start_hour": 1,
+          "start_minute": 30
+        },
+        {
+          "end_minute": 0,
+          "end_hour": 20,
+          "day_of_week": 2,
+          "start_hour": 8,
+          "start_minute": 0
+        },
+        {
+          "end_minute": 30,
+          "end_hour": 20,
+          "day_of_week": 3,
+          "start_hour": 8,
+          "start_minute": 0
+        },
+        {
+          "end_minute": 30,
+          "end_hour": 19,
+          "day_of_week": 4,
+          "start_hour": 8,
+          "start_minute": 0
+        },
+        {
+          "end_minute": 0,
+          "end_hour": 21,
+          "day_of_week": 5,
+          "start_hour": 9,
+          "start_minute": 0
+        },
+        {
+          "end_minute": 0,
+          "end_hour": 0,
+          "day_of_week": 6,
+          "start_hour": 0,
+          "start_minute": 0
+        }
+      ],
+      "working_sections": []
+    },
+    "company": {
+      "$oid": "586faf7445ed910006373513"
+    },
+    "voucher": {
+      "consumed": 0,
+      "expires": {
+        "$date": 1521292875124
+      },
+      "initial_quantity": 0,
+      "uuid": "0c6d894d-4fde-4954-a256-eb2ef6c54359",
+      "created": {
+        "$date": 1489756875123
+      }
+    },
+    "available_on_bank_holidays": true,
+    "first_name": "John"
+  },
+  "company": {
+    "$oid": "586faf7445ed910006373513"
+  },
+  "override_company_take": -1,
+  "payments": [
+    {
+      "$oid": "592bde24b738ff0013adf5c8"
+    }
+  ]
+}
