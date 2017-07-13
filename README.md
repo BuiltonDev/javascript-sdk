@@ -2,9 +2,7 @@
 
 [ShareActor](https://www.shareactor.io) offers software as a service that digitizes core business functions, optimizes resource allocation and provides Data Science driven analysis. This SDK will help you implement its API in a Javascript or browser environment.
 
-## API
-
-### Setup
+## Setup
 
 `new ShareActor({ apiKey, bearerToken, endpoint })`
 
@@ -14,7 +12,7 @@ Initializes a new instance of `Shareactor` configured with your application `api
 - **bearerToken {String}**: Your JSON Web Token (JWT), generally from Auth0.
 - **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.shareactor.io/` or `https://qa.shareactor.io/`).
 
-#### Example (using the [Auth0's Lock library](https://github.com/auth0/lock))
+### Example (using the [Auth0's Lock library](https://github.com/auth0/lock))
 
 ```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
@@ -52,7 +50,7 @@ lock.on("authenticated", function(authResult) {
 ```
 
 
-### Initialisation of a class
+## Initialisation of a class
 
 A class can be constructed with either:
 
@@ -61,7 +59,7 @@ A class can be constructed with either:
 - A **Json {Object}**, which represent a User. *(this will create the full object will all its properties)*
 
 
-#### Example: Creation of a User object with no parameter
+### Example: Creation of a User object with no parameter
 **`user()`**
 
 Create an empty user. It is useful if you want to `create`, or `login` a user or get all the users with the `getAll` method.
@@ -100,7 +98,7 @@ sa.user().getAll({ urlParams: { page: 2, size: 10 } }, function(error, users) {
 });
 ```
 
-#### Example: Creation of a User object with an ID
+### Example: Creation of a User object with an ID
 **`user(id)`**
 
 This create a partially empty user. It contains the id of the user you want to manipulate but doesn't contain all the properties of that user. It can be populated by calling `get` or `refresh`.
@@ -128,7 +126,7 @@ sa.user(userId).refresh({}, function(error, user) {
 });
 ```
 
-#### Example: Creation of a User object with a JSON Object
+### Example: Creation of a User object with a JSON Object
 **`user(json)`**
 
 You can create a full user from a json object. This will create a full user with all the properties accessible.
@@ -145,6 +143,8 @@ console.log(`{user.first_name} {user.last_name}`); //John Doe
 
 
 ## Common classes and methods
+
+The methods and classes used here are matching the API ones, you can find more details about them in the (API documentation)[https://shareactorio.github.io/slate/].
 
 |       **Classes**       |                                           |                                  User                                 |                            Provider                            |                             Order                            |                            Payment                            |                            Payment Method                            |                            Product                            | Tag |                            Company                            |
 |:-----------------------:|-------------------------------------------|:---------------------------------------------------------------------:|:--------------------------------------------------------------:|:------------------------------------------------------------:|:-------------------------------------------------------------:|:--------------------------------------------------------------------:|:-------------------------------------------------------------:|:---:|:-------------------------------------------------------------:|
