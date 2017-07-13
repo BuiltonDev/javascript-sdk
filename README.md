@@ -154,7 +154,7 @@ The methods and classes used here are matching the API ones, you can find more d
 
 ## Coverage of the SDK
 
-The coverage of this SDK can be found in the [COVERAGE file](COVERAGE.md).
+The coverage of this SDK can be found in the [COVERAGE](COVERAGE.md) file.
 
 ## Issue Reporting
 
