@@ -7,7 +7,7 @@
 ## Requirement
 
 - A ShareActor API Key ([request one](mailto:hello@shareactor.io)).
-- An [Auth0](https://auth0.com/) account
+- An [Auth0](https://auth0.com/) account.
 
 ## Install
 
