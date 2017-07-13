@@ -79,8 +79,8 @@ lock.on("authenticated", function(authResult) {
 A class can be constructed with either:
 
 - No parameter; *(some methods may not be accessible)*
-- An **id {String}**, which represent a user ID; *(you will not be able to access any property of the user, until you 'refresh' it)*
-- A **Json {Object}**, which represent a User. *(this will create the full object will all its properties)*
+- An **id {String}**, which represent the ID of the object you want to instanciate; *(you will not be able to access any property of the object, until you `refresh` or `get` it)*
+- A **Json {Object}**, which represent an Object. *(this will create the full object with all its properties)*
 
 
 ###### Example: Creation of a Product object with no parameter
