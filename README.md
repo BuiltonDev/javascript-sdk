@@ -59,7 +59,7 @@ A class can be constructed with either:
 - A **Json {Object}**, which represent a User. *(this will create the full object will all its properties)*
 
 
-**Example: Creation of a User object with no parameter**
+* **Example: Creation of a User object with no parameter**
 **`user()`**
 
 Create an empty user. It is useful if you want to `create`, or `login` a user or get all the users with the `getAll` method.
@@ -98,7 +98,7 @@ sa.user().getAll({ urlParams: { page: 2, size: 10 } }, function(error, users) {
 });
 ```
 
-**Example: Creation of a User object with an ID**
+* **Example: Creation of a User object with an ID**
 **`user(id)`**
 
 This create a partially empty user. It contains the id of the user you want to manipulate but doesn't contain all the properties of that user. It can be populated by calling `get` or `refresh`.
@@ -126,7 +126,7 @@ sa.user(userId).refresh({}, function(error, user) {
 });
 ```
 
-**Example: Creation of a User object with a JSON Object**
+* **Example: Creation of a User object with a JSON Object**
 **`user(json)`**
 
 You can create a full user from a json object. This will create a full user with all the properties accessible.
