@@ -1,6 +1,6 @@
 {
   "name": "javascript-sdk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ShareActor JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "keywords": [
     "ShareActor",
     "SDK",
-    "BAAS",
-    "SAAS"
+    "SAAS",
+    "On-demand"
   ],
   "bugs": {
     "url": "https://github.com/shareactorIO/javascript-sdk/issues"
@@ -45,5 +45,6 @@
   },
   "dependencies": {
     "superagent": "3.5.2"
-  }
+  },
+  "browser": "./dist/main.bundle.js"
 }
