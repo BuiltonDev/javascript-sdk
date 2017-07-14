@@ -86,7 +86,7 @@ A class can be constructed with either:
 ###### Example: Creation of a Product object with no parameter
 **`product()`**
 
-Create an empty product. It is useful if you want to `create`, or `login` a user or get all the users with the `getAll` method.
+Create an empty product. It is useful if you want to `create`, or get all the products with the `getAll` method.
 
 ```js
 // Example: Construct a product without any parameter.
@@ -117,7 +117,7 @@ This create a partially empty product. It contains the id of the product you wan
 
 ```js
 // Example: Construct a product with an ID.
-var product = shareactor.product(userId);
+var product = shareactor.product(productId);
 console.log(product.name); // undefined
 
 
