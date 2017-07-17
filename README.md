@@ -1,6 +1,6 @@
-[![Travis](https://img.shields.io/travis/shareactorIO/javascript-sdk/master.svg)]()
-[![GitHub release](https://img.shields.io/github/release/shareactorIO/javascript-sdk.svg)]()
-[![license](https://img.shields.io/github/license/shareactorIO/javascript-sdk.svg)]()
+[![Travis](https://img.shields.io/travis/shareactorIO/javascript-sdk/master.svg?style=flat-square)]()
+[![GitHub release](https://img.shields.io/github/release/shareactorIO/javascript-sdk.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/shareactorIO/javascript-sdk.svg?style=flat-square)]()
 
 # ShareActor SDK
 
