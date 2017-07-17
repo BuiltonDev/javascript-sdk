@@ -4,6 +4,8 @@
 
 # ShareActor SDK
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/shareactorIO/javascript-sdk.svg)](https://greenkeeper.io/)
+
 [ShareActor](https://www.shareactor.io) offers software as a service that digitizes core business functions, optimizes resource allocation and provides Data Science driven analysis. This SDK will help you implement its API in a Javascript or browser environment.
 
 ![ShareActor logo](https://preview.ibb.co/eAqEfF/Artboard_1.png)
