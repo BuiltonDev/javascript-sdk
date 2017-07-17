@@ -1,8 +1,12 @@
+[![Travis](https://img.shields.io/travis/shareactorIO/javascript-sdk/master.svg?style=flat-square)]()
+[![GitHub release](https://img.shields.io/github/release/shareactorIO/javascript-sdk.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/shareactorIO/javascript-sdk.svg?style=flat-square)]()
+
 # ShareActor SDK
 
 [ShareActor](https://www.shareactor.io) offers software as a service that digitizes core business functions, optimizes resource allocation and provides Data Science driven analysis. This SDK will help you implement its API in a Javascript or browser environment.
 
-![alt text](https://preview.ibb.co/eAqEfF/Artboard_1.png "ShareActor logo")
+![ShareActor logo](https://preview.ibb.co/eAqEfF/Artboard_1.png)
 
 ## Requirement
 
@@ -11,18 +15,16 @@
 
 ## Install
 
-**This will need to be updated before production**
-
 From CDN
 
 ```html
-<script src="https://unpkg.com/shareactor-javascript-sdk@0.0.1/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
-npm install shareactor-javascript-sdk
+npm install @shareactor/shareactor-sdk
 ```
 
 
