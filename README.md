@@ -11,18 +11,16 @@
 
 ## Install
 
-**This will need to be updated before production**
-
 From CDN
 
 ```html
-<script src="https://unpkg.com/shareactor-javascript-sdk@0.0.1/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@shareactor/shareactor-sdk@0.1.2/dist/main.bundle.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
-npm install shareactor-javascript-sdk
+npm install @shareactor/shareactor-sdk
 ```
 
 

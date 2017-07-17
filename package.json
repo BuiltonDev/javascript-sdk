@@ -1,11 +1,12 @@
 {
-  "name": "javascript-sdk",
-  "version": "0.1.0",
+  "name": "@shareactor/shareactor-sdk",
+  "version": "0.1.3",
   "description": "ShareActor JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
     "test" : "mocha test/collection --recursive",
     "lint" : "./node_modules/.bin/eslint .",
+    "webpack": "./node_modules/.bin/webpack",
     "buildAuto": "nodemon --ignore 'dist/*' --ignore 'example/*' --exec npm run build",
     "build": "npm i && ./node_modules/.bin/mocha test/collection --recursive && ./node_modules/.bin/webpack && echo '------ESLINT------\n' && ./node_modules/.bin/eslint . && echo '------------------\n'"
   },
