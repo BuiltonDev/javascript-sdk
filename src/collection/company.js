@@ -36,7 +36,6 @@ class Company extends Components {
   del({ body, urlParams }, done) {
     throw new Error.NotImplemented();
   }
-
 }
 
 module.exports = Company;

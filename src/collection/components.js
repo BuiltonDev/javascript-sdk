@@ -103,7 +103,6 @@ class Components {
   create({ body, urlParams, json = false }, done) {
     return this.simpleQuery({ type: 'post', urlParams, body, json }, done);
   }
-
 }
 
 module.exports = Components;

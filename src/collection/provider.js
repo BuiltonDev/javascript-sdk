@@ -59,7 +59,6 @@ class Provider extends User {
   updateAddresses({ body, urlParams }, done) {
     return done(new Error.NotImplemented());
   }
-
 }
 
 module.exports = Provider;

@@ -38,7 +38,6 @@ class User extends Components {
   updateAddresses({ body, urlParams }, done) {
     return this.simpleQuery({ type: 'put', id: this.id, resource: 'addresses', body, urlParams, ResConstructor: null }, done);
   }
-
 }
 
 module.exports = User;
