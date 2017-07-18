@@ -1,6 +1,7 @@
-[![Travis](https://img.shields.io/travis/shareactorIO/javascript-sdk/master.svg?style=flat-square)]()
-[![GitHub release](https://img.shields.io/github/release/shareactorIO/javascript-sdk.svg?style=flat-square)]()
-[![license](https://img.shields.io/github/license/shareactorIO/javascript-sdk.svg?style=flat-square)]()
+[![Travis](https://img.shields.io/travis/shareactorIO/javascript-sdk/master.svg?style=flat-square)](https://travis-ci.org/shareactorIO/javascript-sdk.svg?branch=master)
+[![David](https://img.shields.io/david/shareactorIO/javascript-sdk.svg?style=flat-square)](https://david-dm.org/shareactorIO/javascript-sdk)
+[![GitHub release](https://img.shields.io/github/release/shareactorIO/javascript-sdk.svg?style=flat-square)](https://github.com/shareactorIO/javascript-sdk/releases)
+[![license](https://img.shields.io/github/license/shareactorIO/javascript-sdk.svg?style=flat-square)](LICENSE.md)
 
 # ShareActor SDK
 
