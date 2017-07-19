@@ -1,7 +1,7 @@
 [![Travis](https://img.shields.io/travis/shareactorIO/javascript-sdk/master.svg?style=flat-square)](https://travis-ci.org/shareactorIO/javascript-sdk.svg?branch=master)
 [![David](https://img.shields.io/david/shareactorIO/javascript-sdk.svg?style=flat-square)](https://david-dm.org/shareactorIO/javascript-sdk)
-[![Codacy](https://img.shields.io/codacy/grade/d19b1c3168204a07b0582303138d5cc4.svg?style=flat-square)](https://www.codacy.com/app/NicolasBonduel/javascript-sdk)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/d19b1c3168204a07b0582303138d5cc4.svg?style=flat-square)](https://www.codacy.com/app/NicolasBonduel/javascript-sdk)
+[![Codacy](https://img.shields.io/codacy/grade/d19b1c3168204a07b0582303138d5cc4.svg?style=flat-square)](https://www.codacy.com/app/ShareActor/javascript-sdk)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/d19b1c3168204a07b0582303138d5cc4.svg?style=flat-square)](https://www.codacy.com/app/ShareActor/javascript-sdk)
 [![GitHub release](https://img.shields.io/github/release/shareactorIO/javascript-sdk.svg?style=flat-square)](https://github.com/shareactorIO/javascript-sdk/releases)
 [![license](https://img.shields.io/github/license/shareactorIO/javascript-sdk.svg?style=flat-square)](LICENSE.md)
 
