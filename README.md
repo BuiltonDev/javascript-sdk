@@ -55,11 +55,11 @@ lock.on("authenticated", function(authResult) {
       return;
     }
 
-    var shareactor = new ShareActor(
-      'YOUR_SHAREACTOR_API_KEY',
-      authResult.idToken,
-      'https://qa.shareactor.io/'
-    );
+    var shareactor = new ShareActor({
+	apiKey: 'YOUR_SHAREACTOR_API_KEY',
+	bearerToken: authResult.idToken,
+	endpoint: 'https://qa.shareactor.io/'
+    });
 
     var loginBody = {
       first_name: profile.given_name,
