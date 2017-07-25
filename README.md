@@ -46,7 +46,14 @@ Initialises a new instance of `Shareactor` configured with your application `api
 ```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
 var domain = "YOUR_DOMAIN_AT.auth0.com";
-var lock = new Auth0Lock(clientId, domain);
+var lock = new Auth0Lock(clientId, domain, {
+  auth: {
+    responseType: 'token id_token',
+    params: {scope: 'openid app_metadata user_metadata'}
+  },
+  allowedConnections: ['facebook'],
+  container: 'auth0Root'
+});
 
 lock.on("authenticated", function(authResult) {
   lock.getUserInfo(authResult.accessToken, function(error, profile) {
