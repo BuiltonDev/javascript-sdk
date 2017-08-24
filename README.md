@@ -150,9 +150,9 @@ shareactor.product(userId).get({}, function(error, product) {
 ###### Example: Creation of a Product object with a JSON Object
 **`product(json)`**
 
-You can create a full product from a json object. This will create an object with all the properties accessible.
+You can create a full product from a JSON object. This will create an object with all the properties accessible.
 
-- **Json {Object}**, json object representing a product
+- **Json {Object}**, JSON object representing a product
 
 ```js
 // Example: Construct a product with a JSON Object.
