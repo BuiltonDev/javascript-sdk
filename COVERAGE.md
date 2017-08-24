@@ -16,17 +16,17 @@
 |          create         | *{body, urlParams, json}, callback*       |        [✓](https://shareactorio.github.io/slate/#create-a-user)       |  [✓](https://shareactorio.github.io/slate/#add-a-new-provider) |  [✓](https://shareactorio.github.io/slate/#create-an-order)  |                               ✓                               |                                   ✓                                  |                               ✓                               |  ✓  |                                                               |
 |          search         | *{query, urlParams, json}, callback*      |         [✓](https://shareactorio.github.io/slate/#search-user)        |                                ✓                               |                                                              |                               ✓                               |                                                                      |                               ✓                               |     |                                                               |
 
-*Those methods require the parent class to have an id at the moment of the call. Either by instantiating it with a *json* Object or an *id* String. The exception of this rule are the User and the Provider objects which will fall back to the currently logged-in user if no *id* is present. 
+*These methods require the parent class to have an ID at the moment of the call. Either by instantiating it with a *json* Object or an *id* String. The exceptions to this rule are the User and the Provider objects which will fall back to the currently logged-in user if no *id* is present. 
 
-The methods can have multiple variable in the first parameter Object.
-- **urlParams {Object}**: The different parameters you want to send along the query. This is especially useful for pagination or extend. (default: `{}`)
-- **body {Object}**: This is the body you will send along the query for creating or updating an object. (required)
-- **json {Boolean}**: If true, the promise response will contain a json, otherwise it will create an Object. (default: `False`)
-- **query {String}**: String containing the search you want to do. (default: `undefined`)
+The methods can have multiple variables in the first parameter Object.
+- **urlParams {Object}**: The different parameters you want to send with the query. This is especially useful for pagination or extend. (default: `{}`)
+- **body {Object}**: This is the body you will send with the query for creating or updating an object. (required)
+- **json {Boolean}**: If true, the promise response will contain a JSON, otherwise it will create an Object. (default: `False`)
+- **query {String}**: String containing the search you want to perform. (default: `undefined`)
 
 
 The second parameter of the methods is a callback.
-- **callback {Function(err, res)}**: Will be invoked after the data has been retrieved. First argument is the error. It will be `null` if the method didn't trigger any error. The second argument contains the return value.
+- **callback {Function(err, res)}**: Will be invoked after the data has been retrieved. The first argument is the error. It will be `null` if the method didn't trigger any error. The second argument contains the return value.
 
 
 ## Other methods
