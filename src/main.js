@@ -42,8 +42,8 @@ class ShareActor {
     instance = this;
   }
 
-  refreshBearerToken(bearerToken) {
-    this.bearerToken = bearerToken;
+  refreshBearerToken(newBearerToken) {
+    this.bearerToken = newBearerToken;
     request().updateHeaders(this._constructHeaders());
   }
 
