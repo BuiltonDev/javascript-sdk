@@ -19,6 +19,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new UglifyJSPlugin({ mangle: false }),
+    new UglifyJSPlugin({
+      uglifyOptions: { mangle: false },
+    }),
   ],
 };
