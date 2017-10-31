@@ -8,6 +8,10 @@ class Request {
     this.endpoint = endpoint;
   }
 
+  updateHeaders(headers) {
+    this.headers = headers;
+  }
+
   static serialize(params) {
     const str = [];
     Object.keys(params).forEach((key) => {
@@ -27,9 +31,9 @@ class Request {
 }
 
 // Singleton
-module.exports = (apiKey, bearerToken) => {
+module.exports = (endpoint, headers) => {
   if (!r) {
-    r = new Request(apiKey, bearerToken);
+    r = new Request(endpoint, headers);
   }
 
   return r;

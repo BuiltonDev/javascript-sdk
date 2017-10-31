@@ -47,7 +47,7 @@ class Order extends Components {
 
   triggerDeliveryAction({ body, deliveryId, urlParams }, done) {
     if (!this.id) return done(new Error.MethodNeedsId());
-    if (!deliveryId) return done(Error.MethodNeedsArg('deliveryId'));
+    if (!deliveryId) return done(new Error.MethodNeedsArg('deliveryId'));
     const params = {
       type: 'post',
       resource: `${this.apiPath}/${this.id}/deliveries/${deliveryId}`,

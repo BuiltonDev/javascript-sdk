@@ -3,7 +3,6 @@ class ExtendableError extends Error {
     super();
     this.message = message;
     this.name = this.constructor.name;
-    this.stack = (new Error()).stack;
   }
 }
 
@@ -15,7 +14,7 @@ class MethodNeedsId extends ExtendableError {
 
 class MethodNeedsArg extends ExtendableError {
   constructor(arg) {
-    super(`This method requires the argument ${arg} to be executed`);
+    super(`This method requires the argument "${arg}" to be executed`);
   }
 }
 
