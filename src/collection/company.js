@@ -11,7 +11,9 @@ class Company extends Components {
   }
 
   getProperties({ urlParams }, done) {
-    return this.simpleQuery({ type: 'get', resource: 'properties', urlParams, ResConstructor: null }, done);
+    return this.simpleQuery({
+      type: 'get', resource: 'properties', urlParams, ResConstructor: null,
+    }, done);
   }
 
   // Override

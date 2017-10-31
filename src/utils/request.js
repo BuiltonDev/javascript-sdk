@@ -16,7 +16,9 @@ class Request {
     return str.length ? `?${str.join('&')}` : '';
   }
 
-  query({ type = 'get', resource = '', urlParams = {}, body = null, headers = {}, endpoint = this.endpoint }, done) {
+  query({
+    type = 'get', resource = '', urlParams = {}, body = null, headers = {}, endpoint = this.endpoint,
+  }, done) {
     request[type](`${endpoint}${resource}${Request.serialize(urlParams)}`)
       .set(Object.assign({}, this.headers, headers, { 'Content-Type': 'application/json' }))
       .send(JSON.stringify(body))

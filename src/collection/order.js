@@ -18,7 +18,9 @@ class Order extends Components {
   }
 
   pay({ body, urlParams, json = false }, done) {
-    return this.simpleQuery({ type: 'post', id: this.id, resource: 'pay', body, urlParams, json }, done);
+    return this.simpleQuery({
+      type: 'post', id: this.id, resource: 'pay', body, urlParams, json,
+    }, done);
   }
 
   cancel({ body, urlParams, json = false }, done) {
