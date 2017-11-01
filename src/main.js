@@ -12,7 +12,7 @@ const PaymentMethod = require('./collection/paymentMethod');
 
 let instance;
 
-class ShareActor {
+export default class ShareActor {
   constructor({ apiKey, bearerToken, endpoint } = {}) {
     if (instance) {
       return instance;
@@ -57,5 +57,3 @@ class ShareActor {
     return headers;
   }
 }
-
-module.exports = ShareActor;
