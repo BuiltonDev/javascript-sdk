@@ -19,9 +19,10 @@ class Components {
       }
     }
 
-    const parseJson = (json, ResConstructor, raw, done) => {
-      if (raw || ResConstructor === null) {
-        return done(null, json);
+    const parseJson = (res, ResConstructor, rawJson, done) => {
+      const json = res.body;
+      if (rawJson || ResConstructor === null) {
+        return done(null, json, res);
       } else if (Array.isArray(json)) {
         const objArray = [];
         json.forEach((element) => {
@@ -31,20 +32,20 @@ class Components {
             objArray.push(new this.constructor(element));
           }
         });
-        return done(null, objArray);
+        return done(null, objArray, res);
       } else if (typeof json === 'object') {
         if (ResConstructor) {
-          return done(null, new ResConstructor(json));
+          return done(null, new ResConstructor(json), res);
         }
 
         if (!this.id && json._id && json._id.$oid) {
           this.id = json._id.$oid;
         }
 
-        return done(null, Object.assign(this, json));
+        return done(null, Object.assign(this, json), res);
       }
 
-      return done(null, json);
+      return done(null, json, res);
     };
 
     this.simpleQuery = ({
@@ -61,24 +62,24 @@ class Components {
       const idLocal = (id && id[0] !== '/') ? `/${id}` : id;
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const apiPathLocal = apiPath || this.apiPath;
-      const raw = json;
+      const rawJson = json;
       request().query({
         type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body,
       }, (err, res) => {
         if (err || !res.ok) {
-          return done(err, res);
+          return done(err, res.body, res);
         }
 
-        return parseJson(res.body, ResConstructor, raw, done);
+        return parseJson(res, ResConstructor, rawJson, done);
       });
     };
 
     this.buildQuery = (args, done) => (request().query(args, (err, res) => {
       if (err || !res.ok) {
-        return done(err, res);
+        return done(err, res, res);
       }
 
-      return parseJson(res.body, args.ResConstructor, args.json, done);
+      return parseJson(res, args.ResConstructor, args.json, done);
     }));
   }
 
