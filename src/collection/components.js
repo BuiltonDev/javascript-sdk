@@ -67,7 +67,7 @@ class Components {
         type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body,
       }, (err, res) => {
         if (err || !res.ok) {
-          return done(err, res.body, res);
+          return done(err, null, res);
         }
 
         return parseJson(res, ResConstructor, rawJson, done);
@@ -76,7 +76,7 @@ class Components {
 
     this.buildQuery = (args, done) => (request().query(args, (err, res) => {
       if (err || !res.ok) {
-        return done(err, res, res);
+        return done(err, null, res);
       }
 
       return parseJson(res, args.ResConstructor, args.json, done);
