@@ -62,7 +62,9 @@ class Components {
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const apiPathLocal = apiPath || this.apiPath;
       const raw = json;
-      request().query({ type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body }, (err, res) => {
+      request().query({
+        type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body,
+      }, (err, res) => {
         if (err || !res.ok) {
           return done(err, res);
         }
@@ -85,7 +87,9 @@ class Components {
   }
 
   get({ urlParams, json = false }, done) {
-    return this.simpleQuery({ type: 'get', id: this.id, urlParams, json }, done);
+    return this.simpleQuery({
+      type: 'get', id: this.id, urlParams, json,
+    }, done);
   }
 
   refresh({ urlParams, json = false }, done) {
@@ -93,15 +97,21 @@ class Components {
   }
 
   update({ body, urlParams, json = false }, done) {
-    return this.simpleQuery({ type: 'put', id: this.id, urlParams, body, json }, done);
+    return this.simpleQuery({
+      type: 'put', id: this.id, urlParams, body, json,
+    }, done);
   }
 
   del({ urlParams, json = false }, done) {
-    return this.simpleQuery({ type: 'del', id: this.id, urlParams, json }, done);
+    return this.simpleQuery({
+      type: 'del', id: this.id, urlParams, json,
+    }, done);
   }
 
   create({ body, urlParams, json = false }, done) {
-    return this.simpleQuery({ type: 'post', urlParams, body, json }, done);
+    return this.simpleQuery({
+      type: 'post', urlParams, body, json,
+    }, done);
   }
 }
 

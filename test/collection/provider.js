@@ -65,11 +65,13 @@ describe('Provider related tests', () => {
   it('Should search availableCount', (done) => {
     url = `${endpoint}providers/available-count?when=1496324988599&duration=1`;
     mock.get(url, () => ({ body: availableCountFile, ok: true }));
-    sa.provider().getAvailableCount({ urlParams: { when: 1496324988599, duration: 1 } },
+    sa.provider().getAvailableCount(
+      { urlParams: { when: 1496324988599, duration: 1 } },
       (err, json) => {
         assert.ok((json.timestamp));
         done();
-      });
+      },
+    );
   });
   it('Should getAllReports', (done) => {
     url = `${endpoint}providers/reports-count`;

@@ -7,7 +7,9 @@ class Payment extends Components {
   }
 
   search({ query, urlParams, json }, done) {
-    return this.simpleQuery({ type: 'get', resource: 'search', urlParams: Object.assign({}, urlParams, { query }), json }, done);
+    return this.simpleQuery({
+      type: 'get', resource: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
+    }, done);
   }
 }
 
