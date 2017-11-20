@@ -22,6 +22,17 @@ describe('Product related tests', () => {
       done();
     });
   });
+  it('Should return a list of with pagination', (done) => {
+    url = `${endpoint}products`;
+    const headers = { 'X-Pagination-Total': 212 };
+    mock.get(url, () => ({ body: productsFile, ok: true, headers }));
+    sa.product().getAll({ size: 2, page: 0 }, (err, products, raw) => {
+      assert.ok(raw.headers === headers);
+      assert.ok(Array.isArray(products));
+      assert.ok(products[0].constructor.name === 'Product');
+      done();
+    });
+  });
   it('Should return a product', (done) => {
     url = `${endpoint}products/:productId:`;
     mock.get(url, () => ({ body: productFile, ok: true }));
