@@ -7,7 +7,7 @@
 
 # ShareActor SDK
 
-[ShareActor](https://www.shareactor.io) offers software as a service that digitizes core business functions, optimizes resource allocation and provides Data Science driven analysis. This SDK will help you implement its API in a Javascript or browser environment.
+[ShareActor](https://www.shareactor.io) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities. This SDK gives you access to our platform's building blocks and will help you implement its API in a Javascript or browser environment.  Get instant access to modules like Payments, Messaging Tools, User Management and Authentication, Scheduling, Resource Allocation and more.
 
 ![ShareActor logo](https://preview.ibb.co/eAqEfF/Artboard_1.png)
 
@@ -35,7 +35,7 @@ npm install @shareactor/shareactor-sdk
 
 `new ShareActor({ apiKey, bearerToken, endpoint })`
 
-Initialises a new instance of `Shareactor` configured with your application `apiKey`, the `bearerToken` token from Auth0, and the endpoint of your choice (generally `https://qa.shareactor.io/` for our QA environment or `https://api.shareactor.io/` for our production one).
+Initialises a new instance of `ShareActor` configured with your application `apiKey`, the `bearerToken` token from Auth0 and the endpoint of your choice (generally `https://qa.shareactor.io/` for our QA environment or `https://api.shareactor.io/` for our production one).
 
 - **apiKey {String}**: Your attributed ShareActor API Key.
 - **bearerToken {String}**: Your JSON Web Token (JWT), generally from Auth0.
@@ -90,9 +90,9 @@ lock.on("authenticated", function(authResult) {
 
 A class can be constructed with either:
 
-- No parameter; *(some methods may not be accessible)*
-- An **id {String}**, which represent the ID of the object you want to instanciate; *(you will not be able to access any property of the object, until you `refresh` or `get` it)*
-- A **Json {Object}**, which represent an Object. *(this will create the full object with all its properties)*
+- No parameter *(some methods may not be accessible)*
+- An **id {String}**, which represents the ID of the object you want to instantiate *(you will not be able to access any property of the object, until you `refresh` or `get` it)*
+- A **Json {Object}**, which represents an object *(this will create the full object with all its properties)*
 
 
 ###### Example: Creation of a Product object with no parameter
@@ -123,9 +123,9 @@ shareactor.product().getAll({}, function(error, products) {
 ###### Example: Creation of a Product object with an ID
 **`product(id)`**
 
-This create a partially empty product. It contains the id of the product you want to manipulate but doesn't contain all the properties of that product. It can be populated by calling `get` or `refresh`.
+This creates a partially empty product. It contains the ID of the product you want to manipulate but doesn't contain all the properties of that product. It can be populated by calling `get` or `refresh`.
 
-- **id {String}**: Product ID.
+- **id {String}**, product ID
 
 ```js
 // Example: Construct a product with an ID.
@@ -133,7 +133,7 @@ var product = shareactor.product(productId);
 console.log(product.name); // undefined
 
 
-// Example: Construct a product with an ID, and refresh it.
+// Example: Construct a product with an ID and refresh it.
 shareactor.product(userId).get({}, function(error, product) {
   if (error) {
 	// Handle error
@@ -150,9 +150,9 @@ shareactor.product(userId).get({}, function(error, product) {
 ###### Example: Creation of a Product object with a JSON Object
 **`product(json)`**
 
-You can create a full product from a json object. This will create an object with all the properties accessible.
+You can create a full product from a JSON object. This will create an object with all the properties accessible.
 
-- **Json {Object}**: Json object representing a product.
+- **Json {Object}**, JSON object representing a product
 
 ```js
 // Example: Construct a product with a JSON Object.
@@ -161,7 +161,7 @@ var product = shareactor.product(productJson);
 console.log(product.name); // Bedroom cleaning
 ```
 
-The methods and classes used here are matching the API ones, you can find more details about them in the [API documentation](https://shareactorio.github.io/slate/).
+The methods and classes used here match those in the API. You can find more details about them in the [API documentation](https://shareactorio.github.io/slate/).
 
 
 ## Coverage of the SDK
@@ -170,7 +170,7 @@ The coverage of this SDK can be found in the [COVERAGE](COVERAGE.md) file.
 
 ## Issue Reporting
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section.
+If you have found a bug or if you have a feature request, please report them to this repository's issues section.
 
 ## License
 

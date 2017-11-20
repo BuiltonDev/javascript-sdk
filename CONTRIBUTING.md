@@ -37,7 +37,7 @@ npm run lint
 ### Testing
 
 Tests are present in the test folder. You should create tests for new functionality before submitting a pull request.
-We are using [MochaJS](https://mochajs.org/), you can run them by running:
+We are using [MochaJS](https://mochajs.org/). You can run them by running:
 
 ```bash
 npm run test
