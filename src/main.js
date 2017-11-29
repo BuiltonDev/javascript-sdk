@@ -9,6 +9,7 @@ const User = require('./collection/user');
 const Company = require('./collection/company');
 const Payment = require('./collection/payment');
 const PaymentMethod = require('./collection/paymentMethod');
+const Resource = require('./collection/resource');
 
 let instance;
 
@@ -38,6 +39,7 @@ class ShareActor {
     this.company = props => new Company(props);
     this.payment = props => new Payment(props);
     this.paymentMethod = props => new PaymentMethod(props);
+    this.resource = props => new Resource(props);
 
     instance = this;
   }
