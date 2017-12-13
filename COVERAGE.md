@@ -26,7 +26,7 @@ The methods can have multiple variables in the first parameter Object.
 
 
 The second parameter of the methods is a callback.
-- **callback {Function(err, res, raw)}**: Will be invoked after the data has been retrieved. The first argument is the error. It will be `null` if the method didn't trigger any error. The second argument contains the return value.
+- **callback {Function(err, res, raw)}**: Will be invoked after the data has been retrieved. The first argument is the error. It will be `null` if the method didn't trigger any error. The second argument contains the return value. The third argument contains the raw [`fetch`](https://fetch.spec.whatwg.org/) response from the query.
 
 ## Other methods
 

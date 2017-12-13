@@ -18,7 +18,7 @@
 
 ## Install
 
-From CDN
+From the [unpkg](https://unpkg.com/) CDN
 
 ```html
 <script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
