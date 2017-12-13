@@ -18,7 +18,7 @@
 
 ## Install
 
-From CDN
+From the [unpkg](https://unpkg.com/) CDN
 
 ```html
 <script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
@@ -35,11 +35,13 @@ npm install @shareactor/shareactor-sdk
 
 `new ShareActor({ apiKey, bearerToken, endpoint })`
 
-Initialises a new instance of `ShareActor` configured with your application `apiKey`, the `bearerToken` token from Auth0 and the endpoint of your choice (generally `https://qa.shareactor.io/` for our QA environment or `https://api.shareactor.io/` for our production one).
+Initialises a new instance of `ShareActor` configured with your application `apiKey`, the `bearerToken` token from Auth0 (optional) and the endpoint of your choice (generally `https://qa.shareactor.io/` for our QA environment or `https://api.shareactor.io/` for our production one).
 
 - **apiKey {String}**: Your attributed ShareActor API Key.
-- **bearerToken {String}**: Your JSON Web Token (JWT), generally from Auth0.
+- **bearerToken {String}** - *(optional)*: Your JSON Web Token (JWT), generally from Auth0.
 - **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.shareactor.io/` or `https://qa.shareactor.io/`).
+
+*Note: Accessing the API without a bearerToken will limit the number of endpoints and information you can access.*
 
 ### Example (using the [Auth0's Lock library](https://github.com/auth0/lock))
 
@@ -56,8 +58,8 @@ var lock = new Auth0Lock(clientId, domain, {
 });
 
 lock.on("authenticated", function(authResult) {
-  lock.getUserInfo(authResult.accessToken, function(error, profile) {
-    if (error) {
+  lock.getUserInfo(authResult.accessToken, function(err, profile) {
+    if (err) {
       // Handle error
       return;
     }
@@ -73,8 +75,9 @@ lock.on("authenticated", function(authResult) {
       last_name: profile.family_name,
     };
     
-    shareactor.user().login({ body: loginBody }, function(error, user) {
-	  if (error) {
+    shareactor.user().login({ body: loginBody }, function(err, user, raw) {
+      // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
+	  if (err) {
 		// Handle error
 		return;
 	  }
@@ -107,8 +110,9 @@ console.log(product.name); // undefined
 
 
 // Example: Construct a product without any parameter, and call an accessible function.
-shareactor.product().getAll({}, function(error, products) {
-  if (error) {
+shareactor.product().getAll({}, function(err, products, raw) {
+  // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
+  if (err) {
 	// Handle error
 	return;
   }
@@ -134,8 +138,9 @@ console.log(product.name); // undefined
 
 
 // Example: Construct a product with an ID and refresh it.
-shareactor.product(userId).get({}, function(error, product) {
-  if (error) {
+shareactor.product(userId).get({}, function(err, product, raw) {
+  // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
+  if (err) {
 	// Handle error
 	return;
   }
