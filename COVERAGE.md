@@ -21,7 +21,7 @@
 The methods can have multiple variables in the first parameter Object.
 - **urlParams {Object}**: The different parameters you want to send with the query. This is especially useful for pagination or extend. (default: `{}`)
 - **body {Object}**: This is the body you will send with the query for creating or updating an object. (required)
-- **json {Boolean}**: If true, the promise response will contain a JSON, otherwise it will create an Object. (default: `False`)
+- **json {Boolean}**: If true, the promise's response will contain a JSON, otherwise it will create an Object. (default: `False`)
 - **query {String}**: String containing the search you want to perform. (default: `undefined`)
 
 
