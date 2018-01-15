@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ShareActor.io SDK & Auth0 example</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+<div id="auth0Root"></div>
+<div id="profile"></div>
+
+<script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
+<script src="http://cdn.auth0.com/js/lock/11.0.1/lock.min.js"></script>
+<script src="./config.js"></script>
+<script>
+
+  if (typeof config === 'undefined') {
+    alert('It seems you haven\'t set up the configuration file yet :(');
+  }
+
+  var lock = new Auth0Lock(config.auth0.client, config.auth0.domain, {
+    auth: {
+      responseType: 'token id_token',
+      params: {scope: 'openid app_metadata user_metadata'}
+    },
+    allowedConnections: ['facebook'],
+    container: 'auth0Root'
+  });
+
+  var loginAndOrder = function(idToken, profile, fn) {
+
+    var shareactor = new ShareActor({
+      apiKey: config.apiKey,
+      bearerToken: idToken,
+      endpoint: config.endpoint,
+    });
+
+    var loginBody = {
+      first_name: profile.given_name,
+      last_name: profile.family_name,
+    };
+
+    shareactor.user().login({ body: loginBody }, function(err, user) {
+      if (err) {
+        // Handle error
+        return;
+      }
+
+      document.getElementById('profile').innerHTML = 'Hello ' + user.first_name + ' ' + user.last_name;
+
+      shareactor.product().search({query: 'test'}, function (err, products) {
+        if (err) {
+          // Handle error
+          return;
+        }
+
+        var product = products[0];
+        var orderBody = {
+          items: [{product: product.id, quantity: 1}],
+          currency: 'GBP',
+          delivery_address: {
+            street_name: 'Slottsplassen 1',
+            zip_code: '0010',
+            city: 'Oslo',
+            country: 'Norway',
+            geo: [59.909848, 10.7379474],
+          }
+        };
+        shareactor.order().create({body: orderBody}, function (err, order) {
+          if (err) {
+            // Handle error
+            return;
+          }
+
+          alert('order created: ' + order.id);
+          console.log('order created: ', order);
+          fn();
+
+        });
+      });
+    });
+  };
+
+  lock.on("authenticated", function(authResult) {
+    lock.getUserInfo(authResult.accessToken, function(err, profile) {
+      if (err) {
+        // Handle error
+        return;
+      }
+
+      var callback = function() {
+        lock.hide();
+      };
+
+      loginAndOrder(authResult.idToken, profile, callback);
+    });
+  });
+
+  lock.show();
+
+</script>
+
+</body>
+</html>
