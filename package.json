@@ -48,7 +48,7 @@
     "superagent-mocker": "0.5.2",
     "uglifyjs-webpack-plugin": "1.2.5",
     "webpack": "4.6.0",
-    "webpack-cli": "^2.1.2"
+    "webpack-cli": "2.1.2"
   },
   "dependencies": {
     "superagent": "3.8.3"
