@@ -13,7 +13,7 @@ script:
 - npm run webpack
 - npm run codacy
 - HASH_AFTER=`sha1sum ./dist/main.bundle.js`
-- [ "$HASH_AFTER" == "$HASH_BEFORE" ] && exit 1
+- '[ "$HASH_AFTER" == "$HASH_BEFORE" ] && exit 1'
 notifications:
   slack:
     secure: CxYFqdiYHRL545MGDDDsP4N8D5qCY0OOmWZFsjo4VYl4gsNuo887TIxTr+6s8DTVlerQoMAYYD0VrG8RgeX2s2D5WLIbcvAsJ0JoL7ahCk5B0MQB9ewNReG7TKh5to+pKhT0TlugbyPKuHiNhLfoAs+UH7mjg6i41f7LhweVlq8STU3+dnSz9vQ1pXS9O83QNthCSsWoM36aB0gCldqKvJ0i4jrYmyMS100oLJVnNTdbtYunwFgONafKq3CWjNvuvFdd0qDxRlP065RLQMrkBV2vQvfdAIfpE79gVgNbI2eId/G2+Ct5HHtOcI4GjFEvhrewfMKUyWj6ssP96XGpHpuzoFz0h8n1J2V+cZSW/4rmyMDWA579lwrvc15OYfasDuS2IKTZ3+5J45BlJr4g4dylx0+eif5jDw+KxrV3h7KwaMwWrpaUqwzIWb4GueuUt8f6Gsl1r/Pag/hgqGkmM40rpvG04XaOkh4ICW7TFz9Az8lfpImoU1gBtpFj1lSknasZa6WhBcEeGko+qZZvNZIQ10xmJSNt8vWmO+K+Gb2bUA9NNo5WUPdJtoWEiPuAaCLg3tqmBPh1/tkhqjqJ+FjD4YoVKc2e0P+7UJmbDPH2EfckU55TsprO8JJ1T57YrkSrbNE0DpZwtOYOjIhf0MmNOOqNQkhoVasvF9Y0kDk=
