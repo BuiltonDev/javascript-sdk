@@ -12,7 +12,7 @@ script:
 - npm run webpack
 - npm run codacy
 - HASH_AFTER=`sha1sum ./dist/main.bundle.js`
-- '[ "$HASH_AFTER" == "$HASH_BEFORE" ] && exit 1 || exit 0'
+- '[[ ! $TRAVIS_COMMIT_MESSAGE =~ \[NO_BUNDLE_CHANGE\] ]] && [ "$HASH_AFTER" != "$HASH_BEFORE" ] && exit 1'
 - echo "$HASH_AFTER // $HASH_BEFORE"
 notifications:
   slack:
