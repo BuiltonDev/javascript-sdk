@@ -121,14 +121,4 @@ describe('Order related tests', () => {
       done();
     });
   });
-
-  it('Should submit a delivery with json response', (done) => {
-    url = `${endpoint}orders/:orderId:/deliveries/:deliveryId:`;
-    mock.post(url, () => ({ body: orderFile, ok: true }));
-    sa.order(':orderId:').triggerDeliveryAction({ deliveryId: ':deliveryId:', json: true }, (err, delivery) => {
-      if (err) throw err;
-      assert.ok(delivery.status === orderFile.deliveries[orderFile.deliveries.length - 1].status);
-      done();
-    });
-  });
 });

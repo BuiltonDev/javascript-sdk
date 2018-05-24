@@ -51,7 +51,6 @@ class Order extends Components {
     const params = {
       type: 'post',
       resource: `${this.apiPath}/${this.id}/deliveries/${deliveryId}`,
-      id: this.id,
       body,
       urlParams,
       ResConstructor: null,
