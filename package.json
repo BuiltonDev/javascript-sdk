@@ -10,7 +10,9 @@
     "lint": "./node_modules/.bin/eslint .",
     "webpack": "./node_modules/.bin/webpack",
     "buildAuto": "nodemon --ignore 'dist/*' --ignore 'example/*' --exec npm run build",
-    "build": "npm i && ./node_modules/.bin/mocha test/collection --recursive && ./node_modules/.bin/webpack && echo '------ESLINT------\n' && ./node_modules/.bin/eslint . && echo '------------------\n'"
+    "build": "npm i && ./node_modules/.bin/mocha test/collection --recursive && ./node_modules/.bin/webpack && echo '------ESLINT------\n' && ./node_modules/.bin/eslint . && echo '------------------\n'",
+    "release": "release-it",
+    "dry-release": "release-it --dry-run"
   },
   "repository": {
     "type": "git",
@@ -45,6 +47,7 @@
     "mocha": "5.1.1",
     "mocha-lcov-reporter": "1.3.0",
     "nodemon": "1.17.3",
+    "release-it": "7.4.5",
     "superagent-mocker": "0.5.2",
     "uglifyjs-webpack-plugin": "1.2.5",
     "webpack": "4.6.0",
