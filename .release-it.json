@@ -2,15 +2,14 @@
   "requireCleanWorkingDir": false,
   "buildCommand": "npm run build",
   "src": {
-    "releaseName": "RELEASE v%s",
-    "tagName": "v%s",
-    "tokenRef": "GITHUB_TOKEN"
+    "tagName": "v%s"
   },
   "dist": {
     "baseDir": "dist"
   },
   "github": {
-    "release": true
+    "release": true,
+    "releaseName": "RELEASE v%s"
   },
   "npm": {
     "publish": true
