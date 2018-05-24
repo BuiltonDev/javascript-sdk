@@ -10,7 +10,7 @@ After forking to your own github org, do the following steps to get started:
 
 ```bash
 # clone your fork to your local machine
-git clone https://github.com/shareactorIO/javascript-sdk.git
+git clone https://github.com/kvassAI/javascript-sdk.git
 
 # step into local repo
 cd javascript-sdk

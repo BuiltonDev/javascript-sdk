@@ -1,5 +1,5 @@
 /* global it, describe, require, console */
-const Shareactor = require('../../src/main.js');
+const Kvass = require('../../src/main.js');
 const assert = require('assert');
 
 const request = require('../../src/utils/superagent');
@@ -9,7 +9,7 @@ const paymentsFile = require('../fetchmock/payments.json');
 const paymentFile = require('../fetchmock/payment.json');
 
 const endpoint = 'https://example.com/';
-const sa = new Shareactor({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
+const sa = new Kvass({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
 let url;
 
 describe('Payment related tests', () => {

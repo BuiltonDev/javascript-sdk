@@ -13,7 +13,7 @@ const Resource = require('./collection/resource');
 
 let instance;
 
-class ShareActor {
+class Kvass {
   constructor({ apiKey, bearerToken, endpoint } = {}) {
     if (instance) {
       return instance;
@@ -60,4 +60,4 @@ class ShareActor {
   }
 }
 
-module.exports = ShareActor;
+module.exports = Kvass;

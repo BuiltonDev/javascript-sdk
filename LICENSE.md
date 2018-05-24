@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2017 ShareActor AS. <hello@shareactor.io> (https://www.shareactor.io)
+Copyright (c) 2017 KVASS AI AS. <hello@kvass.ai> (https://www.kvass.ai)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

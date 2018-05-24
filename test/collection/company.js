@@ -1,6 +1,6 @@
 /* global it, describe, require, console */
 global.test = true;
-const Shareactor = require('../../src/main.js');
+const Kvass = require('../../src/main.js');
 const assert = require('assert');
 const request = require('../../src/utils/superagent');
 const mock = require('superagent-mocker')(request);
@@ -9,7 +9,7 @@ const companyFile = require('../fetchmock/company.json');
 const companyPropertiesFile = require('../fetchmock/companyProperties.json');
 
 const endpoint = 'https://example.com/';
-const sa = new Shareactor({ apiKey: 'dummy', endpoint });
+const sa = new Kvass({ apiKey: 'dummy', endpoint });
 let url;
 
 mock.timeout = 100;
