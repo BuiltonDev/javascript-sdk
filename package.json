@@ -1,6 +1,6 @@
 {
   "name": "@shareactor/shareactor-sdk",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "ShareActor JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
