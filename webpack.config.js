@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'var',
-    library: 'ShareActor',
+    library: 'Kvass',
     filename: 'main.bundle.js',
   },
   module: {

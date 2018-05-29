@@ -1,5 +1,5 @@
 /* global it, describe, require, console */
-const Shareactor = require('../../src/main.js');
+const Kvass = require('../../src/main.js');
 const assert = require('assert');
 
 const request = require('../../src/utils/superagent');
@@ -13,7 +13,7 @@ const userFile = require('../fetchmock/user.json');
 const orderPostBody = require('../fetchmock/orderPostBody.json');
 
 const endpoint = 'https://example.com/';
-const sa = new Shareactor({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
+const sa = new Kvass({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
 let url;
 
 describe('Order related tests', () => {

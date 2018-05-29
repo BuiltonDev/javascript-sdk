@@ -1,7 +1,7 @@
 {
-  "name": "@shareactor/shareactor-sdk",
+  "name": "@kvass.ai/core-sdk",
   "version": "0.4.2",
-  "description": "ShareActor JavaScript SDK.",
+  "description": "KVASS JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
     "codacy": "npm run coverage && cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
@@ -16,20 +16,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shareactorIO/javascript-sdk.git"
+    "url": "git+https://github.com/kvassAI/javascript-sdk.git"
   },
-  "author": "ShareActor <hello@shareactor.io> (http://www.shareactor.io)",
+  "author": "KVASS AI <hello@kvass.ai> (https://www.kvass.ai/)",
   "license": "MIT",
   "keywords": [
-    "ShareActor",
+    "KVASS",
+    "AI",
     "SDK",
     "SAAS",
     "On-demand"
   ],
   "bugs": {
-    "url": "https://github.com/shareactorIO/javascript-sdk/issues"
+    "url": "https://github.com/kvassAI/javascript-sdk/issues"
   },
-  "homepage": "https://github.com/shareactorIO/javascript-sdk#readme",
+  "homepage": "https://github.com/kvassAI/javascript-sdk#readme",
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-loader": "7.1.4",
