@@ -9,7 +9,7 @@
 
 [KVASS](https://www.kvass.ai) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities. This SDK gives you access to our platform's building blocks and will help you implement its API in a Javascript or browser environment.  Get instant access to modules like Payments, Messaging Tools, User Management and Authentication, Scheduling, Resource Allocation and more.
 
-![KVASS logo](https://preview.ibb.co/eAqEfF/Artboard_1.png)
+![KVASS logo](https://camo.githubusercontent.com/d84204b3ae301823ade7366c4175f1a9d1602762/68747470733a2f2f63646e2e7261776769742e636f6d2f6c617a72656738372f31653937386164373962383338656537666530316462393864366563323437622f7261772f643162626363393731393235363263643437393762346634326334303863356261646362376537382f6b766173735f6c6f676f2e737667)
 
 ## Requirement
 
