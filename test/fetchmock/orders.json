@@ -288,7 +288,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -301,7 +301,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -557,7 +557,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
         {
           "street_name":"Johanne Dybwads plass 1",
@@ -1052,7 +1052,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -1065,7 +1065,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -1321,7 +1321,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -1704,7 +1704,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -1717,7 +1717,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -1973,7 +1973,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -2356,7 +2356,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -2369,7 +2369,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -2625,7 +2625,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -3008,7 +3008,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -3021,7 +3021,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -3277,7 +3277,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -3660,7 +3660,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -3673,7 +3673,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -3929,7 +3929,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -4312,7 +4312,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -4325,7 +4325,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -4581,7 +4581,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -4964,7 +4964,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -4977,7 +4977,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -5233,7 +5233,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -5616,7 +5616,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -5629,7 +5629,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -5885,7 +5885,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -6268,7 +6268,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -6281,7 +6281,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -6537,7 +6537,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -6920,7 +6920,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -6933,7 +6933,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -7189,7 +7189,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -7572,7 +7572,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -7585,7 +7585,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -7841,7 +7841,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -8224,7 +8224,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -8237,7 +8237,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -8493,7 +8493,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -8876,7 +8876,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -8889,7 +8889,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -9145,7 +9145,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -9528,7 +9528,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -9541,7 +9541,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -9797,7 +9797,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -10180,7 +10180,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -10193,7 +10193,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -10449,7 +10449,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -10832,7 +10832,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -10845,7 +10845,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -11101,7 +11101,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -11484,7 +11484,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -11497,7 +11497,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -11753,7 +11753,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -12136,7 +12136,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -12149,7 +12149,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -12405,7 +12405,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
 
       ],
@@ -12788,7 +12788,7 @@
         }
       ],
       "last_name":"user",
-      "email":"shareactor_nquxbym_user@tfbnw.net",
+      "email":"kvass_nquxbym_user@tfbnw.net",
       "auth0_id":"facebook|0123456789012",
       "voucher":{
         "consumed":0,
@@ -12801,7 +12801,7 @@
           "$date":1494245885422
         }
       },
-      "first_name":"shareactor"
+      "first_name":"kvass"
     },
     "provider":{
       "bio":"",
@@ -13057,7 +13057,7 @@
       "auth0_id":"auth0|qwertyuio12345678",
       "max_travel_meters":10000,
       "country":"NOR",
-      "email":"doe2@shareactor.io",
+      "email":"doe2@kvass.ai",
       "addresses":[
         {
           "street_name":"Johanne Dybwads plass 1",

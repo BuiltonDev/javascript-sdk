@@ -35,11 +35,11 @@ npm install @kvass.ai/core-sdk
 
 `new Kvass({ apiKey, bearerToken, endpoint })`
 
-Initialises a new instance of `Kvass` configured with your application `apiKey`, the `bearerToken` token from Auth0 (optional) and the endpoint of your choice (generally `https://qa.shareactor.io/` for our QA environment or `https://api.shareactor.io/` for our production one).
+Initialises a new instance of `Kvass` configured with your application `apiKey`, the `bearerToken` token from Auth0 (optional) and the endpoint of your choice (generally `https://qa.kvass.ai/` for our QA environment or `https://api.kvass.ai/` for our production one).
 
 - **apiKey {String}**: Your attributed KVASS API Key.
 - **bearerToken {String}** - *(optional)*: Your JSON Web Token (JWT), generally from Auth0.
-- **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.shareactor.io/` or `https://qa.shareactor.io/`).
+- **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.kvass.ai/` or `https://qa.kvass.ai/`).
 
 *Note: Accessing the API without a bearerToken will limit the number of endpoints and information you can access.*
 
@@ -67,7 +67,7 @@ lock.on("authenticated", function(authResult) {
     var kvass = new Kvass({
 	apiKey: 'YOUR_KVASS_API_KEY',
 	bearerToken: authResult.idToken,
-	endpoint: 'https://qa.shareactor.io/'
+	endpoint: 'https://qa.kvass.ai/'
     });
 
     var loginBody = {
