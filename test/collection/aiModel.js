@@ -37,7 +37,7 @@ describe('AI related tests', () => {
     it('Should create a new ai model based on type, source and destination', (done) => {
       url = `${endpoint}ai/models`;
       mock.post(url, () => ({ body: modelCreatedFile, ok: true }));
-      sa.aiModel().create({"model_type": "content_recommender", "source": "product", "destination": "product"}, (err, model) => {
+      sa.aiModel().create({ model_type: 'content_recommender', source: 'product', destination: 'product' }, (err, model) => {
         if (err) throw err;
         assert.ok(model.constructor.name === 'AIModel');
         assert.ok(model.training_status === 'CREATED');
@@ -77,7 +77,7 @@ describe('AI related tests', () => {
     it('Should return recommendation for a given source based on a specific model', (done) => {
       url = `${endpoint}ai/models/:modelId/invoke`;
       mock.post(url, () => ({ body: recommendationsFile, ok: true }));
-      sa.aiModel(':modelId:').getRecommendations({source: "5aec176d1f7cdc0008848f87", size: 4}, (err, recommendations) => {
+      sa.aiModel(':modelId:').getRecommendations({ source: '5aec176d1f7cdc0008848f87', size: 4 }, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));
         done();
@@ -89,7 +89,9 @@ describe('AI related tests', () => {
     it('Should return recommendation for a given source based on set model type, source and destination', (done) => {
       url = `${endpoint}ai/models/invoke`;
       mock.post(url, () => ({ body: recommendationsFile, ok: true }));
-      sa.aiModel().getRecommendations({"source": "5aec176d1f7cdc0008848f87", "size": 4, "model_type": "content_recommender", "source": "product", "destination": "product"}, (err, recommendations) => {
+      sa.aiModel().getRecommendations({
+        size: 4, model_type: 'content_recommender', source: 'product', destination: 'product',
+      }, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));
         done();

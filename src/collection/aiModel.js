@@ -1,4 +1,8 @@
+/* eslint class-methods-use-this:
+["error",{ "exceptMethods": ["refresh", "update", "del"] }] */
+
 const Components = require('./components');
+const Error = require('../utils/error');
 
 class AIModel extends Components {
   constructor(props) {
