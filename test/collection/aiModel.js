@@ -15,7 +15,7 @@ const endpoint = 'https://example.com/';
 const sa = new Kvass({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
 let url;
 
-describe.only('AI related tests', () => {
+describe('AI related tests', () => {
   beforeEach(() => {
     // Guarantee each test knows exactly which routes are defined
     mock.clearRoutes();
