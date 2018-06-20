@@ -7,6 +7,7 @@ const mock = require('superagent-mocker')(request);
 
 const modelFile = require('../fetchmock/model.json');
 const modelsFile = require('../fetchmock/models.json');
+const recommendationsFile = require('../fetchmock/recommendations.json');
 
 const endpoint = 'https://example.com/';
 const sa = new Kvass({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
@@ -44,7 +45,7 @@ describe('AI related tests', () => {
     sa.ai(':modelId:').get({"model_type": "content_recommender", "source": "product", "destination": "product"}, (err, model) => {
       if (err) throw err;
       assert.ok(model.constructor.name === 'Model');
-      assert.ok(model.training === 'READY');
+      assert.ok(model.training_status === 'READY');
       done();
     });
   });
@@ -55,14 +56,28 @@ describe('AI related tests', () => {
     sa.ai(':modelId:').get({}, (err, model) => {
       if (err) throw err;
       assert.ok(model.constructor.name === 'Model');
-      assert.ok(model.training === 'TRAINING');
+      assert.ok(model.training_status === 'TRAINING');
       done();
     });
   });
 
   it('Should return recommendation for a given user based on a specific model', (done) => {
+    url = `${endpoint}ai/models/:modelId/invoke:`;
+    mock.post(url, () => ({ body: recommendationsFile, ok: true }));
+    sa.ai(':modelId:').getRecommendations({source: "5aec176d1f7cdc0008848f87", size: 4}, (err, recommendations) => {
+      if (err) throw err;
+      assert.ok(Array.isArray(recommendations));
+      done();
+    });
   });
 
   it('Should return recommendation for a given user based on set of parameters', (done) => {
+    url = `${endpoint}ai/models/invoke:`;
+    mock.post(url, () => ({ body: recommendationsFile, ok: true }));
+    sa.ai().getRecommendations({"user_id": "5aec176d1f7cdc0008848f87", "size": 4, "model_type": "content_recommender", "source": "product", "destination": "product"}, (err, recommendations) => {
+      if (err) throw err;
+      assert.ok(Array.isArray(recommendations));
+      done();
+    });
   });
 });
