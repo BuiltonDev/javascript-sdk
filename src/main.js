@@ -10,6 +10,7 @@ const Company = require('./collection/company');
 const Payment = require('./collection/payment');
 const PaymentMethod = require('./collection/paymentMethod');
 const Resource = require('./collection/resource');
+const Webhook = require('./collection/webhook');
 
 let instance;
 
@@ -40,6 +41,7 @@ class Kvass {
     this.payment = props => new Payment(props);
     this.paymentMethod = props => new PaymentMethod(props);
     this.resource = props => new Resource(props);
+    this.webhook = props => new Webhook(props);
 
     instance = this;
   }
