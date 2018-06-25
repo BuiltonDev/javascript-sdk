@@ -1,15 +1,15 @@
 const request = require('./utils/request');
 const Error = require('./utils/error');
 
-const Order = require('./collection/order');
-const Product = require('./collection/product');
-const Provider = require('./collection/provider');
-const Tag = require('./collection/tag');
-const User = require('./collection/user');
 const Company = require('./collection/company');
+const Order = require('./collection/order');
 const Payment = require('./collection/payment');
 const PaymentMethod = require('./collection/paymentMethod');
+const Product = require('./collection/product');
+const Provider = require('./collection/provider');
 const Resource = require('./collection/resource');
+const Tag = require('./collection/tag');
+const User = require('./collection/user');
 
 let instance;
 

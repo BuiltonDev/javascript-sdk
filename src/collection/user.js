@@ -1,5 +1,12 @@
 const Components = require('./components');
 const Order = require('./order');
+const {
+  get,
+  refresh,
+  getAll,
+  del,
+  update,
+} = require('../utils/restFunctions');
 
 class User extends Components {
   constructor(props) {
@@ -8,9 +15,13 @@ class User extends Components {
     if (!this.id) {
       this.id = 'me';
     }
+    this.del = del.bind(this);
+    this.get = get.bind(this);
+    this.getAll = getAll.bind(this);
+    this.refresh = refresh.bind(this);
+    this.update = update.bind(this);
   }
 
-  // Override
   create({ body, urlParams, json = false }, done) {
     return this.simpleQuery({
       type: 'post', apiPath: 'v2/users', urlParams, body, json,
