@@ -1,5 +1,6 @@
 const Components = require('./components');
 const Order = require('./order');
+const Subscription = require('./subscription');
 
 class User extends Components {
   constructor(props) {
@@ -48,6 +49,12 @@ class User extends Components {
   updateAddresses({ body, urlParams }, done) {
     return this.simpleQuery({
       type: 'put', id: this.id, resource: 'addresses', body, urlParams, ResConstructor: null,
+    }, done);
+  }
+
+  getSubscriptions({ body, urlParams }, done) {
+    return this.simpleQuery({
+      type: 'get', id: this.id, resource: 'subscriptions', body, urlParams, ResConstructor: Subscription,
     }, done);
   }
 }
