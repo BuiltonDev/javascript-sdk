@@ -1,10 +1,11 @@
 const Components = require('./components');
 const Order = require('./order');
+const Subscription = require('./subscription');
 const {
-  get,
-  refresh,
-  getAll,
   del,
+  get,
+  getAll,
+  refresh,
   update,
 } = require('../utils/restFunctions');
 
@@ -59,6 +60,12 @@ class User extends Components {
   updateAddresses({ body, urlParams }, done) {
     return this.simpleQuery({
       type: 'put', id: this.id, resource: 'addresses', body, urlParams, ResConstructor: null,
+    }, done);
+  }
+
+  getSubscriptions({ body, urlParams }, done) {
+    return this.simpleQuery({
+      type: 'get', id: this.id, resource: 'subscriptions', body, urlParams, ResConstructor: Subscription,
     }, done);
   }
 }

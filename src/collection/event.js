@@ -1,23 +1,17 @@
 const Components = require('./components');
 const {
-  create,
-  del,
   get,
   getAll,
   refresh,
-  update,
 } = require('../utils/restFunctions');
 
-class Product extends Components {
+class Event extends Components {
   constructor(props) {
     super(props);
-    this.apiPath = 'products';
-    this.create = create.bind(this);
-    this.del = del.bind(this);
+    this.apiPath = 'events';
     this.get = get.bind(this);
     this.getAll = getAll.bind(this);
     this.refresh = refresh.bind(this);
-    this.update = update.bind(this);
   }
 
   search({ query, urlParams, json = false }, done) {
@@ -27,4 +21,4 @@ class Product extends Components {
   }
 }
 
-module.exports = Product;
+module.exports = Event;

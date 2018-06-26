@@ -1,7 +1,7 @@
 const Components = require('./components');
 const {
-  refresh,
   getAll,
+  refresh,
 } = require('../utils/restFunctions');
 
 class Company extends Components {

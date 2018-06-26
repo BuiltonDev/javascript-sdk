@@ -1,10 +1,10 @@
 const Components = require('./components');
 const {
-  get,
-  refresh,
-  getAll,
   create,
   del,
+  get,
+  getAll,
+  refresh,
   update,
 } = require('../utils/restFunctions');
 

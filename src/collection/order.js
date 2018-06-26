@@ -1,11 +1,11 @@
 const Components = require('./components');
 const Error = require('../utils/error');
 const {
-  get,
-  refresh,
-  getAll,
   create,
   del,
+  get,
+  getAll,
+  refresh,
   update,
 } = require('../utils/restFunctions');
 
