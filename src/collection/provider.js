@@ -1,5 +1,3 @@
-/* eslint class-methods-use-this: ["error", { "exceptMethods": ["updateAddresses"] }] */
-
 const User = require('./user');
 const Error = require('../utils/error');
 
@@ -77,7 +75,7 @@ class Provider extends User {
   }
 
   // Override
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, class-methods-use-this
   updateAddresses({ body, urlParams }, done) {
     return done(new Error.NotImplemented());
   }
