@@ -1,0 +1,166 @@
+{
+   "_id":{
+      "$oid":"5b2a06a50190d90efc06b662"
+   },
+   "created":{
+      "$date":1529480869148
+   },
+   "company":{
+      "$oid":"5b2a06a50190d90efc06b65f"
+   },
+   "response":[
+      {
+         "product":{
+            "active": true,
+            "name":"test name",
+            "company":{
+               "$oid":"5b2a06a50190d90efc06b65f"
+            },
+            "parents":[
+
+            ],
+            "_sub_products":[
+
+            ],
+            "tags":[
+
+            ],
+            "_cls":"Product",
+            "created":{
+               "$date":1529480869146
+            },
+            "path":"/",
+            "main_product": true,
+            "company_take":-1.0,
+            "description":"some description",
+            "max_distance":0,
+            "properties":{
+
+            },
+            "default_position":[
+               -1,
+               -1
+            ],
+            "deleted":false,
+            "price_change_percentage":0.0,
+            "business_rules":[
+
+            ],
+            "modified":{
+               "$date":1529480869146
+            },
+            "_id":{
+               "$oid":"5b2a06a50190d90efc06b661"
+            },
+            "currency":"NOK",
+            "vat":0.0,
+            "price":100.0
+         },
+         "score":0.143438224,
+         "rank":1
+      },
+      {
+         "product":{
+            "active": true,
+            "name":"test name",
+            "company":{
+               "$oid":"5b2a06a50190d90efc06b65f"
+            },
+            "parents":[
+
+            ],
+            "_sub_products":[
+
+            ],
+            "tags":[
+
+            ],
+            "_cls":"Product",
+            "created":{
+               "$date":1529480869146
+            },
+            "path":"/",
+            "main_product":true,
+            "company_take":-1.0,
+            "description":"some description",
+            "max_distance":0,
+            "properties":{
+
+            },
+            "default_position":[
+               -1,
+               -1
+            ],
+            "deleted":false,
+            "price_change_percentage":0.0,
+            "business_rules":[
+
+            ],
+            "modified":{
+               "$date":1529480869146
+            },
+            "_id":{
+               "$oid":"5b2a06a50190d90efc06b661"
+            },
+            "currency":"NOK",
+            "vat":0.0,
+            "price":100.0
+         },
+         "score":0.133983473,
+         "rank":2
+      },
+      {
+         "product":{
+            "active": true,
+            "name":"test name",
+            "company":{
+               "$oid":"5b2a06a50190d90efc06b65f"
+            },
+            "parents":[
+
+            ],
+            "_sub_products":[
+
+            ],
+            "tags":[
+
+            ],
+            "_cls":"Product",
+            "created":{
+               "$date":1529480869146
+            },
+            "path":"/",
+            "main_product": true,
+            "company_take":-1.0,
+            "description":"some description",
+            "max_distance":0,
+            "properties":{
+
+            },
+            "default_position":[
+               -1,
+               -1
+            ],
+            "deleted":false,
+            "price_change_percentage":0.0,
+            "business_rules":[
+
+            ],
+            "modified":{
+               "$date":1529480869146
+            },
+            "_id":{
+               "$oid":"5b2a06a50190d90efc06b661"
+            },
+            "currency":"NOK",
+            "vat":0.0,
+            "price":100.0
+         },
+         "score":0.1330145876,
+         "rank":3
+      }
+   ],
+   "ds_model": {
+      "$oid":"5b2a06a50190d90efc06b660"
+   }
+}

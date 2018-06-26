@@ -1,6 +1,7 @@
 const request = require('./utils/request');
 const Error = require('./utils/error');
 
+const AIModel = require('./collection/aiModel');
 const Company = require('./collection/company');
 const Event = require('./collection/event');
 const Order = require('./collection/order');
@@ -34,6 +35,7 @@ class Kvass {
 
     request(this.endpoint, this._constructHeaders());
 
+    this.aiModel = props => new AIModel(props);
     this.company = props => new Company(props);
     this.event = props => new Event(props);
     this.order = props => new Order(props);

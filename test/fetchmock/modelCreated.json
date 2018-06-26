@@ -1,0 +1,24 @@
+{
+    "model_type": "item_similarity_recommender",
+    "training_status": "CREATED",
+    "modified": {
+        "$date": 1528108844887
+    },
+    "model_evaluations": [],
+    "features": [],
+    "deleted": false,
+    "created": {
+        "$date": 1528108844887
+    },
+    "company": {
+        "$oid": "5ad0953c9a5d09000629d6c0"
+    },
+    "active": true,
+    "_id": {
+        "$oid": "5b15172ca5a05a000919c936"
+    },
+    "destination": "product",
+    "version": 0,
+    "source": "user",
+    "_cls": "DataScienceBaseModel.RecommendationModel.ItemSimilarityRecommender"
+}

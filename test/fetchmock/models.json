@@ -1,0 +1,50 @@
+[
+  {
+    "version": 0,
+    "active": true,
+    "_cls": "DataScienceBaseModel.RecommendationModel.ItemSimilarityRecommender",
+    "_id": {
+      "$oid": "5b15172ca5a05a000919c936"
+    },
+    "created": {
+      "$date": 1528108844887
+    },
+    "features": [],
+    "company": {
+      "$oid": "5ad0953c9a5d09000629d6c0"
+    },
+    "deleted": false,
+    "modified": {
+      "$date": 1528108844887
+    },
+    "training_status": "CREATED",
+    "model_evaluations": [],
+    "destination": "product",
+    "source": "user"
+  },
+  {
+    "version": 0,
+    "active": true,
+    "_cls": "DataScienceBaseModel.RecommendationModel.ContentRecommender",
+    "_id": {
+      "$oid": "5b14ecfaa5a05a000c404496"
+    },
+    "created": {
+      "$date": 1528098042493
+    },
+    "features": [
+      "tags"
+    ],
+    "company": {
+      "$oid": "5ad0953c9a5d09000629d6c0"
+    },
+    "deleted": false,
+    "modified": {
+      "$date": 1528098042502
+    },
+    "training_status": "CREATED",
+    "model_evaluations": [],
+    "destination": "product",
+    "source": "user"
+  }
+]
