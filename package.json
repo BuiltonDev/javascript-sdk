@@ -1,6 +1,6 @@
 {
   "name": "@kvass.ai/core-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "KVASS JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
