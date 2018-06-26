@@ -1,31 +1,17 @@
-/* eslint class-methods-use-this:
-["error",{ "exceptMethods": ["refresh", "update", "del"] }] */
-
 const Components = require('./components');
-const Error = require('../utils/error');
+const {
+  create,
+  get,
+  getAll,
+} = require('../utils/restFunctions');
 
 class AIModel extends Components {
   constructor(props) {
     super(props);
     this.apiPath = 'ai/models';
-  }
-
-  // Override
-  // eslint-disable-next-line no-unused-vars
-  refresh({ body, urlParams }, done) {
-    throw new Error.NotImplemented();
-  }
-
-  // Override
-  // eslint-disable-next-line no-unused-vars
-  update({ body, urlParams }, done) {
-    throw new Error.NotImplemented();
-  }
-
-  // Override
-  // eslint-disable-next-line no-unused-vars
-  del({ body, urlParams }, done) {
-    throw new Error.NotImplemented();
+    this.create = create.bind(this);
+    this.get = get.bind(this);
+    this.getAll = getAll.bind(this);
   }
 
   train({ urlParam, json = false }, done) {

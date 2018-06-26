@@ -8,10 +8,10 @@ const {
   update,
 } = require('../utils/restFunctions');
 
-class Resource extends Components {
+class Subscription extends Components {
   constructor(props) {
     super(props);
-    this.apiPath = 'resources';
+    this.apiPath = 'subscriptions';
     this.create = create.bind(this);
     this.del = del.bind(this);
     this.get = get.bind(this);
@@ -20,11 +20,17 @@ class Resource extends Components {
     this.update = update.bind(this);
   }
 
-  createBulk({ body, urlParams, json }, done) {
+  start({ body, urlParams, json = false }, done) {
     return this.simpleQuery({
-      type: 'post', resource: 'bulk', urlParams: Object.assign({}, urlParams), body, json,
+      type: 'post', id: this.id, resource: 'start', body, urlParams, json,
+    }, done);
+  }
+
+  stop({ body, urlParams, json = false }, done) {
+    return this.simpleQuery({
+      type: 'post', id: this.id, resource: 'stop', body, urlParams, json,
     }, done);
   }
 }
 
-module.exports = Resource;
+module.exports = Subscription;

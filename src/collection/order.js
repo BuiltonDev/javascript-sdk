@@ -1,10 +1,24 @@
 const Components = require('./components');
 const Error = require('../utils/error');
+const {
+  create,
+  del,
+  get,
+  getAll,
+  refresh,
+  update,
+} = require('../utils/restFunctions');
 
 class Order extends Components {
   constructor(props) {
     super(props);
     this.apiPath = 'orders';
+    this.create = create.bind(this);
+    this.del = del.bind(this);
+    this.get = get.bind(this);
+    this.getAll = getAll.bind(this);
+    this.refresh = refresh.bind(this);
+    this.update = update.bind(this);
   }
 
   getDeliveries({ urlParams }, done) {

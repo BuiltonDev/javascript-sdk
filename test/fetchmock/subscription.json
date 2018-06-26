@@ -1,0 +1,23 @@
+{
+  "plan": {"$oid": "5931697ed57ba271c0c7de66"},
+  "payment_method": {"$oid": "<payment-method-id>"},
+  "user": {"$oid": "57ee9c72d76d431f85111432"},
+  "prorate_amount": -428.57,
+  "name": "LICENSE",
+  "note": "A note regarding the subscription",
+  "payments": [],
+  "status": "NON_RENEWING",
+  "active": true,
+  "updated": {"$date": 1499773617984},
+  "_cls": "SubscriptionMethod.LicenseSubscription",
+  "infinite": false,
+  "starting_date": {"$date": 1499854560000},
+  "ending_date": {"$date": 1499860512000},
+  "created": {"$date": 1499767018360},
+  "current_billing_date_period_end": {"$date": 1502532960000},
+  "current_billing_date_period_start": {"$date": 1499854560000},
+  "company": {"$oid": "57ee9c71d76d431f8511142f"},
+  "deleted": false,
+  "method": "license",
+  "_id": {"$oid": "5964a0ead57ba2036750a3b4"}
+}

@@ -90,7 +90,7 @@ describe('AI related tests', () => {
       url = `${endpoint}ai/models/invoke`;
       mock.post(url, () => ({ body: recommendationsFile, ok: true }));
       sa.aiModel().getRecommendations({
-        size: 4, model_type: 'content_recommender', source: 'product', destination: 'product', source_id: '5aec176d1f7cdc0008848f87'
+        size: 4, model_type: 'content_recommender', source: 'product', destination: 'product', source_id: '5aec176d1f7cdc0008848f87',
       }, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));

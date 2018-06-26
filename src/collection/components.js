@@ -19,10 +19,10 @@ class Components {
       }
     }
 
-    const parseJson = (res, ResConstructor, rawJson, done) => {
+    const parseJson = (res, ResConstructor, rawJson) => {
       const json = res.body;
       if (rawJson || ResConstructor === null) {
-        return done(null, json, res);
+        return { obj: json, res };
       } else if (Array.isArray(json)) {
         const objArray = [];
         json.forEach((element) => {
@@ -32,20 +32,19 @@ class Components {
             objArray.push(new this.constructor(element));
           }
         });
-        return done(null, objArray, res);
+        return { obj: objArray, res };
       } else if (typeof json === 'object') {
         if (ResConstructor) {
-          return done(null, new ResConstructor(json), res);
+          return { obj: new ResConstructor(json), res };
         }
 
         if (!this.id && json._id && json._id.$oid) {
           this.id = json._id.$oid;
         }
 
-        return done(null, Object.assign(this, json), res);
+        return { obj: Object.assign(this, json), res };
       }
-
-      return done(null, json, res);
+      return { obj: json, res };
     };
 
     this.simpleQuery = ({
@@ -63,56 +62,52 @@ class Components {
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const apiPathLocal = apiPath || this.apiPath;
       const rawJson = json;
-      request().query({
-        type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body,
-      }, (err, res) => {
-        if (err || !res.ok) {
-          return done(err, null, res);
-        }
+      const doQuery = (resolve = undefined, reject = undefined, isPromise = false) => {
+        request().query({
+          type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body,
+        }, (err, res) => {
+          if (err || !res.ok) {
+            if (isPromise) {
+              return reject(err, res);
+            }
+            return done(err, null, res);
+          }
 
-        return parseJson(res, ResConstructor, rawJson, done);
-      });
+          const result = parseJson(res, ResConstructor, rawJson);
+          if (isPromise) {
+            return resolve(result.obj, result.res);
+          }
+          return done(null, result.obj, result.res);
+        });
+      };
+      if (!done) {
+        return new Promise(((resolve, reject) => doQuery(resolve, reject, true)));
+      }
+      doQuery();
     };
 
-    this.buildQuery = (args, done) => (request().query(args, (err, res) => {
-      if (err || !res.ok) {
-        return done(err, null, res);
+    this.buildQuery = (args, done) => {
+      const doQuery = (resolve = undefined, reject = undefined, isPromise = false) => {
+        (request().query(args, (err, res) => {
+          if (err || !res.ok) {
+            if (isPromise) {
+              return reject(err, res);
+            }
+            return done(err, null, res);
+          }
+
+          const result = parseJson(res, args.ResConstructor, args.json, done);
+          if (isPromise) {
+            return resolve(result.obj, result.res);
+          }
+          return done(null, result.obj, result.res);
+        }));
+      };
+      if (!done) {
+        return new Promise(((resolve, reject) => doQuery(resolve, reject, true)));
       }
-
-      return parseJson(res, args.ResConstructor, args.json, done);
-    }));
-  }
-
-  getAll({ urlParams, json = false }, done) {
-    return this.simpleQuery({ type: 'get', urlParams, json }, done);
-  }
-
-  get({ urlParams, json = false }, done) {
-    return this.simpleQuery({
-      type: 'get', id: this.id, urlParams, json,
-    }, done);
-  }
-
-  refresh({ urlParams, json = false }, done) {
-    return this.get({ urlParams, json }, done);
-  }
-
-  update({ body, urlParams, json = false }, done) {
-    return this.simpleQuery({
-      type: 'put', id: this.id, urlParams, body, json,
-    }, done);
-  }
-
-  del({ urlParams, json = false }, done) {
-    return this.simpleQuery({
-      type: 'del', id: this.id, urlParams, json,
-    }, done);
-  }
-
-  create({ body, urlParams, json = false }, done) {
-    return this.simpleQuery({
-      type: 'post', urlParams, body, json,
-    }, done);
+      doQuery();
+    };
   }
 }
 

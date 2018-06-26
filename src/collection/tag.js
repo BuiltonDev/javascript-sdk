@@ -1,11 +1,25 @@
 const Components = require('./components');
 const Product = require('./product');
 const Provider = require('./provider');
+const {
+  create,
+  del,
+  get,
+  getAll,
+  refresh,
+  update,
+} = require('../utils/restFunctions');
 
 class Tag extends Components {
   constructor(props) {
     super(props);
     this.apiPath = 'tags';
+    this.create = create.bind(this);
+    this.del = del.bind(this);
+    this.get = get.bind(this);
+    this.getAll = getAll.bind(this);
+    this.refresh = refresh.bind(this);
+    this.update = update.bind(this);
   }
 
   search({ query, urlParams, json = false }, done) {
