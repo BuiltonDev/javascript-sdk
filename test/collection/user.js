@@ -24,6 +24,17 @@ describe('User related tests', () => {
       done();
     });
   });
+  it('Should return a list of Users with a promise', (done) => {
+    url = `${endpoint}users`;
+    mock.get(url, () => ({ body: usersFile, ok: true }));
+    sa.user().getAll({}).then((users) => {
+      assert.ok(Array.isArray(users));
+      assert.ok(users[1].constructor.name === 'User');
+      done();
+    }, (err) => {
+      throw err;
+    });
+  });
   it('Should return a user', (done) => {
     url = `${endpoint}users/:userId:`;
     mock.get(url, () => ({ body: userFile, ok: true }));
@@ -32,6 +43,15 @@ describe('User related tests', () => {
       assert.ok(user.constructor.name === 'User');
       done();
     });
+  });
+  it('Should return a user with a promise', (done) => {
+    url = `${endpoint}users/:userId:`;
+    mock.get(url, () => ({ body: userFile, ok: true }));
+    sa.user(':userId:').get({}).then((user) => {
+      assert.ok((user.first_name === userFile.first_name));
+      assert.ok(user.constructor.name === 'User');
+      done();
+    }).catch(console.log);
   });
   let user;
   it('Should return me', (done) => {
