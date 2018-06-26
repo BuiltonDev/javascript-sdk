@@ -77,7 +77,7 @@ describe('AI related tests', () => {
     it('Should return recommendation for a given source based on a specific model', (done) => {
       url = `${endpoint}ai/models/:modelId/invoke`;
       mock.post(url, () => ({ body: recommendationsFile, ok: true }));
-      sa.aiModel(':modelId:').getRecommendations({ source: '5aec176d1f7cdc0008848f87', size: 4 }, (err, recommendations) => {
+      sa.aiModel(':modelId:').getRecommendations({ source_id: '5aec176d1f7cdc0008848f87', size: 4 }, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));
         done();
@@ -90,7 +90,7 @@ describe('AI related tests', () => {
       url = `${endpoint}ai/models/invoke`;
       mock.post(url, () => ({ body: recommendationsFile, ok: true }));
       sa.aiModel().getRecommendations({
-        size: 4, model_type: 'content_recommender', source: 'product', destination: 'product',
+        size: 4, model_type: 'content_recommender', source: 'product', destination: 'product', source_id: '5aec176d1f7cdc0008848f87'
       }, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));
