@@ -7,6 +7,7 @@ const Event = require('./collection/event');
 const Order = require('./collection/order');
 const Payment = require('./collection/payment');
 const PaymentMethod = require('./collection/paymentMethod');
+const Plan = require('./collection/plan');
 const Product = require('./collection/product');
 const Provider = require('./collection/provider');
 const Resource = require('./collection/resource');
@@ -41,6 +42,7 @@ class Kvass {
     this.order = props => new Order(props);
     this.payment = props => new Payment(props);
     this.paymentMethod = props => new PaymentMethod(props);
+    this.plans = props => new Plan(props);
     this.product = props => new Product(props);
     this.provider = props => new Provider(props);
     this.resource = props => new Resource(props);
