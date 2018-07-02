@@ -1,0 +1,48 @@
+[
+  {
+    "created": {
+      "$date": 1496412265911
+    },
+    "interval_unit": "WEEK",
+    "currency": "NOK",
+    "name": "Golden Plan",
+    "updated": {
+      "$date": 1496412265911
+    },
+    "static": false,
+    "billing_interval": "MONTH",
+    "_id": {
+      "$oid": "59317069d57ba2781c739479"
+    },
+    "discount": 0.0,
+    "total_amount": 500.0,
+    "company": {
+      "$oid": "57ee9c71d76d431f8511142f"
+    },
+    "deleted": false,
+    "items": [{
+      "discount": 0.0,
+      "quantity": 1,
+      "product": {
+        "$oid": "59317069d57ba2781c739477"
+      }
+    },
+      {
+        "discount": 0.0,
+        "quantity": 2,
+        "product": {
+          "$oid": "59317069d57ba2781c739478"
+        }
+      }
+    ],
+    "status": "CREATED",
+    "prorate": false
+  },
+  {
+    "created": {
+      "$date": 1496412265930
+    },
+    "interval_unit": "WEEK",
+    "...": "..."
+  }
+]
