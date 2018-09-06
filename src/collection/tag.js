@@ -8,24 +8,13 @@ const {
   getAll,
   refresh,
   update,
+  search,
 } = require('../utils/restFunctions');
 
 class Tag extends Components {
   constructor(props) {
-    super(props);
+    super(props, [create, del, get, getAll, refresh, update, search]);
     this.apiPath = 'tags';
-    this.create = create.bind(this);
-    this.del = del.bind(this);
-    this.get = get.bind(this);
-    this.getAll = getAll.bind(this);
-    this.refresh = refresh.bind(this);
-    this.update = update.bind(this);
-  }
-
-  search({ query, urlParams, json = false }, done) {
-    return this.simpleQuery({
-      type: 'get', resource: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
-    }, done);
   }
 
   getProducts({ urlParams, json = false }, done) {

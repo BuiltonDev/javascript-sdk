@@ -3,15 +3,13 @@ const {
   create,
   get,
   getAll,
+  search,
 } = require('../utils/restFunctions');
 
 class AIModel extends Components {
   constructor(props) {
-    super(props);
+    super(props, [create, get, getAll, search]);
     this.apiPath = 'ai/models';
-    this.create = create.bind(this);
-    this.get = get.bind(this);
-    this.getAll = getAll.bind(this);
   }
 
   train({ urlParam, json = false }, done) {

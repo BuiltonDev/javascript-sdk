@@ -3,7 +3,7 @@ const Error = require('../utils/error');
 
 // Abstract class
 class Components {
-  constructor(props) {
+  constructor(props, restFnArray) {
     if (this.constructor === Components) {
       throw new Error.AbstractClass();
     }
@@ -108,6 +108,10 @@ class Components {
       }
       doQuery();
     };
+
+    restFnArray.forEach((restFn) => {
+      this[restFn.name] = restFn;
+    });
   }
 }
 

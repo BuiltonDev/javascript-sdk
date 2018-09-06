@@ -6,10 +6,8 @@ const {
 
 class Company extends Components {
   constructor(props) {
-    super(props);
+    super(props, [getAll, refresh]);
     this.apiPath = 'companies';
-    this.getAll = getAll.bind(this);
-    this.refresh = refresh.bind(this);
   }
 
   getProperties({ urlParams }, done) {
