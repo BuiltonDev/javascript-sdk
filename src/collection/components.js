@@ -23,7 +23,7 @@ class Components {
       const json = res.body;
       if (rawJson || ResConstructor === null) {
         return { obj: json, res };
-      } else if (Array.isArray(json)) {
+      } if (Array.isArray(json)) {
         const objArray = [];
         json.forEach((element) => {
           if (ResConstructor) {
@@ -33,7 +33,7 @@ class Components {
           }
         });
         return { obj: objArray, res };
-      } else if (typeof json === 'object') {
+      } if (typeof json === 'object') {
         if (ResConstructor) {
           return { obj: new ResConstructor(json), res };
         }
