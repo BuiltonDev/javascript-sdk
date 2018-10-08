@@ -36,7 +36,7 @@ module.exports = {
   },
 
   create({ body, urlParams, json = false }, done) {
-    this.simpleQuery({
+    return this.simpleQuery({
       type: 'post',
       urlParams,
       body,
