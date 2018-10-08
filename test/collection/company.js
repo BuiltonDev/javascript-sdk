@@ -1,7 +1,7 @@
 /* global it, describe, require, console */
 global.test = true;
-const Kvass = require('../../src/main.js');
 const assert = require('assert');
+const Kvass = require('../../src/main.js');
 const request = require('../../src/utils/superagent');
 const mock = require('superagent-mocker')(request);
 
