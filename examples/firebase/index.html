@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KVASS SDK & Auth0 example</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+<div id="firebaseui-auth-container"></div>
+
+<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-auth.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+<script src="./config.js"></script>
+<script>
+
+  if (typeof config === 'undefined') {
+    alert('It seems you haven\'t set up the configuration file yet :(');
+  }
+
+  // Initialize Firebase
+  firebase.initializeApp(config.firebase);
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  var uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function(authResult) {
+        const phoneNumber = authResult.user.phoneNumber;
+        authResult.user.getIdToken().then((idToken) => {
+          var kvass = new Kvass({
+            apiKey: config.apiKey,
+            bearerToken: idToken,
+            endpoint: config.endpoint,
+          });
+          const body = {
+            first_name: 'demo',
+            last_name: 'demo',
+          };
+          kvass.user().login({ body }).then((user) => {
+            user.update({ body: { mobile_phone_number: phoneNumber } }).then(console.log).catch(console.warn);
+          }).catch(console.warn);
+        });
+        // User successfully signed in.
+        // Return type determines whether we continue the redirect automatically
+        // or whether we leave that to developer to handle.
+        return false;
+      },
+    },
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+      firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    ],
+  };
+
+  ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+
+</body>
+</html>
