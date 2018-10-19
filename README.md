@@ -35,15 +35,15 @@ npm install @kvass.ai/core-sdk
 
 `new Kvass({ apiKey, bearerToken, endpoint })`
 
-Initialises a new instance of `Kvass` configured with your application `apiKey`, the `bearerToken` token from Auth0 (optional) and the endpoint of your choice (generally `https://qa.kvass.ai/` for our QA environment or `https://api.kvass.ai/` for our production one).
+Initialises a new instance of `Kvass` configured with your application `apiKey`, a `bearerToken` token from an authentication provider (optional) and the endpoint of your choice (generally `https://qa.kvass.ai/` for our QA environment or `https://api.kvass.ai/` for our production one).
 
 - **apiKey {String}**: Your attributed KVASS API Key.
-- **bearerToken {String}** - *(optional)*: Your JSON Web Token (JWT), generally from Auth0.
+- **bearerToken {String}** - *(optional)*: Your JSON Web Token (JWT), from your authentication provider.
 - **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.kvass.ai/` or `https://qa.kvass.ai/`).
 
 *Note: Accessing the API without a bearerToken will limit the number of endpoints and information you can access.*
 
-### Example (using the [Auth0's Lock library](https://github.com/auth0/lock))
+### Example (using [Auth0's Lock library](https://github.com/auth0/lock) as an authentication provider)
 
 ```js
 var clientId = "YOUR_AUTH0_APP_CLIENTID";
@@ -88,6 +88,66 @@ lock.on("authenticated", function(authResult) {
 });
 ```
 
+### Example (using [Firebase Authentication's pre-built UI](https://firebase.google.com/docs/auth/web/firebaseui) as an authentication provider)
+
+```html
+[...]
+<div id="firebaseui-auth-container"></div>
+<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-auth.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+[...]
+```
+
+```js
+firebase.initializeApp({
+	apiKey: "YOUR_FIREBASE_API_KEY",
+	authDomain: "YOUR_FIREBASE_DOMAIN",
+});
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+var uiConfig = {
+callbacks: {
+  signInSuccessWithAuthResult: function(authResult) {
+	const phoneNumber = authResult.user.phoneNumber;
+	authResult.user.getIdToken().then((idToken) => {
+	  var kvass = new Kvass({
+		apiKey: config.apiKey,
+		bearerToken: idToken,
+		endpoint: config.endpoint,
+	  });
+	  const body = {
+		first_name: 'demo',
+		last_name: 'demo',
+	  };
+	  kvass.user().login({ body }).then((user) => {
+		// Update DOM
+	  }).catch(console.warn);
+	});
+	// User successfully signed in.
+	// Return type determines whether we continue the redirect automatically
+	// or whether we leave that to developer to handle.
+	return false;
+  },
+},
+signInOptions: [
+  // Leave the lines as is for the providers you want to offer your users.
+  firebase.auth.PhoneAuthProvider.PROVIDER_ID
+],
+};
+
+var lock = new Auth0Lock(clientId, domain, {
+  auth: {
+    responseType: 'token id_token',
+    params: {scope: 'openid app_metadata user_metadata'}
+  },
+  allowedConnections: ['facebook'],
+  container: 'auth0Root'
+});
+```
+
 
 ## Initialisation of a class
 
@@ -119,6 +179,19 @@ kvass.product().getAll({}, function(err, products, raw) {
 
   console.log(products); // [Object Product]
   // Update DOM
+});
+```
+
+You can also use a promise to get the object back:
+
+```js
+// Example: Construct a product without any parameter, call an accessible function, and use a Promise.
+kvass.product().getAll({}).then((products) => {
+  console.log(products); // [Object Product]
+  // Update DOM
+}).catch((err) => {
+  // Handle error
+  return;
 });
 ```
 
