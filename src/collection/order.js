@@ -11,8 +11,8 @@ const {
 } = require('../utils/restFunctions');
 
 class Order extends Components {
-  constructor(props) {
-    super(props, [create, del, get, getAll, refresh, update, search]);
+  constructor(request, props) {
+    super(request, props, [create, del, get, getAll, refresh, update, search]);
     this.apiPath = 'orders';
   }
 

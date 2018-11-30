@@ -9,8 +9,8 @@ const {
 } = require('../utils/restFunctions');
 
 class Webhook extends Components {
-  constructor(props) {
-    super(props, [create, del, get, getAll, refresh, update]);
+  constructor(request, props) {
+    super(request, props, [create, del, get, getAll, refresh, update]);
     this.apiPath = 'webhooks';
   }
 }

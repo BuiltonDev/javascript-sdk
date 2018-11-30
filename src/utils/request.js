@@ -1,7 +1,5 @@
 const request = require('./superagent');
 
-let r;
-
 class Request {
   constructor(endpoint, headers) {
     this.headers = headers;
@@ -30,11 +28,4 @@ class Request {
   }
 }
 
-// Singleton
-module.exports = (endpoint, headers) => {
-  if (!r) {
-    r = new Request(endpoint, headers);
-  }
-
-  return r;
-};
+module.exports = Request;

@@ -2,8 +2,8 @@ const User = require('./user');
 const Error = require('../utils/error');
 
 class Provider extends User {
-  constructor(props) {
-    super(props);
+  constructor(request, props) {
+    super(request, props);
     this.apiPath = 'providers';
   }
 

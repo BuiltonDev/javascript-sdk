@@ -1,4 +1,4 @@
-const request = require('./utils/request');
+const Request = require('./utils/request');
 const Error = require('./utils/error');
 
 const AIModel = require('./collection/aiModel');
@@ -19,8 +19,8 @@ const Webhook = require('./collection/webhook');
 let instance;
 
 class Kvass {
-  constructor({ apiKey, bearerToken, endpoint } = {}) {
-    if (instance) {
+  constructor({ apiKey, bearerToken, endpoint, singleton = false } = {}) {
+    if (singleton && instance) {
       return instance;
     }
     if (!endpoint) {
@@ -34,29 +34,31 @@ class Kvass {
     this.apiKey = apiKey;
     this.bearerToken = bearerToken;
 
-    request(this.endpoint, this._constructHeaders());
+    this.request = new Request(this.endpoint, this._constructHeaders());
 
-    this.aiModel = props => new AIModel(props);
-    this.company = props => new Company(props);
-    this.event = props => new Event(props);
-    this.order = props => new Order(props);
-    this.payment = props => new Payment(props);
-    this.paymentMethod = props => new PaymentMethod(props);
-    this.plans = props => new Plan(props);
-    this.product = props => new Product(props);
-    this.provider = props => new Provider(props);
-    this.resource = props => new Resource(props);
-    this.subscription = props => new Subscription(props);
-    this.tag = props => new Tag(props);
-    this.user = props => new User(props);
-    this.webhook = props => new Webhook(props);
+    this.aiModel = props => new AIModel(this.request, props);
+    this.company = props => new Company(this.request, props);
+    this.event = props => new Event(this.request, props);
+    this.order = props => new Order(this.request, props);
+    this.payment = props => new Payment(this.request, props);
+    this.paymentMethod = props => new PaymentMethod(this.request, props);
+    this.plans = props => new Plan(this.request, props);
+    this.product = props => new Product(this.request, props);
+    this.provider = props => new Provider(this.request, props);
+    this.resource = props => new Resource(this.request, props);
+    this.subscription = props => new Subscription(this.request, props);
+    this.tag = props => new Tag(this.request, props);
+    this.user = props => new User(this.request, props);
+    this.webhook = props => new Webhook(this.request, props);
 
-    instance = this;
+    if (singleton) {
+      instance = this;
+    }
   }
 
   refreshBearerToken(newBearerToken) {
     this.bearerToken = newBearerToken;
-    request().updateHeaders(this._constructHeaders());
+    this.request.updateHeaders(this._constructHeaders());
   }
 
   _constructHeaders() {

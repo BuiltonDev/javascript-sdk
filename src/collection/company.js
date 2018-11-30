@@ -5,8 +5,8 @@ const {
 } = require('../utils/restFunctions');
 
 class Company extends Components {
-  constructor(props) {
-    super(props, [getAll, refresh]);
+  constructor(request, props) {
+    super(request, props, [getAll, refresh]);
     this.apiPath = 'companies';
   }
 

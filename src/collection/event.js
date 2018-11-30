@@ -7,8 +7,8 @@ const {
 } = require('../utils/restFunctions');
 
 class Event extends Components {
-  constructor(props) {
-    super(props, [get, getAll, refresh, search]);
+  constructor(request, props) {
+    super(request, props, [get, getAll, refresh, search]);
     this.apiPath = 'events';
   }
 }

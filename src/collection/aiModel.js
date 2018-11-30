@@ -7,8 +7,8 @@ const {
 } = require('../utils/restFunctions');
 
 class AIModel extends Components {
-  constructor(props) {
-    super(props, [create, get, getAll, search]);
+  constructor(request, props) {
+    super(request, props, [create, get, getAll, search]);
     this.apiPath = 'ai/models';
   }
 

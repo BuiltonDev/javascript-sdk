@@ -11,8 +11,8 @@ const {
 } = require('../utils/restFunctions');
 
 class User extends Components {
-  constructor(props) {
-    super(props, [del, get, getAll, refresh, update, search]);
+  constructor(request, props) {
+    super(request, props, [del, get, getAll, refresh, update, search]);
     this.apiPath = 'users';
     if (!this.id) {
       this.id = 'me';

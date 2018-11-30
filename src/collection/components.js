@@ -1,9 +1,8 @@
-const request = require('../utils/request');
 const Error = require('../utils/error');
 
 // Abstract class
 class Components {
-  constructor(props, restFnArray) {
+  constructor(request, props, restFnArray) {
     if (this.constructor === Components) {
       throw new Error.AbstractClass();
     }
@@ -28,16 +27,16 @@ class Components {
         const objArray = [];
         json.forEach((element) => {
           if (ResConstructor) {
-            objArray.push(new ResConstructor(element));
+            objArray.push(new ResConstructor(request, element));
           } else {
-            objArray.push(new this.constructor(element));
+            objArray.push(new this.constructor(request, element));
           }
         });
         return { obj: objArray, res };
       }
       if (typeof json === 'object') {
         if (ResConstructor) {
-          return { obj: new ResConstructor(json), res };
+          return { obj: new ResConstructor(request, json), res };
         }
 
         if (!this.id && json._id && json._id.$oid) {
@@ -65,7 +64,7 @@ class Components {
       const apiPathLocal = apiPath || this.apiPath;
       const rawJson = json;
       const doQuery = (resolve = undefined, reject = undefined, isPromise = false) => {
-        request().query({
+        request.query({
           type, resource: `${apiPathLocal}${idLocal}${resourceLocal}`, urlParams, body,
         }, (err, res) => {
           if (err || !res.ok) {
@@ -74,7 +73,6 @@ class Components {
             }
             return done(err, null, res);
           }
-
           const result = parseJson(res, ResConstructor, rawJson);
           if (isPromise) {
             return resolve(result.obj, result.res);
@@ -90,7 +88,7 @@ class Components {
 
     this.buildQuery = (args, done) => {
       const doQuery = (resolve = undefined, reject = undefined, isPromise = false) => {
-        (request().query(args, (err, res) => {
+        (request.query(args, (err, res) => {
           if (err || !res.ok) {
             if (isPromise) {
               return reject(err, res);
