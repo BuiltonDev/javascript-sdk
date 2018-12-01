@@ -19,7 +19,12 @@ const Webhook = require('./collection/webhook');
 let instance;
 
 class Kvass {
-  constructor({ apiKey, bearerToken, endpoint, singleton = false } = {}) {
+  constructor({
+    apiKey,
+    bearerToken,
+    endpoint,
+    singleton = false,
+  } = {}) {
     if (singleton && instance) {
       return instance;
     }
