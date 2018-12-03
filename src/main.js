@@ -47,7 +47,7 @@ class Kvass {
     this.order = props => new Order(this.request, props);
     this.payment = props => new Payment(this.request, props);
     this.paymentMethod = props => new PaymentMethod(this.request, props);
-    this.plans = props => new Plan(this.request, props);
+    this.plan = props => new Plan(this.request, props);
     this.product = props => new Product(this.request, props);
     this.provider = props => new Provider(this.request, props);
     this.resource = props => new Resource(this.request, props);
