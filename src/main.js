@@ -68,7 +68,7 @@ class Kvass {
 
   _constructHeaders() {
     const headers = {
-      'X-Share-API-Key': this.apiKey,
+      'X-Kvass-API-Key': this.apiKey,
     };
     if (this.bearerToken) {
       headers.Authorization = `Bearer ${this.bearerToken}`;
