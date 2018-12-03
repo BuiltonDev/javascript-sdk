@@ -15,9 +15,9 @@ class Resource extends Components {
     this.apiPath = 'resources';
   }
 
-  createBulk({ body, urlParams, json }, done) {
+  createBulk({ body, urlParams, json = false }, done) {
     return this.simpleQuery({
-      type: 'post', resource: 'bulk', urlParams: Object.assign({}, urlParams), body, json,
+      type: 'post', resource: 'bulk', urlParams, body, json,
     }, done);
   }
 }
