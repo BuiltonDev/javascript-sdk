@@ -19,7 +19,7 @@ class Request {
   }
 
   query({
-    type = 'get', resource = '', urlParams = {}, body = null, headers = {}, endpoint = this.endpoint,
+    type = 'get', resource = '', urlParams = {}, body = undefined, headers = {}, endpoint = this.endpoint,
   }, done) {
     request[type](`${endpoint}${resource}${Request.serialize(urlParams)}`)
       .set(Object.assign({}, this.headers, headers, { 'Content-Type': 'application/json' }))
