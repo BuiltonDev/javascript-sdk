@@ -113,7 +113,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
 callbacks: {
   signInSuccessWithAuthResult: function(authResult) {
-	const phoneNumber = authResult.user.phoneNumber;
+	var phoneNumber = authResult.user.phoneNumber;
 	authResult.user.getIdToken().then((idToken) => {
 	  var builton = new Builton({
 		apiKey: config.apiKey,
@@ -139,15 +139,6 @@ signInOptions: [
   firebase.auth.PhoneAuthProvider.PROVIDER_ID
 ],
 };
-
-var lock = new Auth0Lock(clientId, domain, {
-  auth: {
-    responseType: 'token id_token',
-    params: {scope: 'openid app_metadata user_metadata'}
-  },
-  allowedConnections: ['facebook'],
-  container: 'auth0Root'
-});
 ```
 
 
