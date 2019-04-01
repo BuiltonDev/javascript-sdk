@@ -9,12 +9,14 @@
 
 [Builton](https://www.builton.dev) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities. This SDK gives you access to our platform's building blocks and will help you implement its API in a Javascript or browser environment.  Get instant access to modules like Payments, Messaging Tools, User Management and Authentication, Scheduling, Resource Allocation and more.
 
-![Builton logo](https://camo.githubusercontent.com/d84204b3ae301823ade7366c4175f1a9d1602762/68747470733a2f2f63646e2e7261776769742e636f6d2f6c617a72656738372f31653937386164373962383338656537666530316462393864366563323437622f7261772f643162626363393731393235363263643437393762346634326334303863356261646362376537382f6b766173735f6c6f676f2e737667)
+![Builton logo](https://res.cloudinary.com/dftspnwxo/image/upload/v1554131594/Builton_logo_positiv_wc3j7x.svg)
+
+
 
 ## Requirement
 
-- A Builton API Key ([request one](mailto:hello@builton.dev)).
-- An [Auth0](https://auth0.com/) account.
+- A Builton API Key ([get one](https://dashboard.builton.dev)).
+- An [Auth0](https://auth0.com/), [Firebase](https://firebase.google.com/docs/auth/) or [Cognito](https://aws.amazon.com/cognito/) account.
 
 ## Install
 
