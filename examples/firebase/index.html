@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>KVASS SDK & Firebase example</title>
+    <title>Builton SDK & Firebase example</title>
     <style type="text/css">
 
     </style>
@@ -11,7 +11,7 @@
 
 <div id="firebaseui-auth-container"></div>
 
-<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@builton/core-sdk@latest/dist/main.bundle.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-auth.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
@@ -31,7 +31,7 @@
       signInSuccessWithAuthResult: function(authResult) {
         const phoneNumber = authResult.user.phoneNumber;
         authResult.user.getIdToken().then((idToken) => {
-          var kvass = new Kvass({
+          var builton = new Builton({
             apiKey: config.apiKey,
             bearerToken: idToken,
             endpoint: config.endpoint,
@@ -40,7 +40,7 @@
             first_name: 'demo',
             last_name: 'demo',
           };
-          kvass.user().login({ body }).then((user) => {
+          builton.user().login({ body }).then((user) => {
             user.update({ body: { mobile_phone_number: phoneNumber } }).then(console.log).catch(console.warn);
           }).catch(console.warn);
         });

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018 KVASS AI AS. <hello@kvass.ai> (https://www.kvass.ai)
+Copyright (c) 2018 Builton AS. <hello@builton.dev> (https://www.builton.dev)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

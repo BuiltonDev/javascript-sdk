@@ -18,7 +18,7 @@ const Webhook = require('./collection/webhook');
 
 let instance;
 
-class Kvass {
+class Builton {
   constructor({ apiKey, bearerToken, endpoint } = {}) {
     if (instance) {
       return instance;
@@ -61,7 +61,7 @@ class Kvass {
 
   _constructHeaders() {
     const headers = {
-      'X-Share-API-Key': this.apiKey,
+      'X-Builton-API-Key': this.apiKey,
     };
     if (this.bearerToken) {
       headers.Authorization = `Bearer ${this.bearerToken}`;
@@ -70,4 +70,4 @@ class Kvass {
   }
 }
 
-module.exports = Kvass;
+module.exports = Builton;
