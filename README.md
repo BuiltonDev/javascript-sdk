@@ -1,19 +1,19 @@
-[![Travis](https://img.shields.io/travis/kvassAI/javascript-sdk/master.svg?style=flat-square)](https://travis-ci.org/kvassAI/javascript-sdk.svg?branch=master)
-[![David](https://img.shields.io/david/kvassAI/javascript-sdk.svg?style=flat-square)](https://david-dm.org/kvassAI/javascript-sdk)
-[![Codacy](https://img.shields.io/codacy/grade/b40e787a54f944abbba4b9e2698c0085.svg?style=flat-square)](https://app.codacy.com/app/KvassAI/javascript-sdk)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/b40e787a54f944abbba4b9e2698c0085.svg?style=flat-square)](https://www.codacy.com/app/KvassAI/javascript-sdk)
-[![GitHub release](https://img.shields.io/github/release/kvassAI/javascript-sdk.svg?style=flat-square)](https://github.com/kvassAI/javascript-sdk/releases)
-[![license](https://img.shields.io/github/license/kvassAI/javascript-sdk.svg?style=flat-square)](LICENSE.md)
+[![Travis](https://img.shields.io/travis/BuiltonDev/javascript-sdk/master.svg?style=flat-square)](https://travis-ci.org/BuiltonDev/javascript-sdk.svg?branch=master)
+[![David](https://img.shields.io/david/BuiltonDev/javascript-sdk.svg?style=flat-square)](https://david-dm.org/BuiltonDev/javascript-sdk)
+[![Codacy](https://img.shields.io/codacy/grade/b40e787a54f944abbba4b9e2698c0085.svg?style=flat-square)](https://app.codacy.com/app/Builton/javascript-sdk)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/b40e787a54f944abbba4b9e2698c0085.svg?style=flat-square)](https://www.codacy.com/app/Builton/javascript-sdk)
+[![GitHub release](https://img.shields.io/github/release/builton/javascript-sdk.svg?style=flat-square)](https://github.com/BuiltonDev/javascript-sdk/releases)
+[![license](https://img.shields.io/github/license/BuiltonDev/javascript-sdk.svg?style=flat-square)](LICENSE.md)
 
-# KVASS SDK
+# Builton SDK
 
-[KVASS](https://www.kvass.ai) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities. This SDK gives you access to our platform's building blocks and will help you implement its API in a Javascript or browser environment.  Get instant access to modules like Payments, Messaging Tools, User Management and Authentication, Scheduling, Resource Allocation and more.
+[Builton](https://www.builton.dev) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities. This SDK gives you access to our platform's building blocks and will help you implement its API in a Javascript or browser environment.  Get instant access to modules like Payments, Messaging Tools, User Management and Authentication, Scheduling, Resource Allocation and more.
 
-![KVASS logo](https://camo.githubusercontent.com/d84204b3ae301823ade7366c4175f1a9d1602762/68747470733a2f2f63646e2e7261776769742e636f6d2f6c617a72656738372f31653937386164373962383338656537666530316462393864366563323437622f7261772f643162626363393731393235363263643437393762346634326334303863356261646362376537382f6b766173735f6c6f676f2e737667)
+![Builton logo](https://camo.githubusercontent.com/d84204b3ae301823ade7366c4175f1a9d1602762/68747470733a2f2f63646e2e7261776769742e636f6d2f6c617a72656738372f31653937386164373962383338656537666530316462393864366563323437622f7261772f643162626363393731393235363263643437393762346634326334303863356261646362376537382f6b766173735f6c6f676f2e737667)
 
 ## Requirement
 
-- A KVASS API Key ([request one](mailto:hello@kvass.ai)).
+- A Builton API Key ([request one](mailto:hello@builton.dev)).
 - An [Auth0](https://auth0.com/) account.
 
 ## Install
@@ -21,25 +21,25 @@
 From the [unpkg](https://unpkg.com/) CDN
 
 ```html
-<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@builton/core-sdk@latest/dist/main.bundle.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
-npm install @kvass.ai/core-sdk
+npm install @builton.dev/core-sdk
 ```
 
 
 ## Getting started
 
-`new Kvass({ apiKey, bearerToken, endpoint })`
+`new Builton({ apiKey, bearerToken, endpoint })`
 
-Initialises a new instance of `Kvass` configured with your application `apiKey`, a `bearerToken` token from an authentication provider (optional) and the endpoint of your choice (generally `https://qa.kvass.ai/` for our QA environment or `https://api.kvass.ai/` for our production one).
+Initialises a new instance of `Builton` configured with your application `apiKey`, a `bearerToken` token from an authentication provider (optional) and the endpoint of your choice (generally `https://qa.builton.dev/` for our QA environment or `https://api.builton.dev/` for our production one).
 
-- **apiKey {String}**: Your attributed KVASS API Key.
+- **apiKey {String}**: Your attributed Builton API Key.
 - **bearerToken {String}** - *(optional)*: Your JSON Web Token (JWT), from your authentication provider.
-- **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.kvass.ai/` or `https://qa.kvass.ai/`).
+- **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.builton.dev/` or `https://qa.builton.dev/`).
 
 *Note: Accessing the API without a bearerToken will limit the number of endpoints and information you can access.*
 
@@ -64,10 +64,10 @@ lock.on("authenticated", function(authResult) {
       return;
     }
 
-    var kvass = new Kvass({
-	apiKey: 'YOUR_KVASS_API_KEY',
+    var builton = new Builton({
+	apiKey: 'YOUR_Builton_API_KEY',
 	bearerToken: authResult.idToken,
-	endpoint: 'https://qa.kvass.ai/'
+	endpoint: 'https://qa.builton.dev/'
     });
 
     var loginBody = {
@@ -75,7 +75,7 @@ lock.on("authenticated", function(authResult) {
       last_name: profile.family_name,
     };
 
-    kvass.user().login({ body: loginBody }, function(err, user, raw) {
+    builton.user().login({ body: loginBody }, function(err, user, raw) {
       // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
 	  if (err) {
 		// Handle error
@@ -93,7 +93,7 @@ lock.on("authenticated", function(authResult) {
 ```html
 [...]
 <div id="firebaseui-auth-container"></div>
-<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@builton/core-sdk@latest/dist/main.bundle.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-auth.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
@@ -113,7 +113,7 @@ callbacks: {
   signInSuccessWithAuthResult: function(authResult) {
 	const phoneNumber = authResult.user.phoneNumber;
 	authResult.user.getIdToken().then((idToken) => {
-	  var kvass = new Kvass({
+	  var builton = new Builton({
 		apiKey: config.apiKey,
 		bearerToken: idToken,
 		endpoint: config.endpoint,
@@ -122,7 +122,7 @@ callbacks: {
 		first_name: 'demo',
 		last_name: 'demo',
 	  };
-	  kvass.user().login({ body }).then((user) => {
+	  builton.user().login({ body }).then((user) => {
 		// Update DOM
 	  }).catch(console.warn);
 	});
@@ -165,12 +165,12 @@ Create an empty product. It is useful if you want to `create`, or get all the pr
 
 ```js
 // Example: Construct a product without any parameter.
-var product = kvass.product();
+var product = builton.product();
 console.log(product.name); // undefined
 
 
 // Example: Construct a product without any parameter, and call an accessible function.
-kvass.product().getAll({}, function(err, products, raw) {
+builton.product().getAll({}, function(err, products, raw) {
   // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
   if (err) {
 	// Handle error
@@ -186,7 +186,7 @@ You can also use a promise to get the object back:
 
 ```js
 // Example: Construct a product without any parameter, call an accessible function, and use a Promise.
-kvass.product().getAll({}).then((products) => {
+builton.product().getAll({}).then((products) => {
   console.log(products); // [Object Product]
   // Update DOM
 }).catch((err) => {
@@ -206,12 +206,12 @@ This creates a partially empty product. It contains the ID of the product you wa
 
 ```js
 // Example: Construct a product with an ID.
-var product = kvass.product(productId);
+var product = builton.product(productId);
 console.log(product.name); // undefined
 
 
 // Example: Construct a product with an ID and refresh it.
-kvass.product(userId).get({}, function(err, product, raw) {
+builton.product(userId).get({}, function(err, product, raw) {
   // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
   if (err) {
 	// Handle error
@@ -235,11 +235,11 @@ You can create a full product from a JSON object. This will create an object wit
 ```js
 // Example: Construct a product with a JSON Object.
 
-var product = kvass.product(productJson);
+var product = builton.product(productJson);
 console.log(product.name); // Bedroom cleaning
 ```
 
-The methods and classes used here match those in the API. You can find more details about them in the [API documentation](http://reference.kvass.ai/).
+The methods and classes used here match those in the API. You can find more details about them in the [API documentation](http://reference.builton.dev/).
 
 
 ## Coverage of the SDK

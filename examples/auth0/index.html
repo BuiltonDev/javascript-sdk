@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>KVASS SDK & Auth0 example</title>
+    <title>Builton SDK & Auth0 example</title>
     <style type="text/css">
 
     </style>
@@ -12,7 +12,7 @@
 <div id="auth0Root"></div>
 <div id="profile"></div>
 
-<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@builton/core-sdk@latest/dist/main.bundle.js"></script>
 <script src="http://cdn.auth0.com/js/lock/11.0.1/lock.min.js"></script>
 <script src="./config.js"></script>
 <script>
@@ -32,7 +32,7 @@
 
   var loginAndOrder = function(idToken, profile, fn) {
 
-    var kvass = new Kvass({
+    var builton = new Builton({
       apiKey: config.apiKey,
       bearerToken: idToken,
       endpoint: config.endpoint,
@@ -43,7 +43,7 @@
       last_name: profile.family_name,
     };
 
-    kvass.user().login({ body: loginBody }, function(err, user) {
+    builton.user().login({ body: loginBody }, function(err, user) {
       if (err) {
         // Handle error
         return;
@@ -51,7 +51,7 @@
 
       document.getElementById('profile').innerHTML = 'Hello ' + user.first_name + ' ' + user.last_name;
 
-      kvass.product().search({query: 'test'}, function (err, products) {
+      builton.product().search({query: 'test'}, function (err, products) {
         if (err) {
           // Handle error
           return;
@@ -69,7 +69,7 @@
             geo: [59.909848, 10.7379474],
           }
         };
-        kvass.order().create({body: orderBody}, function (err, order) {
+        builton.order().create({body: orderBody}, function (err, order) {
           if (err) {
             // Handle error
             return;

@@ -1,7 +1,7 @@
 {
-  "name": "@kvass.ai/core-sdk",
+  "name": "@builton/core-sdk",
   "version": "1.2.1",
-  "description": "KVASS JavaScript SDK.",
+  "description": "Builton JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
     "codacy": "npm run coverage && cat coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
@@ -16,21 +16,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kvassAI/javascript-sdk.git"
+    "url": "git+https://github.com/BuiltonDev/javascript-sdk.git"
   },
-  "author": "KVASS AI <hello@kvass.ai> (https://www.kvass.ai/)",
+  "author": "Builton <hello@builton.dev> (https://builton.dev/)",
   "license": "MIT",
   "keywords": [
-    "KVASS",
+    "Builton",
     "AI",
     "SDK",
     "SAAS",
     "On-demand"
   ],
   "bugs": {
-    "url": "https://github.com/kvassAI/javascript-sdk/issues"
+    "url": "https://github.com/BuiltonDev/javascript-sdk/issues"
   },
-  "homepage": "https://github.com/kvassAI/javascript-sdk#readme",
+  "homepage": "https://github.com/BuiltonDev/javascript-sdk#readme",
   "devDependencies": {
     "@babel/cli": "7.1.2",
     "@babel/core": "7.1.2",

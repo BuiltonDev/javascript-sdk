@@ -1,7 +1,7 @@
 /* global it, describe, require, console */
 global.test = true;
 const assert = require('assert');
-const Kvass = require('../../src/main.js');
+const Builton = require('../../src/main.js');
 const request = require('../../src/utils/superagent');
 const mock = require('superagent-mocker')(request);
 
@@ -9,7 +9,7 @@ const companyFile = require('../fetchmock/company.json');
 const companyPropertiesFile = require('../fetchmock/companyProperties.json');
 
 const endpoint = 'https://example.com/';
-const sa = new Kvass({ apiKey: 'dummy', endpoint });
+const sa = new Builton({ apiKey: 'dummy', endpoint });
 let url;
 
 mock.timeout = 100;

@@ -18,7 +18,7 @@ const Webhook = require('./collection/webhook');
 
 let instance;
 
-class Kvass {
+class Builton {
   constructor({ apiKey, bearerToken, endpoint } = {}) {
     if (instance) {
       return instance;
@@ -70,4 +70,4 @@ class Kvass {
   }
 }
 
-module.exports = Kvass;
+module.exports = Builton;

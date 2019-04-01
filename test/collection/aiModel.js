@@ -1,6 +1,6 @@
 /* global it, describe, require, console */
 const assert = require('assert');
-const Kvass = require('../../src/main.js');
+const Builton = require('../../src/main.js');
 
 const request = require('../../src/utils/superagent');
 const mock = require('superagent-mocker')(request);
@@ -12,7 +12,7 @@ const modelsFile = require('../fetchmock/models.json');
 const recommendationsFile = require('../fetchmock/recommendations.json');
 
 const endpoint = 'https://example.com/';
-const sa = new Kvass({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
+const sa = new Builton({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
 let url;
 
 describe('AI related tests', () => {
