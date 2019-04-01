@@ -243,11 +243,6 @@ console.log(product.name); // Bedroom cleaning
 
 The methods and classes used here match those in the API. You can find more details about them in the [API documentation](http://reference.builton.dev/).
 
-
-## Coverage of the SDK
-
-The coverage of this SDK can be found in the [COVERAGE](COVERAGE.md) file.
-
 ## Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them to this repository's issues section.
