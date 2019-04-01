@@ -2,7 +2,7 @@
 const assert = require('assert');
 const Kvass = require('../../src/main.js');
 
-const request = require('../../src/utils/superagent');
+const request = require('superagent');
 const mock = require('superagent-mocker')(request);
 
 const endpoint = 'https://example.com/';

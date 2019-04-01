@@ -11,7 +11,8 @@
 
 <div id="firebaseui-auth-container"></div>
 
-<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>
+<!--<script src="https://unpkg.com/@kvass.ai/core-sdk@latest/dist/main.bundle.js"></script>-->
+<script src="../../dist/main.bundle.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-auth.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
@@ -22,6 +23,7 @@
   if (typeof config === 'undefined') {
     alert('It seems you haven\'t set up the configuration file yet :(');
   }
+  console.log(Kvass);
 
   // Initialize Firebase
   firebase.initializeApp(config.firebase);
@@ -29,18 +31,20 @@
   var uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: function(authResult) {
+        console.log(authResult);
         const phoneNumber = authResult.user.phoneNumber;
         authResult.user.getIdToken().then((idToken) => {
           var kvass = new Kvass({
             apiKey: config.apiKey,
             bearerToken: idToken,
             endpoint: config.endpoint,
+            refreshTokenFn: async () => {
+              return await authResult.user.getIdToken();
+            },
+            refreshTokenFn: authResult.user.getIdToken,
           });
-          const body = {
-            first_name: 'demo',
-            last_name: 'demo',
-          };
-          kvass.user().login({ body }).then((user) => {
+          console.log(kvass, kvass.users, kvass.users.authenticate, kvass.users.authenticate({ body: { first_name: 'Nicolas', last_name: 'Bonduel' } }));
+          kvass.users.authenticate({ body: { first_name: 'Nicolas', last_name: 'Bonduel' } }).then((user) => {
             user.update({ body: { mobile_phone_number: phoneNumber } }).then(console.log).catch(console.warn);
           }).catch(console.warn);
         });
