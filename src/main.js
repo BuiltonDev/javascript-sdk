@@ -61,7 +61,7 @@ class Builton {
 
   _constructHeaders() {
     const headers = {
-      'X-Share-API-Key': this.apiKey,
+      'X-Builton-API-Key': this.apiKey,
     };
     if (this.bearerToken) {
       headers.Authorization = `Bearer ${this.bearerToken}`;
