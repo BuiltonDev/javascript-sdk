@@ -35,13 +35,12 @@ npm install @builton.dev/core-sdk
 
 ## Getting started
 
-`new Builton({ apiKey, bearerToken, endpoint })`
+`new Builton({ apiKey, bearerToken })`
 
-Initialises a new instance of `Builton` configured with your application `apiKey`, a `bearerToken` token from an authentication provider (optional) and the endpoint of your choice (generally `https://qa.builton.dev/` for our QA environment or `https://api.builton.dev/` for our production one).
+Initialises a new instance of `Builton` configured with your application `apiKey` and a `bearerToken` token from an authentication provider (optional).
 
 - **apiKey {String}**: Your attributed Builton API Key.
 - **bearerToken {String}** - *(optional)*: Your JSON Web Token (JWT), from your authentication provider.
-- **endpoint {String}**: The endpoint for the environment of your choice (generally `https://api.builton.dev/` or `https://qa.builton.dev/`).
 
 *Note: Accessing the API without a bearerToken will limit the number of endpoints and information you can access.*
 
@@ -68,8 +67,7 @@ lock.on("authenticated", function(authResult) {
 
     var builton = new Builton({
 	apiKey: 'YOUR_Builton_API_KEY',
-	bearerToken: authResult.idToken,
-	endpoint: 'https://qa.builton.dev/'
+	bearerToken: authResult.idToken
     });
 
     var loginBody = {
@@ -118,7 +116,6 @@ callbacks: {
 	  var builton = new Builton({
 		apiKey: config.apiKey,
 		bearerToken: idToken,
-		endpoint: config.endpoint,
 	  });
 	  const body = {
 		first_name: 'demo',

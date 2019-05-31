@@ -19,7 +19,7 @@ const Webhook = require('./collection/webhook');
 let instance;
 
 class Builton {
-  constructor({ apiKey, bearerToken, endpoint } = {}) {
+  constructor({ apiKey, bearerToken, endpoint = 'https://api.builton.dev/' } = {}) {
     if (instance) {
       return instance;
     }

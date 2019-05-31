@@ -33,8 +33,7 @@
         authResult.user.getIdToken().then((idToken) => {
           var builton = new Builton({
             apiKey: config.apiKey,
-            bearerToken: idToken,
-            endpoint: config.endpoint,
+            bearerToken: idToken
           });
           const body = {
             first_name: 'demo',
