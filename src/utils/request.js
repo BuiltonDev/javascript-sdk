@@ -19,7 +19,7 @@ class Request {
 
   _constructHeaders() {
     const headers = {
-      'X-Kvass-API-Key': this.apiKey,
+      'X-Builton-API-Key': this.apiKey,
       'Content-Type': 'application/json',
     };
     if (this.bearerToken) {

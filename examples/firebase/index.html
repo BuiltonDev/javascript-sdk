@@ -22,8 +22,6 @@
   if (typeof config === 'undefined') {
     alert('It seems you haven\'t set up the configuration file yet :(');
   }
-  console.log(Kvass);
-
   // Initialize Firebase
   firebase.initializeApp(config.firebase);
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
