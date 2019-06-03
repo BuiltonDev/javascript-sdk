@@ -31,7 +31,7 @@ const Webhooks = require('./collection/list/webhooks');
 
 let instance;
 
-class Kvass {
+class Builton {
   constructor({
     apiKey,
     bearerToken,
@@ -94,4 +94,4 @@ class Kvass {
   }
 }
 
-module.exports = Kvass;
+module.exports = Builton;

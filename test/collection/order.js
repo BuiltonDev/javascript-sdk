@@ -1,6 +1,6 @@
 /* global it, describe, require, console */
 const assert = require('assert');
-const Kvass = require('../../src/main.js');
+const Builton = require('../../src/main.js');
 
 const request = require('superagent');
 const mock = require('superagent-mocker')(request);
@@ -13,7 +13,7 @@ const userFile = require('../fetchmock/user.json');
 const orderPostBody = require('../fetchmock/orderPostBody.json');
 
 const endpoint = 'https://example.com/';
-const sa = new Kvass({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
+const sa = new Builton({ apiKey: 'dummy', bearerToken: 'dummy', endpoint });
 let url;
 
 describe('Order related tests', () => {
