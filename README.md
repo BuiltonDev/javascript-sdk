@@ -160,7 +160,7 @@ console.log(product.name); // undefined
 
 
 // Example: Construct a product without any parameter, and call an accessible function.
-builton.product().getAll({}, function(err, products, raw) {
+builton.products.get({}, function(err, products, raw) {
   // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
   if (err) {
 	// Handle error
@@ -176,7 +176,7 @@ You can also use a promise to get the object back:
 
 ```js
 // Example: Construct a product without any parameter, call an accessible function, and use a Promise.
-builton.product().getAll({}).then((products) => {
+builton.products.get({}).then((products) => {
   console.log(products); // [Object Product]
   // Update DOM
 }).catch((err) => {

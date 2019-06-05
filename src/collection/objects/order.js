@@ -48,7 +48,7 @@ class Order extends Component {
     }, done);
   }
 
-  triggerDeliveryAction({ body, deliveryId, urlParams } = {}, done) {
+  triggerDeliveryAction({ body, deliveryId, urlParams } = {}, done) {s
     if (!this.id) return done(new Error.MethodNeedsId());
     if (!deliveryId) return done(new Error.MethodNeedsArg('deliveryId'));
     const params = {

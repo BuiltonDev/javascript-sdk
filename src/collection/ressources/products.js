@@ -1,16 +1,21 @@
 const Components = require('./_components');
-const Product = require('../single/product');
+const Product = require('../objects/product');
 const {
   create,
+  getFromId,
   get,
   search,
-} = require('./_utils');
+  set,
+  setOne,
+} = require('./_utils')(Product);
 
 class Products extends Components {
   constructor(request) {
-    super(request, [create, get, search]);
+    super([create, getFromId, get, search, set, setOne]);
+    this.request = request;
     this.apiPath = 'products';
     this.ResConstructor = Product;
+    this.buildIdMethods();
   }
 }
 

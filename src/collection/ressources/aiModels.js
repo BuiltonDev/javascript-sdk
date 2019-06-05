@@ -1,16 +1,21 @@
 const Components = require('./_components');
-const aiModel = require('../single/aiModel');
+const aiModel = require('../objects/aiModel');
 const {
   create,
+  getFromId,
   get,
   search,
-} = require('./_utils');
+  set,
+  setOne,
+} = require('./_utils')(aiModel);
 
 class AIModels extends Components {
   constructor(request) {
-    super(request, [create, get, search]);
+    super([create, getFromId, get, search, set, setOne]);
+    this.request = request;
     this.apiPath = 'ai/models';
     this.ResConstructor = aiModel;
+    this.buildIdMethods();
   }
 
   getRecommendations({ body, urlParams } = {}, done) {

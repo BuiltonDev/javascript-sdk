@@ -19,7 +19,7 @@ class Request {
 
   _constructHeaders() {
     const headers = {
-      'X-Builton-API-Key': this.apiKey,
+      'X-Kvass-API-Key': this.apiKey,
       'Content-Type': 'application/json',
     };
     if (this.bearerToken) {
@@ -29,7 +29,7 @@ class Request {
   }
 
   getHeaders() {
-    if (!Request.isJWTAlive(this.bearerToken) && this.refreshBearerFn) {
+    if (this.bearerToken && !Request.isJWTAlive(this.bearerToken) && this.refreshBearerFn) {
       if (!this.refreshTokenPromise) {
         this.refreshTokenPromise = this.refreshBearerFn().then((bearerToken) => {
           this.bearerToken = bearerToken;

@@ -1,16 +1,21 @@
 const Components = require('./_components');
-const Subscription = require('../single/subscription');
+const Subscription = require('../objects/subscription');
 const {
   create,
+  getFromId,
   get,
   search,
-} = require('./_utils');
+  set,
+  setOne,
+} = require('./_utils')(Subscription);
 
 class Subscriptions extends Components {
   constructor(request) {
-    super(request, [create, get, search]);
+    super([create, getFromId, get, search, set, setOne]);
+    this.request = request;
     this.apiPath = 'subscriptions';
     this.ResConstructor = Subscription;
+    this.buildIdMethods();
   }
 }
 

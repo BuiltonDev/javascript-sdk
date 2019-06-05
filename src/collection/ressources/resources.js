@@ -1,16 +1,21 @@
 const Components = require('./_components');
-const Resource = require('../single/resource');
+const Resource = require('../objects/resource');
 const {
   create,
+  getFromId,
   get,
   search,
-} = require('./_utils');
+  set,
+  setOne,
+} = require('./_utils')(Resource);
 
 class Resources extends Components {
   constructor(request) {
-    super(request, [create, get, search]);
+    super([create, getFromId, get, search, set, setOne]);
+    this.request = request;
     this.apiPath = 'resources';
     this.ResConstructor = Resource;
+    this.buildIdMethods();
   }
 
   createBulk({ body, urlParams, json = false } = {}, done) {

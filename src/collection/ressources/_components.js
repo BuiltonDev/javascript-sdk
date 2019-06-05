@@ -2,7 +2,7 @@ const Error = require('../../utils/error');
 
 // Abstract class
 class Components {
-  constructor(request, restFnArray) {
+  constructor(restFnArray = []) {
     if (this.constructor === Components) {
       throw new Error.AbstractClass();
     }
@@ -15,13 +15,13 @@ class Components {
       if (Array.isArray(json)) {
         const objArray = [];
         json.forEach((element) => {
-          objArray.push(new ResConstructor(request, element));
+          objArray.push(new ResConstructor(this.request, element));
         });
         return { obj: objArray, res };
       }
       if (typeof json === 'object') {
         if (ResConstructor) {
-          return { obj: new ResConstructor(request, json), res };
+          return { obj: new ResConstructor(this.request, json), res };
         }
       }
       return { obj: json, res };
@@ -39,16 +39,25 @@ class Components {
       const actionLocal = (action && action[0] !== '/') ? `/${action}` : action;
       const path = `${apiPath}${actionLocal}`;
       const parseJson = prepParseJson(ResConstructor, json);
-      return request.query({
+      return this.request.query({
         type, path, body, urlParams,
       }, parseJson, done);
     };
 
-    this.get = ({ urlParams, json = false } = {}, done) => this.query({ type: 'get', urlParams, json }, done);
-
     restFnArray.forEach((restFn) => {
       this[restFn.name] = restFn;
     });
+
+    this.buildIdMethods = () => {
+      Object.getOwnPropertyNames(this.ResConstructor.prototype).forEach((functionName) => {
+        if (functionName !== 'constructor') {
+          this[`${functionName}FromId`] = (id, ...params) => {
+            const obj = new this.ResConstructor(this.request, id);
+            obj[functionName](...params);
+          };
+        }
+      });
+    };
   }
 }
 

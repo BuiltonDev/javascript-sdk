@@ -50,7 +50,7 @@
 
       document.getElementById('profile').innerHTML = 'Hello ' + user.first_name + ' ' + user.last_name;
 
-      builton.product().search({query: 'test'}, function (err, products) {
+      builton.products.search({query: 'test'}, function (err, products) {
         if (err) {
           // Handle error
           return;
@@ -68,7 +68,7 @@
             geo: [59.909848, 10.7379474],
           }
         };
-        builton.order().create({body: orderBody}, function (err, order) {
+        builton.orders.create({body: orderBody}, function (err, order) {
           if (err) {
             // Handle error
             return;

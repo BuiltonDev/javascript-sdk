@@ -1,11 +1,19 @@
 const Users = require('./users');
-const Provider = require('../single/provider');
+const Provider = require('../objects/provider');
+const {
+  set,
+  setOne,
+  getFromId,
+  get,
+} = require('./_utils')(Provider);
 
 class Providers extends Users {
   constructor(request) {
-    super(request);
+    super([set, setOne, getFromId, get]);
+    this.request = request;
     this.apiPath = 'providers';
     this.ResConstructor = Provider;
+    this.buildIdMethods();
   }
 
   // Override

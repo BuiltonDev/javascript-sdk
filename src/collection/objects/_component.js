@@ -2,7 +2,7 @@ const Error = require('../../utils/error');
 
 // Abstract class
 class Component {
-  constructor(request, props, restFnArray) {
+  constructor(request, props, restFnArray = []) {
     if (this.constructor === Component) {
       throw new Error.AbstractClass();
     }
@@ -24,6 +24,13 @@ class Component {
         return { obj: json, res };
       }
       if (ResConstructor) {
+        if (Array.isArray(json)) {
+          const objArray = [];
+          json.forEach((element) => {
+            objArray.push(new ResConstructor(request, element));
+          });
+          return { obj: objArray, res };
+        }
         return { obj: new ResConstructor(request, json), res };
       }
       if (!this.id && json._id && json._id.$oid) {

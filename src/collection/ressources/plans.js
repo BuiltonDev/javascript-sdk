@@ -1,16 +1,21 @@
 const Components = require('./_components');
-const Plan = require('../single/plan');
+const Plan = require('../objects/plan');
 const {
   create,
+  getFromId,
   get,
   search,
-} = require('./_utils');
+  set,
+  setOne,
+} = require('./_utils')(Plan);
 
 class Plans extends Components {
   constructor(request) {
-    super(request, [create, get, search]);
+    super([create, getFromId, get, search, set, setOne]);
+    this.request = request;
     this.apiPath = 'plans';
     this.ResConstructor = Plan;
+    this.buildIdMethods();
   }
 }
 

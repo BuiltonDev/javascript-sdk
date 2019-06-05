@@ -1,33 +1,20 @@
 const Request = require('./utils/request');
 const Error = require('./utils/error');
 
-const AIModel = require('./collection/single/aiModel');
-const AIModels = require('./collection/list/aiModels');
-const Company = require('./collection/single/company');
-const Event = require('./collection/single/event');
-const Events = require('./collection/list/events');
-const Order = require('./collection/single/order');
-const Orders = require('./collection/list/orders');
-const Payment = require('./collection/single/payment');
-const Payments = require('./collection/list/payments');
-const PaymentMethod = require('./collection/single/paymentMethod');
-const PaymentMethods = require('./collection/list/paymentMethods');
-const Plan = require('./collection/single/plan');
-const Plans = require('./collection/list/plans');
-const Product = require('./collection/single/product');
-const Products = require('./collection/list/products');
-const Provider = require('./collection/single/provider');
-const Providers = require('./collection/list/providers');
-const Resource = require('./collection/single/resource');
-const Resources = require('./collection/list/resources');
-const Subscription = require('./collection/single/subscription');
-const Subscriptions = require('./collection/list/subscriptions');
-const Tag = require('./collection/single/tag');
-const Tags = require('./collection/list/tags');
-const User = require('./collection/single/user');
-const Users = require('./collection/list/users');
-const Webhook = require('./collection/single/webhook');
-const Webhooks = require('./collection/list/webhooks');
+const AIModels = require('./collection/ressources/aiModels');
+const Company = require('./collection/ressources/company');
+const Events = require('./collection/ressources/events');
+const Orders = require('./collection/ressources/orders');
+const Payments = require('./collection/ressources/payments');
+const PaymentMethods = require('./collection/ressources/paymentMethods');
+const Plans = require('./collection/ressources/plans');
+const Products = require('./collection/ressources/products');
+const Providers = require('./collection/ressources/providers');
+const Resources = require('./collection/ressources/resources');
+const Subscriptions = require('./collection/ressources/subscriptions');
+const Tags = require('./collection/ressources/tags');
+const Users = require('./collection/ressources/users');
+const Webhooks = require('./collection/ressources/webhooks');
 
 let instance;
 
@@ -35,7 +22,7 @@ class Builton {
   constructor({
     apiKey,
     bearerToken,
-    endpoint = 'https://api.builton.dev/',
+    endpoint = 'https://qa.builton.dev/',
     singleton = false,
     refreshTokenFn = null,
   } = {}) {
@@ -56,33 +43,20 @@ class Builton {
       bearerToken,
     }, refreshTokenFn);
 
-    this.aiModel = props => new AIModel(this.request, props);
     this.aiModels = new AIModels(this.request);
-    this.company = props => new Company(this.request, props);
-    this.event = props => new Event(this.request, props);
+    this.company = new Company(this.request);
     this.events = new Events(this.request);
-    this.order = props => new Order(this.request, props);
     this.orders = new Orders(this.request);
-    this.payment = props => new Payment(this.request, props);
     this.payments = new Payments(this.request);
-    this.paymentMethod = props => new PaymentMethod(this.request, props);
     this.paymentMethods = new PaymentMethods(this.request);
-    this.plan = props => new Plan(this.request, props);
     this.plans = new Plans(this.request);
-    this.product = props => new Product(this.request, props);
     this.products = new Products(this.request);
-    this.provider = props => new Provider(this.request, props);
     this.providers = new Providers(this.request);
-    this.resource = props => new Resource(this.request, props);
     this.resources = new Resources(this.request);
-    this.subscription = props => new Subscription(this.request, props);
     this.subscriptions = new Subscriptions(this.request);
-    this.tag = props => new Tag(this.request, props);
     this.tags = new Tags(this.request);
-    this.user = props => new User(this.request, props);
     this.users = new Users(this.request);
-    this.webhook = props => new Webhook(this.request, props);
-    this.webhook = new Webhooks(this.request);
+    this.webhooks = new Webhooks(this.request);
 
     if (singleton) {
       instance = this;

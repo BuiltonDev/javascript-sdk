@@ -1,6 +1,5 @@
 const Component = require('./_component');
 const {
-  create,
   del,
   get,
   refresh,
@@ -9,7 +8,7 @@ const {
 
 class Webhook extends Component {
   constructor(request, props) {
-    super(request, props, [create, del, get, refresh, update]);
+    super(request, props, [del, get, refresh, update]);
     this.apiPath = 'webhooks';
   }
 }
