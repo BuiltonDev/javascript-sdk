@@ -119,7 +119,7 @@ describe('Order related tests', () => {
   it('Should submit a delivery', (done) => {
     url = `${endpoint}orders/:orderId:/deliveries/:deliveryId:`;
     mock.post(url, () => ({ body: deliveryFile, ok: true }));
-    sa.orders.triggerDeliveryActionFromId(':orderId:', { deliveryId: ':deliveryId:' }, (err, delivery) => {
+    sa.orders.triggerDeliveryAction(':orderId:', { deliveryId: ':deliveryId:' }, (err, delivery) => {
       if (err) throw err;
       assert.ok(delivery.status === deliveryFile.status);
       done();

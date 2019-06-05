@@ -1,4 +1,4 @@
-const Component = require('./_component');
+const Component = require('./_objects');
 const Order = require('./order');
 const Subscription = require('./subscription');
 const {

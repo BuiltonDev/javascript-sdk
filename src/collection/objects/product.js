@@ -1,11 +1,9 @@
-const Component = require('./_component');
+const Component = require('./_objects');
 const {
-  create,
   del,
   get,
   refresh,
   update,
-  search,
 } = require('./_util');
 
 class Product extends Component {

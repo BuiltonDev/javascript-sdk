@@ -1,4 +1,4 @@
-const Component = require('./_component');
+const Component = require('./_objects');
 const Error = require('../../utils/error');
 const {
   del,
@@ -48,7 +48,7 @@ class Order extends Component {
     }, done);
   }
 
-  triggerDeliveryAction({ body, deliveryId, urlParams } = {}, done) {s
+  triggerDeliveryAction({ body, deliveryId, urlParams } = {}, done) {
     if (!this.id) return done(new Error.MethodNeedsId());
     if (!deliveryId) return done(new Error.MethodNeedsArg('deliveryId'));
     const params = {

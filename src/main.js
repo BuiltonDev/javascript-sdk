@@ -1,20 +1,20 @@
 const Request = require('./utils/request');
 const Error = require('./utils/error');
 
-const AIModels = require('./collection/ressources/aiModels');
-const Company = require('./collection/ressources/company');
-const Events = require('./collection/ressources/events');
-const Orders = require('./collection/ressources/orders');
-const Payments = require('./collection/ressources/payments');
-const PaymentMethods = require('./collection/ressources/paymentMethods');
-const Plans = require('./collection/ressources/plans');
-const Products = require('./collection/ressources/products');
-const Providers = require('./collection/ressources/providers');
-const Resources = require('./collection/ressources/resources');
-const Subscriptions = require('./collection/ressources/subscriptions');
-const Tags = require('./collection/ressources/tags');
-const Users = require('./collection/ressources/users');
-const Webhooks = require('./collection/ressources/webhooks');
+const AIModels = require('./collection/resources/aiModels');
+const Company = require('./collection/resources/company');
+const Events = require('./collection/resources/events');
+const Orders = require('./collection/resources/orders');
+const Payments = require('./collection/resources/payments');
+const PaymentMethods = require('./collection/resources/paymentMethods');
+const Plans = require('./collection/resources/plans');
+const Products = require('./collection/resources/products');
+const Providers = require('./collection/resources/providers');
+const Resources = require('./collection/resources/resources');
+const Subscriptions = require('./collection/resources/subscriptions');
+const Tags = require('./collection/resources/tags');
+const Users = require('./collection/resources/users');
+const Webhooks = require('./collection/resources/webhooks');
 
 let instance;
 

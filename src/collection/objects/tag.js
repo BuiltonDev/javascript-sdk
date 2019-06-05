@@ -1,4 +1,4 @@
-const Component = require('./_component');
+const Component = require('./_objects');
 const Product = require('./product');
 const Provider = require('./provider');
 const {
