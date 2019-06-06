@@ -1,15 +1,25 @@
 const Component = require('./_objects');
 const {
-  del,
   get,
   refresh,
-  update,
 } = require('./_util');
 
 class Product extends Component {
   constructor(request, props) {
-    super(request, props, [del, get, refresh, update]);
+    super(request, props, [get, refresh]);
     this.apiPath = 'products';
+  }
+
+  getSubProducts({ urlParams, json = false } = {}, done) {
+    return this.query({
+      type: 'get', resource: 'sub_products', urlParams, json,
+    }, done);
+  }
+
+  searchSubProducts({ urlParams, json = false } = {}, done) {
+    return this.query({
+      type: 'get', resource: 'sub_products/search', urlParams, json,
+    }, done);
   }
 }
 

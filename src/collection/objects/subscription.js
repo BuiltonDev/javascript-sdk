@@ -1,4 +1,5 @@
 const Component = require('./_objects');
+const Payment = require('./payment');
 const {
   del,
   get,
@@ -10,6 +11,16 @@ class Subscription extends Component {
   constructor(request, props) {
     super(request, props, [del, get, refresh, update]);
     this.apiPath = 'subscriptions';
+  }
+
+  getPayments({ urlParams, json } = {}, done) {
+    return this.query({
+      type: 'get',
+      resource: 'payments',
+      urlParams,
+      json,
+      ResConstructor: Payment,
+    }, done);
   }
 
   start({ body, urlParams, json = false } = {}, done) {
