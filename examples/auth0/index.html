@@ -42,7 +42,7 @@
       last_name: profile.family_name,
     };
 
-    builton.user().login({ body: loginBody }, function(err, user) {
+    builton.users.authenticate({ body: loginBody }, function(err, user) {
       if (err) {
         // Handle error
         return;

@@ -28,23 +28,20 @@
   var uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: function(authResult) {
-        console.log(authResult);
         const phoneNumber = authResult.user.phoneNumber;
         authResult.user.getIdToken().then((idToken) => {
           var builton = new Builton({
             apiKey: config.apiKey,
             bearerToken: idToken,
-            endpoint: config.endpoint,
             refreshTokenFn: async () => {
               return await authResult.user.getIdToken();
             },
-            refreshTokenFn: authResult.user.getIdToken,
           });
           const body = {
             first_name: 'demo',
             last_name: 'demo',
           };
-          builton.user().login({ body }).then((user) => {
+          builton.users.authenticate({ body }).then((user) => {
             user.update({ body: { mobile_phone_number: phoneNumber } }).then(console.log).catch(console.warn);
           }).catch(console.warn);
         });

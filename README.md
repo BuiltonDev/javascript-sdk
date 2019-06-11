@@ -75,7 +75,7 @@ lock.on("authenticated", function(authResult) {
       last_name: profile.family_name,
     };
 
-    builton.user().login({ body: loginBody }, function(err, user, raw) {
+    builton.authenticate.login({ body: loginBody }, function(err, user, raw) {
       // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
 	  if (err) {
 		// Handle error
@@ -121,7 +121,7 @@ callbacks: {
 		first_name: 'demo',
 		last_name: 'demo',
 	  };
-	  builton.user().login({ body }).then((user) => {
+	  builton.users.authenticate({ body }).then((user) => {
 		// Update DOM
 	  }).catch(console.warn);
 	});
@@ -138,98 +138,54 @@ signInOptions: [
 };
 ```
 
+### Example: Fetching and updating products
 
-## Initialisation of a class
-
-A class can be constructed with either:
-
-- No parameter *(some methods may not be accessible)*
-- An **id {String}**, which represents the ID of the object you want to instantiate *(you will not be able to access any property of the object, until you `refresh` or `get` it)*
-- A **Json {Object}**, which represents an object *(this will create the full object with all its properties)*
-
-
-###### Example: Creation of a Product object with no parameter
-**`product()`**
-
-Create an empty product. It is useful if you want to `create`, or get all the products with the `getAll` method.
-
-```js
-// Example: Construct a product without any parameter.
-var product = builton.product();
-console.log(product.name); // undefined
-
-
-// Example: Construct a product without any parameter, and call an accessible function.
-builton.products.get({}, function(err, products, raw) {
-  // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
-  if (err) {
-	// Handle error
-	return;
-  }
-
-  console.log(products); // [Object Product]
-  // Update DOM
+Using a callback:
+```
+builton.products.get({ urlParams: { size: 5 } }, function(err, products) {
+    const firstProduct = products[0];
+    firstProduct.update({ body: { name: 'first product!' } });
 });
 ```
 
-You can also use a promise to get the object back:
-
-```js
-// Example: Construct a product without any parameter, call an accessible function, and use a Promise.
-builton.products.get({}).then((products) => {
-  console.log(products); // [Object Product]
-  // Update DOM
-}).catch((err) => {
-  // Handle error
-  return;
+Using promises:
+```
+builton.products.get({ urlParams: { size: 5 } }).then((products) => {
+    const firstProduct = products[0];
+    firstProduct.update({ body: { name: 'first product!' } });
 });
 ```
 
-----
+Using async/await:
+```
+// This needs to be within in an `async` function
+const products = await builton.products.get({ urlParams: { size: 5 } });
+const firstProduct = products[0];
+firstProduct.update({ body: { name: 'first product!' } });
+```
 
-###### Example: Creation of a Product object with an ID
-**`product(id)`**
+### Example: Updating a payment method by id
 
-This creates a partially empty product. It contains the ID of the product you want to manipulate but doesn't contain all the properties of that product. It can be populated by calling `get` or `refresh`.
-
-- **id {String}**, product ID
-
-```js
-// Example: Construct a product with an ID.
-var product = builton.product(productId);
-console.log(product.name); // undefined
-
-
-// Example: Construct a product with an ID and refresh it.
-builton.product(userId).get({}, function(err, product, raw) {
-  // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
-  if (err) {
-	// Handle error
-	return;
-  }
-
-  console.log(product.name); // Bedroom cleaning
-  // Update DOM
+```
+// This needs to be within in an `async` function
+const paymentMethod = await builton.paymentMethods.update(':paymentMethodId:', {
+    body: {
+        token: ':StripeTokenId:'
+    }
 });
 ```
 
-----
+Using the `set` method:
 
-###### Example: Creation of a Product object with a JSON Object
-**`product(json)`**
-
-You can create a full product from a JSON object. This will create an object with all the properties accessible.
-
-- **Json {Object}**, JSON object representing a product
-
-```js
-// Example: Construct a product with a JSON Object.
-
-var product = builton.product(productJson);
-console.log(product.name); // Bedroom cleaning
+```
+const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
+paymentMethod.update(':paymentMethodId:', {
+    body: {
+        token: ':StripeTokenId:'
+    }
+});
 ```
 
-The methods and classes used here match those in the API. You can find more details about them in the [API documentation](http://reference.builton.dev/).
 
 ## Issue Reporting
 
