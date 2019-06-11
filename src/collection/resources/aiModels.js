@@ -7,12 +7,11 @@ const {
   get,
   search,
   set,
-  setOne,
-} = require('./_utils')(AiModel);
+} = require('./_methods')(AiModel);
 
 class AIModels extends Components {
   constructor(request) {
-    super([create, getFromId, getAll, get, search, set, setOne]);
+    super([create, getFromId, getAll, get, search, set]);
     this.request = request;
     this.apiPath = 'ai/models';
     this.ResConstructor = AiModel;

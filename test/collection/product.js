@@ -37,7 +37,7 @@ describe('Product related tests', () => {
   it('Should return a product', (done) => {
     url = `${endpoint}products/:productId:`;
     mock.get(url, () => ({ body: productFile, ok: true }));
-    sa.products.setOne(':productId:').get({}, (err, product) => {
+    sa.products.set(':productId:').get({}, (err, product) => {
       assert.ok((product.name === 'Test Product'));
       assert.ok(product.constructor.name === 'Product');
       done();

@@ -7,12 +7,11 @@ const {
   get,
   search,
   set,
-  setOne,
-} = require('./_utils')(Tag);
+} = require('./_methods')(Tag);
 
 class Tags extends Components {
   constructor(request) {
-    super([create, getFromId, getAll, get, search, set, setOne]);
+    super([create, getFromId, getAll, get, search, set]);
     this.request = request;
     this.apiPath = 'tags';
     this.ResConstructor = Tag;

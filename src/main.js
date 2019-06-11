@@ -19,7 +19,7 @@ class Builton {
   constructor({
     apiKey,
     bearerToken,
-    endpoint = 'https://qa.builton.dev/',
+    endpoint = 'https://api.builton.dev/',
     singleton = false,
     refreshTokenFn = null,
   } = {}) {

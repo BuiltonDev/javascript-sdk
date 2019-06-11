@@ -16,7 +16,7 @@ describe('Plan related tests', () => {
   it('Should return all the plans', (done) => {
     url = `${endpoint}plans/${plansFile[0]._id.$oid}`;
     mock.get(url, () => ({ body: plansFile, ok: true }));
-    sa.plans.setOne(plansFile[0]).get({}, (err, plans) => {
+    sa.plans.set(plansFile[0]).get({}, (err, plans) => {
       assert.ok(Array.isArray(plans));
       assert.ok(plansFile[0]._id.$oid === plans[0].id);
       done();

@@ -1,7 +1,7 @@
 const Component = require('./_objects');
 const {
   get,
-} = require('./_util');
+} = require('./_methods');
 
 class AIModel extends Component {
   constructor(request, props) {

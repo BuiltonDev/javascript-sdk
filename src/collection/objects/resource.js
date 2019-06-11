@@ -5,7 +5,7 @@ const {
   get,
   refresh,
   update,
-} = require('./_util');
+} = require('./_methods');
 
 class Resource extends Component {
   constructor(request, props) {

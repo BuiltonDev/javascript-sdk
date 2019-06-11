@@ -8,12 +8,11 @@ const {
   getAll,
   get,
   set,
-  setOne,
-} = require('./_utils')(PaymentMethod);
+} = require('./_methods')(PaymentMethod);
 
 class PaymentMethods extends Components {
   constructor(request) {
-    super([create, del, update, getFromId, getAll, get, set, setOne]);
+    super([create, del, update, getFromId, getAll, get, set]);
     this.request = request;
     this.apiPath = 'payment_methods';
     this.ResConstructor = PaymentMethod;

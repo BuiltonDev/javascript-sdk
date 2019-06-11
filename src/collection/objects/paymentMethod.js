@@ -4,7 +4,7 @@ const {
   get,
   refresh,
   update,
-} = require('./_util');
+} = require('./_methods');
 
 class PaymentMethod extends Component {
   constructor(request, props) {

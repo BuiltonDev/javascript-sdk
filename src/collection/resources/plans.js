@@ -6,12 +6,11 @@ const {
   get,
   search,
   set,
-  setOne,
-} = require('./_utils')(Plan);
+} = require('./_methods')(Plan);
 
 class Plans extends Components {
   constructor(request) {
-    super([getFromId, getAll, get, search, set, setOne]);
+    super([getFromId, getAll, get, search, set]);
     this.request = request;
     this.apiPath = 'plans';
     this.ResConstructor = Plan;

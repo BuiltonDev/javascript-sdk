@@ -7,12 +7,11 @@ const {
   create,
   update,
   set,
-  setOne,
-} = require('./_utils')(Order);
+} = require('./_methods')(Order);
 
 class Orders extends Components {
   constructor(request) {
-    super([getFromId, getAll, get, create, update, set, setOne]);
+    super([getFromId, getAll, get, create, update, set]);
     this.request = request;
     this.apiPath = 'orders';
     this.ResConstructor = Order;

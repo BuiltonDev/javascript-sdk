@@ -6,12 +6,11 @@ const {
   get,
   search,
   set,
-  setOne,
-} = require('./_utils')(Product);
+} = require('./_methods')(Product);
 
 class Products extends Components {
   constructor(request) {
-    super([getFromId, getAll, get, search, set, setOne]);
+    super([getFromId, getAll, get, search, set]);
     this.request = request;
     this.apiPath = 'products';
     this.ResConstructor = Product;

@@ -7,12 +7,11 @@ const {
   get,
   search,
   set,
-  setOne,
-} = require('./_utils')(Resource);
+} = require('./_methods')(Resource);
 
 class Resources extends Components {
   constructor(request) {
-    super([create, getFromId, getAll, get, search, set, setOne]);
+    super([create, getFromId, getAll, get, search, set]);
     this.request = request;
     this.apiPath = 'resources';
     this.ResConstructor = Resource;

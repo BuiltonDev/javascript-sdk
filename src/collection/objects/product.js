@@ -2,7 +2,7 @@ const Component = require('./_objects');
 const {
   get,
   refresh,
-} = require('./_util');
+} = require('./_methods');
 
 class Product extends Component {
   constructor(request, props) {

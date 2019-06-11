@@ -6,12 +6,11 @@ const {
   get,
   search,
   set,
-  setOne,
-} = require('./_utils')(User);
+} = require('./_methods')(User);
 
 class Users extends Components {
   constructor(request) {
-    super([getFromId, getAll, get, search, set, setOne]);
+    super([getFromId, getAll, get, search, set]);
     this.request = request;
     this.apiPath = 'users';
     this.ResConstructor = User;
@@ -40,7 +39,7 @@ class Users extends Components {
     return obj.getRating(...params);
   }
 
-  rate(id, ...params) {
+  setRating(id, ...params) {
     const obj = new User(this.request, id);
     return obj.rate(...params);
   }

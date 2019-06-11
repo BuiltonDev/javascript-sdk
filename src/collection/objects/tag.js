@@ -4,7 +4,7 @@ const Resource = require('./payment');
 const {
   get,
   refresh,
-} = require('./_util');
+} = require('./_methods');
 
 class Tag extends Component {
   constructor(request, props) {

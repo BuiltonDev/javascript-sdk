@@ -6,7 +6,7 @@ const {
   get,
   refresh,
   update,
-} = require('./_util');
+} = require('./_methods');
 
 class Order extends Component {
   constructor(request, props) {

@@ -3,7 +3,7 @@ const Subscription = require('./subscription');
 const {
   get,
   refresh,
-} = require('./_util');
+} = require('./_methods');
 
 class Plan extends Component {
   constructor(request, props) {

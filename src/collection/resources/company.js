@@ -3,7 +3,7 @@ const {
   getFromId,
   getAll,
   get,
-} = require('./_utils')();
+} = require('./_methods')();
 
 class Company extends Component {
   constructor(request) {

@@ -6,7 +6,7 @@ const {
   get,
   refresh,
   update,
-} = require('./_util');
+} = require('./_methods');
 
 class User extends Component {
   constructor(request, props) {
@@ -29,7 +29,7 @@ class User extends Component {
     }, done);
   }
 
-  rate({ body, urlParams } = {}, done) {
+  setRating({ body, urlParams } = {}, done) {
     return this.query({
       type: 'put', id: this.id, resource: 'ratings', body, urlParams, ResConstructor: null,
     }, done);
