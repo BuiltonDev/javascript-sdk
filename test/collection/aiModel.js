@@ -6,7 +6,6 @@ const request = require('superagent');
 const mock = require('superagent-mocker')(request);
 
 const modelCreatedFile = require('../fetchmock/modelCreated.json');
-const modelTrainingFile = require('../fetchmock/modelTraining.json');
 const modelReadyFile = require('../fetchmock/modelReady.json');
 const modelsFile = require('../fetchmock/models.json');
 const recommendationsFile = require('../fetchmock/recommendations.json');
