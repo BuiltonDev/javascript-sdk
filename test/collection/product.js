@@ -43,15 +43,6 @@ describe('Product related tests', () => {
       done();
     });
   });
-  it('Should delete a product', (done) => {
-    url = `${endpoint}products/:productId:`;
-    mock.del(url, () => ({ body: productFile, ok: true }));
-    sa.products.setOne(':productId:').del({}, (err, product) => {
-      assert.ok((product.name === 'Test Product'));
-      assert.ok(product.constructor.name === 'Product');
-      done();
-    });
-  });
   it('Should search products', (done) => {
     url = `${endpoint}products/search?page=2&query=searchQuery`;
     mock.get(url, () => ({ body: productsFile, ok: true }));

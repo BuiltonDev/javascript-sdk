@@ -60,39 +60,11 @@ describe('AI related tests', () => {
     });
   });
 
-
-  describe('POST ai/models/<modelId>/train', () => {
-    it('Should train an existing ai model', (done) => {
-      url = `${endpoint}ai/models/:modelId:/train`;
-      mock.post(url, () => ({ body: modelTrainingFile, ok: true }));
-      sa.aiModels.setOne(':modelId:').train({}, (err, model) => {
-        if (err) throw err;
-        assert.ok(model.constructor.name === 'AIModel');
-        assert.ok(model.training_status === 'TRAINING');
-        done();
-      });
-    });
-  });
-
   describe('POST ai/models/<modelId>/invoke', () => {
     it('Should return recommendation for a given source based on a specific model', (done) => {
       url = `${endpoint}ai/models/:modelId/invoke`;
       mock.post(url, () => ({ body: recommendationsFile, ok: true }));
       sa.aiModels.setOne(':modelId:').getRecommendations({ source_id: '5aec176d1f7cdc0008848f87', size: 4 }, (err, recommendations) => {
-        if (err) throw err;
-        assert.ok(Array.isArray(recommendations.response));
-        done();
-      });
-    });
-  });
-
-  describe('POST ai/models/invoke', () => {
-    it('Should return recommendation for a given source based on set model type, source and destination', (done) => {
-      url = `${endpoint}ai/models/invoke`;
-      mock.post(url, () => ({ body: recommendationsFile, ok: true }));
-      sa.aiModels.getRecommendations({
-        size: 4, model_type: 'content_recommender', source: 'product', destination: 'product', source_id: '5aec176d1f7cdc0008848f87',
-      }, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));
         done();

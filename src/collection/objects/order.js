@@ -1,4 +1,5 @@
 const Component = require('./_objects');
+const Payment = require('./payment');
 const Error = require('../../utils/error');
 const {
   del,
@@ -22,9 +23,25 @@ class Order extends Component {
     }, done);
   }
 
+  getPayments({ urlParams, json = false } = {}, done) {
+    return this.query({
+      type: 'get',
+      resource: 'payments',
+      urlParams,
+      ResConstructor: Payment,
+      json,
+    }, done);
+  }
+
   pay({ body, urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'pay', body, urlParams, json,
+    }, done);
+  }
+
+  redeem({ body, urlParams, json = false } = {}, done) {
+    return this.query({
+      type: 'post', resource: 'redeem', body, urlParams, json,
     }, done);
   }
 

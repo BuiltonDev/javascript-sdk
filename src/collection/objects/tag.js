@@ -1,16 +1,14 @@
 const Component = require('./_objects');
 const Product = require('./product');
-const Provider = require('./provider');
+const Resource = require('./payment');
 const {
-  del,
   get,
   refresh,
-  update,
 } = require('./_util');
 
 class Tag extends Component {
   constructor(request, props) {
-    super(request, props, [del, get, refresh, update]);
+    super(request, props, [get, refresh]);
     this.apiPath = 'tags';
   }
 
@@ -20,9 +18,9 @@ class Tag extends Component {
     }, done);
   }
 
-  getProviders({ urlParams, json = false } = {}, done) {
+  getRessources({ urlParams, json = false } = {}, done) {
     return this.query({
-      type: 'get', id: this.id, resource: 'providers', urlParams, json, ResConstructor: Provider,
+      type: 'get', id: this.id, resource: 'resources', urlParams, json, ResConstructor: Resource,
     }, done);
   }
 }

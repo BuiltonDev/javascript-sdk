@@ -9,12 +9,6 @@ class AIModel extends Component {
     this.apiPath = 'ai/models';
   }
 
-  train({ urlParam, json = false } = {}, done) {
-    return this.query({
-      type: 'post', urlParam, resource: 'train', json,
-    }, done);
-  }
-
   getRecommendations({ body, urlParams } = {}, done) {
     return this.query({
       type: 'post', resource: 'invoke', body, urlParams, ResConstructor: null,
