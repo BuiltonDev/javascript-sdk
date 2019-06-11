@@ -18,6 +18,8 @@ class Users extends Components {
     this.setMe = () => new User(request);
   }
 
+  // The `Create` and the `Authenticate` functions are functionnaly identical.
+  // No need to `Authenticate` after `Create`.
   create({ body, urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', apiPath: 'v2/users', urlParams, body, json,
