@@ -45,6 +45,18 @@ describe('Order related tests', () => {
     });
   });
 
+  it('Should set one Order', () => {
+    const order = sa.orders.set('id1');
+    assert.equal(order.id, 'id1');
+  });
+
+  it('Should set a list of Orders', () => {
+    const orders = sa.orders.set(['id1', 'id2', 'id3']);
+    assert.equal(orders[0].id, 'id1');
+    assert.equal(orders[1].id, 'id2');
+    assert.equal(orders[2].id, 'id3');
+  });
+
   it('Should return an order', (done) => {
     url = `${endpoint}orders/:orderId:`;
     mock.get(url, () => ({ body: orderFile, ok: true }));
