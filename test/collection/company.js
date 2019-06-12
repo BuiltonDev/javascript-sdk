@@ -1,4 +1,4 @@
-/* global it, describe, require, console */
+/* global it, describe, require */
 global.test = true;
 const assert = require('assert');
 const Builton = require('../../src/main.js');
