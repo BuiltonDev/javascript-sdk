@@ -186,6 +186,39 @@ paymentMethod.update(':paymentMethodId:', {
 });
 ```
 
+### Example: Using the `set` methods:
+
+The `set` method allows you to create an object without fetching it from the api. I can be useful when working with stored data for example.
+
+```
+const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
+paymentMethod.update(':paymentMethodId:', {
+    body: {
+        token: ':StripeTokenId:'
+    }
+});
+```
+
+With multiple payment methods:
+```
+const paymentMethods = builton.paymentMethods.set([':paymentMethodId1:', ':paymentMethodId2:']);
+paymentMethods[0].update(':paymentMethodId:', {
+    body: {
+        token: ':StripeTokenId:'
+    }
+});
+```
+
+With full props:
+```
+const paymentMethod = builton.paymentMethods.set({<paymentMethodJsonObject>});
+paymentMethod.update(':paymentMethodId:', {
+    body: {
+        token: ':StripeTokenId:'
+    }
+});
+```
+
 
 ## Issue Reporting
 
