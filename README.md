@@ -1,8 +1,7 @@
 [![Travis](https://img.shields.io/travis/BuiltonDev/javascript-sdk/master.svg?style=flat-square)](https://travis-ci.org/BuiltonDev/javascript-sdk.svg?branch=master)
 [![David](https://img.shields.io/david/BuiltonDev/javascript-sdk.svg?style=flat-square)](https://david-dm.org/BuiltonDev/javascript-sdk)
 [![Codacy](https://img.shields.io/codacy/grade/b40e787a54f944abbba4b9e2698c0085.svg?style=flat-square)](https://app.codacy.com/app/Builton/javascript-sdk)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/b40e787a54f944abbba4b9e2698c0085.svg?style=flat-square)](https://www.codacy.com/app/Builton/javascript-sdk)
-[![GitHub release](https://img.shields.io/github/release/builton/javascript-sdk.svg?style=flat-square)](https://github.com/BuiltonDev/javascript-sdk/releases)
+[![GitHub release](https://img.shields.io/github/release/BuiltonDev/javascript-sdk.svg?style=flat-square)](https://github.com/BuiltonDev/javascript-sdk/releases)
 [![license](https://img.shields.io/github/license/BuiltonDev/javascript-sdk.svg?style=flat-square)](LICENSE.md)
 
 # Builton SDK
