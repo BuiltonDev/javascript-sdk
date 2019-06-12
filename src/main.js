@@ -1,26 +1,29 @@
-const request = require('./utils/request');
+const Request = require('./utils/request');
 const Error = require('./utils/error');
 
-const AIModel = require('./collection/aiModel');
-const Company = require('./collection/company');
-const Event = require('./collection/event');
-const Order = require('./collection/order');
-const Payment = require('./collection/payment');
-const PaymentMethod = require('./collection/paymentMethod');
-const Plan = require('./collection/plan');
-const Product = require('./collection/product');
-const Provider = require('./collection/provider');
-const Resource = require('./collection/resource');
-const Subscription = require('./collection/subscription');
-const Tag = require('./collection/tag');
-const User = require('./collection/user');
-const Webhook = require('./collection/webhook');
+const AIModels = require('./collection/resources/aiModels');
+const Company = require('./collection/resources/company');
+const Orders = require('./collection/resources/orders');
+const Payments = require('./collection/resources/payments');
+const PaymentMethods = require('./collection/resources/paymentMethods');
+const Plans = require('./collection/resources/plans');
+const Products = require('./collection/resources/products');
+const Resources = require('./collection/resources/resources');
+const Subscriptions = require('./collection/resources/subscriptions');
+const Tags = require('./collection/resources/tags');
+const Users = require('./collection/resources/users');
 
 let instance;
 
 class Builton {
-  constructor({ apiKey, bearerToken, endpoint } = {}) {
-    if (instance) {
+  constructor({
+    apiKey,
+    bearerToken,
+    endpoint = 'https://api.builton.dev/',
+    singleton = false,
+    refreshTokenFn = null,
+  } = {}) {
+    if (singleton && instance) {
       return instance;
     }
     if (!endpoint) {
@@ -31,42 +34,31 @@ class Builton {
     }
 
     this.endpoint = endpoint;
-    this.apiKey = apiKey;
-    this.bearerToken = bearerToken;
 
-    request(this.endpoint, this._constructHeaders());
+    this.request = new Request(this.endpoint, {
+      apiKey,
+      bearerToken,
+    }, refreshTokenFn);
 
-    this.aiModel = props => new AIModel(props);
-    this.company = props => new Company(props);
-    this.event = props => new Event(props);
-    this.order = props => new Order(props);
-    this.payment = props => new Payment(props);
-    this.paymentMethod = props => new PaymentMethod(props);
-    this.plans = props => new Plan(props);
-    this.product = props => new Product(props);
-    this.provider = props => new Provider(props);
-    this.resource = props => new Resource(props);
-    this.subscription = props => new Subscription(props);
-    this.tag = props => new Tag(props);
-    this.user = props => new User(props);
-    this.webhook = props => new Webhook(props);
+    this.aiModels = new AIModels(this.request);
+    this.company = new Company(this.request);
+    this.orders = new Orders(this.request);
+    this.payments = new Payments(this.request);
+    this.paymentMethods = new PaymentMethods(this.request);
+    this.plans = new Plans(this.request);
+    this.products = new Products(this.request);
+    this.resources = new Resources(this.request);
+    this.subscriptions = new Subscriptions(this.request);
+    this.tags = new Tags(this.request);
+    this.users = new Users(this.request);
 
-    instance = this;
+    if (singleton) {
+      instance = this;
+    }
   }
 
   refreshBearerToken(newBearerToken) {
-    this.bearerToken = newBearerToken;
-    request().updateHeaders(this._constructHeaders());
-  }
-
-  _constructHeaders() {
-    const headers = {
-      'X-Builton-API-Key': this.apiKey,
-    };
-    if (this.bearerToken) {
-      headers.Authorization = `Bearer ${this.bearerToken}`;
-    }
-    return headers;
+    this.request.bearerToken = newBearerToken;
   }
 }
 
