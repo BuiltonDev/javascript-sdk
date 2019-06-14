@@ -1,11 +1,10 @@
 {
-  "requireCleanWorkingDir": false,
-  "buildCommand": "npm run build",
-  "src": {
-    "tagName": "v%s"
+  "hooks": {
+    "before:init": ["npm run build"]
   },
-  "dist": {
-    "baseDir": "dist"
+  "git": {
+    "requireCleanWorkingDir": false,
+    "tagName": "v%s"
   },
   "github": {
     "release": true,
