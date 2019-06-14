@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "jwt-decode": "^2.2.0",
-    "superagent": "^5.0.7"
+    "superagent": "^5.0.8"
   },
   "browser": "./dist/main.bundle.js"
 }
