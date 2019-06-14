@@ -26,9 +26,6 @@ class Builton {
     if (singleton && instance) {
       return instance;
     }
-    if (!endpoint) {
-      throw new Error.MethodNeedsArg('endpoint');
-    }
     if (!apiKey) {
       throw new Error.MethodNeedsArg('apiKey');
     }
