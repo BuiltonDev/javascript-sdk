@@ -10,7 +10,7 @@
 
 ![Builton logo](https://res.cloudinary.com/dftspnwxo/image/upload/v1554131594/Builton_logo_positiv_wc3j7x.svg)
 
-
+If you are looking for the service python SDK, take a look at it on [Github](https://github.com/BuiltonDev/python-sdk) and on [PyPI](https://pypi.org/project/builton-sdk/)
 
 ## Requirement
 
@@ -137,30 +137,42 @@ signInOptions: [
 };
 ```
 
-### Example: Fetching and updating products
+### Example: Fetching and updating payment methods
 
 Using a callback:
 ```
-builton.products.get({ urlParams: { size: 5 } }, function(err, products) {
-    const firstProduct = products[0];
-    firstProduct.update({ body: { name: 'first product!' } });
+builton.paymentMethods.get({ urlParams: { size: 5 } }, function(err, paymentMethod) {
+  const firstPaymentMethod = paymentMethods[0];
+  firstPaymentMethod.update({
+    body: {
+        token: ':StripeTokenId:'
+    }
+  });
 });
 ```
 
 Using promises:
 ```
-builton.products.get({ urlParams: { size: 5 } }).then((products) => {
-    const firstProduct = products[0];
-    firstProduct.update({ body: { name: 'first product!' } });
+builton.paymentMethods.get({ urlParams: { size: 5 } }).then((paymentMethod) => {
+  const firstPaymentMethod = paymentMethods[0];
+  firstPaymentMethod.update({
+    body: {
+        token: ':StripeTokenId:'
+    }
+  });
 });
 ```
 
 Using async/await:
 ```
 // This needs to be within in an `async` function
-const products = await builton.products.get({ urlParams: { size: 5 } });
-const firstProduct = products[0];
-firstProduct.update({ body: { name: 'first product!' } });
+const paymentMethods = await builton.paymentMethods.get({ urlParams: { size: 5 } });
+const firstPaymentMethod = paymentMethods[0];
+firstPaymentMethod.update({
+  body: {
+      token: ':StripeTokenId:'
+  }
+});
 ```
 
 ### Example: Updating a payment method by id
@@ -178,7 +190,7 @@ Using the `set` method:
 
 ```
 const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
-paymentMethod.update(':paymentMethodId:', {
+paymentMethod.update({
     body: {
         token: ':StripeTokenId:'
     }
@@ -191,7 +203,7 @@ The `set` method allows you to create an object without fetching it from the api
 
 ```
 const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
-paymentMethod.update(':paymentMethodId:', {
+paymentMethod.update({
     body: {
         token: ':StripeTokenId:'
     }
@@ -201,7 +213,7 @@ paymentMethod.update(':paymentMethodId:', {
 With multiple payment methods:
 ```
 const paymentMethods = builton.paymentMethods.set([':paymentMethodId1:', ':paymentMethodId2:']);
-paymentMethods[0].update(':paymentMethodId:', {
+paymentMethods[0].update({
     body: {
         token: ':StripeTokenId:'
     }
@@ -211,7 +223,7 @@ paymentMethods[0].update(':paymentMethodId:', {
 With full props:
 ```
 const paymentMethod = builton.paymentMethods.set({<paymentMethodJsonObject>});
-paymentMethod.update(':paymentMethodId:', {
+paymentMethod.update({
     body: {
         token: ':StripeTokenId:'
     }
