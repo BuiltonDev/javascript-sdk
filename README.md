@@ -27,7 +27,7 @@ From the [unpkg](https://unpkg.com/) CDN
 From [npm](https://npmjs.org)
 
 ```sh
-npm install @builton.dev/core-sdk
+npm install @builton/core-sdk
 ```
 
 
