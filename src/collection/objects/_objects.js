@@ -41,6 +41,7 @@ class Component {
 
     this.query = ({
       type = 'get',
+      urlParams = {},
       fullPath = null,
       resource = '',
       body,
@@ -52,7 +53,9 @@ class Component {
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const path = fullPath || `${apiPath}/${this.id}${resourceLocal}`;
       const parseJson = prepParseJson(ResConstructor, json);
-      return request.query({ type, path, body }, parseJson, done);
+      return request.query({
+        type, path, body, urlParams,
+      }, parseJson, done);
     };
 
     restFnArray.forEach((restFn) => {
