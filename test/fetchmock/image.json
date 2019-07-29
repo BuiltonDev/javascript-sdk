@@ -1,0 +1,23 @@
+{
+    "_id":{
+       "$oid":"5d2edc776085c1030bea418a"
+    },
+    "company":{
+       "$oid":"5cc2fb28488be7000c2ee7c3"
+    },
+    "created":{
+       "$date":1564400759677
+    },
+    "deleted":false,
+    "metadata":{
+ 
+    },
+    "modified":{
+       "$date":1564400759700
+    },
+    "original_file_type":"png",
+    "original_name":"1x1.png",
+    "public":false,
+    "stored_s3":true,
+    "url":"5d2edc776085c1030bea418a/1x1.png"
+ }

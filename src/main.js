@@ -12,6 +12,7 @@ const Resources = require('./collection/resources/resources');
 const Subscriptions = require('./collection/resources/subscriptions');
 const Tags = require('./collection/resources/tags');
 const Users = require('./collection/resources/users');
+const Images = require('./collection/resources/images');
 
 let instance;
 
@@ -48,6 +49,7 @@ class Builton {
     this.subscriptions = new Subscriptions(this.request);
     this.tags = new Tags(this.request);
     this.users = new Users(this.request);
+    this.images = new Images(this.request);
 
     if (singleton) {
       instance = this;

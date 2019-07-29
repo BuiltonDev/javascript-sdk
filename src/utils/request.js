@@ -20,7 +20,6 @@ class Request {
   _constructHeaders() {
     const headers = {
       'X-Builton-API-Key': this.apiKey,
-      'Content-Type': 'application/json',
     };
     if (this.bearerToken) {
       headers.Authorization = `Bearer ${this.bearerToken}`;
@@ -59,6 +58,7 @@ class Request {
     body = undefined,
     headers = {},
     endpoint = this.endpoint,
+    isJson = true,
   } = {}, parseJson, done) {
     let promise;
     let promiseResolve;
@@ -73,23 +73,24 @@ class Request {
       return this.getHeaders().then((queryHeaders) => {
         request[type](`${endpoint}${path}${Request.serialize(urlParams)}`)
           .set(Object.assign({}, queryHeaders, headers))
-          .send(JSON.stringify(body))
+          .set(isJson ? { 'Content-Type': 'application/json' } : {}) // when undefined, SuperAgent guesses it.
+          .send(isJson ? JSON.stringify(body) : body)
           .end((err, res) => {
             if (err || !res.ok) {
               if (!done) {
-                return promiseReject(err, res);
+                return promiseReject(err);
               }
               return done(err, null, res);
             }
             try {
               const result = parseJson(res);
               if (!done) {
-                return promiseResolve(result.obj, result.res);
+                return promiseResolve(result.obj);
               }
               return done(null, result.obj, result.res);
             } catch (error) {
               if (!done) {
-                return promiseReject(error, res);
+                return promiseReject(error);
               }
               return done(error, null, res);
             }
