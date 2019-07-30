@@ -228,6 +228,13 @@ paymentMethod.update({
 });
 ```
 
+### Example: Uploading an image
+
+```js
+await b.images.create({ imageData, isPublic: true });
+```
+See the [full example](examples/imageUpload/README.md) for more details.
+
 
 ## Issue Reporting
 
