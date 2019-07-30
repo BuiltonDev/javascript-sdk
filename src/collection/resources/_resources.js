@@ -34,14 +34,14 @@ class Components {
       apiPath = this.apiPath,
       action = '',
       ResConstructor = this.ResConstructor,
-      isJson = true,
+      isJsonBody = true,
       json,
     }, done) => {
       const actionLocal = (action && action[0] !== '/') ? `/${action}` : action;
       const path = `${apiPath}${actionLocal}`;
       const parseJson = prepParseJson(ResConstructor, json);
       return this.request.query({
-        type, path, body, urlParams, isJson,
+        type, path, body, urlParams, isJsonBody,
       }, parseJson, done);
     };
 

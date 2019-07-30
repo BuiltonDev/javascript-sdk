@@ -58,7 +58,7 @@ class Request {
     body = undefined,
     headers = {},
     endpoint = this.endpoint,
-    isJson = true,
+    isJsonBody = true,
   } = {}, parseJson, done) {
     let promise;
     let promiseResolve;
@@ -73,8 +73,8 @@ class Request {
       return this.getHeaders().then((queryHeaders) => {
         request[type](`${endpoint}${path}${Request.serialize(urlParams)}`)
           .set(Object.assign({}, queryHeaders, headers))
-          .set(isJson ? { 'Content-Type': 'application/json' } : {}) // when undefined, SuperAgent guesses it.
-          .send(isJson ? JSON.stringify(body) : body)
+          .set(isJsonBody ? { 'Content-Type': 'application/json' } : {}) // when empty, SuperAgent generates it automatically.
+          .send(isJsonBody ? JSON.stringify(body) : body)
           .end((err, res) => {
             if (err || !res.ok) {
               if (!done) {

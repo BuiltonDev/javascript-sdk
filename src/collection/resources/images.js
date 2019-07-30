@@ -20,7 +20,7 @@ class Images extends Components {
       type: 'post',
       body: form,
       urlParams,
-      isJson: false,
+      isJsonBody: false,
     }, done);
   }
 }
