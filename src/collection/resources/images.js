@@ -2,7 +2,7 @@ const FormData = require('form-data');
 const Components = require('./_resources');
 const Image = require('../objects/image');
 
-class PaymentMethods extends Components {
+class Images extends Components {
   constructor(request) {
     super();
     this.request = request;
@@ -25,4 +25,4 @@ class PaymentMethods extends Components {
   }
 }
 
-module.exports = PaymentMethods;
+module.exports = Images;
