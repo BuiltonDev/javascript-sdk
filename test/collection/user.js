@@ -15,7 +15,7 @@ const ratingFile = require('../fetchmock/ratings.json');
 const userFile = require('../fetchmock/user.json');
 const usersFile = require('../fetchmock/users.json');
 
-describe('User related tests', () => {
+describe('User', () => {
   it('Should return a list of Users', (done) => {
     url = `${endpoint}users`;
     mock.get(url, () => ({ body: usersFile, ok: true }));

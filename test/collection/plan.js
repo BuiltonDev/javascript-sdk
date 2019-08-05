@@ -12,7 +12,7 @@ let url;
 
 const plansFile = require('../fetchmock/plans.json');
 
-describe('Plan related tests', () => {
+describe('Plan', () => {
   it('Should return all the plans', (done) => {
     url = `${endpoint}plans/${plansFile[0]._id.$oid}`;
     mock.get(url, () => ({ body: plansFile, ok: true }));

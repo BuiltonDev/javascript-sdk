@@ -12,7 +12,7 @@ let url;
 
 const subscriptionFile = require('../fetchmock/subscription.json');
 
-describe('Subscription related tests', () => {
+describe('Subscription', () => {
   it('Should return a subscription from a subscription id', (done) => {
     url = `${endpoint}subscriptions/:subscriptionId:`;
     mock.get(url, () => ({ body: subscriptionFile, ok: true }));

@@ -15,7 +15,7 @@ let url;
 
 mock.timeout = 100;
 
-describe('Company related tests', () => {
+describe('Company', () => {
   beforeEach(() => {
     // Guarantee each test knows exactly which routes are defined
     mock.clearRoutes();

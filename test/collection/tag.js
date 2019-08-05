@@ -12,7 +12,7 @@ let url;
 
 const tagFile = require('../fetchmock/tags.json');
 
-describe('Tag related tests', () => {
+describe('Tag', () => {
   it('Should return all the tags', (done) => {
     url = `${endpoint}tags`;
     mock.get(url, () => ({ body: tagFile, ok: true }));

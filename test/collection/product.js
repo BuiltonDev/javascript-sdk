@@ -13,7 +13,7 @@ let url;
 const productsFile = require('../fetchmock/products.json');
 const productFile = require('../fetchmock/product.json');
 
-describe('Product related tests', () => {
+describe('Product', () => {
   it('Should return a list of Products', (done) => {
     url = `${endpoint}products`;
     mock.get(url, () => ({ body: productsFile, ok: true }));

@@ -12,7 +12,7 @@ const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OD
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 let url;
 
-describe('Payment methods related tests', () => {
+describe('Payment method', () => {
   it('Should return all the payment methods', (done) => {
     url = `${endpoint}payment_methods`;
     mock.get(url, () => ({ body: paymentMethodsFile, ok: true }));
