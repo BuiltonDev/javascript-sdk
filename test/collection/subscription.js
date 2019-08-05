@@ -13,6 +13,10 @@ let url;
 const subscriptionFile = require('../fetchmock/subscription.json');
 
 describe('Subscription related tests', () => {
+  beforeEach(() => {
+    // Guarantee each test knows exactly which routes are defined
+    mock.clearRoutes();
+  });
   it('Should return a subscription from a subscription id', (done) => {
     url = `${endpoint}subscriptions/:subscriptionId:`;
     mock.get(url, () => ({ body: subscriptionFile, ok: true }));

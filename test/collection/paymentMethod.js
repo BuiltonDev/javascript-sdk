@@ -16,6 +16,10 @@ const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 let url;
 
 describe('Payment methods related tests', () => {
+  beforeEach(() => {
+    // Guarantee each test knows exactly which routes are defined
+    mock.clearRoutes();
+  });
   it('Should create a new payment method with Stripe to get setup intent (SCA)', async () => {
     url = `${endpoint}payment_methods`;
     mock.post(url, () => ({ body: paymentMethodWithIntent, ok: true }));

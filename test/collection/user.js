@@ -15,6 +15,10 @@ const ratingFile = require('../fetchmock/ratings.json');
 const userFile = require('../fetchmock/user.json');
 
 describe('User related tests', () => {
+  beforeEach(() => {
+    // Guarantee each test knows exactly which routes are defined
+    mock.clearRoutes();
+  });
   it('Should return a user', (done) => {
     url = `${endpoint}users/:userId:`;
     mock.get(url, () => ({ body: userFile, ok: true }));
@@ -33,7 +37,6 @@ describe('User related tests', () => {
       done();
     }).catch(console.log);
   });
-  let user;
   it('Should return me', (done) => {
     url = `${endpoint}users/me`;
     mock.get(url, () => ({ body: userFile, ok: true }));
@@ -46,7 +49,7 @@ describe('User related tests', () => {
   it('Should return user from json user', (done) => {
     url = `${endpoint}users/586fb30ee560270013f4f533`;
     mock.get(url, () => ({ body: userFile, ok: true }));
-    sa.users.set(user).get({}, (err, userRes) => {
+    sa.users.set(userFile).get({}, (err, userRes) => {
       assert.ok((userRes.first_name === userFile.first_name));
       assert.ok(userRes.constructor.name === 'User');
       done();
