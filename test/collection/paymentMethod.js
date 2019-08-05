@@ -8,6 +8,7 @@ const mock = require('superagent-mocker')(request);
 const paymentMethodsList = require('../fetchmock/paymentMethods.json');
 const paymentMethodWithIntent = require('../fetchmock/paymentMethodWithIntent.json');
 const paymentMethodWithCard = require('../fetchmock/paymentMethodWithCard.json');
+const paymentMethodDeleted = require('../fetchmock/paymentMethodDeleted.json');
 
 const endpoint = 'https://example.com/';
 const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
@@ -34,7 +35,16 @@ describe('Payment methods related tests', () => {
   it('Should return all the users payment methods', async () => {
     url = `${endpoint}payment_methods`;
     mock.get(url, () => ({ body: paymentMethodsList, ok: true }));
+
     const paymentMethods = await sa.paymentMethods.get({});
     assert.ok(paymentMethods[0]._id.$oid === paymentMethodsList[0]._id.$oid);
+  });
+  it('Should delete a payment method from the user', async () => {
+    url = `${endpoint}payment_methods/fake_id`;
+    mock.del(url, () => ({ body: paymentMethodDeleted, ok: true }));
+
+    const paymentMethod = await sa.paymentMethods.set('fake_id').del();
+    assert.ok(paymentMethod.deleted);
+    assert.ok(!paymentMethod.active);
   });
 });
