@@ -13,18 +13,8 @@ let url;
 const ordersFile = require('../fetchmock/orders.json');
 const ratingFile = require('../fetchmock/ratings.json');
 const userFile = require('../fetchmock/user.json');
-const usersFile = require('../fetchmock/users.json');
 
 describe('User related tests', () => {
-  it('Should return a list of Users', (done) => {
-    url = `${endpoint}users`;
-    mock.get(url, () => ({ body: usersFile, ok: true }));
-    sa.users.get({}, (err, users) => {
-      assert.ok(Array.isArray(users));
-      assert.ok(users[1].constructor.name === 'User');
-      done();
-    });
-  });
   it('Should return a list of Users with a promise', (done) => {
     url = `${endpoint}users`;
     mock.get(url, () => ({ body: usersFile, ok: true }));
