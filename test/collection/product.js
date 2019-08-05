@@ -14,6 +14,10 @@ const productsFile = require('../fetchmock/products.json');
 const productFile = require('../fetchmock/product.json');
 
 describe('Product', () => {
+  beforeEach(() => {
+    // Guarantee each test knows exactly which routes are defined
+    mock.clearRoutes();
+  });
   it('Should return a list of Products', (done) => {
     url = `${endpoint}products`;
     mock.get(url, () => ({ body: productsFile, ok: true }));

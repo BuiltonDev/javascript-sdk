@@ -2,6 +2,7 @@
   {
     "customer_id": "cus_QwErTyUiOp1234",
     "deleted": false,
+    "is_sca_compatible": true,
     "modified": {
       "$date": 1494424036122
     },
@@ -50,6 +51,7 @@
   {
     "customer_id": "cus_QwErTyUiOp1234",
     "deleted": false,
+    "is_sca_compatible": true,
     "modified": {
       "$date": 1496916550814
     },
