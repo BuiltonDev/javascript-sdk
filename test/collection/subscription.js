@@ -16,6 +16,7 @@ describe('Subscription related tests', () => {
   it('Should return a subscription from a subscription id', (done) => {
     url = `${endpoint}subscriptions/:subscriptionId:`;
     mock.get(url, () => ({ body: subscriptionFile, ok: true }));
+
     sa.subscriptions.set(':subscriptionId:').get({}, (err, subscription) => {
       assert.ok((subscription.name === subscriptionFile.name));
       assert.ok(subscription.constructor.name === 'Subscription');
@@ -26,6 +27,7 @@ describe('Subscription related tests', () => {
   it('Should return start a subscription', (done) => {
     url = `${endpoint}subscriptions/:subscriptionId:/start`;
     mock.post(url, () => ({ body: subscriptionFile, ok: true }));
+
     sa.subscriptions.set(':subscriptionId:').start({
       body: {
         payment_method: 'dummy_payment_method',
@@ -41,10 +43,19 @@ describe('Subscription related tests', () => {
   it('Should return stop a subscription', (done) => {
     url = `${endpoint}subscriptions/:subscriptionId:/stop`;
     mock.post(url, () => ({ body: subscriptionFile, ok: true }));
+
     sa.subscriptions.set(':subscriptionId:').stop({}, (err, subscription) => {
       assert.ok((subscription.name === subscriptionFile.name));
       assert.ok(subscription.constructor.name === 'Subscription');
       done();
     });
+  });
+
+  it('should update the payment method in subscription', async () => {
+    url = `${endpoint}subscriptions/:subscriptionId:`;
+    mock.put(url, () => ({ body: subscriptionFile, ok: true }));
+
+    const updatedSubscription = await sa.subscriptions.set(':subscriptionId:').update({ body: { payment_method: '<payment-method-id>' } });
+    assert.ok(updatedSubscription.payment_method.$oid === '<payment-method-id>');
   });
 });

@@ -15,17 +15,6 @@ const ratingFile = require('../fetchmock/ratings.json');
 const userFile = require('../fetchmock/user.json');
 
 describe('User related tests', () => {
-  it('Should return a list of Users with a promise', (done) => {
-    url = `${endpoint}users`;
-    mock.get(url, () => ({ body: usersFile, ok: true }));
-    sa.users.get({}).then((users) => {
-      assert.ok(Array.isArray(users));
-      assert.ok(users[1].constructor.name === 'User');
-      done();
-    }, (err) => {
-      throw err;
-    });
-  });
   it('Should return a user', (done) => {
     url = `${endpoint}users/:userId:`;
     mock.get(url, () => ({ body: userFile, ok: true }));
@@ -68,15 +57,6 @@ describe('User related tests', () => {
     mock.get(url, () => ({ body: ratingFile, ok: true }));
     sa.users.set({ id: ':userId:' }).getRating({}, (err, json) => {
       assert.ok(Array.isArray(json));
-      done();
-    });
-  });
-  it('Should search users', (done) => {
-    url = `${endpoint}users/search?page=2&query=searchQuery`;
-    mock.get(url, () => ({ body: usersFile, ok: true }));
-    sa.users.search({ query: 'searchQuery', urlParams: { page: 2 } }, (err, users) => {
-      assert.ok(Array.isArray(users));
-      assert.ok(users[1].constructor.name === 'User');
       done();
     });
   });
