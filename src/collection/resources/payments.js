@@ -21,6 +21,11 @@ class Payments extends Components {
     const obj = new Payment(this.request, id);
     return obj.pay(...params);
   }
+
+  confirm(id, ...params) {
+    const obj = new Payment(this.request, id);
+    return obj.confirm(...params);
+  }
 }
 
 module.exports = Payments;

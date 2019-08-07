@@ -1,0 +1,46 @@
+{
+  "_cls": "PaymentMethod.StripePaymentMethod",
+  "_id": {
+    "$oid": "5d4430a6b353a0000cd0e6f0"
+  },
+  "active": false,
+  "card": {
+    "brand": "visa",
+    "checks": {
+      "address_line1_check": null,
+      "address_postal_code_check": "pass",
+      "cvc_check": "pass"
+    },
+    "country": "FR",
+    "exp_month": 2,
+    "exp_year": 2032,
+    "fingerprint": "eJ6lfIUb1V29Tq9o",
+    "funding": "credit",
+    "generated_from": null,
+    "last4": "3155",
+    "three_d_secure_usage": {
+      "supported": true
+    },
+    "wallet": null
+  },
+  "company": {
+    "$oid": "5cef78afa6db93000e64816c"
+  },
+  "created": {
+    "$date": 1564749989943
+  },
+  "customer_id": "cus_random",
+  "deleted": true,
+  "is_sca_compatible": true,
+  "method": "stripe",
+  "modified": {
+    "$date": 1564749999948
+  },
+  "name": "Stripe",
+  "setup_intent": {
+    "client_secret": "foobar_secret_bazbat",
+    "id": "foobar",
+    "status": "succeeded"
+  },
+  "source": "pm_fake_payment_method_id"
+}

@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "order": ":orderId:",
+    "user": ":userId:",
+    "stars": 6
+  }
+]
