@@ -1,0 +1,35 @@
+{
+  "_id": {
+    "$oid": ":paymentId:"
+  },
+  "active": true,
+  "amount": 700.0,
+  "company": {
+    "$oid": "5ce68495873a43000d3a0d1c"
+  },
+  "created": {
+    "$date": 1565170706295
+  },
+  "currency": "EUR",
+  "current_state": "succeeded",
+  "deleted": false,
+  "description": "",
+  "human_id": "2E8WWL",
+  "metadata": {
+    "charge_id": "ch_random",
+    "intent_client_secret": ":payment_client_secret:",
+    "intent_id": ":payment_intent_id:"
+  },
+  "modified": {
+    "$date": 1565170762189
+  },
+  "payment_date": {
+    "$date": 1565170706330
+  },
+  "payment_method": {
+    "$oid": "5d49305b10f1c8000a2dd787"
+  },
+  "user": {
+    "$oid": "foobarId"
+  }
+}
