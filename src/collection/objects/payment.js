@@ -16,6 +16,12 @@ class Payment extends Component {
       type: 'post', resource: 'pay', body, urlParams, json,
     }, done);
   }
+
+  confirm({ body, urlParams, json = false }, done) {
+    return this.query({
+      type: 'post', resource: 'confirm', body, urlParams, json,
+    }, done);
+  }
 }
 
 module.exports = Payment;
