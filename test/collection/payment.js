@@ -13,7 +13,7 @@ const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OD
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 let url;
 
-describe.only('Payment related tests', () => {
+describe('Payment related tests', () => {
   it('Should list payments', async () => {
     url = `${endpoint}payments?size=4&page=1`;
     mock.get(url, () => ({ body: paymentsFile, ok: true }));
