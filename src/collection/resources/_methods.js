@@ -20,6 +20,18 @@ module.exports = ObjectClass => ({
     return this.getAll(...params);
   },
 
+  paginate({
+    page, size, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page,
+      size,
+      type: 'get',
+      urlParams,
+      json,
+    }, done);
+  },
+
   del(id, ...params) {
     const obj = new ObjectClass(this.request, id);
     return obj.delete(...params);

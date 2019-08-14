@@ -18,10 +18,10 @@ class Component {
       }
     }
 
-    const prepParseJson = (ResConstructor, rawJson) => (res) => {
+    const parseJson = (res, ResConstructor, rawJson) => {
       const json = res.body;
       if (rawJson || ResConstructor === null || typeof json !== 'object') {
-        return { obj: json, res };
+        return json;
       }
       if (ResConstructor) {
         if (Array.isArray(json)) {
@@ -29,17 +29,17 @@ class Component {
           json.forEach((element) => {
             objArray.push(new ResConstructor(request, element));
           });
-          return { obj: objArray, res };
+          return objArray;
         }
-        return { obj: new ResConstructor(request, json), res };
+        return new ResConstructor(request, json);
       }
       if (!this.id && json._id && json._id.$oid) {
         this.id = json._id.$oid;
       }
-      return { obj: Object.assign(this, json), res };
+      return Object.assign(this, json);
     };
 
-    this.query = ({
+    this.query = async ({
       type = 'get',
       urlParams = {},
       fullPath = null,
@@ -52,10 +52,21 @@ class Component {
       if (!this.id && !fullPath) throw new Error.MethodNeedsId();
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const path = fullPath || `${apiPath}/${this.id}${resourceLocal}`;
-      const parseJson = prepParseJson(ResConstructor, json);
-      return request.query({
-        type, path, body, urlParams,
-      }, parseJson, done);
+      try {
+        const res = await request.query({
+          type, path, body, urlParams,
+        });
+        const obj = parseJson(res, ResConstructor, json);
+        if (done) {
+          done(null, obj, res);
+        }
+        return obj;
+      } catch (err) {
+        if (done) {
+          done(err);
+        }
+        return Promise.reject(err);
+      }
     };
 
     restFnArray.forEach((restFn) => {
