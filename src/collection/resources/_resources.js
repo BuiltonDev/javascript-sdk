@@ -27,7 +27,7 @@ class Components {
       return json;
     };
 
-    const doRequest = async ({
+    const doRequest = ({
       type = 'get',
       urlParams = {},
       body,
@@ -40,17 +40,18 @@ class Components {
       const actionLocal = (action && action[0] !== '/') ? `/${action}` : action;
       const path = `${apiPath}${actionLocal}`;
       try {
-        const res = await this.request.query({
+        return this.request.query({
           type, path, body, urlParams, isJsonBody,
-        });
-        const obj = parseJson(res, ResConstructor, json);
-        return Promise.resolve({ res, obj });
+        }).then((res) => {
+          const obj = parseJson(res, ResConstructor, json);
+          return Promise.resolve({ res, obj });
+        }).catch(err => Promise.reject(err));
       } catch (err) {
         return Promise.reject(err);
       }
     };
 
-    this.paginate = async ({
+    this.paginate = ({
       page = 0,
       size = 100,
       urlParams,
@@ -59,69 +60,91 @@ class Components {
       const getUrlParamsWithPagination = (currentPage, currentSize) => ({
         ...urlParams, page: currentPage, size: currentSize,
       });
-      const { res, obj } = await doRequest({
+      return doRequest({
         ...args, urlParams: getUrlParamsWithPagination(page, size),
-      });
-      const queryFn = this.query;
-      return true;
-      // const Paginate = class {
-      //   constructor() {
-      //     this.page = page;
-      //     this.size = size;
-      //     this.current = obj;
-      //     this.paginationTotal = res.headers['x-pagination-total'];
-      //   }
+      }).then(({ res, obj }) => {
+        const queryFn = this.query;
+        const Paginate = class {
+          constructor() {
+            this.page = page;
+            this.size = size;
+            this.current = obj;
+            this.paginationTotal = res.headers['x-pagination-total'];
+          }
 
-      //   async next(doneCallback) {
-      //     this.page += 1;
-      //     this.current = await queryFn({
-      //       ...args,
-      //       urlParams: getUrlParamsWithPagination(this.page, this.size),
-      //     }, doneCallback);
-      //     return this.current;
-      //   }
+          next(doneCallback) {
+            if (this.page >= Math.floor(this.paginationTotal / this.size)) {
+              return Promise.resolve(this.current);
+            }
+            this.page += 1;
+            return queryFn({
+              ...args,
+              urlParams: getUrlParamsWithPagination(this.page, this.size),
+            }, doneCallback)
+              .then((newObj) => {
+                this.current = newObj;
+                return this.current;
+              })
+              .catch(err => Promise.reject(err));
+          }
 
-      //   async previous(doneCallback) {
-      //     this.page -= 1;
-      //     this.current = await queryFn({
-      //       ...args,
-      //       urlParams: getUrlParamsWithPagination(this.page, this.size),
-      //     }, doneCallback);
-      //     return this.current;
-      //   }
+          previous(doneCallback) {
+            if (this.page <= 0) {
+              return Promise.resolve(this.current);
+            }
+            this.page -= 1;
+            return queryFn({
+              ...args,
+              urlParams: getUrlParamsWithPagination(this.page, this.size),
+            }, doneCallback)
+              .then((newObj) => {
+                this.current = newObj;
+                return this.current;
+              })
+              .catch(err => Promise.reject(err));
+          }
 
-      //   async goToPage(pageNb, doneCallback) {
-      //     this.page = pageNb;
-      //     this.current = await queryFn({
-      //       ...args,
-      //       urlParams: getUrlParamsWithPagination(this.page, this.size),
-      //     }, doneCallback);
-      //     return this.current;
-      //   }
-      // };
-      // const pagination = new Paginate();
-      // if (done) {
-      //   done(pagination);
-      // }
-      // return pagination;
-    };
-
-    this.query = async ({
-      ...args
-    }, done) => {
-      try {
-        const { res, obj } = await doRequest({ ...args });
+          goToPage(pageNb, doneCallback) {
+            this.page = pageNb;
+            return queryFn({
+              ...args,
+              urlParams: getUrlParamsWithPagination(this.page, this.size),
+            }, doneCallback)
+              .then((newObj) => {
+                this.current = newObj;
+                return this.current;
+              })
+              .catch(err => Promise.reject(err));
+          }
+        };
+        const pagination = new Paginate();
         if (done) {
-          done(null, obj, res);
+          done(pagination);
         }
-        return obj;
-      } catch (err) {
+        return pagination;
+      }).catch((err) => {
         if (done) {
           done(err);
         }
         return Promise.reject(err);
-      }
+      });
     };
+
+    this.query = ({
+      ...args
+    }, done) => doRequest({ ...args })
+      .then(({ res, obj }) => {
+        if (done) {
+          done(null, obj, res);
+        }
+        return obj;
+      })
+      .catch((err) => {
+        if (done) {
+          done(err);
+        }
+        return Promise.reject(err);
+      });
 
     restFnArray.forEach((restFn) => {
       this[restFn.name] = restFn;

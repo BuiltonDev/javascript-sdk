@@ -23,8 +23,10 @@ describe('Pagination related tests', () => {
     const pagination1 = await sa.products.paginate({ size: 1, page: 0 });
     mockRequest(1, 1);
     assert(pagination1.current[0]._cls === 'Product');
+    console.log(pagination1.page);
     const page1Array = pagination1.current;
     await pagination1.next();
+    console.log(pagination1.page);
     const page2Array = pagination1.current;
     assert(page1Array[0].id !== page2Array[0].id);
     mockRequest(2, 0);
@@ -48,6 +50,36 @@ describe('Pagination related tests', () => {
     assert(pagination1.previous instanceof Function);
     assert(pagination1.next instanceof Function);
     assert(pagination1.paginationTotal === 212);
+  });
+
+  it('Should paginate with floor and ceil limit', async () => {
+    const mockRequest = (size, page) => {
+      nock(endpoint)
+        .get('/products')
+        .query({ size, page })
+        .reply(200, page % 2 === 0 ? productsFile : productsFile2, { 'X-Pagination-Total': 212 });
+    };
+    mockRequest(3, 0);
+    const pagination1 = await sa.products.paginate({ size: 3, page: 0 });
+    const page1Array = pagination1.current;
+    await pagination1.previous(); // returns page 0, not -1, without querying the API
+    const page2Array = pagination1.current;
+    assert(page1Array === page2Array);
+    mockRequest(3, 1);
+    await pagination1.next();
+    const page3Array = pagination1.current;
+    assert(page2Array !== page3Array);
+    mockRequest(3, 212);
+    await pagination1.goToPage(212); // go to last page
+    const page4Array = pagination1.current;
+    assert(page1Array !== page4Array);
+    await pagination1.next(); // returns last page again, without querying the API
+    const page5Array = pagination1.current;
+    assert(page5Array === page4Array);
+    mockRequest(3, 211);
+    await pagination1.previous();
+    const page6Array = pagination1.current;
+    assert(page4Array !== page6Array);
   });
 
   it('Should paginate with callbacks', async () => {

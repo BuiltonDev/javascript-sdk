@@ -39,7 +39,7 @@ class Component {
       return Object.assign(this, json);
     };
 
-    this.query = async ({
+    this.query = ({
       type = 'get',
       urlParams = {},
       fullPath = null,
@@ -52,21 +52,23 @@ class Component {
       if (!this.id && !fullPath) throw new Error.MethodNeedsId();
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const path = fullPath || `${apiPath}/${this.id}${resourceLocal}`;
-      try {
-        const res = await request.query({
-          type, path, body, urlParams,
+
+      return request.query({
+        type, path, body, urlParams,
+      })
+        .then((res) => {
+          const obj = parseJson(res, ResConstructor, json);
+          if (done) {
+            done(null, obj, res);
+          }
+          return obj;
+        })
+        .catch((err) => {
+          if (done) {
+            done(err);
+          }
+          return Promise.reject(err);
         });
-        const obj = parseJson(res, ResConstructor, json);
-        if (done) {
-          done(null, obj, res);
-        }
-        return obj;
-      } catch (err) {
-        if (done) {
-          done(err);
-        }
-        return Promise.reject(err);
-      }
     };
 
     restFnArray.forEach((restFn) => {

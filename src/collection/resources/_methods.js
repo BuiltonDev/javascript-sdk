@@ -21,7 +21,7 @@ module.exports = ObjectClass => ({
   },
 
   paginate({
-    page, size, urlParams, json = false,
+    page = 0, size = 100, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
       page,
