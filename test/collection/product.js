@@ -13,7 +13,7 @@ let url;
 const productsFile = require('../fetchmock/products.json');
 const productFile = require('../fetchmock/product.json');
 
-describe('Product', () => {
+describe('Product related tests', () => {
   beforeEach(() => {
     // Guarantee each test knows exactly which routes are defined
     mock.clearRoutes();

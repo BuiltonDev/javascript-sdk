@@ -1,13 +1,13 @@
 {
   "name": "@builton/core-sdk",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "description": "Builton JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha test/collection --recursive",
     "lint": "./node_modules/.bin/eslint .",
     "webpack": "./node_modules/.bin/webpack",
-    "buildAuto": "nodemon --ignore 'dist/*' --ignore 'example/*' --exec npm run build",
+    "buildAuto": "nodemon --ignore 'dist/*' --ignore 'example/*' --exec npm run webpack",
     "build": "npm i && ./node_modules/.bin/mocha test/collection --recursive && ./node_modules/.bin/webpack && echo '------ESLINT------\n' && ./node_modules/.bin/eslint . && echo '------------------\n'",
     "release": "release-it",
     "dry-release": "release-it --dry-run"
@@ -52,6 +52,7 @@
     "webpack-cli": "3.1.2"
   },
   "dependencies": {
+    "form-data": "^2.5.0",
     "jwt-decode": "^2.2.0",
     "superagent": "^5.0.8"
   },

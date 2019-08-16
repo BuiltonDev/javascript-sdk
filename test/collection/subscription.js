@@ -12,7 +12,7 @@ let url;
 
 const subscriptionFile = require('../fetchmock/subscription.json');
 
-describe('Subscription', () => {
+describe('Subscription related tests', () => {
   beforeEach(() => {
     // Guarantee each test knows exactly which routes are defined
     mock.clearRoutes();
