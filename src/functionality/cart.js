@@ -1,5 +1,6 @@
 const store = require('store2');
 const Orders = require('../collection/resources/orders');
+const Order = require('../collection/objects/order');
 
 class Cart {
   constructor(request) {
@@ -57,26 +58,32 @@ class Cart {
     return this._cart;
   }
 
-  // User should be authenticated before triggering this step
-  checkout(paymentMethodId, deliveryAddress) {
+  // Give orderId only if checkout failed during pay due to SCA
+  checkout(paymentMethodId, deliveryAddress, resumeOrderId) {
     if (!this._isCartValid()) throw new Error('Cart not valid');
+
+    const payForOrder = (order) => {
+      return order.pay({
+        body: {
+          payment_method: paymentMethodId,
+        },
+      }).then((completedOrder) => {
+        this.empty();
+        this._saveCart();
+        return completedOrder;
+      });
+    };
+
+    if (resumeOrderId) {
+      return payForOrder(new Order(this.request, { id: resumeOrderId }));
+    }
 
     return new Orders(this.request).create({
       body: {
         items: this._cart,
         delivery_address: deliveryAddress,
       },
-    }).then((createdOrder) => {
-      return createdOrder.pay({
-        body: {
-          payment_method: paymentMethodId,
-        },
-      }).then((order) => {
-        this.empty();
-        this._saveCart();
-        return order;
-      });
-    });
+    }).then(newOrder => payForOrder(newOrder));
   }
 }
 

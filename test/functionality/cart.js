@@ -11,6 +11,7 @@ const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 let url;
 
 const orderFile = require('../fetchmock/order.json');
+const scaFailedOrderFile = require('../fetchmock/orderPaySCAFailed.json');
 
 describe.only('Cart', () => {
   it('Should return current cart', () => {
@@ -49,5 +50,33 @@ describe.only('Cart', () => {
     });
     assert.ok(!sa.cart.get().length);
     assert.ok(paidOrder.order_status === 'SUCCESS');
+  });
+  it('Should allow you to recover checkout process if process failed due to SCA reauthentication', async () => {
+    url = `${endpoint}orders`;
+    const url2 = `${endpoint}orders/592bde24b738ff0013adf5c7/pay`;
+    mock.post(url, () => ({ body: orderFile, ok: true }));
+    mock.post(url2, () => ({ status: 422, body: scaFailedOrderFile, ok: false }));
+
+    sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
+    const paymentMethodId = ':paymentMethodId:';
+    const deliveryAddress = {
+      street_name: 'Slottsplassen 1',
+      zip_code: '0010',
+      city: 'Oslo',
+      country: 'Norway',
+      geo: [59.909848, 10.7379474],
+    };    
+
+    try {
+      await sa.cart.checkout(paymentMethodId, deliveryAddress);
+    } catch (error) {
+      console.log(error);
+      assert.ok(error.status === 422);
+      mock.post(url2, () => ({ body: orderFile, ok: true }));
+      assert.ok(sa.cart.get().length);
+      const retryOrder = await sa.cart.checkout(paymentMethodId, deliveryAddress, '592bde24b738ff0013adf5c7');
+      assert.ok(!sa.cart.get().length);
+      assert.ok(retryOrder.order_status === 'SUCCESS');
+    }
   });
 });
