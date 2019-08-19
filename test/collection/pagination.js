@@ -20,7 +20,7 @@ describe('Pagination related tests', () => {
         .reply(200, page % 2 === 0 ? productsFile : productsFile2, { 'X-Pagination-Total': 212 });
     };
     mockRequest(1, 0);
-    const pagination1 = await sa.products.paginate({ size: 1, page: 0 });
+    const pagination1 = await sa.products.get({ size: 1, page: 0 });
     mockRequest(1, 1);
     assert(pagination1.current[0]._cls === 'Product');
     const page1Array = pagination1.current;
@@ -28,7 +28,7 @@ describe('Pagination related tests', () => {
     const page2Array = pagination1.current;
     assert(page1Array[0].id !== page2Array[0].id);
     mockRequest(2, 0);
-    const pagination2 = await sa.products.paginate({ size: 2, page: 0 });
+    const pagination2 = await sa.products.get({ size: 2, page: 0 });
     mockRequest(1, 2);
     await pagination1.next();
     assert(pagination1.page === 2);
@@ -58,7 +58,7 @@ describe('Pagination related tests', () => {
         .reply(200, page % 2 === 0 ? productsFile : productsFile2, { 'X-Pagination-Total': 212 });
     };
     mockRequest(3, 0);
-    const pagination1 = await sa.products.paginate({ size: 3, page: 0 });
+    const pagination1 = await sa.products.get({ size: 3, page: 0 });
     const page1Array = pagination1.current;
     await pagination1.previous(); // returns page 0, not -1, without querying the API
     const page2Array = pagination1.current;
@@ -88,7 +88,7 @@ describe('Pagination related tests', () => {
         .reply(200, page % 2 === 0 ? productsFile : productsFile2, { 'X-Pagination-Total': 212 });
     };
     mockRequest(1, 0);
-    sa.products.paginate({ size: 1, page: 0 }, (error, pagination) => {
+    sa.products.get({ size: 1, page: 0 }, (error, pagination) => {
       let firstProductId = pagination.current[0].id;
       const paginateCallback = (err, obj) => {
         assert(err === null);
