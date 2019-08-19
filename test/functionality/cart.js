@@ -70,7 +70,6 @@ describe.only('Cart', () => {
     try {
       await sa.cart.checkout(paymentMethodId, deliveryAddress);
     } catch (error) {
-      console.log(error);
       assert.ok(error.status === 422);
       mock.post(url2, () => ({ body: orderFile, ok: true }));
       assert.ok(sa.cart.get().length);
