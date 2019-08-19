@@ -4,10 +4,9 @@ const Builton = require('../../src/main.js');
 
 const nock = require('nock');
 
+const paymentsFile = require('../fetchmock/payments.json');
 const orderFile = require('../fetchmock/order.json');
 const ordersFile = require('../fetchmock/orders.json');
-const deliveryFile = require('../fetchmock/delivery.json');
-const deliveriesFile = require('../fetchmock/deliveries.json');
 const userFile = require('../fetchmock/user.json');
 const orderPostBody = require('../fetchmock/orderPostBody.json');
 
@@ -19,10 +18,11 @@ describe('Order related tests', () => {
   it('Should return a list of Orders', (done) => {
     nock(endpoint)
       .get('/orders')
+      .query({ size: 100, page: 0 })
       .reply(200, ordersFile);
     sa.orders.get({}, (err, orders) => {
       if (err) throw err;
-      assert.ok(Array.isArray(orders));
+      assert.ok(Array.isArray(orders.current));
       done();
     });
   });
@@ -30,11 +30,12 @@ describe('Order related tests', () => {
   it('Should return a list of Orders as json', (done) => {
     nock(endpoint)
       .get('/orders')
+      .query({ size: 100, page: 0 })
       .reply(200, ordersFile);
     sa.orders.get({ json: true }, (err, orders) => {
       if (err) throw err;
-      assert.ok(Array.isArray(orders));
-      assert.ok(orders[0].constructor.name !== 'Order');
+      assert.ok(Array.isArray(orders.current));
+      assert.ok(orders.current[0].constructor.name !== 'Order');
       done();
     });
   });
@@ -87,18 +88,6 @@ describe('Order related tests', () => {
     });
   });
 
-  it('Should return a list of deliveries', (done) => {
-    nock(endpoint)
-      .get('/orders/:orderId:/deliveries')
-      .reply(200, deliveriesFile);
-    sa.orders.set(':orderId:').getDeliveries({}, (err, deliveries) => {
-      if (err) throw err;
-      assert.ok(Array.isArray(deliveries));
-      assert.ok(deliveries[0].status === deliveriesFile[0].status);
-      done();
-    });
-  });
-
   it('Should return the user for an order', (done) => {
     nock(endpoint)
       .get('/orders/:orderId:')
@@ -118,24 +107,14 @@ describe('Order related tests', () => {
     });
   });
 
-  it('Should submit a delivery', (done) => {
+  it('Should list payments of an order', (done) => {
     nock(endpoint)
-      .post('/orders/:orderId:/deliveries/:deliveryId:')
-      .reply(200, deliveryFile);
-    sa.orders.set(':orderId:').triggerDeliveryAction({ deliveryId: ':deliveryId:' }, (err, delivery) => {
+      .get('/orders/:orderId:/payments')
+      .query({ size: 100, page: 0 })
+      .reply(200, paymentsFile);
+    sa.orders.set(':orderId:').getPayments({}, (err, payments) => {
       if (err) throw err;
-      assert.ok(delivery.status === deliveryFile.status);
-      done();
-    });
-  });
-
-  it('Should submit a delivery', (done) => {
-    nock(endpoint)
-      .post('/orders/:orderId:/deliveries/:deliveryId:')
-      .reply(200, deliveryFile);
-    sa.orders.triggerDeliveryAction(':orderId:', { deliveryId: ':deliveryId:' }, (err, delivery) => {
-      if (err) throw err;
-      assert.ok(delivery.status === deliveryFile.status);
+      assert.ok(payments.current[0].constructor.name === 'Payment');
       done();
     });
   });

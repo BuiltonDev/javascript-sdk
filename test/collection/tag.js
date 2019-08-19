@@ -13,10 +13,11 @@ describe('Tag related tests', () => {
   it('Should return all the tags', (done) => {
     nock(endpoint)
       .get('/tags')
+      .query({ size: 100, page: 0 })
       .reply(200, tagFile);
     sa.tags.get({}, (err, tags) => {
-      assert.ok(Array.isArray(tags));
-      assert.ok(tagFile[2]._id.$oid === tags[2].id);
+      assert.ok(Array.isArray(tags.current));
+      assert.ok(tagFile[2]._id.$oid === tags.current[2].id);
       done();
     });
   });

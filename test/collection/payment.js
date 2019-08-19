@@ -17,8 +17,8 @@ describe('Payment related tests', () => {
       .get('/payments')
       .query({ size: 4, page: 1 })
       .reply(200, paymentsFile);
-    const payments = await sa.payments.get({ urlParams: { size: 4, page: 1 } });
-    assert.ok(paymentsFile[0]._id.$oid === payments[0].id);
+    const payments = await sa.payments.get({ size: 4, page: 1 });
+    assert.ok(paymentsFile[0]._id.$oid === payments.current[0].id);
   });
 
   it('Should confirm the payment (SCA re-authentication)', async () => {

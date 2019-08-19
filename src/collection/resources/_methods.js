@@ -1,6 +1,10 @@
 module.exports = ObjectClass => ({
-  getAll({ urlParams, json = false } = {}, done) {
-    return this.query({
+  getAll({
+    page, size, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page,
+      size,
       type: 'get',
       urlParams,
       json,
@@ -18,18 +22,6 @@ module.exports = ObjectClass => ({
       return this.getFromId(id, ...params);
     }
     return this.getAll(...params);
-  },
-
-  paginate({
-    page, size, urlParams, json = false,
-  } = {}, done) {
-    return this.paginate({
-      page,
-      size,
-      type: 'get',
-      urlParams,
-      json,
-    }, done);
   },
 
   del(id, ...params) {

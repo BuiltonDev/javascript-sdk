@@ -33,9 +33,10 @@ describe('Payment methods related tests', () => {
   it('Should return all the payment methods', async () => {
     nock(endpoint)
       .get('/payment_methods')
+      .query({ size: 100, page: 0 })
       .reply(200, paymentMethodsList);
     const paymentMethods = await sa.paymentMethods.get({});
-    assert.ok(paymentMethods[0]._id.$oid === paymentMethodsList[0]._id.$oid);
+    assert.ok(paymentMethods.current[0]._id.$oid === paymentMethodsList[0]._id.$oid);
   });
   it('Should delete a payment method from the user', async () => {
     nock(endpoint)

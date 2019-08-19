@@ -18,10 +18,11 @@ describe('AI related tests', () => {
     it('Should return a list of models', (done) => {
       nock(endpoint)
         .get('/ai/models')
+        .query({ size: 10, page: 0 })
         .reply(200, modelsFile);
-      sa.aiModels.get({}, (err, models) => {
+      sa.aiModels.get({ page: 0, size: 10 }, (err, models) => {
         if (err) throw err;
-        assert.ok(Array.isArray(models));
+        assert.ok(Array.isArray(models.current));
         done();
       });
     });

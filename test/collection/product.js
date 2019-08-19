@@ -14,10 +14,11 @@ describe('Product related tests', () => {
   it('Should return a list of Products', (done) => {
     nock(endpoint)
       .get('/products')
+      .query({ size: 100, page: 0 })
       .reply(200, productsFile);
     sa.products.get({}, (err, products) => {
-      assert.ok(Array.isArray(products));
-      assert.ok(products[0].constructor.name === 'Product');
+      assert.ok(Array.isArray(products.current));
+      assert.ok(products.current[0].constructor.name === 'Product');
       done();
     });
   });
