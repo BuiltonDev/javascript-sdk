@@ -10,15 +10,19 @@ class Product extends Component {
     this.apiPath = 'products';
   }
 
-  getSubProducts({ urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get', resource: 'sub_products', urlParams, json,
+  getSubProducts({
+    size, page, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      size, page, type: 'get', resource: 'sub_products', urlParams, json,
     }, done);
   }
 
-  searchSubProducts({ urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get', resource: 'sub_products/search', urlParams, json,
+  searchSubProducts({
+    size, page, query, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      size, page, type: 'get', resource: 'sub_products/search', urlParams: { ...urlParams, query }, json,
     }, done);
   }
 }

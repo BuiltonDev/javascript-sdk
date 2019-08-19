@@ -1,4 +1,5 @@
 const Error = require('../../utils/error');
+const Pagination = require('../../utils/pagination');
 
 // Abstract class
 class Component {
@@ -39,7 +40,7 @@ class Component {
       return Object.assign(this, json);
     };
 
-    this.query = ({
+    const doRequest = ({
       type = 'get',
       urlParams = {},
       fullPath = null,
@@ -48,28 +49,66 @@ class Component {
       apiPath = this.apiPath,
       ResConstructor = this.constructor,
       json,
-    }, done) => {
+    }) => {
       if (!this.id && !fullPath) throw new Error.MethodNeedsId();
       const resourceLocal = (resource && resource[0] !== '/') ? `/${resource}` : resource;
       const path = fullPath || `${apiPath}/${this.id}${resourceLocal}`;
-
-      return request.query({
-        type, path, body, urlParams,
-      })
-        .then((res) => {
+      try {
+        return request.query({
+          type, path, body, urlParams,
+        }).then((res) => {
           const obj = parseJson(res, ResConstructor, json);
-          if (done) {
-            done(null, obj, res);
-          }
-          return obj;
-        })
-        .catch((err) => {
-          if (done) {
-            done(err);
-          }
-          return Promise.reject(err);
-        });
+          return Promise.resolve({ res, obj });
+        }).catch(err => Promise.reject(err));
+      } catch (err) {
+        return Promise.reject(err);
+      }
     };
+
+    this.paginate = ({
+      page = 0,
+      size = 100,
+      urlParams,
+      ...args
+    }, done) => doRequest({
+      ...args, urlParams: { ...urlParams, page, size },
+    }).then(({ res, obj }) => {
+      const pagination = new Pagination(
+        page,
+        size,
+        obj,
+        res.headers['x-pagination-total'],
+        this.query,
+        urlParams,
+        args,
+      );
+      if (done) {
+        done(null, pagination);
+      }
+      return pagination;
+    }).catch((err) => {
+      if (done) {
+        done(err);
+      }
+      return Promise.reject(err);
+    });
+
+
+    this.query = ({
+      ...args
+    }, done) => doRequest({ ...args })
+      .then(({ res, obj }) => {
+        if (done) {
+          done(null, obj, res);
+        }
+        return obj;
+      })
+      .catch((err) => {
+        if (done) {
+          done(err);
+        }
+        return Promise.reject(err);
+      });
 
     restFnArray.forEach((restFn) => {
       this[restFn.name] = restFn;

@@ -21,7 +21,7 @@ module.exports = ObjectClass => ({
   },
 
   paginate({
-    page = 0, size = 100, urlParams, json = false,
+    page, size, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
       page,
@@ -51,9 +51,11 @@ module.exports = ObjectClass => ({
     }, done);
   },
 
-  search({ query, urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
+  search({
+    page = 0, size = 100, query, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page, size, type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
     }, done);
   },
 

@@ -46,7 +46,7 @@ describe('AI related tests', () => {
       nock(endpoint)
         .get('/ai/models/:modelId:')
         .reply(200, modelReadyFile);
-      sa.aiModels.getFromId(':modelId:', {}, (err, model) => {
+      sa.aiModels.get(':modelId:', {}, (err, model) => {
         if (err) throw err;
         assert.ok(model.constructor.name === 'AIModel');
         assert.ok(model.training_status === 'READY');

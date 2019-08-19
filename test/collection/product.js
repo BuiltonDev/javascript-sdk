@@ -32,13 +32,26 @@ describe('Product related tests', () => {
     });
   });
   it('Should search products', (done) => {
+    const [page, size] = [2, 100];
     nock(endpoint)
-      .get('/products/search?page=2&query=searchQuery')
+      .get('/products/search')
+      .query({ size, page, query: 'searchQuery' })
       .reply(200, productsFile);
-    sa.products.search({ query: 'searchQuery', urlParams: { page: 2 } }, (err, products) => {
-      assert.ok(Array.isArray(products));
-      assert.ok(products[0].constructor.name === 'Product');
+    sa.products.search({ page, size, query: 'searchQuery' }, (err, productPage) => {
+      assert.ok(Array.isArray(productPage.current));
+      assert.ok(productPage.current[0].constructor.name === 'Product');
       done();
+    });
+  });
+  it('Should search subproducts', async () => {
+    const [page, size] = [2, 100];
+    nock(endpoint)
+      .get('/products/:id:/sub_products/search')
+      .query({ size, page, query: 'searchQuery' })
+      .reply(200, productsFile);
+    return sa.products.searchSubProducts(':id:', { page, size, query: 'searchQuery' }, (err, productPage) => {
+      assert.ok(Array.isArray(productPage.current));
+      assert.ok(productPage.current[0].constructor.name === 'Product');
     });
   });
 });

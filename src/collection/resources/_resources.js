@@ -1,4 +1,5 @@
 const Error = require('../../utils/error');
+const Pagination = require('../../utils/pagination');
 
 // Abstract class
 class Components {
@@ -56,79 +57,28 @@ class Components {
       size = 100,
       urlParams,
       ...args
-    }, done) => {
-      const getUrlParamsWithPagination = (currentPage, currentSize) => ({
-        ...urlParams, page: currentPage, size: currentSize,
-      });
-      return doRequest({
-        ...args, urlParams: getUrlParamsWithPagination(page, size),
-      }).then(({ res, obj }) => {
-        const queryFn = this.query;
-        const Paginate = class {
-          constructor() {
-            this.page = page;
-            this.size = size;
-            this.current = obj;
-            this.paginationTotal = res.headers['x-pagination-total'];
-          }
-
-          next(doneCallback) {
-            if (this.page >= Math.floor(this.paginationTotal / this.size)) {
-              return Promise.resolve(this.current);
-            }
-            this.page += 1;
-            return queryFn({
-              ...args,
-              urlParams: getUrlParamsWithPagination(this.page, this.size),
-            }, doneCallback)
-              .then((newObj) => {
-                this.current = newObj;
-                return this.current;
-              })
-              .catch(err => Promise.reject(err));
-          }
-
-          previous(doneCallback) {
-            if (this.page <= 0) {
-              return Promise.resolve(this.current);
-            }
-            this.page -= 1;
-            return queryFn({
-              ...args,
-              urlParams: getUrlParamsWithPagination(this.page, this.size),
-            }, doneCallback)
-              .then((newObj) => {
-                this.current = newObj;
-                return this.current;
-              })
-              .catch(err => Promise.reject(err));
-          }
-
-          goToPage(pageNb, doneCallback) {
-            this.page = pageNb;
-            return queryFn({
-              ...args,
-              urlParams: getUrlParamsWithPagination(this.page, this.size),
-            }, doneCallback)
-              .then((newObj) => {
-                this.current = newObj;
-                return this.current;
-              })
-              .catch(err => Promise.reject(err));
-          }
-        };
-        const pagination = new Paginate();
-        if (done) {
-          done(pagination);
-        }
-        return pagination;
-      }).catch((err) => {
-        if (done) {
-          done(err);
-        }
-        return Promise.reject(err);
-      });
-    };
+    }, done) => doRequest({
+      ...args, urlParams: { ...urlParams, page, size },
+    }).then(({ res, obj }) => {
+      const pagination = new Pagination(
+        page,
+        size,
+        obj,
+        res.headers['x-pagination-total'],
+        this.query,
+        urlParams,
+        args,
+      );
+      if (done) {
+        done(null, pagination);
+      }
+      return pagination;
+    }).catch((err) => {
+      if (done) {
+        done(err);
+      }
+      return Promise.reject(err);
+    });
 
     this.query = ({
       ...args
