@@ -14,7 +14,7 @@ class Cart {
 
   _isCartValid() {
     this._cart.forEach((item) => {
-      if (Object.keys(item).length !== 2 || !item.productId || item.quantity) {
+      if (Object.keys(item).length !== 2 || !item.productId || !item.quantity) {
         return false;
       }
     });
