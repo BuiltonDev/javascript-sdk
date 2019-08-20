@@ -62,17 +62,15 @@ class Cart {
   checkout(paymentMethodId, deliveryAddress, resumeOrderId) {
     if (!this._isCartValid()) throw new Error('Cart not valid');
 
-    const payForOrder = (order) => {
-      return order.pay({
-        body: {
-          payment_method: paymentMethodId,
-        },
-      }).then((completedOrder) => {
-        this.empty();
-        this._saveCart();
-        return completedOrder;
-      });
-    };
+    const payForOrder = order => order.pay({
+      body: {
+        payment_method: paymentMethodId,
+      },
+    }).then((completedOrder) => {
+      this.empty();
+      this._saveCart();
+      return completedOrder;
+    });
 
     if (resumeOrderId) {
       return payForOrder(new Order(this.request, { id: resumeOrderId }));

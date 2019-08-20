@@ -57,7 +57,6 @@ class Builton {
     if (singleton) {
       instance = this;
     }
-
   }
 
   refreshBearerToken(newBearerToken) {

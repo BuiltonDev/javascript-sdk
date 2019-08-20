@@ -65,7 +65,7 @@ describe.only('Cart', () => {
       city: 'Oslo',
       country: 'Norway',
       geo: [59.909848, 10.7379474],
-    };    
+    };
 
     try {
       await sa.cart.checkout(paymentMethodId, deliveryAddress);
