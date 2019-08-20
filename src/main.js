@@ -51,7 +51,7 @@ class Builton {
     this.subscriptions = new Subscriptions(this.request);
     this.tags = new Tags(this.request);
     this.users = new Users(this.request);
-    this.images = new Images();
+    this.images = new Images(this.request);
     this.cart = new Cart(this.request);
 
     if (singleton) {
