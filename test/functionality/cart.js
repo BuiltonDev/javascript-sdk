@@ -13,7 +13,7 @@ let url;
 const orderFile = require('../fetchmock/order.json');
 const scaFailedOrderFile = require('../fetchmock/orderPaySCAFailed.json');
 
-describe.only('Cart', () => {
+describe('Cart', () => {
   it('Should return current cart', () => {
     assert.ok(sa.cart.get().length === 0);
   });
