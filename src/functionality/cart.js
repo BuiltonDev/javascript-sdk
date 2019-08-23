@@ -79,9 +79,11 @@ class Cart {
   checkout(paymentMethodId, deliveryAddress, resumeOrderId) {
     if (!this._isCartValid()) throw new Error('Cart not valid');
 
-    const items = this._cart.map((item) => {
-      return { product: item.productId, quantity: item.quantity, sub_products: item.subProducts };
-    });
+    const items = this._cart.map(item => ({
+      product: item.productId,
+      quantity: item.quantity,
+      sub_products: item.subProducts,
+    }));
 
     const payForOrder = order => order.pay({
       body: {
