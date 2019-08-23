@@ -37,13 +37,13 @@ class Cart {
     this._cart = [];
   }
 
-  addProduct({ productId, quantity }) {
+  addProduct({ productId, quantity = 1, subProducts = [] }) {
     const exisitingProduct = this._findProductIndex(productId);
     // If product item exists, we replace with new product item
     if (exisitingProduct > -1) {
-      this._cart[exisitingProduct] = { productId, quantity };
+      this._cart[exisitingProduct] = { productId, quantity, subProducts };
     } else {
-      this._cart.push({ productId, quantity });
+      this._cart.push({ productId, quantity, subProducts });
     }
     this._saveCart();
     return this._cart;
@@ -58,9 +58,30 @@ class Cart {
     return this._cart;
   }
 
+  addSubproduct(subProductId, productId) {
+    const exisitingProduct = this._findProductIndex(productId);
+    if (exisitingProduct < 0) return new Error('Product is not in cart');
+
+    this._cart[exisitingProduct].subProducts.push(subProductId);
+    return this._cart;
+  }
+
+  removeSubproduct(subProductId, productId) {
+    const exisitingProduct = this._findProductIndex(productId);
+    if (exisitingProduct < 0) return new Error('Product is not in cart');
+
+    const subProductIndex = this._cart[exisitingProduct].subProducts.indexOf(subProductId);
+    this._cart[exisitingProduct].subProducts.splice(subProductIndex, 1);
+    return this._cart;
+  }
+
   // Give orderId only if checkout failed during pay due to SCA
   checkout(paymentMethodId, deliveryAddress, resumeOrderId) {
     if (!this._isCartValid()) throw new Error('Cart not valid');
+
+    const items = this._cart.map((item) => {
+      return { product: item.productId, quantity: item.quantity, subProducts: item.subProducts };
+    });
 
     const payForOrder = order => order.pay({
       body: {
@@ -78,7 +99,7 @@ class Cart {
 
     return new Orders(this.request).create({
       body: {
-        items: this._cart,
+        items,
         delivery_address: deliveryAddress,
       },
     }).then(newOrder => payForOrder(newOrder));

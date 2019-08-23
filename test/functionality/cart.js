@@ -26,9 +26,29 @@ describe.only('Cart', () => {
     sa.cart.removeProduct(':productId:');
     assert.ok(!sa.cart.get().length);
   });
+  it('Should throw error when adding subproduct without product into cart', () => {
+    try {
+      sa.cart.addSubproduct({ productId: ':productId:', quantity: 2, subProducts: [':subProductId:'] });
+    } catch (err) {
+      assert.ok(err.message === 'Product is not in cart');
+    }
+  });
+  it('Should add subproduct to cart', () => {
+    sa.cart.addProduct({ productId: ':productId:', quantity: 1 });
+    sa.cart.addSubproduct(':subProductId:', ':productId:');
+    assert.ok(sa.cart.get().length === 1);
+    assert.ok(sa.cart.get()[0].productId === ':productId:');
+    assert.ok(sa.cart.get()[0].subProducts.indexOf(':subProductId:') > -1);
+  });
+  it('Should remove subproduct from cart', () => {
+    sa.cart.removeSubproduct(':subProductId', ':productId:');
+    assert.ok(sa.cart.get().length === 1);
+    assert.ok(sa.cart.get()[0].productId === ':productId:');
+    assert.ok(!sa.cart.get()[0].subProducts.length);
+  });
   it('Should empty entire cart', () => {
-    sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
-    sa.cart.addProduct({ productId: ':productId2:', quantity: 1 });
+    sa.cart.addProduct({ product: ':productId:', quantity: 2 });
+    sa.cart.addProduct({ product: ':productId2:', quantity: 1 });
 
     sa.cart.empty();
     assert.ok(!sa.cart.get().length);
@@ -39,7 +59,7 @@ describe.only('Cart', () => {
     mock.post(url, () => ({ body: orderFile, ok: true }));
     mock.post(url2, () => ({ body: orderFile, ok: true }));
 
-    sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
+    sa.cart.addProduct({ product: ':productId:', quantity: 2 });
 
     const paidOrder = await sa.cart.checkout(':paymentMethodId', {
       street_name: 'Slottsplassen 1',
@@ -57,7 +77,7 @@ describe.only('Cart', () => {
     mock.post(url, () => ({ body: orderFile, ok: true }));
     mock.post(url2, () => ({ status: 422, body: scaFailedOrderFile, ok: false }));
 
-    sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
+    sa.cart.addProduct({ product: ':productId:', quantity: 2 });
     const paymentMethodId = ':paymentMethodId:';
     const deliveryAddress = {
       street_name: 'Slottsplassen 1',
