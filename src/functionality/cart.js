@@ -80,7 +80,7 @@ class Cart {
     if (!this._isCartValid()) throw new Error('Cart not valid');
 
     const items = this._cart.map((item) => {
-      return { product: item.productId, quantity: item.quantity, subProducts: item.subProducts };
+      return { product: item.productId, quantity: item.quantity, sub_products: item.subProducts };
     });
 
     const payForOrder = order => order.pay({

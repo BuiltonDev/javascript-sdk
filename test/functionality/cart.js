@@ -28,7 +28,7 @@ describe('Cart', () => {
   });
   it('Should throw error when adding subproduct without product into cart', () => {
     try {
-      sa.cart.addSubproduct({ productId: ':productId:', quantity: 2, subProducts: [':subProductId:'] });
+      sa.cart.addSubproduct(':subProductId:', ':productId:');
     } catch (err) {
       assert.ok(err.message === 'Product is not in cart');
     }
