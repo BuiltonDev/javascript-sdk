@@ -136,12 +136,25 @@ signInOptions: [
 };
 ```
 
+### Example: Getting a paginated item
+```js
+builton.products.get({ size: 10, page: 0 }).then(pageProduct => {
+	// pageProduct.current contains the first page.
+	// pageProduct.page contains the current page number.
+	// pageProduct.paginationTotal contains the total number of item you can paginate through.
+	// pageProduct.next() will update `pageProduct.current` and `pageProduct.page` with the next page.
+	// pageProduct.previous() will update `pageProduct.current` and `pageProduct.page` with the previous page.
+	// pageProduct.goToPage(pageNumber) will update `pageProduct.current` and `pageProduct.page` with a specified page.
+  // The `next`, `previous`, and `goToPage` functions accept a callback and return a Promise.
+});
+```
+
 ### Example: Fetching and updating payment methods
 
 Using a callback:
 ```js
-builton.paymentMethods.get({ urlParams: { size: 5 } }, function(err, paymentMethods) {
-  const firstPaymentMethod = paymentMethods[0];
+builton.paymentMethods.get({ size: 5 }, function(err, page) {
+  const firstPaymentMethod = page.current[0];
   firstPaymentMethod.update({
     body: {
         token: ':StripeTokenId:'
@@ -152,8 +165,8 @@ builton.paymentMethods.get({ urlParams: { size: 5 } }, function(err, paymentMeth
 
 Using promises:
 ```js
-builton.paymentMethods.get({ urlParams: { size: 5 } }).then((paymentMethods) => {
-  const firstPaymentMethod = paymentMethods[0];
+builton.paymentMethods.get({ size: 5 }).then(page => {
+  const firstPaymentMethod = page.current[0];
   firstPaymentMethod.update({
     body: {
         token: ':StripeTokenId:'
@@ -165,8 +178,8 @@ builton.paymentMethods.get({ urlParams: { size: 5 } }).then((paymentMethods) => 
 Using async/await:
 ```js
 // This needs to be within in an `async` function
-const paymentMethods = await builton.paymentMethods.get({ urlParams: { size: 5 } });
-const firstPaymentMethod = paymentMethods[0];
+const pagePaymentMethods = await builton.paymentMethods.get({ size: 5 });
+const firstPaymentMethod = pagePaymentMethods.current[0];
 firstPaymentMethod.update({
   body: {
       token: ':StripeTokenId:'
