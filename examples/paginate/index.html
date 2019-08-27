@@ -30,7 +30,7 @@
     });
     document.getElementById('table').innerHTML = htmlList;
   };
-  b.products.paginate({size: 10}).then(page => {
+  b.products.get({size: 10}).then(page => {
     const refreshList = () => populateList(page.current);
     refreshList();
     next = () => page.next().then(refreshList);
