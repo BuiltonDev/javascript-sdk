@@ -1,0 +1,14 @@
+{
+  "code": 422,
+  "message": "Action required before charging customer.",
+  "description": "Action required before charging customer.",
+  "error": {
+    "type": "PaymentRequiresFurtherInformation",
+    "exception_description": "requires additional information",
+    "params": {
+        "intent_client_secret": "pi_foo_secret_bar",
+        "payment_id": ":paymentId:",
+        "payment_intent_id": ":paymentIntentId:"
+    }
+  }
+}

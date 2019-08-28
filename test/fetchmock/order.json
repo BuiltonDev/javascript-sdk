@@ -494,21 +494,6 @@
   "stripe_refund_id": "",
   "delivery_status": "DONE",
   "deliveries": [
-    {
-      "$oid": "592bde25b738ff0013adf5c9"
-    },
-    {
-      "$oid": "592be3e8b738ff0013adf5ca"
-    },
-    {
-      "$oid": "592be4a9b738ff0013adf5cb"
-    },
-    {
-      "$oid": "592be66eb738ff0013adf5cc"
-    },
-    {
-      "$oid": "592be793b738ff0013adf5cd"
-    }
   ],
   "delivery_time": {
     "$date": 1496047145000

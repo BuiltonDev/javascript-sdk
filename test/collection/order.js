@@ -17,7 +17,7 @@ const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OD
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 let url;
 
-describe('Order related tests', () => {
+describe('Order', () => {
   beforeEach(() => {
     // Guarantee each test knows exactly which routes are defined
     mock.clearRoutes();
