@@ -30,7 +30,7 @@ module.exports = ObjectClass => ({
     return obj.update(...params);
   },
 
-  create({ body, urlParams, json = false } = {}, done) {
+  create(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post',
       urlParams,
@@ -39,7 +39,7 @@ module.exports = ObjectClass => ({
     }, done);
   },
 
-  search({ query, urlParams, json = false } = {}, done) {
+  search(query, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
     }, done);

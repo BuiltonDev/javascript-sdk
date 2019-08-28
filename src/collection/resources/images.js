@@ -10,7 +10,7 @@ class Images extends Components {
     this.ResConstructor = Image;
   }
 
-  create({ imageData, isPublic, urlParams } = {}, done) {
+  create(imageData, { isPublic, urlParams } = {}, done) {
     const form = new FormData();
     form.append('image', imageData);
     if (isPublic !== undefined) {

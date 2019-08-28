@@ -71,7 +71,7 @@ describe('Order', () => {
   it('Should update an order', (done) => {
     url = `${endpoint}orders/:orderId:`;
     mock.put(url, () => ({ body: orderFile, ok: true }));
-    sa.orders.set(':orderId:').update({ body: { delivery_status: 'ACCEPTED' } }, (err, order) => {
+    sa.orders.set(':orderId:').update({ delivery_status: 'ACCEPTED' }, {}, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
       assert.ok((order.human_id === 'Y8RDPJ'));
@@ -82,7 +82,7 @@ describe('Order', () => {
   it('Should post an order', (done) => {
     url = `${endpoint}orders`;
     mock.post(url, () => ({ body: orderFile, ok: true }));
-    sa.orders.create(orderPostBody, (err, order) => {
+    sa.orders.create(orderPostBody, {}, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
       assert.ok((order.human_id === 'Y8RDPJ'));
@@ -121,7 +121,7 @@ describe('Order', () => {
   it('Should submit a delivery', (done) => {
     url = `${endpoint}orders/:orderId:/deliveries/:deliveryId:`;
     mock.post(url, () => ({ body: deliveryFile, ok: true }));
-    sa.orders.set(':orderId:').triggerDeliveryAction({ deliveryId: ':deliveryId:' }, (err, delivery) => {
+    sa.orders.set(':orderId:').triggerDeliveryAction({}, { deliveryId: ':deliveryId:' }, (err, delivery) => {
       if (err) throw err;
       assert.ok(delivery.status === deliveryFile.status);
       done();
@@ -131,7 +131,7 @@ describe('Order', () => {
   it('Should submit a delivery', (done) => {
     url = `${endpoint}orders/:orderId:/deliveries/:deliveryId:`;
     mock.post(url, () => ({ body: deliveryFile, ok: true }));
-    sa.orders.triggerDeliveryAction(':orderId:', { deliveryId: ':deliveryId:' }, (err, delivery) => {
+    sa.orders.triggerDeliveryAction(':orderId:', {}, { deliveryId: ':deliveryId:' }, (err, delivery) => {
       if (err) throw err;
       assert.ok(delivery.status === deliveryFile.status);
       done();

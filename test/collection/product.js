@@ -50,7 +50,16 @@ describe('Product related tests', () => {
   it('Should search products', (done) => {
     url = `${endpoint}products/search?page=2&query=searchQuery`;
     mock.get(url, () => ({ body: productsFile, ok: true }));
-    sa.products.search({ query: 'searchQuery', urlParams: { page: 2 } }, (err, products) => {
+    sa.products.search('searchQuery', { urlParams: { page: 2 } }, (err, products) => {
+      assert.ok(Array.isArray(products));
+      assert.ok(products[0].constructor.name === 'Product');
+      done();
+    });
+  });
+  it('Should search subproducts for a product', (done) => {
+    url = `${endpoint}products/:id:/sub_products/search?query=searchQuery`;
+    mock.get(url, () => ({ body: productsFile, ok: true }));
+    sa.products.searchSubProducts(':id:', 'searchQuery', {}, (err, products) => {
       assert.ok(Array.isArray(products));
       assert.ok(products[0].constructor.name === 'Product');
       done();

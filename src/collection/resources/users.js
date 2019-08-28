@@ -19,14 +19,15 @@ class Users extends Components {
 
   // The `Create` and the `Authenticate` functions are functionnaly identical.
   // No need to `Authenticate` after `Create`.
-  create({ body, urlParams, json = false } = {}, done) {
+  create(body, { urlParams, json = false } = {}, done) {
+    console.log(body, urlParams, json, done);
     return this.query({
       type: 'post', apiPath: 'v2/users', urlParams, body, json,
     }, done);
   }
 
-  authenticate({ body, urlParams, json = false } = {}, done) {
-    return this.create({ body, urlParams, json }, done);
+  authenticate(body, { urlParams, json = false } = {}, done) {
+    return this.create(body, { urlParams, json }, done);
   }
 
   getOrders(id, ...params) {

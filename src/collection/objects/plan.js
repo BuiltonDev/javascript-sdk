@@ -11,9 +11,9 @@ class Plan extends Component {
     this.apiPath = 'plans';
   }
 
-  getSubscriptions({ body, urlParams, json = false } = {}, done) {
+  getSubscriptions({ urlParams, json = false } = {}, done) {
     return this.query({
-      type: 'get', resource: 'subscriptions', body, urlParams, json, ResConstructor: Subscription,
+      type: 'get', resource: 'subscriptions', urlParams, json, ResConstructor: Subscription,
     }, done);
   }
 }

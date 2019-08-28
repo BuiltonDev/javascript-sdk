@@ -19,7 +19,7 @@ describe('Image related tests', () => {
     url = `${endpoint}images`;
     mock.post(url, () => ({ body: imageFile, ok: true }));
     const imageData = fs.createReadStream('../fetchmock/1x1.png');
-    const image = await sa.images.create({ imageData });
+    const image = await sa.images.create(imageData);
     assert.equal(image.original_name, '1x1.png');
     return true;
   });

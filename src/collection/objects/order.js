@@ -33,19 +33,19 @@ class Order extends Component {
     }, done);
   }
 
-  pay({ body, urlParams, json = false } = {}, done) {
+  pay(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'pay', body, urlParams, json,
     }, done);
   }
 
-  redeem({ body, urlParams, json = false } = {}, done) {
+  redeem(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'redeem', body, urlParams, json,
     }, done);
   }
 
-  cancel({ body, urlParams, json = false } = {}, done) {
+  cancel(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post',
       resource: 'cancel',
@@ -55,7 +55,7 @@ class Order extends Component {
     }, done);
   }
 
-  createDelivery({ body, urlParams } = {}, done) {
+  createDelivery(body, { urlParams } = {}, done) {
     return this.query({
       type: 'post',
       resource: 'deliveries',
@@ -65,7 +65,7 @@ class Order extends Component {
     }, done);
   }
 
-  triggerDeliveryAction({ body, deliveryId, urlParams } = {}, done) {
+  triggerDeliveryAction(body, { deliveryId, urlParams } = {}, done) {
     if (!this.id) return done(new Error.MethodNeedsId());
     if (!deliveryId) return done(new Error.MethodNeedsArg('deliveryId'));
     const params = {

@@ -16,9 +16,9 @@ class Product extends Component {
     }, done);
   }
 
-  searchSubProducts({ urlParams, json = false } = {}, done) {
+  searchSubProducts(query, { urlParams, json = false } = {}, done) {
     return this.query({
-      type: 'get', resource: 'sub_products/search', urlParams, json,
+      type: 'get', resource: 'sub_products/search', urlParams: Object.assign({}, urlParams, { query }), json,
     }, done);
   }
 }
