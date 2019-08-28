@@ -9,7 +9,7 @@ const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 
 const plansFile = require('../fetchmock/plans.json');
 
-describe('Plan related tests', () => {
+describe('Plan', () => {
   it('Should return all the plans', (done) => {
     nock(endpoint)
       .get(`/plans/${plansFile[0]._id.$oid}`)

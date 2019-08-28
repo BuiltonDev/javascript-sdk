@@ -13,7 +13,7 @@ const endpoint = 'https://example.com';
 const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 
-describe('AI related tests', () => {
+describe('AI', () => {
   describe('GET ai/models', () => {
     it('Should return a list of models', (done) => {
       nock(endpoint)

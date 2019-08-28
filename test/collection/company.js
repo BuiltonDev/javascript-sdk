@@ -12,7 +12,7 @@ const endpoint = 'https://example.com';
 const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 const sa = new Builton({ apiKey: 'dummy', endpoint });
 
-describe('Company related tests', () => {
+describe('Company', () => {
   it('Should return the current Company / without bearerToken', (done) => {
     nock(endpoint)
       .get('/companies')

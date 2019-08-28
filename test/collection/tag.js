@@ -9,7 +9,7 @@ const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 
 const tagFile = require('../fetchmock/tags.json');
 
-describe('Tag related tests', () => {
+describe('Tag', () => {
   it('Should return all the tags', (done) => {
     nock(endpoint)
       .get('/tags')

@@ -14,6 +14,8 @@ const Tags = require('./collection/resources/tags');
 const Users = require('./collection/resources/users');
 const Images = require('./collection/resources/images');
 
+const Cart = require('./functionality/cart');
+
 let instance;
 
 class Builton {
@@ -50,6 +52,7 @@ class Builton {
     this.tags = new Tags(this.request);
     this.users = new Users(this.request);
     this.images = new Images(this.request);
+    this.cart = new Cart(this.request);
 
     if (singleton) {
       instance = this;
