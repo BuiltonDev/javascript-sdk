@@ -1,4 +1,4 @@
-module.exports = ObjectClass => ({
+module.exports = (ObjectClass) => ({
   getAll({ urlParams, json = false } = {}, done) {
     return this.query({
       type: 'get',
