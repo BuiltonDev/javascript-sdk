@@ -4,7 +4,7 @@ class Pagination {
     this.size = size;
     this.current = current;
     this.paginationTotal = paginationTotal;
-    this._query = done => queryFn({
+    this._query = (done) => queryFn({
       ...args,
       urlParams: { ...urlParams, page: this.page, size: this.size },
     }, done)
@@ -12,7 +12,7 @@ class Pagination {
         this.current = newObj;
         return this.current;
       })
-      .catch(err => Promise.reject(err));
+      .catch((err) => Promise.reject(err));
   }
 
   next(done) {

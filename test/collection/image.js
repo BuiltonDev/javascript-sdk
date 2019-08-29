@@ -1,4 +1,3 @@
-/* global it, describe, require */
 const assert = require('assert');
 const fs = require('fs');
 const nock = require('nock');

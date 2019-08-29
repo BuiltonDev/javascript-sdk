@@ -1,4 +1,3 @@
-/* global it, describe, require */
 const assert = require('assert');
 const nock = require('nock');
 const Builton = require('../../src/main.js');

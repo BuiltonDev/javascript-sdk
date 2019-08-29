@@ -61,8 +61,8 @@ class Request {
     isJsonBody = true,
   } = {}) {
     const url = `${endpoint}/${path}${Request.serialize({ ...urlParams })}`;
-    return this.getHeaders().then(queryHeaders => agent[type](url)
-      .set(Object.assign({}, queryHeaders, headers))
+    return this.getHeaders().then((queryHeaders) => agent[type](url)
+      .set({ ...queryHeaders, ...headers })
       .set(isJsonBody ? { 'Content-Type': 'application/json' } : {}) // when empty, SuperAgent generates it automatically.
       .send(isJsonBody ? JSON.stringify(body) : body));
   }

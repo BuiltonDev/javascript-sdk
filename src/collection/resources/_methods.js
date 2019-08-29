@@ -1,4 +1,4 @@
-module.exports = ObjectClass => ({
+module.exports = (ObjectClass) => ({
   getAll({
     page, size, urlParams, json = false,
   } = {}, done) {
@@ -47,7 +47,7 @@ module.exports = ObjectClass => ({
     page = 0, size = 100, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
-      page, size, type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
+      page, size, type: 'get', action: 'search', urlParams: { ...urlParams, query }, json,
     }, done);
   },
 
