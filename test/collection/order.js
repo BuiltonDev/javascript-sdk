@@ -2,45 +2,40 @@
 const assert = require('assert');
 const Builton = require('../../src/main.js');
 
-const request = require('superagent');
-const mock = require('superagent-mocker')(request);
+const nock = require('nock');
 
+const paymentsFile = require('../fetchmock/payments.json');
 const orderFile = require('../fetchmock/order.json');
 const ordersFile = require('../fetchmock/orders.json');
-const deliveryFile = require('../fetchmock/delivery.json');
-const deliveriesFile = require('../fetchmock/deliveries.json');
 const userFile = require('../fetchmock/user.json');
 const orderPostBody = require('../fetchmock/orderPostBody.json');
 
-const endpoint = 'https://example.com/';
+const endpoint = 'https://example.com';
 const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
-let url;
 
 describe('Order', () => {
-  beforeEach(() => {
-    // Guarantee each test knows exactly which routes are defined
-    mock.clearRoutes();
-  });
-
   it('Should return a list of Orders', (done) => {
-    url = `${endpoint}orders`;
-    mock.get(url, () => ({ body: ordersFile, ok: true }));
+    nock(endpoint)
+      .get('/orders')
+      .query({ size: 100, page: 0 })
+      .reply(200, ordersFile);
     sa.orders.get({}, (err, orders) => {
       if (err) throw err;
-      assert.ok(Array.isArray(orders));
+      assert.ok(Array.isArray(orders.current));
       done();
     });
   });
 
   it('Should return a list of Orders as json', (done) => {
-    url = `${endpoint}orders`;
-    mock.get(url, () => ({ body: ordersFile, ok: true }));
+    nock(endpoint)
+      .get('/orders')
+      .query({ size: 100, page: 0 })
+      .reply(200, ordersFile);
     sa.orders.get({ json: true }, (err, orders) => {
       if (err) throw err;
-      assert.ok(Array.isArray(orders));
-      url = `${endpoint}orders/${ordersFile[0]._id.$oid}`;
-      assert.ok(orders[0].constructor.name !== 'Order');
+      assert.ok(Array.isArray(orders.current));
+      assert.ok(orders.current[0].constructor.name !== 'Order');
       done();
     });
   });
@@ -58,8 +53,9 @@ describe('Order', () => {
   });
 
   it('Should return an order', (done) => {
-    url = `${endpoint}orders/:orderId:`;
-    mock.get(url, () => ({ body: orderFile, ok: true }));
+    nock(endpoint)
+      .get('/orders/:orderId:')
+      .reply(200, orderFile);
     sa.orders.set(':orderId:').get({}, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
@@ -69,8 +65,9 @@ describe('Order', () => {
   });
 
   it('Should update an order', (done) => {
-    url = `${endpoint}orders/:orderId:`;
-    mock.put(url, () => ({ body: orderFile, ok: true }));
+    nock(endpoint)
+      .put('/orders/:orderId:')
+      .reply(200, orderFile);
     sa.orders.set(':orderId:').update({ body: { delivery_status: 'ACCEPTED' } }, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
@@ -80,8 +77,9 @@ describe('Order', () => {
   });
 
   it('Should post an order', (done) => {
-    url = `${endpoint}orders`;
-    mock.post(url, () => ({ body: orderFile, ok: true }));
+    nock(endpoint)
+      .post('/orders')
+      .reply(200, orderFile);
     sa.orders.create(orderPostBody, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
@@ -90,25 +88,16 @@ describe('Order', () => {
     });
   });
 
-  it('Should return a list of deliveries', (done) => {
-    url = `${endpoint}orders/:orderId:/deliveries`;
-    mock.get(url, () => ({ body: deliveriesFile, ok: true }));
-    sa.orders.set(':orderId:').getDeliveries({}, (err, deliveries) => {
-      if (err) throw err;
-      assert.ok(Array.isArray(deliveries));
-      assert.ok(deliveries[0].status === deliveriesFile[0].status);
-      done();
-    });
-  });
-
   it('Should return the user for an order', (done) => {
-    url = `${endpoint}orders/:orderId:`;
-    mock.get(url, () => ({ body: orderFile, ok: true }));
+    nock(endpoint)
+      .get('/orders/:orderId:')
+      .reply(200, orderFile);
     sa.orders.set(':orderId:').get({}, (err, order) => {
       if (err) throw err;
-      url = `${endpoint}users/591061fd8d95100013f0f3ca`;
       assert.ok(order.constructor.name === 'Order');
-      mock.get(url, () => ({ body: userFile, ok: true }));
+      nock(endpoint)
+        .get('/users/591061fd8d95100013f0f3ca')
+        .reply(200, userFile);
       sa.users.set(order.user).get({}, (err2, user) => {
         if (err2) throw err2;
         assert.ok(user.constructor.name === 'User');
@@ -118,22 +107,14 @@ describe('Order', () => {
     });
   });
 
-  it('Should submit a delivery', (done) => {
-    url = `${endpoint}orders/:orderId:/deliveries/:deliveryId:`;
-    mock.post(url, () => ({ body: deliveryFile, ok: true }));
-    sa.orders.set(':orderId:').triggerDeliveryAction({ deliveryId: ':deliveryId:' }, (err, delivery) => {
+  it('Should list payments of an order', (done) => {
+    nock(endpoint)
+      .get('/orders/:orderId:/payments')
+      .query({ size: 100, page: 0 })
+      .reply(200, paymentsFile);
+    sa.orders.set(':orderId:').getPayments({}, (err, payments) => {
       if (err) throw err;
-      assert.ok(delivery.status === deliveryFile.status);
-      done();
-    });
-  });
-
-  it('Should submit a delivery', (done) => {
-    url = `${endpoint}orders/:orderId:/deliveries/:deliveryId:`;
-    mock.post(url, () => ({ body: deliveryFile, ok: true }));
-    sa.orders.triggerDeliveryAction(':orderId:', { deliveryId: ':deliveryId:' }, (err, delivery) => {
-      if (err) throw err;
-      assert.ok(delivery.status === deliveryFile.status);
+      assert.ok(payments.current[0].constructor.name === 'Payment');
       done();
     });
   });

@@ -1,0 +1,118 @@
+[
+    {
+      "price": 12,
+      "created": {
+        "$date": 1493197797000
+      },
+      "parents": [],
+      "path": "/",
+      "company_take": -1,
+      "name": "Another Item on page 2",
+      "currency": "GBP",
+      "deleted": false,
+      "business_rules": [],
+      "company": {
+        "$oid": "586faf00page200006373513"
+      },
+      "short_description": "3123",
+      "modified": {
+        "$date": 1493197797033
+      },
+      "properties": {},
+      "tags": [
+        "miscellaneous"
+      ],
+      "description": "1321",
+      "vat": 0,
+      "_id": {
+        "$oid": "590063e58fd00page200c8f8"
+      },
+      "default_position": [
+        -1,
+        -1
+      ],
+      "main_product": true,
+      "_cls": "Product",
+      "active": true,
+      "_sub_products": [],
+      "max_distance": 0
+    },
+    {
+      "price": 40,
+      "created": {
+        "$date": 1486740493823
+      },
+      "parents": [],
+      "path": "/",
+      "company_take": -1,
+      "name": "Bag",
+      "currency": "GBP",
+      "deleted": false,
+      "business_rules": [],
+      "company": {
+        "$oid": "586faf00page200006373513"
+      },
+      "short_description": "Dry Cleaning Bag",
+      "modified": {
+        "$date": 1493051024225
+      },
+      "_sub_products": [
+        {
+          "price": 5,
+          "created": {
+            "$date": 1486740602740
+          },
+          "parents": [
+            {
+              "$oid": "589ddc0d1a66ac00138f0234"
+            }
+          ],
+          "path": "/",
+          "company_take": -1,
+          "name": "Jacket",
+          "currency": "GBP",
+          "deleted": false,
+          "business_rules": [],
+          "company": {
+            "$oid": "586faf7445ed910006373513"
+          },
+          "short_description": "Cleaning of Jackets",
+          "modified": {
+            "$date": 1493051024167
+          },
+          "_sub_products": [],
+          "tags": [
+            "category: Outdoor"
+          ],
+          "vat": 0,
+          "_id": {
+            "$oid": "589ddc00page2000138f0235"
+          },
+          "default_position": [
+            -1,
+            -1
+          ],
+          "main_product": false,
+          "_cls": "Product",
+          "properties": {},
+          "active": true,
+          "max_distance": 0
+        }
+      ],
+      "tags": [],
+      "vat": 0,
+      "_id": {
+        "$oid": "5800page2006ac00138f0234"
+      },
+      "default_position": [
+        -1,
+        -1
+      ],
+      "main_product": true,
+      "_cls": "Product",
+      "properties": {},
+      "active": true,
+      "max_distance": 0
+    }
+  ]
+  

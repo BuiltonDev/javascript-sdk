@@ -2,13 +2,11 @@
 const assert = require('assert');
 const Builton = require('../../src/main.js');
 
-const request = require('superagent');
-const mock = require('superagent-mocker')(request);
+const nock = require('nock');
 
-const endpoint = 'https://example.com/';
+const endpoint = 'https://example.com';
 const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
-let url;
 
 const orderFile = require('../fetchmock/order.json');
 const scaFailedOrderFile = require('../fetchmock/orderPaySCAFailed.json');
@@ -54,10 +52,13 @@ describe('Cart', () => {
     assert.ok(!sa.cart.get().length);
   });
   it('Should checkout and pay for cart', async () => {
-    url = `${endpoint}orders`;
-    const url2 = `${endpoint}orders/592bde24b738ff0013adf5c7/pay`;
-    mock.post(url, () => ({ body: orderFile, ok: true }));
-    mock.post(url2, () => ({ body: orderFile, ok: true }));
+    nock(endpoint)
+      .post('/orders')
+      .reply(200, orderFile);
+
+    nock(endpoint)
+      .post('/orders/592bde24b738ff0013adf5c7/pay')
+      .reply(200, orderFile);
 
     sa.cart.addProduct({ product: ':productId:', quantity: 2 });
 
@@ -72,10 +73,13 @@ describe('Cart', () => {
     assert.ok(paidOrder.order_status === 'SUCCESS');
   });
   it('Should allow you to recover checkout process if process failed due to SCA reauthentication', async () => {
-    url = `${endpoint}orders`;
-    const url2 = `${endpoint}orders/592bde24b738ff0013adf5c7/pay`;
-    mock.post(url, () => ({ body: orderFile, ok: true }));
-    mock.post(url2, () => ({ status: 422, body: scaFailedOrderFile, ok: false }));
+    nock(endpoint)
+      .post('/orders')
+      .reply(200, orderFile);
+
+    nock(endpoint)
+      .post('/orders/592bde24b738ff0013adf5c7/pay')
+      .reply(422, scaFailedOrderFile);
 
     sa.cart.addProduct({ product: ':productId:', quantity: 2 });
     const paymentMethodId = ':paymentMethodId:';
@@ -91,7 +95,9 @@ describe('Cart', () => {
       await sa.cart.checkout(paymentMethodId, deliveryAddress);
     } catch (error) {
       assert.ok(error.status === 422);
-      mock.post(url2, () => ({ body: orderFile, ok: true }));
+      nock(endpoint)
+        .post('/orders/592bde24b738ff0013adf5c7/pay')
+        .reply(200, orderFile);
       assert.ok(sa.cart.get().length);
       const retryOrder = await sa.cart.checkout(paymentMethodId, deliveryAddress, '592bde24b738ff0013adf5c7');
       assert.ok(!sa.cart.get().length);

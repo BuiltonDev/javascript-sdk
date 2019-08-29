@@ -15,6 +15,16 @@ class Products extends Components {
     this.apiPath = 'products';
     this.ResConstructor = Product;
   }
+
+  getSubProducts(id, ...params) {
+    const obj = new Product(this.request, id);
+    return obj.getSubProducts(...params);
+  }
+
+  searchSubProducts(id, ...params) {
+    const obj = new Product(this.request, id);
+    return obj.searchSubProducts(...params);
+  }
 }
 
 module.exports = Products;

@@ -1,6 +1,10 @@
 module.exports = ObjectClass => ({
-  getAll({ urlParams, json = false } = {}, done) {
-    return this.query({
+  getAll({
+    page, size, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page,
+      size,
       type: 'get',
       urlParams,
       json,
@@ -39,9 +43,11 @@ module.exports = ObjectClass => ({
     }, done);
   },
 
-  search({ query, urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
+  search({
+    page = 0, size = 100, query, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page, size, type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
     }, done);
   },
 

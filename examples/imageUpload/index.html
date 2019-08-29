@@ -21,7 +21,7 @@
     const imageData = document.getElementById("image").files[0];
     try {
       const image = await b.images.create({ imageData, isPublic: true });
-      const imageUrl = "https://qa.builton.dev/images/" + image.url + "?api_key=" + apiKey;
+      const imageUrl = "https://api.builton.dev/images/" + image.url + "?api_key=" + apiKey;
       document.getElementById("imageContainer").innerHTML = "<img src=\"" + imageUrl + "\" />";
       const user = b.users.setMe();
       user.update({ body: { avatar: image.url } });
