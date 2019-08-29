@@ -48,10 +48,10 @@
     "webpack-cli": "3.3.7"
   },
   "dependencies": {
-    "form-data": "^2.5.0",
+    "form-data": "^2.5.1",
     "jwt-decode": "^2.2.0",
-    "store2": "2.8.0",
-    "superagent": "^5.0.8"
+    "store2": "^2.9.0",
+    "superagent": "^5.1.0"
   },
   "browser": "./dist/main.bundle.js"
 }
