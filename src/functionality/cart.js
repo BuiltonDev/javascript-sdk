@@ -9,7 +9,7 @@ class Cart {
   }
 
   _findProductIndex(productId) {
-    return this._cart.findIndex(cartItem => cartItem.productId === productId);
+    return this._cart.findIndex((cartItem) => cartItem.productId === productId);
   }
 
   _isCartValid() {
@@ -79,13 +79,13 @@ class Cart {
   checkout(paymentMethodId, deliveryAddress, resumeOrderId) {
     if (!this._isCartValid()) throw new Error('Cart not valid');
 
-    const items = this._cart.map(item => ({
+    const items = this._cart.map((item) => ({
       product: item.productId,
       quantity: item.quantity,
       sub_products: item.subProducts,
     }));
 
-    const payForOrder = order => order.pay({
+    const payForOrder = (order) => order.pay({
       body: {
         payment_method: paymentMethodId,
       },
@@ -104,7 +104,7 @@ class Cart {
         items,
         delivery_address: deliveryAddress,
       },
-    }).then(newOrder => payForOrder(newOrder));
+    }).then((newOrder) => payForOrder(newOrder));
   }
 }
 

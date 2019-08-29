@@ -72,7 +72,7 @@ class Request {
     try {
       return this.getHeaders().then((queryHeaders) => {
         request[type](`${endpoint}${path}${Request.serialize(urlParams)}`)
-          .set(Object.assign({}, queryHeaders, headers))
+          .set({ ...queryHeaders, ...headers })
           .set(isJsonBody ? { 'Content-Type': 'application/json' } : {}) // when empty, SuperAgent generates it automatically.
           .send(isJsonBody ? JSON.stringify(body) : body)
           .end((err, res) => {

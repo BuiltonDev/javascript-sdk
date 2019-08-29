@@ -1,4 +1,4 @@
-module.exports = ObjectClass => ({
+module.exports = (ObjectClass) => ({
   getAll({ urlParams, json = false } = {}, done) {
     return this.query({
       type: 'get',
@@ -41,7 +41,7 @@ module.exports = ObjectClass => ({
 
   search({ query, urlParams, json = false } = {}, done) {
     return this.query({
-      type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,
+      type: 'get', action: 'search', urlParams: { ...urlParams, query }, json,
     }, done);
   },
 
