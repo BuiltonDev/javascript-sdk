@@ -27,19 +27,19 @@ class Order extends Component {
     }, done);
   }
 
-  pay({ body, urlParams, json = false } = {}, done) {
+  pay(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'pay', body, urlParams, json,
     }, done);
   }
 
-  redeem({ body, urlParams, json = false } = {}, done) {
+  redeem(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'redeem', body, urlParams, json,
     }, done);
   }
 
-  cancel({ body, urlParams, json = false } = {}, done) {
+  cancel(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post',
       resource: 'cancel',

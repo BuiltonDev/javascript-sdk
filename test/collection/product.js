@@ -38,7 +38,20 @@ describe('Product related tests', () => {
       .get('/products/search')
       .query({ size, page, query: 'searchQuery' })
       .reply(200, productsFile);
-    sa.products.search({ page, size, query: 'searchQuery' }, (err, productPage) => {
+    sa.products.search('searchQuery', { page, size }, (err, productPage) => {
+      assert.ok(Array.isArray(productPage.current));
+      assert.ok(productPage.current[0].constructor.name === 'Product');
+      done();
+    });
+  });
+
+  it('Should search subproducts for a product', (done) => {
+    const [page, size] = [2, 100];
+    nock(endpoint)
+      .get('/products/:id:/sub_products/search')
+      .query({ size, page, query: 'searchQuery' })
+      .reply(200, productsFile);
+    sa.products.searchSubProducts(':id:', 'searchQuery', { page, size }, (err, productPage) => {
       assert.ok(Array.isArray(productPage.current));
       assert.ok(productPage.current[0].constructor.name === 'Product');
       done();
@@ -50,7 +63,7 @@ describe('Product related tests', () => {
       .get('/products/:id:/sub_products/search')
       .query({ size, page, query: 'searchQuery' })
       .reply(200, productsFile);
-    return sa.products.searchSubProducts(':id:', { page, size, query: 'searchQuery' }, (err, productPage) => {
+    return sa.products.searchSubProducts(':id:', 'searchQuery', { page, size }, (err, productPage) => {
       assert.ok(Array.isArray(productPage.current));
       assert.ok(productPage.current[0].constructor.name === 'Product');
     });

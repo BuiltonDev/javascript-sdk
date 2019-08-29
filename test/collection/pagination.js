@@ -115,7 +115,7 @@ describe('Pagination related tests', () => {
     };
     const [page, size] = [2, 10];
     mockRequest(size, page);
-    sa.products.searchSubProducts(':id:', { page, size, query: 'searchQuery' }, (err, productPage) => {
+    sa.products.searchSubProducts(':id:', 'searchQuery', { page, size }, (err, productPage) => {
       assert.ok(Array.isArray(productPage.current));
       assert.ok(productPage.current[0].constructor.name === 'Product');
       mockRequest(size, page + 1);

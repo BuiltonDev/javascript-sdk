@@ -23,13 +23,13 @@ class Subscription extends Component {
     }, done);
   }
 
-  start({ body, urlParams, json = false } = {}, done) {
+  start(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', id: this.id, resource: 'start', body, urlParams, json,
     }, done);
   }
 
-  stop({ body, urlParams, json = false } = {}, done) {
+  stop(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', id: this.id, resource: 'stop', body, urlParams, json,
     }, done);

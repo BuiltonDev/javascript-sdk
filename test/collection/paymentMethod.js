@@ -18,14 +18,14 @@ describe('Payment methods related tests', () => {
       .post('/payment_methods')
       .reply(200, paymentMethodWithIntent);
 
-    const paymentMethod = await sa.paymentMethods.create({ body: { payment_method: 'stripe' } });
+    const paymentMethod = await sa.paymentMethods.create({ payment_method: 'stripe' });
     assert.ok(paymentMethod._id.$oid === paymentMethodWithIntent._id.$oid);
   });
   it('Should update an exisiting payment method with Stripe payment method id', async () => {
     nock(endpoint)
       .put('/payment_methods/:payment_method_id:')
       .reply(200, paymentMethodWithCard);
-    const paymentMethod = await sa.paymentMethods.set(':payment_method_id:').update({ body: { payment_method_id: 'pm_fake_payment_method_id' } });
+    const paymentMethod = await sa.paymentMethods.set(':payment_method_id:').update({ payment_method_id: 'pm_fake_payment_method_id' });
     assert.ok(paymentMethod.source === 'pm_fake_payment_method_id');
     assert.ok(paymentMethod.card);
     assert.ok(paymentMethod.is_sca_compatible);

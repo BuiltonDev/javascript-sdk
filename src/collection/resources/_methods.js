@@ -34,7 +34,7 @@ module.exports = ObjectClass => ({
     return obj.update(...params);
   },
 
-  create({ body, urlParams, json = false } = {}, done) {
+  create(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post',
       urlParams,
@@ -43,8 +43,8 @@ module.exports = ObjectClass => ({
     }, done);
   },
 
-  search({
-    page = 0, size = 100, query, urlParams, json = false,
+  search(query, {
+    page = 0, size = 100, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
       page, size, type: 'get', action: 'search', urlParams: Object.assign({}, urlParams, { query }), json,

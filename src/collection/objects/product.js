@@ -18,8 +18,8 @@ class Product extends Component {
     }, done);
   }
 
-  searchSubProducts({
-    size, page, query, urlParams, json = false,
+  searchSubProducts(query, {
+    size, page, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
       size, page, type: 'get', resource: 'sub_products/search', urlParams: { ...urlParams, query }, json,

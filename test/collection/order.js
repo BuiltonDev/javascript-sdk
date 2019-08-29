@@ -4,7 +4,6 @@ const Builton = require('../../src/main.js');
 
 const nock = require('nock');
 
-const paymentsFile = require('../fetchmock/payments.json');
 const orderFile = require('../fetchmock/order.json');
 const ordersFile = require('../fetchmock/orders.json');
 const userFile = require('../fetchmock/user.json');
@@ -68,7 +67,7 @@ describe('Order', () => {
     nock(endpoint)
       .put('/orders/:orderId:')
       .reply(200, orderFile);
-    sa.orders.set(':orderId:').update({ body: { delivery_status: 'ACCEPTED' } }, (err, order) => {
+    sa.orders.set(':orderId:').update({ delivery_status: 'ACCEPTED' }, {}, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
       assert.ok((order.human_id === 'Y8RDPJ'));
@@ -80,7 +79,7 @@ describe('Order', () => {
     nock(endpoint)
       .post('/orders')
       .reply(200, orderFile);
-    sa.orders.create(orderPostBody, (err, order) => {
+    sa.orders.create(orderPostBody, {}, (err, order) => {
       if (err) throw err;
       assert.ok(order.constructor.name === 'Order');
       assert.ok((order.human_id === 'Y8RDPJ'));
@@ -104,18 +103,6 @@ describe('Order', () => {
         assert.ok((user.first_name === orderFile.user.first_name));
         done();
       });
-    });
-  });
-
-  it('Should list payments of an order', (done) => {
-    nock(endpoint)
-      .get('/orders/:orderId:/payments')
-      .query({ size: 100, page: 0 })
-      .reply(200, paymentsFile);
-    sa.orders.set(':orderId:').getPayments({}, (err, payments) => {
-      if (err) throw err;
-      assert.ok(payments.current[0].constructor.name === 'Payment');
-      done();
     });
   });
 });

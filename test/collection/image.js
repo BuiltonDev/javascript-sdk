@@ -17,7 +17,7 @@ describe('Image related tests', () => {
       .post('/images')
       .reply(200, imageFile);
     try {
-      const image = await sa.images.create({ imageData });
+      const image = await sa.images.create(imageData);
       assert.equal(image.original_name, '1x1.png');
     } catch (err) {
       assert.fail(err);

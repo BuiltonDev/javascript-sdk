@@ -26,10 +26,8 @@ describe('Payment related tests', () => {
       .post('/payments/:paymentId:/confirm')
       .reply(200, paymentConfirmedFile);
     const payment = await sa.payments.set(':paymentId:').confirm({
-      body: {
-        payment_intent_id: ':payment_intent_id:',
-        payment_client_secret: ':payment_client_secret:',
-      },
+      payment_intent_id: ':payment_intent_id:',
+      payment_client_secret: ':payment_client_secret:',
     });
     assert.ok(paymentConfirmedFile._id.$oid === payment._id.$oid);
   });

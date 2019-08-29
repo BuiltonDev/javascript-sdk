@@ -41,8 +41,8 @@
             first_name: 'demo',
             last_name: 'demo',
           };
-          builton.users.authenticate({ body }).then((user) => {
-            user.update({ body: { mobile_phone_number: phoneNumber } }).then(console.log).catch(console.warn);
+          builton.users.authenticate(body).then((user) => {
+            user.update({ mobile_phone_number: phoneNumber }).then(console.log).catch(console.warn);
           }).catch(console.warn);
         });
         // User successfully signed in.

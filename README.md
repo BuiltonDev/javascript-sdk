@@ -73,7 +73,7 @@ lock.on("authenticated", function(authResult) {
       last_name: profile.family_name,
     };
 
-    builton.authenticate.login({ body: loginBody }, function(err, user, raw) {
+    builton.authenticate.login(loginBody, {}, function(err, user, raw) {
       // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
 	  if (err) {
 		// Handle error
@@ -119,7 +119,7 @@ callbacks: {
 		first_name: 'demo',
 		last_name: 'demo',
 	  };
-	  builton.users.authenticate({ body }).then((user) => {
+	  builton.users.authenticate(body).then((user) => {
 		// Update DOM
 	  }).catch(console.warn);
 	});
@@ -156,9 +156,7 @@ Using a callback:
 builton.paymentMethods.get({ size: 5 }, function(err, page) {
   const firstPaymentMethod = page.current[0];
   firstPaymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+		token: ':StripeTokenId:'
   });
 });
 ```
@@ -168,9 +166,7 @@ Using promises:
 builton.paymentMethods.get({ size: 5 }).then(page => {
   const firstPaymentMethod = page.current[0];
   firstPaymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+    token: ':StripeTokenId:'
   });
 });
 ```
@@ -181,9 +177,7 @@ Using async/await:
 const pagePaymentMethods = await builton.paymentMethods.get({ size: 5 });
 const firstPaymentMethod = pagePaymentMethods.current[0];
 firstPaymentMethod.update({
-  body: {
-      token: ':StripeTokenId:'
-  }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -191,9 +185,7 @@ firstPaymentMethod.update({
 
 ```js
 builton.paymentMethods.update(':paymentMethodId:', {
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -202,9 +194,7 @@ Using the `set` method:
 ```js
 const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
 paymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -215,9 +205,7 @@ The `set` method allows you to create an object without fetching it from the api
 ```js
 const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
 paymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -225,9 +213,7 @@ With multiple payment methods:
 ```js
 const paymentMethods = builton.paymentMethods.set([':paymentMethodId1:', ':paymentMethodId2:']);
 paymentMethods[0].update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -235,9 +221,7 @@ With full props:
 ```js
 const paymentMethod = builton.paymentMethods.set({<paymentMethodJsonObject>});
 paymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 

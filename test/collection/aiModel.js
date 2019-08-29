@@ -33,7 +33,7 @@ describe('AI', () => {
       nock(endpoint)
         .post('/ai/models')
         .reply(200, modelCreatedFile);
-      sa.aiModels.create({ model_type: 'content_recommender', source: 'product', destination: 'product' }, (err, model) => {
+      sa.aiModels.create({ model_type: 'content_recommender', source: 'product', destination: 'product' }, {}, (err, model) => {
         if (err) throw err;
         assert.ok(model.constructor.name === 'AIModel');
         assert.ok(model.training_status === 'CREATED');
@@ -61,7 +61,7 @@ describe('AI', () => {
       nock(endpoint)
         .post('/ai/models/:modelId:/invoke')
         .reply(200, recommendationsFile);
-      sa.aiModels.set(':modelId:').getRecommendations({ source_id: '5aec176d1f7cdc0008848f87', size: 4 }, (err, recommendations) => {
+      sa.aiModels.set(':modelId:').getRecommendations({ source_id: '5aec176d1f7cdc0008848f87', size: 4 }, {}, (err, recommendations) => {
         if (err) throw err;
         assert.ok(Array.isArray(recommendations.response));
         done();
