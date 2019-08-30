@@ -28,9 +28,9 @@ class Cart {
   }
 
   // Check to see if two subproduct lists contain the same items. Doesn't care about order
+  // eslint-disable-next-line class-methods-use-this
   _compare(listA = [], listB = []) {
-    if (!listA.length && !listB.length) return true; //both empty
-    
+    if (!listA.length && !listB.length) return true;
     return listA.slice(0).sort().join('-') === listB.slice(0).sort().join('-');
   }
 
