@@ -27,10 +27,10 @@ class Cart {
     store.set('cart', this._cart);
   }
 
-  // Check to see if two subproduct lists contain the same items
+  // Check to see if two subproduct lists contain the same items. Doesn't care about order
   _compare(listA = [], listB = []) {
-    if (!listA.length || !listB.length) return;
-
+    if (!listA.length && !listB.length) return true; //both empty
+    
     return listA.slice(0).sort().join('-') === listB.slice(0).sort().join('-');
   }
 

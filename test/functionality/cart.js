@@ -26,7 +26,7 @@ describe.only('Cart', () => {
     sa.cart.addProduct({ productId: ':productId2:', quantity: 2 });
     /* */
     const index = sa.cart._findProductIndex(':productId2:');
-    assert.ok(index === 1);
+    assert.equal(index, 1);
   });
   it('Should return true that cart is valid when all items have at least productId and quantity', () => {
     /* Setup */
@@ -42,8 +42,10 @@ describe.only('Cart', () => {
     /* */
     assert.ok(!sa.cart._isCartValid());
   });
-  it('Should return comparison of two arrays of subproducts', () => {
-
+  it('Should compare two arrays of subproducts', () => {
+    assert.ok(sa.cart._compare([':subProductA:', ':subProductB:'], [':subProductA:', ':subProductB:']));
+    assert.ok(sa.cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductB:']));
+    assert.ok(!sa.cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductC:']));
   });
   it('Should add (new) product to cart', () => {
     sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
@@ -57,13 +59,21 @@ describe.only('Cart', () => {
     sa.cart.removeProduct({ productId: ':productId:', quantity: 2 });
     assert.ok(!sa.cart.get().length);
   });
-  it('Should decrease the quantity of a product from the cart by 1', () => {
+  it('Should decrement the quantity of a product from the cart', () => {
     /* Setup */
     sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
     /* */
     sa.cart.removeProduct({ productId: ':productId:', quantity: 1 });
     assert.ok(sa.cart.get().length);
     assert.ok(sa.cart.get()[0].quantity === 1);
+  });
+  it('Should increment the quantity of a product from the cart', () => {
+    /* Setup */
+    sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
+    /* */
+    sa.cart.addProduct({ productId: ':productId:', quantity: 1 });
+    assert.ok(sa.cart.get().length);
+    assert.ok(sa.cart.get()[0].quantity === 3);
   });
   it('Should add product as new item in cart when subproducts differ', () => {
     /* Setup */
