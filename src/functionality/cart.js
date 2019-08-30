@@ -50,11 +50,11 @@ class Cart {
      we increment with provided quantity, otherwise it is
      added as another line in the cart */
   addProduct({ productId, quantity = 1, subProducts = [] }) {
-    const exisitingProduct = this._findProductIndex(productId);
+    const index = this._findProductIndex(productId);
 
-    if (exisitingProduct > -1) {
-      if (this._compare(this._cart[exisitingProduct].subProducts, subProducts)) {
-        this._cart[exisitingProduct].quantity += quantity;
+    if (index > -1) {
+      if (this._compare(this._cart[index].subProducts, subProducts)) {
+        this._cart[index].quantity += quantity;
       } else {
         this._cart.push({ productId, quantity, subProducts });
       }
@@ -70,13 +70,13 @@ class Cart {
      we just decrement by the provided quantity, otherwise we
      remove the entire line */
   removeProduct({ productId, quantity = 1 }) {
-    const exisitingProduct = this._findProductIndex(productId);
+    const index = this._findProductIndex(productId);
 
-    if (exisitingProduct > -1) {
-      if (this._cart[exisitingProduct].quantity <= quantity) {
-        this._cart.splice(exisitingProduct, 1);
+    if (index > -1) {
+      if (this._cart[index].quantity <= quantity) {
+        this._cart.splice(index, 1);
       } else {
-        this._cart[exisitingProduct].quantity -= quantity;
+        this._cart[index].quantity -= quantity;
       }
     }
 
@@ -85,19 +85,19 @@ class Cart {
   }
 
   addSubproduct(subProductId, productId) {
-    const exisitingProduct = this._findProductIndex(productId);
-    if (exisitingProduct < 0) return new Error('Product is not in cart');
+    const index = this._findProductIndex(productId);
+    if (index < 0) return new Error('Product is not in cart');
 
-    this._cart[exisitingProduct].subProducts.push(subProductId);
+    this._cart[index].subProducts.push(subProductId);
     return this._cart;
   }
 
   removeSubproduct(subProductId, productId) {
-    const exisitingProduct = this._findProductIndex(productId);
-    if (exisitingProduct < 0) return new Error('Product is not in cart');
+    const index = this._findProductIndex(productId);
+    if (index < 0) return new Error('Product is not in cart');
 
-    const subProductIndex = this._cart[exisitingProduct].subProducts.indexOf(subProductId);
-    this._cart[exisitingProduct].subProducts.splice(subProductIndex, 1);
+    const subProductIndex = this._cart[index].subProducts.indexOf(subProductId);
+    this._cart[index].subProducts.splice(subProductIndex, 1);
     return this._cart;
   }
 
