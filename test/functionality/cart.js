@@ -1,6 +1,7 @@
 /* global it, describe, require */
 const assert = require('assert');
 const Builton = require('../../src/main.js');
+const Cart = require('../../src/functionality/cart');
 
 const request = require('superagent');
 const mock = require('superagent-mocker')(request);
@@ -43,9 +44,9 @@ describe('Cart', () => {
     assert.ok(!sa.cart._isCartValid());
   });
   it('Should compare two arrays of subproducts', () => {
-    assert.ok(sa.cart._compare([':subProductA:', ':subProductB:'], [':subProductA:', ':subProductB:']));
-    assert.ok(sa.cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductB:']));
-    assert.ok(!sa.cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductC:']));
+    assert.ok(Cart._compare([':subProductA:', ':subProductB:'], [':subProductA:', ':subProductB:']));
+    assert.ok(Cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductB:']));
+    assert.ok(!Cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductC:']));
   });
   it('Should add (new) product to cart', () => {
     sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
