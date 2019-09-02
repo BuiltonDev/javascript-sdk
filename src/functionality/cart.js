@@ -14,13 +14,7 @@ class Cart {
 
   // Cart is valid if all item contain at least productId and quantity
   _isCartValid() {
-    let valid = true;
-    this._cart.forEach((item) => {
-      if (Object.keys(item).length < 2 || !item.productId || !item.quantity) {
-        valid = false;
-      }
-    });
-    return valid;
+    return !this._cart.some(item => (!item.productId || !item.quantity));
   }
 
   _saveCart() {
