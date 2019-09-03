@@ -14,7 +14,7 @@ class Cart {
 
   // Cart is valid if all item contain at least productId and quantity
   _isCartValid() {
-    return !this._cart.some(item => (!item.productId || !item.quantity));
+    return !this._cart.some((item) => (!item.productId || !item.quantity));
   }
 
   _saveCart() {
