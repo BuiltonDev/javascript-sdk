@@ -22,7 +22,7 @@ class Cart {
   }
 
   // Check to see if two subproduct lists contain the same items. Doesn't care about order
-  static _compare(listA = [], listB = []) {
+  static _compareSubproducts(listA = [], listB = []) {
     if (!listA.length && !listB.length) return true;
     return listA.slice(0).sort().join('-') === listB.slice(0).sort().join('-');
   }
@@ -46,7 +46,7 @@ class Cart {
     const index = this._findProductIndex(productId);
 
     if (index > -1) {
-      if (Cart._compare(this._cart[index].subProducts, subProducts)) {
+      if (Cart._compareSubproducts(this._cart[index].subProducts, subProducts)) {
         this._cart[index].quantity += quantity;
       } else {
         this._cart.push({ productId, quantity, subProducts });

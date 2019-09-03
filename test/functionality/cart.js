@@ -44,9 +44,9 @@ describe('Cart', () => {
     assert.ok(!sa.cart._isCartValid());
   });
   it('Should compare two arrays of subproducts', () => {
-    assert.ok(Cart._compare([':subProductA:', ':subProductB:'], [':subProductA:', ':subProductB:']));
-    assert.ok(Cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductB:']));
-    assert.ok(!Cart._compare([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductC:']));
+    assert.ok(Cart._compareSubproducts([':subProductA:', ':subProductB:'], [':subProductA:', ':subProductB:']));
+    assert.ok(Cart._compareSubproducts([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductB:']));
+    assert.ok(!Cart._compareSubproducts([':subProductB:', ':subProductA:'], [':subProductA:', ':subProductC:']));
   });
   it('Should add (new) product to cart', () => {
     sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
