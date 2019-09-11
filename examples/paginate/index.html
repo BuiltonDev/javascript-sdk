@@ -36,7 +36,7 @@
     next = () => page.next().then(refreshList);
     previous = () => page.previous().then(refreshList);
     firstPage = () => page.goToPage(0).then(refreshList);
-    lastPage = () => page.goToPage(page.paginationTotal % page.size).then(refreshList);
+    lastPage = () => page.goToPage(Math.floor(page.paginationTotal / page.size)).then(refreshList);
   });
 </script>
 </html>
