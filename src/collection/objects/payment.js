@@ -11,13 +11,13 @@ class Payment extends Component {
     this.apiPath = 'payments';
   }
 
-  pay({ body, urlParams, json = false } = {}, done) {
+  pay(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'pay', body, urlParams, json,
     }, done);
   }
 
-  confirm({ body, urlParams, json = false }, done) {
+  confirm(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'confirm', body, urlParams, json,
     }, done);

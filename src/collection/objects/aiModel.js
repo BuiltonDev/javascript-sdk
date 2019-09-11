@@ -9,7 +9,7 @@ class AIModel extends Component {
     this.apiPath = 'ai/models';
   }
 
-  getRecommendations({ body, urlParams } = {}, done) {
+  getRecommendations(body, { urlParams } = {}, done) {
     return this.query({
       type: 'post', resource: 'invoke', body, urlParams, ResConstructor: null,
     }, done);

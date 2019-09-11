@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script src="../../dist/main.bundle.js"></script>
+ </head>
+ <body>
+    <div id="table">
+
+    </div>
+    <div id="pagination">
+        <a href="#" onclick="firstPage()">&lt;&lt;</a>
+        <a href="#" onclick="previous()">&lt;</a>
+        <a href="#" onclick="next()">&gt;</a>
+        <a href="#" onclick="lastPage()">&gt;&gt;</a>
+    </div> 
+ </body>
+ <script>
+  const apiKey = 'YOUR_API_KEY';
+  const b = new Builton({
+    apiKey,
+  });
+  let next;
+  let previous;
+  let firstPage;
+  let lastPage;
+  const populateList = (list) => {
+    let htmlList = "";
+    list.forEach(element => {
+      htmlList = `${htmlList}${element.name} - ${element.price} ${element.currency}<br/>`;
+    });
+    document.getElementById('table').innerHTML = htmlList;
+  };
+  b.products.get({size: 10}).then(page => {
+    const refreshList = () => populateList(page.current);
+    refreshList();
+    next = () => page.next().then(refreshList);
+    previous = () => page.previous().then(refreshList);
+    firstPage = () => page.goToPage(0).then(refreshList);
+    lastPage = () => page.goToPage(page.paginationTotal % page.size).then(refreshList);
+  });
+</script>
+</html>

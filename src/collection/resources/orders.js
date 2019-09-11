@@ -17,11 +17,6 @@ class Orders extends Components {
     this.ResConstructor = Order;
   }
 
-  getDeliveries(id, ...params) {
-    const obj = new Order(this.request, id);
-    return obj.getDeliveries(...params);
-  }
-
   getPayments(id, ...params) {
     const obj = new Order(this.request, id);
     return obj.getPayments(...params);
@@ -35,16 +30,6 @@ class Orders extends Components {
   cancel(id, ...params) {
     const obj = new Order(this.request, id);
     return obj.cancel(...params);
-  }
-
-  createDelivery(id, ...params) {
-    const obj = new Order(this.request, id);
-    return obj.createDelivery(...params);
-  }
-
-  triggerDeliveryAction(id, ...params) {
-    const obj = new Order(this.request, id);
-    return obj.triggerDeliveryAction(...params);
   }
 }
 

@@ -1,6 +1,10 @@
 module.exports = (ObjectClass) => ({
-  getAll({ urlParams, json = false } = {}, done) {
-    return this.query({
+  getAll({
+    page, size, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page,
+      size,
       type: 'get',
       urlParams,
       json,
@@ -30,7 +34,7 @@ module.exports = (ObjectClass) => ({
     return obj.update(...params);
   },
 
-  create({ body, urlParams, json = false } = {}, done) {
+  create(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post',
       urlParams,
@@ -39,9 +43,11 @@ module.exports = (ObjectClass) => ({
     }, done);
   },
 
-  search({ query, urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get', action: 'search', urlParams: { ...urlParams, query }, json,
+  search(query, {
+    page = 0, size = 100, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page, size, type: 'get', action: 'search', urlParams: { ...urlParams, query }, json,
     }, done);
   },
 

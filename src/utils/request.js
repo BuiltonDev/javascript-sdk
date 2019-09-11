@@ -1,4 +1,4 @@
-const request = require('superagent');
+const agent = require('superagent');
 const jwtDecode = require('jwt-decode');
 
 class Request {
@@ -59,50 +59,12 @@ class Request {
     headers = {},
     endpoint = this.endpoint,
     isJsonBody = true,
-  } = {}, parseJson, done) {
-    let promise;
-    let promiseResolve;
-    let promiseReject;
-    if (!done) {
-      promise = new Promise((resolve, reject) => {
-        promiseResolve = resolve;
-        promiseReject = reject;
-      });
-    }
-    try {
-      return this.getHeaders().then((queryHeaders) => {
-        request[type](`${endpoint}${path}${Request.serialize(urlParams)}`)
-          .set({ ...queryHeaders, ...headers })
-          .set(isJsonBody ? { 'Content-Type': 'application/json' } : {}) // when empty, SuperAgent generates it automatically.
-          .send(isJsonBody ? JSON.stringify(body) : body)
-          .end((err, res) => {
-            if (err || !res.ok) {
-              if (!done) {
-                return promiseReject(err);
-              }
-              return done(err, null, res);
-            }
-            try {
-              const result = parseJson(res);
-              if (!done) {
-                return promiseResolve(result.obj);
-              }
-              return done(null, result.obj, result.res);
-            } catch (error) {
-              if (!done) {
-                return promiseReject(error);
-              }
-              return done(error, null, res);
-            }
-          });
-        return promise;
-      });
-    } catch (err) {
-      if (!done) {
-        return promiseReject(err);
-      }
-      return done(err);
-    }
+  } = {}) {
+    const url = `${endpoint}/${path}${Request.serialize({ ...urlParams })}`;
+    return this.getHeaders().then((queryHeaders) => agent[type](url)
+      .set({ ...queryHeaders, ...headers })
+      .set(isJsonBody ? { 'Content-Type': 'application/json' } : {}) // when empty, SuperAgent generates it automatically.
+      .send(isJsonBody ? JSON.stringify(body) : body));
   }
 }
 

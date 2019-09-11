@@ -64,8 +64,8 @@ lock.on("authenticated", function(authResult) {
     }
 
     var builton = new Builton({
-	apiKey: 'YOUR_Builton_API_KEY',
-	bearerToken: authResult.idToken
+      apiKey: 'YOUR_Builton_API_KEY',
+      bearerToken: authResult.idToken
     });
 
     var loginBody = {
@@ -73,13 +73,13 @@ lock.on("authenticated", function(authResult) {
       last_name: profile.family_name,
     };
 
-    builton.authenticate.login({ body: loginBody }, function(err, user, raw) {
+    builton.authenticate.login(loginBody, {}, function(err, user, raw) {
       // The raw parameter contains the full response of the query, it's optional but can be useful to access the response's headers.
-	  if (err) {
-		// Handle error
-		return;
-	  }
-
+      if (err) {
+        // Handle error
+        return;
+      }
+    
       // Update DOM
     });
   });
@@ -101,63 +101,72 @@ lock.on("authenticated", function(authResult) {
 
 ```js
 firebase.initializeApp({
-	apiKey: "YOUR_FIREBASE_API_KEY",
-	authDomain: "YOUR_FIREBASE_DOMAIN",
+  apiKey: "YOUR_FIREBASE_API_KEY",
+  authDomain: "YOUR_FIREBASE_DOMAIN",
 });
 
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
-callbacks: {
-  signInSuccessWithAuthResult: function(authResult) {
-	var phoneNumber = authResult.user.phoneNumber;
-	authResult.user.getIdToken().then((idToken) => {
-	  var builton = new Builton({
-		apiKey: config.apiKey,
-		bearerToken: idToken,
-	  });
-	  const body = {
-		first_name: 'demo',
-		last_name: 'demo',
-	  };
-	  builton.users.authenticate({ body }).then((user) => {
-		// Update DOM
-	  }).catch(console.warn);
-	});
-	// User successfully signed in.
-	// Return type determines whether we continue the redirect automatically
-	// or whether we leave that to developer to handle.
-	return false;
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult) {
+    var phoneNumber = authResult.user.phoneNumber;
+    authResult.user.getIdToken().then((idToken) => {
+      var builton = new Builton({
+        apiKey: config.apiKey,
+        bearerToken: idToken,
+      });
+      const body = {
+        first_name: 'demo',
+        last_name: 'demo',
+      };
+      builton.users.authenticate(body).then((user) => {
+        // Update DOM
+      }).catch(console.warn);
+    });
+    // User successfully signed in.
+    // Return type determines whether we continue the redirect automatically
+    // or whether we leave that to developer to handle.
+    return false;
+    },
   },
-},
-signInOptions: [
-  // Leave the lines as is for the providers you want to offer your users.
-  firebase.auth.PhoneAuthProvider.PROVIDER_ID
-],
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID
+  ],
 };
+```
+
+### Example: Getting a paginated item
+```js
+builton.products.get({ size: 10, page: 0 }).then(pageProduct => {
+  // pageProduct.current contains the first page.
+  // pageProduct.page contains the current page number.
+  // pageProduct.paginationTotal contains the total number of item you can paginate through.
+  // pageProduct.next() will update `pageProduct.current` and `pageProduct.page` with the next page.
+  // pageProduct.previous() will update `pageProduct.current` and `pageProduct.page` with the previous page.
+  // pageProduct.goToPage(pageNumber) will update `pageProduct.current` and `pageProduct.page` with a specified page.
+  // The `next`, `previous`, and `goToPage` functions accept a callback and return a Promise.
+});
 ```
 
 ### Example: Fetching and updating payment methods
 
 Using a callback:
 ```js
-builton.paymentMethods.get({ urlParams: { size: 5 } }, function(err, paymentMethods) {
-  const firstPaymentMethod = paymentMethods[0];
+builton.paymentMethods.get({ size: 5 }, function(err, page) {
+  const firstPaymentMethod = page.current[0];
   firstPaymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+    token: ':StripeTokenId:'
   });
 });
 ```
 
 Using promises:
 ```js
-builton.paymentMethods.get({ urlParams: { size: 5 } }).then((paymentMethods) => {
-  const firstPaymentMethod = paymentMethods[0];
+builton.paymentMethods.get({ size: 5 }).then(page => {
+  const firstPaymentMethod = page.current[0];
   firstPaymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+    token: ':StripeTokenId:'
   });
 });
 ```
@@ -165,12 +174,10 @@ builton.paymentMethods.get({ urlParams: { size: 5 } }).then((paymentMethods) => 
 Using async/await:
 ```js
 // This needs to be within in an `async` function
-const paymentMethods = await builton.paymentMethods.get({ urlParams: { size: 5 } });
-const firstPaymentMethod = paymentMethods[0];
+const pagePaymentMethods = await builton.paymentMethods.get({ size: 5 });
+const firstPaymentMethod = pagePaymentMethods.current[0];
 firstPaymentMethod.update({
-  body: {
-      token: ':StripeTokenId:'
-  }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -178,9 +185,7 @@ firstPaymentMethod.update({
 
 ```js
 builton.paymentMethods.update(':paymentMethodId:', {
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -189,9 +194,7 @@ Using the `set` method:
 ```js
 const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
 paymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -202,9 +205,7 @@ The `set` method allows you to create an object without fetching it from the api
 ```js
 const paymentMethod = builton.paymentMethods.set(':paymentMethodId:');
 paymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -212,9 +213,7 @@ With multiple payment methods:
 ```js
 const paymentMethods = builton.paymentMethods.set([':paymentMethodId1:', ':paymentMethodId2:']);
 paymentMethods[0].update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 
@@ -222,9 +221,7 @@ With full props:
 ```js
 const paymentMethod = builton.paymentMethods.set({<paymentMethodJsonObject>});
 paymentMethod.update({
-    body: {
-        token: ':StripeTokenId:'
-    }
+  token: ':StripeTokenId:'
 });
 ```
 

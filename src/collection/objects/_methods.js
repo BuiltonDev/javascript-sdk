@@ -12,7 +12,7 @@ module.exports = {
     return this.get({ urlParams, json }, done);
   },
 
-  update({ body, urlParams, json = false } = {}, done) {
+  update(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'put',
       id: this.id,

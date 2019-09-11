@@ -29,19 +29,19 @@ class User extends Component {
     }, done);
   }
 
-  setRating({ body, urlParams } = {}, done) {
+  setRating(body, { urlParams } = {}, done) {
     return this.query({
       type: 'put', id: this.id, resource: 'ratings', body, urlParams, ResConstructor: null,
     }, done);
   }
 
-  updateAddresses({ body, urlParams } = {}, done) {
+  updateAddresses(body, { urlParams } = {}, done) {
     return this.query({
       type: 'put', id: this.id, resource: 'addresses', body, urlParams, ResConstructor: null,
     }, done);
   }
 
-  getSubscriptions({ body, urlParams } = {}, done) {
+  getSubscriptions(body, { urlParams } = {}, done) {
     return this.query({
       type: 'get', id: this.id, resource: 'subscriptions', body, urlParams, ResConstructor: Subscription,
     }, done);
