@@ -17,15 +17,28 @@ class User extends Component {
     }
   }
 
-  getOrders({ urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get', id: this.id, resource: 'orders', urlParams, ResConstructor: Order, json,
+  getOrders({
+    page, size, urlParams, json = false,
+  } = {}, done) {
+    return this.paginate({
+      page,
+      size,
+      type: 'get',
+      id: this.id,
+      resource: 'orders',
+      urlParams,
+      ResConstructor: Order,
+      json,
     }, done);
   }
 
   getRating({ urlParams } = {}, done) {
     return this.query({
-      type: 'get', id: this.id, resource: 'ratings', urlParams, ResConstructor: null,
+      type: 'get',
+      id: this.id,
+      resource: 'ratings',
+      urlParams,
+      ResConstructor: null,
     }, done);
   }
 
@@ -41,9 +54,15 @@ class User extends Component {
     }, done);
   }
 
-  getSubscriptions(body, { urlParams } = {}, done) {
-    return this.query({
-      type: 'get', id: this.id, resource: 'subscriptions', body, urlParams, ResConstructor: Subscription,
+  getSubscriptions({ page, size, urlParams } = {}, done) {
+    return this.paginate({
+      page,
+      size,
+      type: 'get',
+      id: this.id,
+      resource: 'subscriptions',
+      urlParams,
+      ResConstructor: Subscription,
     }, done);
   }
 }

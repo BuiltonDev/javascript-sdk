@@ -61,22 +61,38 @@ describe('User related tests', () => {
     });
   });
   it('Should get orders from me', (done) => {
+    const [page, size] = [0, 100]; // defaults
     nock(endpoint)
       .get('/users/me/orders')
+      .query({ size, page })
       .reply(200, ordersFile);
-    sa.users.setMe().getOrders({}, (err, orders) => {
-      assert.ok(Array.isArray(orders));
-      assert.ok(orders[1].constructor.name === 'Order');
+    sa.users.setMe().getOrders({}, (err, orderPage) => {
+      assert.ok(Array.isArray(orderPage.current));
+      assert.ok(orderPage.current[1].constructor.name === 'Order');
       done();
     });
   });
   it('Should get orders from user', (done) => {
+    const [page, size] = [0, 100]; // defaults
     nock(endpoint)
       .get('/users/:userId:/orders')
+      .query({ size, page })
       .reply(200, ordersFile);
-    sa.users.set({ id: ':userId:' }).getOrders({}, (err, orders) => {
-      assert.ok(Array.isArray(orders));
-      assert.ok(orders[1].constructor.name === 'Order');
+    sa.users.set({ id: ':userId:' }).getOrders({}, (err, orderPage) => {
+      assert.ok(Array.isArray(orderPage.current));
+      assert.ok(orderPage.current[1].constructor.name === 'Order');
+      done();
+    });
+  });
+  it('Should get orders from user id', (done) => {
+    const [page, size] = [0, 100]; // defaults
+    nock(endpoint)
+      .get('/users/:userId:/orders')
+      .query({ size, page })
+      .reply(200, ordersFile);
+    sa.users.getOrders(':userId:', {}, (err, orderPage) => {
+      assert.ok(Array.isArray(orderPage.current));
+      assert.ok(orderPage.current[1].constructor.name === 'Order');
       done();
     });
   });
