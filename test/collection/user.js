@@ -9,6 +9,7 @@ const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 const ordersFile = require('../fetchmock/orders.json');
 const ratingFile = require('../fetchmock/ratings.json');
 const userFile = require('../fetchmock/user.json');
+const subscriptionsFile = require('../fetchmock/subscriptions.json');
 
 describe('User related tests', () => {
   it('Should return a user', (done) => {
@@ -93,6 +94,18 @@ describe('User related tests', () => {
     sa.users.getOrders(':userId:', {}, (err, orderPage) => {
       assert.ok(Array.isArray(orderPage.current));
       assert.ok(orderPage.current[1].constructor.name === 'Order');
+      done();
+    });
+  });
+  it('Should get subscriptions from me', (done) => {
+    const [page, size] = [0, 100]; // defaults
+    nock(endpoint)
+      .get('/users/me/subscriptions')
+      .query({ size, page })
+      .reply(200, subscriptionsFile);
+    sa.users.setMe().getSubscriptions({}, (err, subscriptionPage) => {
+      assert.ok(Array.isArray(subscriptionPage.current));
+      assert.ok(subscriptionPage.current[0].constructor.name === 'Subscription');
       done();
     });
   });
