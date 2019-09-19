@@ -5,13 +5,12 @@ const {
   getFromId,
   getAll,
   get,
-  search,
   set,
 } = require('./_methods')(Payment);
 
 class Payments extends Components {
   constructor(request) {
-    super([create, getFromId, getAll, get, search, set]);
+    super([create, getFromId, getAll, get, set]);
     this.request = request;
     this.apiPath = 'payments';
     this.ResConstructor = Payment;

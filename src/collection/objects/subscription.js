@@ -1,7 +1,6 @@
 const Component = require('./_objects');
 const Payment = require('./payment');
 const {
-  del,
   get,
   refresh,
   update,
@@ -9,7 +8,7 @@ const {
 
 class Subscription extends Component {
   constructor(request, props) {
-    super(request, props, [del, get, refresh, update]);
+    super(request, props, [get, refresh, update]);
     this.apiPath = 'subscriptions';
   }
 

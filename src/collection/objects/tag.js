@@ -18,7 +18,7 @@ class Tag extends Component {
     }, done);
   }
 
-  getRessources({ urlParams, json = false } = {}, done) {
+  getResources({ urlParams, json = false } = {}, done) {
     return this.query({
       type: 'get', id: this.id, resource: 'resources', urlParams, json, ResConstructor: Resource,
     }, done);

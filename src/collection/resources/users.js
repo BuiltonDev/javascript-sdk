@@ -2,15 +2,15 @@ const Components = require('./_resources');
 const User = require('../objects/user');
 const {
   getFromId,
-  getAll,
   get,
-  search,
   set,
+  del,
+  update,
 } = require('./_methods')(User);
 
 class Users extends Components {
   constructor(request) {
-    super([getFromId, getAll, get, search, set]);
+    super([getFromId, get, set, del, update]);
     this.request = request;
     this.apiPath = 'users';
     this.ResConstructor = User;
@@ -41,7 +41,7 @@ class Users extends Components {
 
   setRating(id, ...params) {
     const obj = new User(this.request, id);
-    return obj.rate(...params);
+    return obj.setRating(...params);
   }
 
   updateAddresses(id, ...params) {

@@ -27,20 +27,6 @@ describe('AI', () => {
     });
   });
 
-  describe('POST ai/models', () => {
-    it('Should create a new ai model based on type, source and destination', (done) => {
-      nock(endpoint)
-        .post('/ai/models')
-        .reply(200, modelCreatedFile);
-      sa.aiModels.create({ model_type: 'content_recommender', source: 'product', destination: 'product' }, {}, (err, model) => {
-        if (err) throw err;
-        assert.ok(model.constructor.name === 'AIModel');
-        assert.ok(model.training_status === 'CREATED');
-        done();
-      });
-    });
-  });
-
   describe('GET ai/models/<modelId>', () => {
     it('Should return details about one specific model', (done) => {
       nock(endpoint)

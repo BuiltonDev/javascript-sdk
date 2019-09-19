@@ -1,7 +1,6 @@
 const Component = require('./_objects');
 const Payment = require('./payment');
 const {
-  del,
   get,
   refresh,
   update,
@@ -9,7 +8,7 @@ const {
 
 class Order extends Component {
   constructor(request, props) {
-    super(request, props, [del, get, refresh, update]);
+    super(request, props, [get, refresh, update]);
     this.apiPath = 'orders';
   }
 
@@ -30,12 +29,6 @@ class Order extends Component {
   pay(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'pay', body, urlParams, json,
-    }, done);
-  }
-
-  redeem(body, { urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'post', resource: 'redeem', body, urlParams, json,
     }, done);
   }
 
