@@ -3,7 +3,6 @@ const Builton = require('../../src/main.js');
 
 const nock = require('nock');
 
-const modelCreatedFile = require('../fetchmock/modelCreated.json');
 const modelReadyFile = require('../fetchmock/modelReady.json');
 const modelsFile = require('../fetchmock/models.json');
 const recommendationsFile = require('../fetchmock/recommendations.json');

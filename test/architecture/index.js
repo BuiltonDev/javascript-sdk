@@ -100,10 +100,6 @@ const checkArchitectureMatchesJsonFile = (id, res, object) => {
   const objectFunctions = model.object.roles.user;
   const resourceFunctions = model.resource.roles.user;
 
-  console.log(getClassMethods(res).sort());
-  console.log('///');
-  console.log(resourceFunctions.concat(objectFunctions).sort());
-
   // We compare the actual function list with the expected function list.
   assert(areArraysEqual(getClassMethods(object).sort(), objectFunctions.sort()));
   assert(areArraysEqual(
