@@ -28,6 +28,26 @@
       }
     }
   },
+  "Company": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": []
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "get_all",
+          "refresh",
+          "get"
+        ],
+        "user": [
+          "get_properties"
+        ]
+      }
+    }
+  },
   "Event": {
     "object": {
       "roles": {
@@ -82,15 +102,13 @@
     },
     "resource": {
       "roles": {
-        "admin": [
-          "create"
-        ],
+        "admin": [],
         "user": [
           "getFromId",
           "getAll",
           "create",
-          "update",
-          "set"
+          "set",
+          "search"
         ]
       }
     }
@@ -99,7 +117,8 @@
     "object": {
       "roles": {
         "admin": [
-          "update"
+          "update",
+          "del"
         ],
         "user": [
           "get",
@@ -256,7 +275,8 @@
         "user": [
           "getFromId",
           "getAll",
-          "set"
+          "set",
+          "search"
         ]
       }
     }
