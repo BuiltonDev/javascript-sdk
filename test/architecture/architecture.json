@@ -38,12 +38,12 @@
     "resource": {
       "roles": {
         "admin": [
-          "get_all",
+          "getAll",
           "refresh",
           "get"
         ],
         "user": [
-          "get_properties"
+          "getProperties"
         ]
       }
     }

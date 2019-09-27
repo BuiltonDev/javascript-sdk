@@ -3,6 +3,8 @@ const assert = require('assert');
 const AiModels = require('../../src/collection/resources/aiModels');
 const AiModel = require('../../src/collection/objects/aiModel');
 
+const Company = require('../../src/collection/resources/company');
+
 const Images = require('../../src/collection/resources/images');
 const Image = require('../../src/collection/objects/image');
 
@@ -124,6 +126,18 @@ describe.only('Architectural tests', () => {
   });
   it('Should match AiModel resource and object', (done) => {
     checkMatchingModels(new AiModels(), new AiModel());
+    done();
+  });
+  it('Should check architecture file correspong for Company', (done) => {
+    const model = architectureFile.Company;
+    const resourceFunctions = model.resource.roles.user;
+    const company = new Company();
+    assert(areArraysEqual(
+      getClassMethods(company).sort(), resourceFunctions.sort(),
+    ));
+    resourceFunctions.forEach((fn) => {
+      assert(company[fn] !== undefined);
+    });
     done();
   });
   it('Should check architecture file correspong for Image', (done) => {
