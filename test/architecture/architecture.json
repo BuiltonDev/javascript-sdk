@@ -38,8 +38,6 @@
     "resource": {
       "roles": {
         "admin": [
-          "getAll",
-          "refresh",
           "get"
         ],
         "user": [
