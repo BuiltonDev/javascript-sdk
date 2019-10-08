@@ -128,9 +128,9 @@
     "resource": {
       "roles": {
         "admin": [
-          "search"
         ],
         "user": [
+          "search",
           "create",
           "getAll",
           "getFromId",
