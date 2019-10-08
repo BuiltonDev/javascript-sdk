@@ -29,9 +29,6 @@ const Resource = require('../../src/collection/objects/resource');
 const Subscriptions = require('../../src/collection/resources/subscriptions');
 const Subscription = require('../../src/collection/objects/subscription');
 
-const Tags = require('../../src/collection/resources/tags');
-const Tag = require('../../src/collection/objects/tag');
-
 const Users = require('../../src/collection/resources/users');
 const User = require('../../src/collection/objects/user');
 
@@ -202,14 +199,6 @@ describe.only('Architectural tests', () => {
   });
   it('Should match subscription resource and object', (done) => {
     checkMatchingModels(new Subscriptions(), new Subscription());
-    done();
-  });
-  it('Should check architecture file correspong for Tag', (done) => {
-    checkArchitectureMatchesJsonFile('Tag', new Tags(), new Tag());
-    done();
-  });
-  it('Should match tag resource and object', (done) => {
-    checkMatchingModels(new Tags(), new Tag());
     done();
   });
   it('Should check architecture file correspong for User', (done) => {

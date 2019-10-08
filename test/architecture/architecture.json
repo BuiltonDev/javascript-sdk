@@ -279,34 +279,6 @@
       }
     }
   },
-  "Tag": {
-    "object": {
-      "roles": {
-        "admin": [
-          "update"
-        ],
-        "user": [
-          "get",
-          "refresh",
-          "getProducts",
-          "getResources"
-        ]
-      }
-    },
-    "resource": {
-      "roles": {
-        "admin": [
-          "create"
-        ],
-        "user": [
-          "search",
-          "getFromId",
-          "getAll",
-          "set"
-        ]
-      }
-    }
-  },
   "User": {
     "object": {
       "roles": {
