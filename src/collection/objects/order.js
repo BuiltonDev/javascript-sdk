@@ -26,12 +26,6 @@ class Order extends Component {
     }, done);
   }
 
-  pay(body, { urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'post', resource: 'pay', body, urlParams, json,
-    }, done);
-  }
-
   cancel(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post',

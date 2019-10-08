@@ -93,7 +93,6 @@
           "refresh",
           "update",
           "getPayments",
-          "pay",
           "cancel"
         ]
       }

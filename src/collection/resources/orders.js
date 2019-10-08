@@ -23,11 +23,6 @@ class Orders extends Components {
     return obj.getPayments(...params);
   }
 
-  pay(id, ...params) {
-    const obj = new Order(this.request, id);
-    return obj.pay(...params);
-  }
-
   cancel(id, ...params) {
     const obj = new Order(this.request, id);
     return obj.cancel(...params);
