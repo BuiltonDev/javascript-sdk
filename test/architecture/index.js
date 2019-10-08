@@ -116,7 +116,7 @@ const checkArchitectureMatchesJsonFile = (id, res, object) => {
   });
 };
 
-describe.only('Architectural tests', () => {
+describe('Architectural tests', () => {
   it('Should check architecture file correspong for AiModel', (done) => {
     checkArchitectureMatchesJsonFile('AiModel', new AiModels(), new AiModel());
     done();
