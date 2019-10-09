@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Builton SDK & Cart example</title>
+  <style type="text/css">
+  </style>
+  <script src="../../dist/main.bundle.js"></script>
+</head>
+
+<body>
+  <script>
+    let builton = new Builton({
+      endpoint: 'https://shareactor-backend-qa.herokuapp.com',
+      apiKey: 'YOUR_API_KEY',
+      bearerToken: 'YOUR_USERS_BEARERTOKEN'
+    });
+
+    async function sequence() {
+      // Step 1 - Get product
+      const productList = await builton.products.get({ size: 1 });
+      const firstProduct = productList.current[0];
+
+      // Step 2 - Create cart and add product
+      builton.cart.addProduct({ productId: firstProduct.id, quantity: 2 });
+
+      // Step 3 - Remove one instance of product from cart
+      builton.cart.removeProduct({ productId: firstProduct.id, quantity: 1 });
+
+      // Step 4 - Get paymentmethod
+      const paymentMethodList = await builton.paymentMethods.get({ size: 1 });
+      const firstPaymentMethod = paymentMethodList.current[0];
+
+      // Step 5 - Checkout
+      const order = builton.cart.checkout(firstPaymentMethod.id);
+    }
+
+    sequence();
+  </script>
+
+</body>
+
+</html>
