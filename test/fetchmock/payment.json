@@ -1,96 +1,38 @@
 {
-  "active":true,
-  "subject":{
-    "_cls":"Invoice",
-    "_ref":"5953ac67af51d40013e9d671"
+  "_id": {
+    "$oid": "5d9752ead61310000a4ef0c3"
   },
-  "human_id":"YZVENJ",
-  "amount":10000.89,
-  "user":{
-    "$oid":"585a48160cf1710013040e90"
+  "active": true,
+  "amount": 96.6,
+  "company": {
+    "$oid": "5d36fd7ea2802f0010b1477b"
   },
-  "fee":200.0178,
-  "created":{
-    "$date":1498663885235
+  "created": {
+    "$date": 1570198250917
   },
-  "currency":"NOK",
-  "payment_method":{
-    "active":false,
-    "expiry_date":"06/24",
-    "masked_card_number":"XXXXXXXXXXXX0000",
-    "user":{
-      "$oid":"585a48160cf1710013040e90"
-    },
-    "company":{
-      "$oid":"57d02be3ecc7e500056c484d"
-    },
-    "created":{
-      "$date":1498663741606
-    },
-    "cardholder":"John Doe",
-    "purchase_id":"1bc29b36f623ba82aaf6724fd3b16718_123456789.12345",
-    "merchant":"1234567890",
-    "card_type":"visa",
-    "deleted":true,
-    "_id":{
-      "$oid":"5953cb3d60b24000132afbf0"
-    },
-    "_cls":"PaymentMethod.DIBSPaymentMethod",
-    "ticket":"1234567890",
-    "modified":{
-      "$date":1498666163160
-    },
-    "callback_data":{
-      "paytype":"VISA",
-      "amount":"100",
-      "preauth":"true",
-      "share-api-key-header":"bqA5d-Lc-VNrLSbSSSDNyPtoM_tS-HqkBECTDKLKJFKJSAKJSKJOIASD09SD0098NcgbpciSDASSAiBPZ24PSD==",
-      "cancelurl":"https://google.com",
-      "transact":"1234567890",
-      "textreply":"1",
-      "cardnomask":"XXXXXXXXXXXX0000",
-      "agreement":"5552673",
-      "payment_method":"dibs",
-      "flexwin_cardlogosize":"1",
-      "merchant":"1234567890",
-      "ip":"127.0.0.1",
-      "token":"QWERTYUIOPASDFGH",
-      "accepturl":"https://payment-accept-webapp-x1.herokuapp.com/card",
-      "callbackurl":"http://qa.builton.dev/dibs/payment_method",
-      "share-bearerToken-header":"Bearer bearertokenkey",
-      "originalUserAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Mobile/14F89",
-      "authkey":"authkey",
-      "test":"1",
-      "approvalcode":"123456",
-      "cardprefix":"123456",
-      "dibsmd5":"1bc29b36f623ba82aaf6724fd3b16718",
-      "declineurl":"https://payment.example.com/decline.action",
-      "currency":"578",
-      "cardholder_name":"John Doe",
-      "fullreply":"1",
-      "expdate":"06/24",
-      "statuscode":"13",
-      "orderid":"1bc29b36f623ba82aaf6724fd3b16718_1234567890.12345",
-      "postype":"ssl",
-      "acquirer":"TEST"
-    },
-    "method":"dibs"
+  "currency": "NOK",
+  "current_state": "succeeded",
+  "deleted": false,
+  "description": "",
+  "human_id": "44VGQ2",
+  "metadata": {
+    "charge_id": "ch_1FPrUdLYJSL3bx2pDNStzBAh",
+    "intent_id": "pi_1FPrUdLYJSL3bx2paQwOsEi0"
   },
-  "payment_date":{
-    "$date":1498836671000
+  "modified": {
+    "$date": 1570198252223
   },
-  "company":{
-    "$oid":"57d02be3ecc7e500056c484d"
+  "payment_date": {
+    "$date": 1570198250917
   },
-  "deleted":false,
-  "metadata":{
-
+  "payment_method": {
+    "$oid": "5d96096b61a18e000f7d9fd1"
   },
-  "_id":{
-    "$oid":"5953cbcd60b24000132afbf1"
+  "subject": {
+    "_cls": "Order",
+    "_ref": "5d97406ad6131000103999df"
   },
-  "current_state":"captured",
-  "modified":{
-    "$date":1498802401119
+  "user": {
+    "$oid": "5d9218f71fad44000b0fb80a"
   }
 }

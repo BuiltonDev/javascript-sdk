@@ -1,6 +1,7 @@
 const store = require('store2');
 const Orders = require('../collection/resources/orders');
 const Order = require('../collection/objects/order');
+const Payments = require('../collection/resources/payments');
 
 class Cart {
   constructor(request) {
@@ -105,14 +106,13 @@ class Cart {
       sub_products: item.subProducts,
     }));
 
-    const payForOrder = (order) => order.pay({
-      body: {
-        payment_method: paymentMethodId,
-      },
-    }).then((completedOrder) => {
+    const payForOrder = (order) => new Payments(this.request).create({
+      orders: [order.id],
+      payment_method: paymentMethodId,
+    }).then((payment) => {
       this.empty();
       this._saveCart();
-      return completedOrder;
+      return payment;
     });
 
     if (resumeOrderId) {
@@ -120,10 +120,8 @@ class Cart {
     }
 
     return new Orders(this.request).create({
-      body: {
-        items,
-        delivery_address: deliveryAddress,
-      },
+      items,
+      delivery_address: deliveryAddress,
     }).then((newOrder) => payForOrder(newOrder));
   }
 }

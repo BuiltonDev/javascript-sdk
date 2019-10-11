@@ -9,6 +9,7 @@ const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OD
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 
 const orderFile = require('../fetchmock/order.json');
+const paymentFile = require('../fetchmock/paymentConfirmed.json');
 const scaFailedOrderFile = require('../fetchmock/orderPaySCAFailed.json');
 
 describe('Cart', () => {
@@ -116,12 +117,12 @@ describe('Cart', () => {
       .reply(200, orderFile);
 
     nock(endpoint)
-      .post('/orders/592bde24b738ff0013adf5c7/pay')
-      .reply(200, orderFile);
+      .post('/payments')
+      .reply(200, paymentFile);
 
     sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
 
-    const paidOrder = await sa.cart.checkout(':paymentMethodId', {
+    const payment = await sa.cart.checkout(':paymentMethodId', {
       street_name: 'Slottsplassen 1',
       zip_code: '0010',
       city: 'Oslo',
@@ -129,7 +130,7 @@ describe('Cart', () => {
       geo: [59.909848, 10.7379474],
     });
     assert.ok(!sa.cart.get().length);
-    assert.ok(paidOrder.order_status === 'SUCCESS');
+    assert.ok(payment.current_state === 'succeeded');
   });
   it('Should allow you to recover checkout process if process failed due to SCA reauthentication', async () => {
     nock(endpoint)
@@ -137,7 +138,7 @@ describe('Cart', () => {
       .reply(200, orderFile);
 
     nock(endpoint)
-      .post('/orders/592bde24b738ff0013adf5c7/pay')
+      .post('/payments')
       .reply(422, scaFailedOrderFile);
 
     sa.cart.addProduct({ productId: ':productId:', quantity: 2 });
@@ -155,12 +156,12 @@ describe('Cart', () => {
     } catch (error) {
       assert.ok(error.status === 422);
       nock(endpoint)
-        .post('/orders/592bde24b738ff0013adf5c7/pay')
-        .reply(200, orderFile);
+        .post('/payments')
+        .reply(200, paymentFile);
       assert.ok(sa.cart.get().length);
-      const retryOrder = await sa.cart.checkout(paymentMethodId, deliveryAddress, '592bde24b738ff0013adf5c7');
+      const retryPayment = await sa.cart.checkout(paymentMethodId, deliveryAddress, '592bde24b738ff0013adf5c7');
       assert.ok(!sa.cart.get().length);
-      assert.ok(retryOrder.order_status === 'SUCCESS');
+      assert.ok(retryPayment.current_state === 'succeeded');
     }
   });
 });

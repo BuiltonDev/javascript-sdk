@@ -7,11 +7,12 @@ const {
   create,
   update,
   set,
+  search,
 } = require('./_methods')(Order);
 
 class Orders extends Components {
   constructor(request) {
-    super([getFromId, getAll, get, create, update, set]);
+    super([getFromId, getAll, get, create, update, set, search]);
     this.request = request;
     this.apiPath = 'orders';
     this.ResConstructor = Order;
@@ -20,11 +21,6 @@ class Orders extends Components {
   getPayments(id, ...params) {
     const obj = new Order(this.request, id);
     return obj.getPayments(...params);
-  }
-
-  pay(id, ...params) {
-    const obj = new Order(this.request, id);
-    return obj.pay(...params);
   }
 
   cancel(id, ...params) {

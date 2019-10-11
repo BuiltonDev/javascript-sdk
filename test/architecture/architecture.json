@@ -1,0 +1,339 @@
+{
+  "AiModel": {
+    "object": {
+      "roles": {
+        "admin": [
+          "del",
+          "train",
+          "createVersion"
+        ],
+        "user": [
+          "get",
+          "refresh",
+          "getRecommendations"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "create",
+          "search"
+        ],
+        "user": [
+          "getAll",
+          "getFromId",
+          "set"
+        ]
+      }
+    }
+  },
+  "Company": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": []
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "get"
+        ],
+        "user": [
+          "getProperties"
+        ]
+      }
+    }
+  },
+  "Event": {
+    "object": {
+      "roles": {
+        "admin": [
+          "get",
+          "refresh"
+        ],
+        "user": []
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "getAll",
+          "getFromId",
+          "search",
+          "set"
+        ],
+        "user": []
+      }
+    }
+  },
+  "Image": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": []
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "create"
+        ]
+      }
+    }
+  },
+  "Order": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "get",
+          "refresh",
+          "update",
+          "getPayments",
+          "cancel"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "getFromId",
+          "getAll",
+          "create",
+          "set",
+          "search"
+        ]
+      }
+    }
+  },
+  "Payment": {
+    "object": {
+      "roles": {
+        "admin": [
+          "update",
+          "del"
+        ],
+        "user": [
+          "get",
+          "refresh",
+          "confirm",
+          "pay"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+        ],
+        "user": [
+          "search",
+          "create",
+          "getAll",
+          "getFromId",
+          "set"
+        ]
+      }
+    }
+  },
+  "PaymentMethod": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "get",
+          "refresh",
+          "del",
+          "update"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "create",
+          "getFromId",
+          "getAll",
+          "set"
+        ]
+      }
+    }
+  },
+  "Plan": {
+    "object": {
+      "roles": {
+        "admin": [
+          "update",
+          "del"
+        ],
+        "user": [
+          "get",
+          "refresh",
+          "getSubscriptions"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "create"
+        ],
+        "user": [
+          "search",
+          "getFromId",
+          "getAll",
+          "set"
+        ]
+      }
+    }
+  },
+  "Product": {
+    "object": {
+      "roles": {
+        "admin": [
+          "del",
+          "update"
+        ],
+        "user": [
+          "get",
+          "refresh",
+          "getSubProducts",
+          "searchSubProducts"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "create"
+        ],
+        "user": [
+          "search",
+          "getFromId",
+          "getAll",
+          "set"
+        ]
+      }
+    }
+  },
+  "Resource": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "del",
+          "update",
+          "get",
+          "refresh",
+          "getOrders"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "create",
+          "createBulk",
+          "updateBulk",
+          "search",
+          "getFromId",
+          "getAll",
+          "set"
+        ]
+      }
+    }
+  },
+  "Subscription": {
+    "object": {
+      "roles": {
+        "admin": [
+          "del"
+        ],
+        "user": [
+          "get",
+          "refresh",
+          "getPayments",
+          "start",
+          "stop",
+          "update"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "create"
+        ],
+        "user": [
+          "getFromId",
+          "getAll",
+          "set",
+          "search"
+        ]
+      }
+    }
+  },
+  "User": {
+    "object": {
+      "roles": {
+        "admin": [],
+        "user": [
+          "get",
+          "refresh",
+          "update",
+          "getOrders",
+          "getRating",
+          "setRating",
+          "updateAddresses",
+          "getSubscriptions",
+          "del"
+        ]
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "getAll",
+          "search"
+        ],
+        "user": [
+          "getFromId",
+          "create",
+          "authenticate",
+          "setMe",
+          "set"
+        ]
+      }
+    }
+  },
+  "Webhook": {
+    "object": {
+      "roles": {
+        "admin": [
+          "get",
+          "refresh",
+          "update",
+          "del"
+        ],
+        "user": []
+      }
+    },
+    "resource": {
+      "roles": {
+        "admin": [
+          "getAll",
+          "getFromId",
+          "search",
+          "create",
+          "set"
+        ],
+        "user": []
+      }
+    }
+  }
+}

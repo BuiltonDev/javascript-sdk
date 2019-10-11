@@ -3,7 +3,6 @@ const Builton = require('../../src/main.js');
 
 const nock = require('nock');
 
-const modelCreatedFile = require('../fetchmock/modelCreated.json');
 const modelReadyFile = require('../fetchmock/modelReady.json');
 const modelsFile = require('../fetchmock/models.json');
 const recommendationsFile = require('../fetchmock/recommendations.json');
@@ -22,20 +21,6 @@ describe('AI', () => {
       sa.aiModels.get({ page: 0, size: 10 }, (err, models) => {
         if (err) throw err;
         assert.ok(Array.isArray(models.current));
-        done();
-      });
-    });
-  });
-
-  describe('POST ai/models', () => {
-    it('Should create a new ai model based on type, source and destination', (done) => {
-      nock(endpoint)
-        .post('/ai/models')
-        .reply(200, modelCreatedFile);
-      sa.aiModels.create({ model_type: 'content_recommender', source: 'product', destination: 'product' }, {}, (err, model) => {
-        if (err) throw err;
-        assert.ok(model.constructor.name === 'AIModel');
-        assert.ok(model.training_status === 'CREATED');
         done();
       });
     });

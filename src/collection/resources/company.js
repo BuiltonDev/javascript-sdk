@@ -12,14 +12,6 @@ class Company extends Component {
       type: 'get', action: 'properties', urlParams, ResConstructor: null,
     }, done);
   }
-
-  get({ urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'get',
-      urlParams,
-      json,
-    }, done);
-  }
 }
 
 module.exports = Company;

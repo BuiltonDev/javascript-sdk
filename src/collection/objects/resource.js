@@ -16,7 +16,7 @@ class Resource extends Component {
   getOrders({ urlParams, json = false } = {}, done) {
     return this.query({
       type: 'get',
-      resource: 'payments',
+      resource: 'orders',
       urlParams,
       json,
       ResConstructor: Order,
