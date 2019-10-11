@@ -1,6 +1,6 @@
 {
   "name": "@builton/core-sdk",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Builton JavaScript SDK.",
   "main": "src/main.js",
   "scripts": {
