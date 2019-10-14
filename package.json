@@ -52,6 +52,5 @@
     "jwt-decode": "^2.2.0",
     "store2": "^2.9.0",
     "superagent": "^5.1.0"
-  },
-  "browser": "./dist/main.bundle.js"
+  }
 }
