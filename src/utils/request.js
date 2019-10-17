@@ -11,10 +11,14 @@ class Request {
   }
 
   static isJWTAlive(token) {
-    const decoded = jwtDecode(token);
-    const now = Date.now().valueOf() / 1000;
-    return !((typeof decoded.exp !== 'undefined' && decoded.exp < now)
-      || (typeof decoded.nbf !== 'undefined' && decoded.nbf > now));
+    try {
+      const decoded = jwtDecode(token);
+      const now = Date.now().valueOf() / 1000;
+      return !((typeof decoded.exp !== 'undefined' && decoded.exp < now)
+        || (typeof decoded.nbf !== 'undefined' && decoded.nbf > now));
+    } catch (e) {
+      return false;
+    }
   }
 
   _constructHeaders() {
