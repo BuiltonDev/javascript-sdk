@@ -16,6 +16,7 @@ class Payment extends Component {
     }, done);
   }
 
+  // Confirm the payment due to SCA triggered
   confirm(body, { urlParams, json = false } = {}, done) {
     return this.query({
       type: 'post', resource: 'confirm', body, urlParams, json,

@@ -22,6 +22,7 @@ class Payments extends Components {
     return obj.pay(...params);
   }
 
+  // Confirm the payment due to SCA triggered
   confirm(id, ...params) {
     const obj = new Payment(this.request, id);
     return obj.confirm(...params);
