@@ -26,7 +26,7 @@ module.exports = (ObjectClass) => ({
 
   del(id, ...params) {
     const obj = new ObjectClass(this.request, id);
-    return obj.delete(...params);
+    return obj.del(...params);
   },
 
   update(id, ...params) {
