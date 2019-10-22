@@ -83,6 +83,7 @@ class Cart {
     if (index < 0) return new Error('Product is not in cart');
 
     this._cart[index].subProducts.push(subProductId);
+    this._saveCart();
     return this._cart;
   }
 
@@ -92,6 +93,7 @@ class Cart {
 
     const subProductIndex = this._cart[index].subProducts.indexOf(subProductId);
     this._cart[index].subProducts.splice(subProductIndex, 1);
+    this._saveCart();
     return this._cart;
   }
 
