@@ -38,6 +38,7 @@ class Cart {
 
   empty() {
     this._cart = [];
+    this._saveCart();
   }
 
   /* Add product. If product AND subproduct combination exists,
@@ -113,7 +114,6 @@ class Cart {
       payment_method: paymentMethodId,
     }).then((payment) => {
       this.empty();
-      this._saveCart();
       return payment;
     });
 
