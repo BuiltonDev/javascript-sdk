@@ -30,6 +30,7 @@ class Cart {
 
   set(newCart) {
     this._cart = newCart;
+    this._saveCart();
   }
 
   get() {
