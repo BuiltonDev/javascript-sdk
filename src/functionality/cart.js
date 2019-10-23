@@ -80,21 +80,27 @@ class Cart {
     return this._cart;
   }
 
-  addSubproduct(subProductId, productId) {
+  addSubproduct(subProductId, productId, increaseQuantity = false) {
     const index = this._findProductIndex(productId);
     if (index < 0) return new Error('Product is not in cart');
 
     this._cart[index].subProducts.push(subProductId);
+    if (increaseQuantity) {
+      this._cart[index].quantity += 1;
+    }
     this._saveCart();
     return this._cart;
   }
 
-  removeSubproduct(subProductId, productId) {
+  removeSubproduct(subProductId, productId, decreaseQuantity = false) {
     const index = this._findProductIndex(productId);
     if (index < 0) return new Error('Product is not in cart');
 
     const subProductIndex = this._cart[index].subProducts.indexOf(subProductId);
     this._cart[index].subProducts.splice(subProductIndex, 1);
+    if (decreaseQuantity) {
+      this._cart[index].quantity -= 1;
+    }
     this._saveCart();
     return this._cart;
   }
