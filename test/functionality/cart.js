@@ -104,6 +104,26 @@ describe('Cart', () => {
     assert.ok(sa.cart.get()[0].productId === ':productId:');
     assert.ok(!sa.cart.get()[0].subProducts.length);
   });
+  it('Should add subproduct to cart and increase quantity', () => {
+    sa.cart.addProduct({ productId: ':productId:', quantity: 1 });
+    const preQuantity = sa.cart.get()[0].quantity;
+    sa.cart.addSubproduct(':subProductId:', ':productId:', true);
+    assert.ok(sa.cart.get().length === 1);
+    assert.ok(sa.cart.get()[0].productId === ':productId:');
+    assert.ok(sa.cart.get()[0].subProducts.indexOf(':subProductId:') > -1);
+    assert.ok(sa.cart.get()[0].quantity > preQuantity);
+  });
+  it('Should remove subproduct from cart and decrease quantity', () => {
+    /* Setup */
+    sa.cart.addProduct({ productId: ':productId:', quantity: 2, subProducts: [':subProductId:'] });
+    /* */
+    const preQuantity = sa.cart.get()[0].quantity;
+    sa.cart.removeSubproduct(':subProductId:', ':productId:', true);
+    assert.ok(sa.cart.get().length === 1);
+    assert.ok(sa.cart.get()[0].productId === ':productId:');
+    assert.ok(!sa.cart.get()[0].subProducts.length);
+    assert.ok(sa.cart.get()[0].quantity < preQuantity);
+  });
   it('Should empty entire cart', () => {
     sa.cart.addProduct({ product: ':productId:', quantity: 2 });
     sa.cart.addProduct({ product: ':productId2:', quantity: 1 });
