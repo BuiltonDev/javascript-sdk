@@ -85,6 +85,8 @@ class Cart {
     if (index < 0) return new Error('Product is not in cart');
 
     this._cart[index].subProducts.push(subProductId);
+    // In case the sub product should be counted as separate product in the order
+    // we need to increase the quantity
     if (increaseQuantity) {
       this._cart[index].quantity += 1;
     }
@@ -98,6 +100,8 @@ class Cart {
 
     const subProductIndex = this._cart[index].subProducts.indexOf(subProductId);
     this._cart[index].subProducts.splice(subProductIndex, 1);
+    // In case the sub product should be counted as separate product in the order
+    // we need to increase/decrease the quantity
     if (decreaseQuantity) {
       this._cart[index].quantity -= 1;
     }
