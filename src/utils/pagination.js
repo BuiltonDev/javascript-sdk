@@ -13,27 +13,27 @@ class Pagination {
         return this.current;
       })
       .catch((err) => Promise.reject(err));
-  }
 
-  next(done) {
-    if (this.page >= Math.floor(this.paginationTotal / this.size)) {
-      return Promise.resolve(this.current);
-    }
-    this.page += 1;
-    return this._query(done);
-  }
+    this.next = (done) => {
+      if (this.page >= Math.floor(this.paginationTotal / this.size)) {
+        return Promise.resolve(this.current);
+      }
+      this.page += 1;
+      return this._query(done);
+    };
 
-  previous(done) {
-    if (this.page <= 0) {
-      return Promise.resolve(this.current);
-    }
-    this.page -= 1;
-    return this._query(done);
-  }
+    this.previous = (done) => {
+      if (this.page <= 0) {
+        return Promise.resolve(this.current);
+      }
+      this.page -= 1;
+      return this._query(done);
+    };
 
-  goToPage(pageNb, done) {
-    this.page = pageNb;
-    return this._query(done);
+    this.goToPage = (pageNb, done) => {
+      this.page = pageNb;
+      return this._query(done);
+    };
   }
 }
 
