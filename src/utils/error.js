@@ -1,9 +1,14 @@
 /* eslint-disable max-classes-per-file */
 class ExtendableError extends Error {
-  constructor(message) {
+  constructor(message, metadata) {
     super();
     this.message = message;
     this.name = this.constructor.name;
+    Object.entries(metadata).forEach(([key, value]) => {
+      if (!this[key]) {
+        this[key] = value;
+      }
+    });
   }
 }
 
@@ -31,9 +36,16 @@ class AbstractClass extends ExtendableError {
   }
 }
 
+class BadRequest extends ExtendableError {
+  constructor(requestError) {
+    super(requestError.response.body.message || 'Bad request', requestError);
+  }
+}
+
 module.exports = {
   MethodNeedsId,
   AbstractClass,
   MethodNeedsArg,
   NotImplemented,
+  BadRequest,
 };
