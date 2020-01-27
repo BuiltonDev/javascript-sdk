@@ -42,10 +42,17 @@ class BadRequest extends ExtendableError {
   }
 }
 
+class StripeError extends ExtendableError {
+  constructor(stripeError) {
+    super(stripeError.message || 'Payment error', stripeError);
+  }
+}
+
 module.exports = {
   MethodNeedsId,
   AbstractClass,
   MethodNeedsArg,
   NotImplemented,
   BadRequest,
+  StripeError,
 };

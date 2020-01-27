@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Builton SDK & Firebase example</title>
+    <style type="text/css">
+        .contentContainer {
+            display: flex;
+        }
+
+        #apiResponse {
+            background-color: #f1f1f1;
+            ;
+            min-height: 100px;
+            width: 100%;
+            overflow: scroll;
+            margin: 0 10px 0 10px;
+            padding: 10px;
+        }
+
+        #actionContainer {
+            background-color: #fcfcfc;
+            min-height: 100px;
+            width: 100%;
+            margin: 0 10px 0 10px;
+            padding: 10px;
+        }
+
+        #stepButton {
+            float: right;
+        }
+
+        #cardDetails {
+            background-color: lightsteelblue;
+            margin: 100px;
+            padding: 50px;
+        }
+
+        #cardElement {
+            margin-top: 20px
+        }
+
+        #cardButton {
+            margin: 20px 0 20px 20px;
+            float: right;
+        }
+
+        button {
+            margin: 10px;
+        }
+    </style>
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- <script src="https://unpkg.com/@builton/core-sdk@4/dist/main.bundle.js"></script> -->
+    <script src="../../dist/main.bundle.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+</head>
+
+<body>
+    <div class="contentContainer">
+        <div id="actionContainer">
+            <button id="stepButton" onclick="stateMachine()"></button>
+            <div id="steps"></div>
+            <div id="cardDetails">
+                <div>Please use a <a href="https://stripe.com/docs/testing#cards">Stripe test card</a></div>
+                <div id="cardElement"></div>
+                <button id="cardButton">send card</button>
+            </div>
+        </div>
+        <pre id="apiResponse"></pre>
+    </div>
+    <script>
+        const conf = {
+            stripe: {
+                pk: 'pk_test_fa7Dxe5u3x2dn6DoZNROpKJO00E0earGo8'
+            },
+            firebase: {
+                apiKey: "AIzaSyC3aEQEFUzZjao3XTYfm1yqDXLC-uOcy0Y",
+                authDomain: "builton-demo.firebaseapp.com",
+            },
+            builton: {
+                apiKey: 'YEX5tfHumpzhlp0UUGJdrkLztQf75ajj9_-T4IesGbxOPootfnMWKf82a9sGyjpDeKtjZU5chmKHKVW9Duc4Gw=='
+            }
+        }
+        const stripe = Stripe(conf.stripe.pk);
+        let elements = stripe.elements();
+        let cardElement = elements.create('card');
+        cardElement.mount('#cardElement');
+        document.getElementById('cardDetails').style.visibility = "hidden";
+
+        let builton = new Builton({
+            apiKey: conf.builton.apiKey
+        });
+
+        const stripeProvider = new builton.paymentMethods.StripePaymentProvider(
+            stripe, cardElement
+        );
+        // Initialize Firebase
+        firebase.initializeApp(conf.firebase);
+
+        let userRef = null;
+        let productsRef = null;
+        let paymentMethodRef = null;
+        let orderRef = null;
+
+        const events = {
+            listProducts: () => {
+                return builton.products.get({ urlParams: { type: 'main' } }).then((productPage) => {
+                    productsRef = productPage.current;
+                    return productPage.current;
+                });
+            },
+            authenticate: () => {
+                return firebase.auth().signInAnonymously()
+                    .then((authResult) => {
+                        addSubStep('Firebase Authentication', true);
+                        return authResult.user.getIdToken()
+                            .then((bearerToken) => {
+                                addSubStep('Got bearerToken', true);
+                                return builton.authenticate({
+                                    bearerToken,
+                                    refreshTokenFn: async () => {
+                                        return await authResult.user.getIdToken();
+                                    },
+                                    body: {
+                                        foo: "bar"
+                                    }
+                                });
+                            })
+                    })
+                    .then((user) => {
+                        addSubStep('BuiltOn Authentication', true);
+                        userRef = user;
+                        return user;
+                    });
+            },
+            addAddress: () => {
+                return userRef.update({
+                    addresses: [{ "street_name": "Nadderudåsen 30", "city": "Bekkestua", "zip_code": "1357", "country": "Norway" }]
+                }).then((updatedUser) => {
+                    userRef = updatedUser;
+                    return updatedUser;
+                });
+            },
+            addPaymentMethod: () => {
+                document.getElementById('cardDetails').style.visibility = "visible";
+                let cardButton = document.getElementById('cardButton');
+                return new Promise((resolve) => {
+                    cardButton.addEventListener('click', (ev) => {
+                        builton.paymentMethods.createWithProvider(stripeProvider).then(paymentMethod => {
+                            paymentMethodRef = paymentMethod;
+                            document.getElementById('cardDetails').style.visibility = "hidden";
+                            resolve(paymentMethod);
+                        });
+                    });
+                });
+            },
+            createOrder: () => {
+                return builton.orders.create({
+                    items: [{
+                        product: productsRef[0].id,
+                        quantity: '1',
+                    }],
+                    delivery_address: { "street_name": "Slottsplassen 1", "city": "Oslo", "zip_code": "0010", "country": "Norway" },
+                }).then((order) => {
+                    orderRef = order;
+                    return order;
+                });
+            },
+            payForOrder: () => {
+                return builton.payments.createWithProvider(
+                    stripeProvider,
+                    {
+                        orders: [orderRef.id],
+                        payment_method: paymentMethodRef.id
+                    }
+                )
+            }
+        }
+
+        const camelCaseToWords = (str) => {
+            return str.match(/^[a-z]+|[A-Z][a-z]*/g).map((x) => {
+                return x[0].toUpperCase() + x.substr(1).toLowerCase();
+            }).join(' ');
+        };
+
+        const steps = Object.keys(events);
+        let currentStep = 0;
+        const stepButton = document.getElementById("stepButton");
+        stepButton.innerHTML = camelCaseToWords(steps[currentStep]);
+        const stateMachine = () => {
+            stepButton.disabled = true;
+            document.getElementById('apiResponse').innerHTML = '';
+            events[steps[currentStep]]().then((response) => {
+                displayResponse(response);
+                addStep(steps[currentStep], response ? true : false);
+                currentStep += 1;
+                if (currentStep < steps.length) {
+                    stepButton.innerHTML = camelCaseToWords(steps[currentStep]);
+                    stepButton.disabled = false;
+                } else {
+                    stepButton.innerHTML = 'Done!';
+                }
+            });
+        }
+
+        const displayResponse = (response) => {
+            console.log(response);
+            document.getElementById('apiResponse').innerHTML = JSON.stringify(response, null, 2);
+        }
+
+        const addStep = (step, success) => {
+            console.info(step);
+            const div = document.createElement('div');
+            div.innerHTML = `${success ? '✅' : '❌'} ${camelCaseToWords(step)}`;
+            document.getElementById('steps').appendChild(div);
+        }
+
+        const addSubStep = (step, success) => {
+            console.info(step);
+            const div = document.createElement('div');
+            div.innerHTML = `&#09;┌ ${success ? '✅' : '❌'} ${step}`;
+            document.getElementById('steps').appendChild(div);
+        }
+    </script>
+</body>
+
+</html>
