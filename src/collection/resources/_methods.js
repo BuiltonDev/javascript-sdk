@@ -6,7 +6,7 @@ module.exports = (ObjectClass) => ({
       page,
       size,
       type: 'get',
-      urlParams: { ...urlParams, tags: tags ? tags.toString() : undefined },
+      urlParams: { ...urlParams, ...(tags && { tags: tags.toString() }) },
       json,
     }, done);
   },
@@ -47,7 +47,7 @@ module.exports = (ObjectClass) => ({
     page = 0, size = 100, tags, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
-      page, size, type: 'get', action: 'search', urlParams: { ...urlParams, query, tags: tags ? tags.toString() : undefined }, json,
+      page, size, type: 'get', action: 'search', urlParams: { ...urlParams, query, ...(tags && { tags: tags.toString() }) }, json,
     }, done);
   },
 
