@@ -9,21 +9,21 @@ class Images extends Components {
     this.ResConstructor = Image;
   }
 
-  async create({ data, filename }, { isPublic, urlParams } = {}, done) {
-    let imageName = filename;
-    if ((!Buffer && typeof File === 'undefined') || (!Buffer.isBuffer(data) && !(data instanceof File))) {
-      return Promise.reject(new Error('Data needs to be instance of Buffer(node) or File(client).'));
-    }
+  async create(data, { isPublic, urlParams } = {}, done) {
+    const imageName = data.filename || data.name || `image-${new Date().now}`;
 
-    if (typeof File !== 'undefined' && !filename && (data instanceof File)) {
-      imageName = filename || data.name;
+    if ((!Buffer && typeof File === 'undefined')
+      || (typeof data !== 'object')
+      || (!Buffer.isBuffer(data.buffer) && !(data instanceof File))
+    ) {
+      return Promise.reject(new Error('Data needs to be an object { buffer: Buffer, filename: String } or an instance File(client).'));
     }
 
     return this.query({
       type: 'post',
       body: {
         isFile: true,
-        data,
+        data: data.buffer || data,
         filename: imageName,
         isPublic,
       },
