@@ -1,4 +1,3 @@
-const FormData = require('form-data');
 const Components = require('./_resources');
 const Image = require('../objects/image');
 
@@ -10,21 +9,25 @@ class Images extends Components {
     this.ResConstructor = Image;
   }
 
-  create(imageData, { isPublic, urlParams } = {}, done) {
-    let form = new FormData();
-    form.append('image', imageData);
-    if (isPublic !== undefined) {
-      form.append('public', isPublic);
+  async create({ data, filename }, { isPublic, urlParams } = {}, done) {
+    let imageName = filename;
+    if ((!Buffer && typeof File === 'undefined') || (!Buffer.isBuffer(data) && !(data instanceof File))) {
+      return Promise.reject(new Error('Data needs to be instance of Buffer(node) or File(client).'));
     }
-    // eslint-disable-next-line eqeqeq, no-restricted-globals
-    if (typeof self != 'object') { // if polyfill is used, (https://github.com/form-data/form-data/blob/master/lib/browser.js)
-      form = JSON.stringify(form); // We stringify as superagent will not do it.
+
+    if (typeof File !== 'undefined' && !filename && (data instanceof File)) {
+      imageName = data.name;
     }
+
     return this.query({
       type: 'post',
-      body: form,
+      body: {
+        isFile: true,
+        data,
+        filename: imageName,
+        isPublic,
+      },
       urlParams,
-      isJsonBody: false,
     }, done);
   }
 }
