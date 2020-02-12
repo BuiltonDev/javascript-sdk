@@ -18,7 +18,7 @@ describe('Image related tests', () => {
       fs.readFile(`${__dirname}/../fetchmock/1x1.png`, async (err, data) => {
         const image = await sa.images.create({ data, filename: '1x1.png' });
         assert.equal(image.original_name, '1x1.png');
-      })
+      });
     } catch (err) {
       assert.fail(err);
       console.error(err);
