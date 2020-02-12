@@ -1,12 +1,12 @@
 module.exports = (ObjectClass) => ({
   getAll({
-    page, size, urlParams, json = false,
+    page, size, urlParams, tags, json = false,
   } = {}, done) {
     return this.paginate({
       page,
       size,
       type: 'get',
-      urlParams,
+      urlParams: { ...urlParams, ...(tags && { tags: tags.toString() }) },
       json,
     }, done);
   },
@@ -44,10 +44,10 @@ module.exports = (ObjectClass) => ({
   },
 
   search(query, {
-    page = 0, size = 100, urlParams, json = false,
+    page = 0, size = 100, tags, urlParams, json = false,
   } = {}, done) {
     return this.paginate({
-      page, size, type: 'get', action: 'search', urlParams: { ...urlParams, query }, json,
+      page, size, type: 'get', action: 'search', urlParams: { ...urlParams, query, ...(tags && { tags: tags.toString() }) }, json,
     }, done);
   },
 

@@ -50,7 +50,9 @@ class Request {
   static serialize(params) {
     const str = [];
     Object.keys(params).forEach((key) => {
-      str.push(`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+      if (params[key] !== undefined) {
+        str.push(`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+      }
     });
     return str.length ? `?${str.join('&')}` : '';
   }
