@@ -16,7 +16,7 @@ class Images extends Components {
     }
 
     if (typeof File !== 'undefined' && !filename && (data instanceof File)) {
-      imageName = data.name;
+      imageName = filename || data.name;
     }
 
     return this.query({

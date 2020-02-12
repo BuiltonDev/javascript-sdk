@@ -70,8 +70,8 @@ class Request {
       const request = agent[type](url)
         .set({ ...queryHeaders, ...headers });
       if (body && body.isFile) {
-        if (body.isPublic) {
-          request.field('isPublic', body.isPublic);
+        if (typeof body.isPublic !== 'undefined') {
+          request.field('public', body.isPublic);
         }
         request
           .attach('image', body.data, body.filename);
