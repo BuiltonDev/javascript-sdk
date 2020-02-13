@@ -1,6 +1,6 @@
-const FormData = require('form-data');
 const Components = require('./_resources');
 const Image = require('../objects/image');
+const Error = require('../../utils/error');
 
 class Images extends Components {
   constructor(request) {
@@ -10,21 +10,25 @@ class Images extends Components {
     this.ResConstructor = Image;
   }
 
-  create(imageData, { isPublic, urlParams } = {}, done) {
-    let form = new FormData();
-    form.append('image', imageData);
-    if (isPublic !== undefined) {
-      form.append('public', isPublic);
+  async create(data, { isPublic, urlParams } = {}, done) {
+    const imageName = data.filename || data.name || `image-${new Date().now}`;
+
+    if ((!Buffer && typeof File === 'undefined')
+      || (typeof data !== 'object')
+      || (!Buffer.isBuffer(data.buffer) && !(data instanceof File))
+    ) {
+      return Promise.reject(new Error.ImageUpload());
     }
-    // eslint-disable-next-line eqeqeq, no-restricted-globals
-    if (typeof self != 'object') { // if polyfill is used, (https://github.com/form-data/form-data/blob/master/lib/browser.js)
-      form = JSON.stringify(form); // We stringify as superagent will not do it.
-    }
+
     return this.query({
       type: 'post',
-      body: form,
+      body: {
+        isFile: true,
+        data: data.buffer || data,
+        filename: imageName,
+        isPublic,
+      },
       urlParams,
-      isJsonBody: false,
     }, done);
   }
 }
