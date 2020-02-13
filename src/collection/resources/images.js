@@ -1,5 +1,6 @@
 const Components = require('./_resources');
 const Image = require('../objects/image');
+const Error = require('../../utils/error');
 
 class Images extends Components {
   constructor(request) {
@@ -16,7 +17,7 @@ class Images extends Components {
       || (typeof data !== 'object')
       || (!Buffer.isBuffer(data.buffer) && !(data instanceof File))
     ) {
-      return Promise.reject(new Error('Data needs to be an object { buffer: Buffer, filename: String } or an instance File(client).'));
+      return Promise.reject(new Error.ImageUpload());
     }
 
     return this.query({
