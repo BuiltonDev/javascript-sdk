@@ -11,7 +11,7 @@ class Images extends Components {
   }
 
   async create(data, { isPublic, urlParams } = {}, done) {
-    const imageName = data.filename || data.name || `image-${new Date().now}`;
+    const imageName = data.filename || data.name || `image-${Date.now()}`;
 
     if ((!Buffer && typeof File === 'undefined')
       || (typeof data !== 'object')
