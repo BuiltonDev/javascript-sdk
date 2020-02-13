@@ -48,7 +48,6 @@
     "webpack-cli": "3.3.7"
   },
   "dependencies": {
-    "form-data": "^2.5.1",
     "jwt-decode": "^2.2.0",
     "store2": "^2.9.0",
     "superagent": "^5.1.0"
