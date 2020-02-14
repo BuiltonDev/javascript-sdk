@@ -1,6 +1,7 @@
 const Components = require('./_resources');
 const User = require('../objects/user');
 const {
+  create,
   getFromId,
   get,
   set,
@@ -10,7 +11,7 @@ const {
 
 class Users extends Components {
   constructor(request) {
-    super([getFromId, get, set, del, update]);
+    super([create, getFromId, get, set, del, update]);
     this.request = request;
     this.apiPath = 'users';
     this.ResConstructor = User;
@@ -19,12 +20,6 @@ class Users extends Components {
 
   // The `Create` and the `Authenticate` functions are functionnaly identical.
   // No need to `Authenticate` after `Create`.
-  create(body, { urlParams, json = false } = {}, done) {
-    return this.query({
-      type: 'post', apiPath: 'v2/users', urlParams, body, json,
-    }, done);
-  }
-
   authenticate(body, { urlParams, json = false } = {}, done) {
     return this.create(body, { urlParams, json }, done);
   }
