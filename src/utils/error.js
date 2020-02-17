@@ -48,6 +48,12 @@ class StripeError extends ExtendableError {
   }
 }
 
+class ImageUpload extends ExtendableError {
+  constructor() {
+    super('Data needs to be an object { buffer: Buffer, filename: String } or an instance File(client).');
+  }
+}
+
 module.exports = {
   MethodNeedsId,
   AbstractClass,
@@ -55,4 +61,5 @@ module.exports = {
   NotImplemented,
   BadRequest,
   StripeError,
+  ImageUpload,
 };

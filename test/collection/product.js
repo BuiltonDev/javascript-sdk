@@ -43,7 +43,44 @@ describe('Product related tests', () => {
       done();
     });
   });
-
+  it('Should gets products with a tag in array', (done) => {
+    const [page, size] = [2, 100];
+    nock(endpoint)
+      .get('/products')
+      .query({ size, page, tags: 'searchTag' })
+      .reply(200, productsFile);
+    sa.products.get({ page, size, tags: ['searchTag'] }, (err, productPage) => {
+      assert.ok(Array.isArray(productPage.current));
+      assert.ok(productPage.current[0].constructor.name === 'Product');
+      done();
+    });
+  });
+  it('Should gets products with a tag in string', (done) => {
+    const [page, size] = [2, 100];
+    nock(endpoint)
+      .get('/products')
+      .query({ size, page, tags: 'searchTag' })
+      .reply(200, productsFile);
+    sa.products.get({ page, size, tags: 'searchTag' }, (err, productPage) => {
+      assert.ok(Array.isArray(productPage.current));
+      assert.ok(productPage.current[0].constructor.name === 'Product');
+      done();
+    });
+  });
+  it('Should search products with tags as an array', (done) => {
+    const [page, size] = [2, 100];
+    nock(endpoint)
+      .get('/products/search')
+      .query({
+        query: 'query', size, page, tags: 'searchTag1,searchTag2',
+      })
+      .reply(200, productsFile);
+    sa.products.search('query', { page, size, tags: ['searchTag1', 'searchTag2'] }, (err, productPage) => {
+      assert.ok(Array.isArray(productPage.current));
+      assert.ok(productPage.current[0].constructor.name === 'Product');
+      done();
+    });
+  });
   it('Should search subproducts for a product', (done) => {
     const [page, size] = [2, 100];
     nock(endpoint)
