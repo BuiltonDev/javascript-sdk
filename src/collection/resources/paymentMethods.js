@@ -1,6 +1,7 @@
 /* eslint-disable max-classes-per-file */
 const Components = require('./_resources');
 const PaymentMethod = require('../objects/paymentMethod');
+const Error = require('../../utils/error');
 const StripePaymentProvider = require('../../functionality/paymentProvider/stripe');
 const VippsPaymentProvider = require('../../functionality/paymentProvider/vipps');
 const {
@@ -26,12 +27,37 @@ class PaymentMethods extends Components {
   createWithProvider(provider, { urlParams, json = false } = {}, done) {
     const createWithStripe = (stripe, cardElement) => this.create({
       payment_method: 'stripe',
-    }).then((holderPaymentMethod) => stripe.handleCardSetup(
-      holderPaymentMethod.setup_intent.client_secret,
-      cardElement,
-    ).then((stripeResponse) => holderPaymentMethod.update({
-      payment_method_id: stripeResponse.setupIntent.payment_method,
-    }, { urlParams, json }, done)));
+    })
+      .catch((err) => {
+        if (done) {
+          done(err);
+        }
+        return Promise.reject(err);
+      })
+      .then((holderPaymentMethod) => stripe.handleCardSetup(
+        holderPaymentMethod.setup_intent.client_secret,
+        cardElement,
+      )
+        .catch((err) => {
+          const error = new Error.StripeError(err);
+          if (done) {
+            done(error);
+          }
+          return Promise.reject(error);
+        })
+        .then((stripeResponse) => {
+          if (stripeResponse.error) {
+            const error = new Error.StripeError(stripeResponse.error);
+            if (done) {
+              done(error);
+            }
+            return Promise.reject(error);
+          }
+          return holderPaymentMethod.update({
+            payment_method_id: stripeResponse.setupIntent.payment_method,
+          }, { urlParams, json }, done);
+        }));
+
     const createWithVipps = () => this.create({
       payment_method: 'vipps',
     });
@@ -44,7 +70,7 @@ class PaymentMethods extends Components {
       case 'VippsPaymentProvider':
         return createWithVipps();
       default:
-        throw Error('error');
+        throw new Error.UnknownPaymentProvider();
     }
   }
 }

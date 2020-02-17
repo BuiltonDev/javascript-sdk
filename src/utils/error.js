@@ -54,6 +54,12 @@ class ImageUpload extends ExtendableError {
   }
 }
 
+class UnknownPaymentProvider extends ExtendableError {
+  constructor() {
+    super('This payment method name doesn\'t exist');
+  }
+}
+
 module.exports = {
   MethodNeedsId,
   AbstractClass,
@@ -62,4 +68,5 @@ module.exports = {
   BadRequest,
   StripeError,
   ImageUpload,
+  UnknownPaymentProvider,
 };

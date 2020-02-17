@@ -146,13 +146,13 @@
             addPaymentMethod: () => {
                 document.getElementById('cardDetails').style.visibility = "visible";
                 let cardButton = document.getElementById('cardButton');
-                return new Promise((resolve) => {
+                return new Promise((resolve, reject) => {
                     cardButton.addEventListener('click', (ev) => {
                         builton.paymentMethods.createWithProvider(stripeProvider).then(paymentMethod => {
                             paymentMethodRef = paymentMethod;
                             document.getElementById('cardDetails').style.visibility = "hidden";
                             resolve(paymentMethod);
-                        });
+                        }).catch(err => reject(err));
                     });
                 });
             },
@@ -175,7 +175,14 @@
                         orders: [orderRef.id],
                         payment_method: paymentMethodRef.id
                     }
-                )
+                ).then(payments => {
+                    for (let payment of payments) {
+                        if (payment.error) {
+                            return Promise.reject(payments);
+                        }
+                    }
+                    return payments;
+                });
             }
         }
 
@@ -202,6 +209,9 @@
                 } else {
                     stepButton.innerHTML = 'Done!';
                 }
+            }).catch((error) => {
+                displayResponse(error);
+                addStep(steps[currentStep], false);
             });
         }
 

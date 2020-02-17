@@ -41,7 +41,11 @@ class Payments extends Components {
                   .catch((error) => { throw new Error.StripeError(error); })
                   .then((stripeResponse) => {
                     if (stripeResponse.error) {
-                      throw new Error.StripeError(stripeResponse.error);
+                      const error = new Error.StripeError(stripeResponse.error);
+                      if (done) {
+                        done(error);
+                      }
+                      return Promise.reject(error);
                     }
                     // eslint-disable-next-line camelcase
                     const { id, client_secret } = stripeResponse.paymentIntent;
@@ -77,7 +81,7 @@ class Payments extends Components {
       case 'VippsPaymentProvider':
         return create(body, { json }, done);
       default:
-        throw Error('error');
+        throw new Error.UnknownPaymentProvider();
     }
   }
 
