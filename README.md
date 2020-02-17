@@ -21,7 +21,7 @@ If you are looking for the service python SDK, take a look at it on [Github](htt
 From the [unpkg](https://unpkg.com/) CDN
 
 ```html
-<script src="https://unpkg.com/@builton/core-sdk@4.1/dist/main.bundle.js"></script>
+<script src="https://unpkg.com/@builton/core-sdk@4.2/dist/main.bundle.js"></script>
 ```
 
 From [npm](https://npmjs.org)
