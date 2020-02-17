@@ -10,7 +10,7 @@ class Images extends Components {
     this.ResConstructor = Image;
   }
 
-  async create(data, { isPublic, urlParams } = {}, done) {
+  create(data, { isPublic, urlParams } = {}, done) {
     const imageName = data.filename || data.name || `image-${Date.now()}`;
 
     if ((!Buffer && typeof File === 'undefined')
