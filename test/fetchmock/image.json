@@ -10,14 +10,15 @@
     },
     "deleted":false,
     "metadata":{
- 
+
     },
     "modified":{
        "$date":1564400759700
     },
     "original_file_type":"png",
     "original_name":"1x1.png",
-    "public":false,
+    "public":true,
+    "public_url": "https://d1vk7rtgnzzicy.cloudfront.net/5d2853e0f93362000d0ff267/1x1.png",
     "stored_s3":true,
     "url":"5d2edc776085c1030bea418a/1x1.png"
  }
