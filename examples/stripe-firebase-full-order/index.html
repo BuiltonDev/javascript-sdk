@@ -122,9 +122,6 @@
                                     bearerToken,
                                     refreshTokenFn: async () => {
                                         return await authResult.user.getIdToken();
-                                    },
-                                    body: {
-                                        foo: "bar"
                                     }
                                 });
                             })
