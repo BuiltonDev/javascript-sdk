@@ -60,6 +60,16 @@ class Builton {
   refreshBearerToken(newBearerToken) {
     this.request.bearerToken = newBearerToken;
   }
+
+  authenticate({ bearerToken, refreshTokenFn, body }) {
+    if (bearerToken) {
+      this.request.bearerToken = bearerToken;
+    }
+    if (refreshTokenFn) {
+      this.request.refreshBearerFn = refreshTokenFn;
+    }
+    return this.users.authenticate(body || {});
+  }
 }
 
 module.exports = Builton;
