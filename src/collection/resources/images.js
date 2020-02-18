@@ -11,18 +11,18 @@ class Images extends Components {
   }
 
   create(data, { isPublic, urlParams } = {}, done) {
-    const imageName = data.filename || data.name || `image-${Date.now()}`;
+    const imageName = data.filename || data.name || `image-${new Date().now}`;
 
-    if ((!Buffer && typeof File === 'undefined')
+    if ((!Buffer && typeof File === 'undefined' && !data.public_url)
       || (typeof data !== 'object')
-      || (!Buffer.isBuffer(data.buffer) && !(data instanceof File))
+      || (!Buffer.isBuffer(data.buffer) && !data.public_url && !(data instanceof File))
     ) {
       return Promise.reject(new Error.ImageUpload());
     }
 
     return this.query({
       type: 'post',
-      body: {
+      body: data.public_url ? data : {
         isFile: true,
         data: data.buffer || data,
         filename: imageName,
