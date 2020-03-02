@@ -50,7 +50,9 @@ class Request {
   static serialize(params) {
     const str = [];
     Object.keys(params).forEach((key) => {
-      str.push(`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+      if (params[key] !== undefined) {
+        str.push(`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+      }
     });
     return str.length ? `?${str.join('&')}` : '';
   }
@@ -62,13 +64,23 @@ class Request {
     body = undefined,
     headers = {},
     endpoint = this.endpoint,
-    isJsonBody = true,
   } = {}) {
     const url = `${endpoint}/${path}${Request.serialize({ ...urlParams })}`;
-    return this.getHeaders().then((queryHeaders) => agent[type](url)
-      .set({ ...queryHeaders, ...headers })
-      .set(isJsonBody ? { 'Content-Type': 'application/json' } : {}) // when empty, SuperAgent generates it automatically.
-      .send(isJsonBody ? JSON.stringify(body) : body));
+    return this.getHeaders().then((queryHeaders) => {
+      const request = agent[type](url)
+        .set({ ...queryHeaders, ...headers });
+      if (body && body.isFile) {
+        if (typeof body.isPublic !== 'undefined') {
+          request.field('public', body.isPublic);
+        }
+        request
+          .attach('image', body.data, body.filename);
+      } else {
+        request
+          .send(body);
+      }
+      return request;
+    });
   }
 }
 

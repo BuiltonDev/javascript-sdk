@@ -6,5 +6,8 @@
     "rules": {
         "no-underscore-dangle": "off",
         "consistent-return": "off"
+    },
+    "globals": {
+        "File": true
     }
 }
