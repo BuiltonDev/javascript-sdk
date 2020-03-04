@@ -15,7 +15,7 @@ describe('Image related tests', () => {
       .post('/images')
       .reply(200, imageFile);
     try {
-      const image = await sa.images.create({ public_url: 'https://d1vk7rtgnzzicy.cloudfront.net/5d2853e0f93362000d0ff267/1x1.png', original_filename: '1x1.png' });
+      const image = await sa.images.create({ public_url: 'https://d1vk7rtgnzzicy.cloudfront.net/5d2853e0f93362000d0ff267/1x1.png', original_name: '1x1.png' });
       assert.equal(image.public_url, 'https://d1vk7rtgnzzicy.cloudfront.net/5d2853e0f93362000d0ff267/1x1.png');
       assert.equal(image.original_name, '1x1.png');
     } catch (err) {
