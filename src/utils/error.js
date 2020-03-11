@@ -1,9 +1,14 @@
 /* eslint-disable max-classes-per-file */
 class ExtendableError extends Error {
-  constructor(message) {
+  constructor(message, metadata) {
     super();
     this.message = message;
     this.name = this.constructor.name;
+    Object.entries(metadata).forEach(([key, value]) => {
+      if (!this[key]) {
+        this[key] = value;
+      }
+    });
   }
 }
 
@@ -31,6 +36,12 @@ class AbstractClass extends ExtendableError {
   }
 }
 
+class BadRequest extends ExtendableError {
+  constructor(requestError) {
+    super(requestError.response.body.message || 'Bad request', requestError);
+  }
+}
+
 class ImageUpload extends ExtendableError {
   constructor() {
     super('Data needs to be an object { buffer: Buffer, filename: String } or an instance File(client).');
@@ -42,5 +53,6 @@ module.exports = {
   AbstractClass,
   MethodNeedsArg,
   NotImplemented,
+  BadRequest,
   ImageUpload,
 };
