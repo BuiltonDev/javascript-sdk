@@ -59,7 +59,7 @@ class Component {
         }).then((res) => {
           const obj = parseJson(res, ResConstructor, json);
           return Promise.resolve({ res, obj });
-        }).catch((err) => Promise.reject(err));
+        }).catch((err) => Promise.reject(new Error.BadRequest(err)));
       } catch (err) {
         return Promise.reject(err);
       }
