@@ -134,7 +134,8 @@
           "create",
           "getAll",
           "getFromId",
-          "set"
+          "set",
+          "createWithProvider"
         ]
       }
     }
@@ -158,7 +159,10 @@
           "create",
           "getFromId",
           "getAll",
-          "set"
+          "set",
+          "createWithProvider",
+          "StripePaymentProvider",
+          "VippsPaymentProvider"
         ]
       }
     }
