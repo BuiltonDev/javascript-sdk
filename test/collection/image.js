@@ -10,6 +10,19 @@ const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OD
 const sa = new Builton({ apiKey: 'dummy', bearerToken, endpoint });
 
 describe('Image related tests', () => {
+  it('Should create an image from public url', async () => {
+    nock(endpoint)
+      .post('/images')
+      .reply(200, imageFile);
+    try {
+      const image = await sa.images.create({ public_url: 'https://d1vk7rtgnzzicy.cloudfront.net/5d2853e0f93362000d0ff267/1x1.png', original_name: '1x1.png' });
+      assert.equal(image.public_url, 'https://d1vk7rtgnzzicy.cloudfront.net/5d2853e0f93362000d0ff267/1x1.png');
+      assert.equal(image.original_name, '1x1.png');
+    } catch (err) {
+      assert.fail(err);
+      console.error(err);
+    }
+  });
   it('Should upload an image', async () => {
     nock(endpoint)
       .post('/images')
