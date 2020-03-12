@@ -32,6 +32,26 @@ describe('User related tests', () => {
       done();
     }).catch(console.log);
   });
+  it('Should create user', (done) => {
+    nock(endpoint)
+      .post('/users')
+      .reply(200, userFile);
+    sa.users.create({}).then((userRes) => {
+      assert.ok((userRes.first_name === userFile.first_name));
+      assert.ok(userRes.constructor.name === 'User');
+      done();
+    });
+  });
+  it('Should authenticate user', (done) => {
+    nock(endpoint)
+      .post('/users')
+      .reply(200, userFile);
+    sa.users.authenticate({}).then((userRes) => {
+      assert.ok((userRes.first_name === userFile.first_name));
+      assert.ok(userRes.constructor.name === 'User');
+      done();
+    });
+  });
   it('Should return me', (done) => {
     nock(endpoint)
       .get('/users/me')
