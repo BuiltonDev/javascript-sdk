@@ -1,5 +1,9 @@
+/* eslint-disable max-classes-per-file */
 const Components = require('./_resources');
 const PaymentMethod = require('../objects/paymentMethod');
+const Error = require('../../utils/error');
+const StripePaymentProvider = require('../../functionality/paymentProvider/stripe');
+const VippsPaymentProvider = require('../../functionality/paymentProvider/vipps');
 const {
   create,
   del,
@@ -16,6 +20,58 @@ class PaymentMethods extends Components {
     this.request = request;
     this.apiPath = 'payment_methods';
     this.ResConstructor = PaymentMethod;
+    this.StripePaymentProvider = StripePaymentProvider;
+    this.VippsPaymentProvider = VippsPaymentProvider;
+  }
+
+  createWithProvider(provider, { urlParams, json = false } = {}, done) {
+    const createWithStripe = (stripe, cardElement) => this.create({
+      payment_method: 'stripe',
+    })
+      .catch((err) => {
+        if (done) {
+          done(err);
+        }
+        return Promise.reject(err);
+      })
+      .then((holderPaymentMethod) => stripe.handleCardSetup(
+        holderPaymentMethod.setup_intent.client_secret,
+        cardElement,
+      )
+        .catch((err) => {
+          const error = new Error.StripeError(err);
+          if (done) {
+            done(error);
+          }
+          return Promise.reject(error);
+        })
+        .then((stripeResponse) => {
+          if (stripeResponse.error) {
+            const error = new Error.StripeError(stripeResponse.error);
+            if (done) {
+              done(error);
+            }
+            return Promise.reject(error);
+          }
+          return holderPaymentMethod.update({
+            payment_method_id: stripeResponse.setupIntent.payment_method,
+          }, { urlParams, json }, done);
+        }));
+
+    const createWithVipps = () => this.create({
+      payment_method: 'vipps',
+    });
+    switch (provider.name) {
+      case 'StripePaymentProvider':
+        if (provider.stripe && provider.element) {
+          return createWithStripe(provider.stripe, provider.element);
+        }
+        break;
+      case 'VippsPaymentProvider':
+        return createWithVipps();
+      default:
+        throw new Error.UnknownPaymentProvider();
+    }
   }
 }
 

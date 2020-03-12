@@ -42,9 +42,21 @@ class BadRequest extends ExtendableError {
   }
 }
 
+class StripeError extends ExtendableError {
+  constructor(stripeError) {
+    super(stripeError.message || 'Payment error', stripeError);
+  }
+}
+
 class ImageUpload extends ExtendableError {
   constructor() {
     super('Data needs to be an object { buffer: Buffer, filename: String } or an instance File(client).');
+  }
+}
+
+class UnknownPaymentProvider extends ExtendableError {
+  constructor() {
+    super('This payment method name doesn\'t exist');
   }
 }
 
@@ -54,5 +66,7 @@ module.exports = {
   MethodNeedsArg,
   NotImplemented,
   BadRequest,
+  StripeError,
   ImageUpload,
+  UnknownPaymentProvider,
 };
