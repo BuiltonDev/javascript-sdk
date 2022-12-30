@@ -39,10 +39,10 @@
     "eslint": "6.1.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
-    "mocha": "6.2.0",
+    "mocha": "10.2.0",
     "nock": "10.0.6",
     "nodemon": "1.19.1",
-    "release-it": "12.3.6",
+    "release-it": "15.6.0",
     "uglifyjs-webpack-plugin": "2.2.0",
     "webpack": "4.39.3",
     "webpack-cli": "3.3.7"
